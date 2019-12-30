@@ -1,14 +1,14 @@
 [
 {
-	"uri": "/categories/",
-	"title": "Categories",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
 	"uri": "/",
 	"title": "Developer&#39;s Delight",
+	"tags": [],
+	"description": "",
+	"content": "Developer's Delight Seungha Son   Samsung Electronics Software Engineer\n  Expert knowledge and hands-on experience of system programming, application developing, debugging and profiling and optimization based linux.\n  Programming skills in C (advanace level), and C++, Java, Python, Shell script (Intermediate level)\n  Interested in open-source, system architecture\n  "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
