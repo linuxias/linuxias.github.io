@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Developer&#39;s Delight</title>
+    <title>정적 라이브러리 링크 :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1577716079" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/linux/compilelink/staticliblink/">
     <nav id="sidebar" class="">
 
 
@@ -79,7 +79,7 @@
   
     
     <li data-nav-id="/linux/" title="Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -106,7 +106,7 @@
   
     
     <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
-        
+        parent
         
         
         ">
@@ -168,7 +168,7 @@
  
   
     
-      <li data-nav-id="/linux/compilelink/staticliblink/" title="정적 라이브러리 링크" class="dd-item ">
+      <li data-nav-id="/linux/compilelink/staticliblink/" title="정적 라이브러리 링크" class="dd-item active">
         <a href="/linux/compilelink/staticliblink/">
         정적 라이브러리 링크
         
@@ -250,14 +250,19 @@
                   <span class="links">
                  
                  
-                   Tags 
+                   정적 라이브러리 링크 
                  
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pkg-config---pc--">pkg-config를 이용한 경우 pc 파일에 정의</a></li>
+    <li><a href="#requires-">Requires 사용하기</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -273,7 +278,7 @@
           
             <h1>
               
-              Tags
+              정적 라이브러리 링크
             </h1>
           
 
@@ -281,17 +286,56 @@
 
 
 
-
-
-
+<p>라이브러리 중 정적 라이브러리(static library)를 사용하는 경우가 종종 있다. 그리고 해당 라이브러리가 또 다른 (static library)를 Link 하는 경우가 있다. 이럴 때 문제가 발생하게 된다. 아래와 같이 어플리케이션이 필요로 하는 정적 라이브러리를 링크하게 되는데, 해당 라이브러리가 다른 정적 라이브러리를 링크하게 되는 경우이다.</p>
+<p><strong>Application &ndash;&gt; Static library 1 &ndash;&gt; Static library 2</strong></p>
+<p>Application은 Static library 1의 존재만 알 뿐 2의 존재는 알지도, 알 필요도 없다.</p>
+<h2 id="pkg-config---pc--">pkg-config를 이용한 경우 pc 파일에 정의</h2>
+<p>아래 libpalosalodp 의 pc.in 파일이다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Package Information for pkg-config</span>
+prefix<span style="color:#f92672">=</span>@prefix@
+exec_prefix<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>prefix<span style="color:#e6db74">}</span>
+libdir<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>exec_prefix<span style="color:#e6db74">}</span>/lib
+includedir<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>prefix<span style="color:#e6db74">}</span>/include/
+Name: libtest
+Description: test library
+Version: 0.0.1
+Requires.private: libtest_internal &gt;<span style="color:#f92672">=</span> 0.0.1
+Libs: -L<span style="color:#e6db74">${</span>libdir<span style="color:#e6db74">}</span> -ltest
+Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6db74">}</span>/Include
+</code></pre></div><p>Requires.private 에서 libodp_internal_${sdktype} 에 대한 필요 정보를 명시하고, 다른 Application의 Makefile에서 pkg-config &ndash;static 옵션을 붙여서 추가 시 해당 lib을 추가해준다.</p>
+<p>Requires.private 은 이 패키지에 필요한 패키지 목록을 나타내는 것으로 동적 링크된 실행 파일(static이 지정되지 않은 경우)에 대해 플래그 목록을 계산할 때 고려되지 않는다.</p>
+<h2 id="requires-">Requires 사용하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#75715e"># Package Information for pkg-config</span>
+prefix<span style="color:#f92672">=</span>@prefix@
+exec_prefix<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>prefix<span style="color:#e6db74">}</span>
+libdir<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>exec_prefix<span style="color:#e6db74">}</span>/lib
+includedir<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>prefix<span style="color:#e6db74">}</span>/include/
+Name: libtest
+Description: test library
+Version: 0.0.1
+Requires: libtest_internal &gt;<span style="color:#f92672">=</span> 0.0.1
+Libs: -L<span style="color:#e6db74">${</span>libdir<span style="color:#e6db74">}</span> -ltest
+Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6db74">}</span>/Include
+</code></pre></div><p>Requires 옵션을 이용하여 포함시킨다.</p>
+<p>Requires와 Requires.private의 차이는 아래와 같다.</p>
 <ul>
-	
+<li>
+<p>Requires: 패키지가 의존하여 사용하는 다른 패키지의 이름의 목록으로 공백으로 구분한다. 비교 연산자(=, &lt;, &gt;, &lt;=, &gt;=)를 사용하여 버전을 지정할 수도 있다.</p>
+</li>
+<li>
+<p>Requires.private: 패키지가 의존하여 사용하는 다른 패키지의 이름의 목록으로 공백으로 구분한다. 단 Requires와 다르게 패키지 안에서만 사용하며 이 패키지를 가져다가 사용하는 애플리케이션에는 사용할 필요 없을 패키지를 나열한다. 버전을 지정하는 형식은 Requires와 동일하다.</p>
+</li>
 </ul>
+<p>하지만 정적 라이브러리를 링크하고 있는 상황이기 때문에, Requires를 사용하던지 Application은 pkg-config 에서 &ndash;static 을 사용해야만 Requires.private에 정의된 패키지를 사용할 수 있다.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -324,8 +368,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -342,6 +384,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -354,6 +397,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -386,6 +432,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -439,3 +486,4 @@
 
   </body>
 </html>
+

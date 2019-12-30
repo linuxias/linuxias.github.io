@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.62.0" />
+    <meta name="description" content="">
+<meta name="author" content="Seungha Son">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>[gcc] Warning 옵션 :: Developer&#39;s Delight</title>
+
+    
+    <link href="/css/nucleus.css?1577716079" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1577716079" rel="stylesheet">
+    <link href="/css/hybrid.css?1577716079" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1577716079" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1577716079" rel="stylesheet">
+    <link href="/css/auto-complete.css?1577716079" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1577716079" rel="stylesheet">
+    <link href="/css/theme.css?1577716079" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1577716079" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1577716079" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1577716079"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/linux/compilelink/gcc_warning_option/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+<font size="5" color="white">DEVELOPER'S DELIGHT</font>
+	<br>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1577716079"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1577716079"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1577716079"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/" title="Linux" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/linux/">
+          <b>1. </b>Linux
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/linux/compilelink/">
+          Compile&amp;Link
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/gcc_warning_option/" title="[gcc] Warning 옵션" class="dd-item active">
+        <a href="/linux/compilelink/gcc_warning_option/">
+        [gcc] Warning 옵션
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/gcc_specific_attribute/" title="[gcc] 최적화 속성 사용하기" class="dd-item ">
+        <a href="/linux/compilelink/gcc_specific_attribute/">
+        [gcc] 최적화 속성 사용하기
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/staticliblink/" title="정적 라이브러리 링크" class="dd-item ">
+        <a href="/linux/compilelink/staticliblink/">
+        정적 라이브러리 링크
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/linuxias"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.linkedin.com/in/seungha-son-a97a02b3/"><i class='fab fa-linkedin'></i> Linked In</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                   [gcc] Warning 옵션 
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              [gcc] Warning 옵션
+            </h1>
+          
+
+        
+
+
+
+<p>gcc 컴파일 옵션으로 많이 사용하는 -Wall , -Wextra 이외에 다양한 옵션들은 정리하고자 합니다.</p>
+<table>
+<thead>
+<tr>
+<th align="left">옵션</th>
+<th align="left">설명</th>
+<th align="center">특이사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-fstack-usage</td>
+<td align="left">컴파일러가 프로그램에 대한 스택 사용 정보를 함수 단위로 출력하도록 합니다. 함수의 이름, 바이트 수 등이 표기됩니다.</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="left">-Wframe-larger-than={len}</td>
+<td align="left">함수 프레임의 크기가 len을 넘어가면 Warning이 출력합니다.</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="left">-Wstrict-overflow=n</td>
+<td align="left">-fstrict-overflow가 활성화 되어있는 경우에만 활성화됩니다. 컴파일러가 signed 오버플로우가 일어나지 않을거라 가정하고 최적화를 진행하는 경우에 Warning이 발생합니다.</td>
+<td align="center">Wall에 포함 (-Wstrict-overflow=1)</td>
+</tr>
+<tr>
+<td align="left">-Wlogical-op</td>
+<td align="left">표현식에서 논리연산자의 사용에 대해 문제가 발생할 수 있는 경우 Warning을 발생합니다.</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="left">-Wjump-misses-init</td>
+<td align="left">goto문을 통해 변수 초기화 이전으로 분기하거나, 변수가 초기화된 이후로 분기하는 것을 Warning이 발생합니다.</td>
+<td align="center">C, Objective-C only</td>
+</tr>
+<tr>
+<td align="left">-Wmissing-include-dirs</td>
+<td align="left">사용자 제공 include 디렉토리가 존재하지 않으면 Warning이 발생합니다.</td>
+<td align="center">C/C++, Obj C/C++ only</td>
+</tr>
+<tr>
+<td align="left">-Wunused</td>
+<td align="left">여러 unused 옵션(unused-but-set-parament, unused-but-set-variable, unused-function, unused-label, unused-local-typedefs, unused-parameter, -no-unused-result, unused-variable, unused-value)을 한 번에 포함하는 옵션입니다. 사용되지 않는 함수 매개 변수에 대한 경고를 얻으려면 -Wextra -Wunused (-Wall implies -Wunused)를 지정하거나 -Wunused-parameter를 별도로 지정해야합니다</td>
+<td align="center">Wall에 -Wunused-function -Wunused-label -Wunused-value -Wunused-variable 옵션이 포함되어 있습니다.</td>
+</tr>
+<tr>
+<td align="left">-Wpacked-bitfield-compat</td>
+<td align="left">4.1, 4.2 및 4.3 계열의 GCC는 &ldquo;char&quot;유형의 비트 필드에서 &ldquo;packed&quot;속성을 무시합니다. GCC 4.4에서 그러한 필드의 오프셋이 변경되면 GCC에서 알려줍니다.</td>
+<td align="center">Default enable</td>
+</tr>
+<tr>
+<td align="left">-Winvalid-pch</td>
+<td align="left">precompile된 헤더가 검색 경로에서 찾았으나 사용하지 못하는 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wstack-protector</td>
+<td align="left">Stack smashing으로부터 보호되지 않는 경우 Warning이 발생합니다. Stack smashing protector(SSP) 기능은 -fstack-protector 옵션을 사용해야 합니다. SSP 는 함수 진입 시 스택에 return address와 frame pointer 정보를 저장할 때 이 정보를 보호하기 위해 (canary라고 부르는) 특정한 값을 기록해두고 함수에서 반환할 때 기록된 값이 변경되지 않았는지 검사하여 정보의 일관성을 관리합니다. 만약 악의적인 사용자가 buffer overflow 등의 공격을 통해 스택 내의 정보를 덮어쓰려면 canary 값을 먼저 덮어써야 하기 때문에 canary 값 만 보면 공격이 일어났는지를 알 수 있습니다.</td>
+<td align="center">-fstack-proctector가 활성화 된 경우 활성화 됩니다.</td>
+</tr>
+<tr>
+<td align="left">-Wunused-variable</td>
+<td align="left">지역변수 또는 상수가아닌 정적변수가 사용되지 않을 때 Warning이 발생합니다.</td>
+<td align="center">-Wunused , -Wall에 포함</td>
+</tr>
+<tr>
+<td align="left">-Wunused-value</td>
+<td align="left">명시적으로 사용되지 않은 결과를 계산하는 경우 Warning이 발생합니다.</td>
+<td align="center">-Wunused , -Wall에 포함</td>
+</tr>
+<tr>
+<td align="left">-Wcast-qual</td>
+<td align="left">포인터를 형변환 할 때 기존 type qualifier가 사라지는 경우 경고해줍니다(const char_을 char_로 형변환)</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wconversion</td>
+<td align="left">묵시적으로 타입을 변환하는 상황에서 값이 바뀔 가능성이 있는 경우 경고해줍니다(int temp = 0.3 등)</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wsign-conversion</td>
+<td align="left">부호있는 정수 표현식을 부호없는 정수 변수에 할당하는 것과 같이 정수 값의 부호를 변경할 수있는 변환에 대해 Warning이 발생합니다.</td>
+<td align="center">-Wconversion 옵션에 의해 활성화됩니다.</td>
+</tr>
+<tr>
+<td align="left">-Wbad-function-cast</td>
+<td align="left">함수 콜이 매칭할 수 없는 타입에 캐스팅된 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wwrite-strings</td>
+<td align="left">constant 스트링을 non-const char* 포인터에 복사하는 경우 Warning이 발생합니다. 컴파일 타임에 const string을 변경하려는 문제를 찾을 수 있습니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wconversion-null</td>
+<td align="left">NULL 과 non-pointer 타입간의 변환에 대해 Warning이 발생합니다.</td>
+<td align="center">Default enable</td>
+</tr>
+<tr>
+<td align="left">-Wextra</td>
+<td align="left">-Wall에 의해 활성화되지 않는 추가적인 Warning flags(-Wclobbered -Wempty-body -Wignored-qualifiers -Wmissing-field-initializers -Wmissing-parameter-type (C only) -Wold-style-declaration (C only) -Woverride-init -Wsign-compare -Wtype-limits -Wuninitialized -Wunused-parameter (only with -Wunused or -Wall) -Wunused-but-set-parameter (only with -Wunused or -Wall))를 활성화합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wpacked</td>
+<td align="left">구조체에 <strong>packed</strong> 속성이 주어졌으나, 해당 레이아웃이나 크기에 영향이 없는 경우 Warning이 발생합니다. 이런 구조체는 아주 작은 이득을 위해 잘못 정렬될 수도 있습니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wredundant-decls</td>
+<td align="left">유효범위 내에 동일한 오브젝트(변수 등)이 여러 번 선언된 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Waggregate-return</td>
+<td align="left">구조체 또는 공용체를 반환하는 함수를 선언하거나 호출 시 Warning이 발생합니다.</td>
+<td align="center">거의 사용하지 않는 Warning.. ANSI C 표준에 맞추기 위해 사용하나.. 흠,</td>
+</tr>
+<tr>
+<td align="left">-Wpointer-arith</td>
+<td align="left">void의 크기나 함수의 크기를 갖고 연산(+/- 등)을 하는 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wswitch-default</td>
+<td align="left">switch 문에서 default case가 존재하지 않는 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wundef</td>
+<td align="left">정의되지 않는 식별자가 #if, #endif 구문에서 사용된 경우 Warning이 발생합니다</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wstrict-prototype</td>
+<td align="left">함수가 인자 형을 명시하지 않고 선언, 정의된 경우 Warning이 발생합니다. 즉, void test()와 같이 ()로 인자를 비워둔 경우 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wfloat-equal</td>
+<td align="left">부동소수점 값이 ==, != 등의 등호로 비교된 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wformat-y2k</td>
+<td align="left">2자리 연도를 출력하는 strftime()에 대해 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wshift-count-overflow</td>
+<td align="left">Shift 연산이 타입의 크기와 같거나 큰 경우 Warning이 발생합니다.</td>
+<td align="center">Default enable</td>
+</tr>
+<tr>
+<td align="left">-Wswitch-bool</td>
+<td align="left">switch문이 boolean 타입의 인덱스를 가지는 경우 Warning이 발생합니다.</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">-Wno-conversion-null</td>
+<td align="left">NULL과 non-pointer 타입 간의 변환에 대해 Warning이 발생하지 않도록 합니다.</td>
+<td align="center">-Wconversion-null이 Default입니다.</td>
+</tr>
+<tr>
+<td align="left">-Wnested-externs</td>
+<td align="left">extern 선언이 함수 안에 존재하는 경우 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wvarargs</td>
+<td align="left">va_start와 같은 가변인자를 처리하는데 사용된 매크로의 의심스러운 사용에 대해 Warning이 발생합니다.</td>
+<td align="center">Default enable</td>
+</tr>
+<tr>
+<td align="left">-Wunsuffixed-float-constants</td>
+<td align="left">접미사가 없는 부동상수에 대해 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wswitch-enum</td>
+<td align="left">switch문에서 index로 enum을 사용한 경우에 enum의 멤버와 case의 수가 맞지 않을 때 Warning이 발생합니다.</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">-Wshadow</td>
+<td align="left">지역변수가 다른 지역변수, 매개변수 등(shadow) 덮는 경우 Warning이 발생합니다.</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">-Wunreachable-code</td>
+<td align="left">어떠한 경우에도 실행할 수 없는 코드 라인이 존재하는 경우 Warning이 발생합니다.</td>
+<td align="center">gcc 4.4 이상에서 제거됨</td>
+</tr>
+<tr>
+<td align="left">-Winline</td>
+<td align="left">inline으로 선언된 함수가 inline이 불가능 경우 Warning이 발생합니다.</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">-funroll-loops</td>
+<td align="left">for()와 같은 루프문을 풀어서 최적화 해주는 옵션으로, 코드를 크게 만들어주며 수행속도가 빨라질수도 아닐수도 있습니다.</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>감사합니다.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1577716079"></script>
+    <script src="/js/perfect-scrollbar.min.js?1577716079"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1577716079"></script>
+    <script src="/js/jquery.sticky.js?1577716079"></script>
+    <script src="/js/featherlight.min.js?1577716079"></script>
+    <script src="/js/highlight.pack.js?1577716079"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1577716079"></script>
+    <script src="/js/learn.js?1577716079"></script>
+    <script src="/js/hugo-learn.js?1577716079"></script>
+
+    <link href="/mermaid/mermaid.css?1577716079" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1577716079"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

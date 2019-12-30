@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/linux/compilelink/</loc>
+    <lastmod>2019-12-30T23:19:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/linux/</loc>
+    <lastmod>2019-12-30T23:15:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/linux/compilelink/gcc_warning_option/</loc>
+    <lastmod>2019-12-30T23:24:46+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/linux/compilelink/gcc_specific_attribute/</loc>
+    <lastmod>2019-12-30T23:23:27+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/linux/compilelink/staticliblink/</loc>
+    <lastmod>2019-12-30T23:21:11+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/</loc>
     <lastmod>2019-12-30T23:06:22+09:00</lastmod>
   </url>

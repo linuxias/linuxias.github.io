@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Developer&#39;s Delight</title>
-    <link>/</link>
-    <description>Recent content on Developer&#39;s Delight</description>
+    <title>Compile&amp;Link on Developer&#39;s Delight</title>
+    <link>/linux/compilelink/</link>
+    <description>Recent content in Compile&amp;Link on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Dec 2019 23:06:22 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 23:19:05 +0900</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/linux/compilelink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

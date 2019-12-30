@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Developer&#39;s Delight</title>
+    <title>[gcc] 최적화 속성 사용하기 :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1577716079" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/linux/compilelink/gcc_specific_attribute/">
     <nav id="sidebar" class="">
 
 
@@ -79,7 +79,7 @@
   
     
     <li data-nav-id="/linux/" title="Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -106,7 +106,7 @@
   
     
     <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
-        
+        parent
         
         
         ">
@@ -149,7 +149,7 @@
  
   
     
-      <li data-nav-id="/linux/compilelink/gcc_specific_attribute/" title="[gcc] 최적화 속성 사용하기" class="dd-item ">
+      <li data-nav-id="/linux/compilelink/gcc_specific_attribute/" title="[gcc] 최적화 속성 사용하기" class="dd-item active">
         <a href="/linux/compilelink/gcc_specific_attribute/">
         [gcc] 최적화 속성 사용하기
         
@@ -250,14 +250,22 @@
                   <span class="links">
                  
                  
-                   Tags 
+                   [gcc] 최적화 속성 사용하기 
                  
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -273,7 +281,7 @@
           
             <h1>
               
-              Tags
+              [gcc] 최적화 속성 사용하기
             </h1>
           
 
@@ -281,17 +289,26 @@
 
 
 
+<p>gcc를 컴파일러로 사용할 시 -O2, -O3와 같은 최적화 옵션을 자주 사용하게 됩니다.</p>
+<p>특별한 경우에 특정 함수나 코드 구간에 대해서 특정 최적화 단계를 적용하고 싶다면 아래와 같이 진행합니다.</p>
+<h4 id="--">함수에 최적화 적용하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">__attribute__</span>((optimize(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">O0</span><span style="color:#e6db74">&#34;</span>))) func(<span style="color:#66d9ef">void</span>) {
 
-
-
-<ul>
-	
-</ul>
+}
+</code></pre></div><h4 id="---">코드 범위에 최적화 적용하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">pragma GCC push_options</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">pragma GCC optimize (&#34;O0&#34;)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+ <span style="color:#75715e">//Write your code
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#</span><span style="color:#75715e">pragma GCC pop_options</span><span style="color:#75715e">
+</span></code></pre></div><p>감사합니다.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -324,8 +341,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -342,6 +357,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -354,6 +370,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -371,6 +390,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -386,6 +406,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -439,3 +462,4 @@
 
   </body>
 </html>
+
