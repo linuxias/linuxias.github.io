@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Developer&#39;s Delight</title>
+    <title>7. Cgroup Namespace :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1577857997" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/linux/container/namespace/7.cgroup_namespace/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -79,7 +79,7 @@
   
     
     <li data-nav-id="/linux/" title="Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -201,7 +201,7 @@
   
     
     <li data-nav-id="/linux/container/" title="Container" class="dd-item 
-        
+        parent
         
         
         ">
@@ -230,7 +230,7 @@
   
     
     <li data-nav-id="/linux/container/namespace/" title="Namespace" class="dd-item 
-        
+        parent
         
         
         ">
@@ -370,7 +370,7 @@
  
   
     
-      <li data-nav-id="/linux/container/namespace/7.cgroup_namespace/" title="7. Cgroup Namespace" class="dd-item ">
+      <li data-nav-id="/linux/container/namespace/7.cgroup_namespace/" title="7. Cgroup Namespace" class="dd-item active">
         <a href="/linux/container/namespace/7.cgroup_namespace/">
         7. Cgroup Namespace
         <i class="fas fa-check read-icon"></i>
@@ -483,7 +483,25 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > Tags
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>Linux</a> > <a href='/linux/container/'>Container</a> > <a href='/linux/container/namespace/'>Namespace</a> > 7. Cgroup Namespace
+          
+         
+          
+         
+          
+         
           
          
           
@@ -494,7 +512,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -510,7 +528,7 @@
           
             <h1>
               
-              Tags
+              7. Cgroup Namespace
             </h1>
           
 
@@ -518,17 +536,30 @@
 
 
 
-
-
-
-<ul>
-	
-</ul>
+<p>cgroup namespace는 프로세스의 cgroups의 뷰를 가상화 합니다.</p>
+<p>각 cgroup 네임스페이스에는 고유한 cgroup 루트 디렉토리 세트가 있습니다. 그 루트 디렉토리는 <strong>/proc/[pid]/cgroup</strong> 파일의 해당 레코드에 표시되는 상대 위치의 베이스 위치입니다. <strong>clone(2)</strong> 또는 <strong>unshare(2)</strong> 시스템 콜에 <strong>CLONE_NEWCGROUP</strong> 플래그를 전달하여 새로운 cgroup namespace를 생성할 수 있습니다. 이렇게 생성된 namespace는 현재 cgroups 디렉토리가 새 namespace의 cgroup 루트 디렉토리가되는 새 cgroup namespace로 들어갑니다. 이 정책은 cgroup 버전 1,2 모두에 적용됩니다.</p>
+<p><strong>/proc/[pid]/cgroup</strong> 을 확인하면 표시되는 각 레코드의 세 번째 필드에 표시된 경로 이름은 해당 cgroup 계층에 대한 읽기 프로세스의 루트 디렉토리에 상대적인 위치입니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /proc/$$/cgroup
+12:pids:/user.slice/user-1000.slice/session-2.scope
+11:memory:/
+10:cpuset:/
+9:hugetlb:/
+8:blkio:/
+7:freezer:/
+6:cpu,cpuacct:/
+5:devices:/user.slice
+4:perf_event:/
+3:net_cls,net_prio:/
+2:rdma:/
+1:name<span style="color:#f92672">=</span>systemd:/user.slice/user-1000.slice/session-2.scope
+0::/user.slice/user-1000.slice/session-2.scope
+</code></pre></div><p>만약 해당 프로세스의 cgroup 디렉토리가 읽은 프로세스의 cgroup namespace의 외부에 위치한다면 경로는 ../ 와 같이 cgroup 구조에서 상위 레벨로 표시될 것 입니다.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -561,8 +592,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -579,84 +608,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -714,6 +667,90 @@
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -766,6 +803,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -796,8 +834,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/linux/container/namespace/6.uts_namespace/" title="6. UTS namespace"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/linux/" title="Linux" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/linux/container/namespace/1.what_is_namespace/" title="1. Namespace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -827,3 +867,4 @@
 
   </body>
 </html>
+

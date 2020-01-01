@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.62.0" />
+    <meta name="description" content="">
+<meta name="author" content="Seungha Son">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>3. User Namespace :: Developer&#39;s Delight</title>
+
+    
+    <link href="/css/nucleus.css?1577857997" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1577857997" rel="stylesheet">
+    <link href="/css/hybrid.css?1577857997" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1577857997" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1577857997" rel="stylesheet">
+    <link href="/css/auto-complete.css?1577857997" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1577857997" rel="stylesheet">
+    <link href="/css/theme.css?1577857997" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1577857997" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1577857997" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1577857997"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/linux/container/namespace/3.user_namespace/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+<font size="5" color="white">DEVELOPER'S DELIGHT</font>
+	<br>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1577857997"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1577857997"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1577857997"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/" title="Linux" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/linux/">
+          <b>1. </b>Linux
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/linux/compilelink/">
+          Compile&amp;Link
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/gcc_warning_option/" title="[gcc] Warning 옵션" class="dd-item ">
+        <a href="/linux/compilelink/gcc_warning_option/">
+        [gcc] Warning 옵션
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/gcc_specific_attribute/" title="[gcc] 최적화 속성 사용하기" class="dd-item ">
+        <a href="/linux/compilelink/gcc_specific_attribute/">
+        [gcc] 최적화 속성 사용하기
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/staticliblink/" title="정적 라이브러리 링크" class="dd-item ">
+        <a href="/linux/compilelink/staticliblink/">
+        정적 라이브러리 링크
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/container/" title="Container" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/linux/container/">
+          Container
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/container/namespace/" title="Namespace" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/linux/container/namespace/">
+          Namespace
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/1.what_is_namespace/" title="1. Namespace" class="dd-item ">
+        <a href="/linux/container/namespace/1.what_is_namespace/">
+        1. Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/2_pid_namespace/" title="2. PID Namespace" class="dd-item ">
+        <a href="/linux/container/namespace/2_pid_namespace/">
+        2. PID Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/3.user_namespace/" title="3. User Namespace" class="dd-item active">
+        <a href="/linux/container/namespace/3.user_namespace/">
+        3. User Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/4.qemu/" title="4. QEMU" class="dd-item ">
+        <a href="/linux/container/namespace/4.qemu/">
+        4. QEMU
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/5_mount_namespace/" title="5. Mount namespace" class="dd-item ">
+        <a href="/linux/container/namespace/5_mount_namespace/">
+        5. Mount namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/6.uts_namespace/" title="6. UTS namespace" class="dd-item ">
+        <a href="/linux/container/namespace/6.uts_namespace/">
+        6. UTS namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/container/namespace/7.cgroup_namespace/" title="7. Cgroup Namespace" class="dd-item ">
+        <a href="/linux/container/namespace/7.cgroup_namespace/">
+        7. Cgroup Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/linuxias"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.linkedin.com/in/seungha-son-a97a02b3/"><i class='fab fa-linkedin'></i> Linked In</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="mailto:linuxias@gmail.com"><i class='fas fa-envelope'></i> linuxias@gmail.com</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>Linux</a> > <a href='/linux/container/'>Container</a> > <a href='/linux/container/namespace/'>Namespace</a> > 3. User Namespace
+          
+         
+          
+         
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#nested-namespaces-namespace-membership">Nested namespaces, Namespace membership</a></li>
+    <li><a href="#capability">Capability</a></li>
+    <li><a href="#restrictions-on-mount-namespaces">Restrictions on mount namespaces</a></li>
+    <li><a href="#interaction-of-user-namespaces-and-other-types-of-namespaces">Interaction of user namespaces and other types of namespaces</a></li>
+    <li><a href="#user-and-group-id-mapplings--uid-map-and-gid-map">User and Group ID mapplings : uid\_map and gid\_map</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              3. User Namespace
+            </h1>
+          
+
+        
+
+
+
+<blockquote>
+<p>먼저 이 글에서 사용한 코드는 linux kernel 4.16 임을 알려드립니다.</p>
+</blockquote>
+<p>User namespace는 시큐리티와 관련된 식별자 및 속성을 분리하며, 특히 User ID와 Group ID, 루트 디렉토리, Key, Capability를 분리합니다. 프로세스의 User, Group ID는 user namespace 내,외부적으로 다를수 있습니다. 특히 프로세스는 User namespace 외부에 권한이 없는 정상적인 User ID를 가질 수 있으며, 동시에 namepsace 내부에 User ID 0을 가질 수 있습니다. 즉, 프로세스에는 user namespace 내의 작업에 대한 전체 권한이 있지만 namespace 외부 작업에 대한 권한이 없습니다.</p>
+<h2 id="nested-namespaces-namespace-membership">Nested namespaces, Namespace membership</h2>
+<p>User namespace는 PID namespace 처럼 중첩되어 질 수 있습니다. 이 말은 root namespace를 제외하고 각 User namespace는 부모 user namespace를 가질 수 있다는 것입니다. 다른 관점에서 본다면 User namespace는 0개 또는 그 이상의 자식 User namespace를 가질 수 있습니다. 부모 User namespace는 <strong>CLONE_NEWUSER</strong> flag를 사용한 <strong>unshare(2)</strong> 또는 <strong>clone(2)</strong> 시스템콜을 통해 user namespace를 생성하는 프로세스의 namespace입니다. 음, 새로 생성된 namespace는 그 namespace를 생성하는 프로세스의 namespace를 부모 namespace로 가진다는 의미입니다.</p>
+<p>커널은 이렇게 중첩할 수 있는 user namespace의 레벨을 32개로 제한하고 있습니다.</p>
+<p>아래 <strong>struct user_namespace</strong>를 살펴보시죠. 아래 line.61에 <strong>int level;</strong> 구조체 멤버변수가 보이시나요? user namespace 는 이처럼 레벨을 관리하고 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> File path : include<span style="color:#f92672">/</span>linux<span style="color:#f92672">/</span>user_namespace.h
+
+ <span style="color:#ae81ff">55</span> <span style="color:#66d9ef">struct</span> user_namespace {
+ <span style="color:#ae81ff">56</span>     <span style="color:#66d9ef">struct</span> uid_gid_map  uid_map;
+ <span style="color:#ae81ff">57</span>     <span style="color:#66d9ef">struct</span> uid_gid_map  gid_map;
+ <span style="color:#ae81ff">58</span>     <span style="color:#66d9ef">struct</span> uid_gid_map  projid_map;
+ <span style="color:#ae81ff">59</span>     atomic_t        count;
+ <span style="color:#ae81ff">60</span>     <span style="color:#66d9ef">struct</span> user_namespace   <span style="color:#f92672">*</span>parent;
+ <span style="color:#ae81ff">61</span>     <span style="color:#66d9ef">int</span>         level;
+ <span style="color:#ae81ff">62</span>     kuid_t          owner;
+ <span style="color:#ae81ff">63</span>     kgid_t          group;
+ <span style="color:#ae81ff">64</span>     <span style="color:#66d9ef">struct</span> ns_common    ns;
+ <span style="color:#ae81ff">65</span>     <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>       flags;
+ <span style="color:#ae81ff">66</span>
+ <span style="color:#ae81ff">67</span>     <span style="color:#75715e">/* Register of per-UID persistent keyrings for this namespace */</span>
+ <span style="color:#ae81ff">68</span> <span style="color:#960050;background-color:#1e0010">#</span>ifdef CONFIG_PERSISTENT_KEYRINGS
+ <span style="color:#ae81ff">69</span>     <span style="color:#66d9ef">struct</span> key      <span style="color:#f92672">*</span>persistent_keyring_register;
+ <span style="color:#ae81ff">70</span>     <span style="color:#66d9ef">struct</span> rw_semaphore persistent_keyring_register_sem;
+ <span style="color:#ae81ff">71</span> <span style="color:#960050;background-color:#1e0010">#</span>endif
+ <span style="color:#ae81ff">72</span>     <span style="color:#66d9ef">struct</span> work_struct  work;
+ <span style="color:#ae81ff">73</span> <span style="color:#960050;background-color:#1e0010">#</span>ifdef CONFIG_SYSCTL
+ <span style="color:#ae81ff">74</span>     <span style="color:#66d9ef">struct</span> ctl_table_set    set;
+ <span style="color:#ae81ff">75</span>     <span style="color:#66d9ef">struct</span> ctl_table_header <span style="color:#f92672">*</span>sysctls;
+ <span style="color:#ae81ff">76</span> <span style="color:#960050;background-color:#1e0010">#</span>endif
+ <span style="color:#ae81ff">77</span>     <span style="color:#66d9ef">struct</span> ucounts      <span style="color:#f92672">*</span>ucounts;
+ <span style="color:#ae81ff">78</span>     <span style="color:#66d9ef">int</span> ucount_max[UCOUNT_COUNTS];
+ <span style="color:#ae81ff">79</span> } __randomize_layout;
+
+</code></pre></div><p>만약 limit을 초과하게 되면 <strong>EUSERS</strong> 에러가 발생하게 됩니다.</p>
+<p>모든 프로세스들은 User namespace 중 하나에 속합니다. 여러분들이 프로세스 생성에 많이 사용하는 <strong>fork(2)</strong>, **clone(2)**을 사용할 때 flag로 <strong>CLONE_NEWUSER</strong>를 전달하지 않는다면 해당 시스템 콜을 호출한 프로세스의 User namespace에 속하게 됩니다. 싱글스레드 프로세스는 <strong>setns(2)</strong> 시스템 콜을 사용하여 다른 user namespace로 포함될 수 있습니다. 조건은 <strong>setns(2)</strong> 시스템 콜을 호출하는 프로세스가 <strong>CAP_SYS_ADMIN</strong> Capability를 가지고 있어야 합니다.</p>
+<p>여기서 주의할 점은 멀티스레드 프로세스에서는 <strong>setns(2)</strong> 시스템 콜을 호출한 스레드만 namespace가 변경되어 버립니다. 그럼, 이상한 문제점들이 발생하게 될겁니다.</p>
+<p>하나의 스레드만 적용되는 이유는 아래 코드에서 확인할 수 있습니다. <strong>setns(2)</strong> 시스템 콜을 호출하게 되면 아래 함수가 수행됩니다. 여기서 line.268을 확인해보시면 현재 task_struct를 가져오게되고, line.283에서 task_struct를 가져와 namespace를 생성하게 되는데, 스레드는 각각의 task_struct를 가지고 있기에, 해당 thread에 대해서만 변경이 됩니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  File path : kernel<span style="color:#f92672">/</span>nsproxy.c
+  <span style="color:#ae81ff">266</span> SYSCALL_DEFINE2(setns, <span style="color:#66d9ef">int</span>, fd, <span style="color:#66d9ef">int</span>, nstype)
+  <span style="color:#ae81ff">267</span> {
+  <span style="color:#ae81ff">268</span>     <span style="color:#66d9ef">struct</span> task_struct <span style="color:#f92672">*</span>tsk <span style="color:#f92672">=</span> current;
+  <span style="color:#ae81ff">269</span>     <span style="color:#66d9ef">struct</span> nsproxy <span style="color:#f92672">*</span>new_nsproxy;
+  <span style="color:#ae81ff">270</span>     <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>file;
+  <span style="color:#ae81ff">271</span>     <span style="color:#66d9ef">struct</span> ns_common <span style="color:#f92672">*</span>ns;
+  <span style="color:#ae81ff">272</span>     <span style="color:#66d9ef">int</span> err;
+  <span style="color:#ae81ff">273</span>
+  <span style="color:#ae81ff">274</span>     file <span style="color:#f92672">=</span> proc_ns_fget(fd);
+  <span style="color:#ae81ff">275</span>     <span style="color:#a6e22e">if</span> (IS_ERR(file))
+  <span style="color:#ae81ff">276</span>         <span style="color:#66d9ef">return</span> PTR_ERR(file);
+  <span style="color:#ae81ff">277</span>
+  <span style="color:#ae81ff">278</span>     err <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>EINVAL;
+  <span style="color:#ae81ff">279</span>     ns <span style="color:#f92672">=</span> get_proc_ns(file_inode(file));
+  <span style="color:#ae81ff">280</span>     <span style="color:#a6e22e">if</span> (nstype <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> (ns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ops<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>type <span style="color:#f92672">!</span><span style="color:#f92672">=</span> nstype))
+  <span style="color:#ae81ff">281</span>         <span style="color:#66d9ef">goto</span> out;
+  <span style="color:#ae81ff">282</span>
+  <span style="color:#ae81ff">283</span>     new_nsproxy <span style="color:#f92672">=</span> create_new_namespaces(<span style="color:#ae81ff">0</span>, tsk, current_user_ns(), tsk<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>fs);
+  <span style="color:#ae81ff">284</span>     <span style="color:#a6e22e">if</span> (IS_ERR(new_nsproxy)) {
+  <span style="color:#ae81ff">285</span>         err <span style="color:#f92672">=</span> PTR_ERR(new_nsproxy);
+  <span style="color:#ae81ff">286</span>         <span style="color:#66d9ef">goto</span> out;
+  <span style="color:#ae81ff">287</span>     }
+  <span style="color:#ae81ff">288</span>
+  <span style="color:#ae81ff">289</span>     err <span style="color:#f92672">=</span> ns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ops<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>install(new_nsproxy, ns);
+  <span style="color:#ae81ff">290</span>     <span style="color:#a6e22e">if</span> (err) {
+  <span style="color:#ae81ff">291</span>         free_nsproxy(new_nsproxy);
+  <span style="color:#ae81ff">292</span>         <span style="color:#66d9ef">goto</span> out;
+  <span style="color:#ae81ff">293</span>     }
+  <span style="color:#ae81ff">294</span>     <span style="color:#a6e22e">switch_task_namespaces</span>(tsk, new_nsproxy);
+  <span style="color:#ae81ff">295</span>
+  <span style="color:#ae81ff">296</span>     <span style="color:#a6e22e">perf_event_namespaces</span>(tsk);
+  <span style="color:#ae81ff">297</span> out:
+  <span style="color:#ae81ff">298</span>     fput(file);
+  <span style="color:#ae81ff">299</span>     <span style="color:#66d9ef">return</span> err;
+  <span style="color:#ae81ff">300</span> }
+</code></pre></div><h2 id="capability">Capability</h2>
+<p><strong>CLONE_NEWUSER</strong> flag를 이용하여 <strong>clone(2)</strong> 시스템 콜로 생성된 자식 프로세스는 새로운 User namespace에서 완전한 Capability 집합을 가지고 실행됩니다. 마찬가지로 <strong>unshare(2)</strong>, <strong>setns(2)</strong> 시스템 콜도 마찬가지로 Namepsace 내부에서 Capability의 전체 집합을 가지게 됩니다.</p>
+<p>반면에, 새로운 네임 스페이스가 생성 되더라도 그 프로세스는 부모 네임 스페이스 (클론 (2)의 경우) 또는 이전 (<strong>unshare(2)</strong> 및 **setns(2)**의 경우) User namepsace의 CCapability를 갖지 않습니다 또는 루트 사용자 (즉, Root User namepsace에서 사용자 ID가 0 인 프로세스)에 의해 조인됩니다.</p>
+<p>다른 경우로서, **execve(2)**를 호출하면 프로세스의 기능이 일반적인 방법으로 재계산됩니다 이 방식은 이 글의 범위를 벗어나기 때문에 다루지 않겠습니다. 관심있으신 분은 <strong>capabilites(7)</strong> 을 참조해주세요결과적으로 Namespace 내에 프로세스의 사용자 ID가 0이 아니거나 실행 가능 파일에 비어 있지 않은 상속 기능 마스크가 있으면 프로세스가 모든 기능을 잃게됩니다. 음, 자세한 내용은 아래에서 다시 다루겠습니다.</p>
+<p><strong>clone(2)</strong> 또는 <strong>unshared(2)</strong> 를 이용해 새로운 IPC, mount, network, PID, UTS namespace를 생성할 때 커널은 새로운 Namespace에 대해 생성한 프로세스의 User namespace를 기록합니다. 새로운 Namespace의 프로세스가 나중에 Namespace 내에 격리된 전역 리소스에서 작동하는 권한 작업을 수행하면 커널이 새 Namespace와 연결된 User namespace의 프로세스 Capability에 따라 검사가 수행됩니다. 즉 Namepsace의 Capability는 User namespace와 상호작용하며 체크하게 된다는 것입니다.</p>
+<h2 id="restrictions-on-mount-namespaces">Restrictions on mount namespaces</h2>
+<p>mount namespace 관련하여 정리한 내용입니다.</p>
+<p>mount namespace는 owner user namespace를 가지고 있습니다. owner user namespace가 상위 mount namespace의 owner user namespace와 다른 mount namespace는 권한이 낮은 mount namespace로 간주됩니다. 낮은 권한의 mount namespace가 생성될 때 공유 마운트는 슬레이브 마운트로 축소됩니다. 이렇게하면 권한이 낮은 mount namespace에서 수행 된 매핑이보다 많은 권한을 가진 mount namespace로 전파되지 않습니다.</p>
+<p>더 많은 권한을 가진 마운트에서 하나의 단위로 나오는 마운트는 함께 잠기고 특권이 적은 mount namespace에서 분리되지 않을 수 있습니다.</p>
+<p>파일 및 디렉토리에 대해서는 다른 namespace 마운트 지점이 아닌 하나의 namespace의 마운트 지점인 파일 또는 디렉터리는 마운트 지점이 아닌 mount namespace에서 이름을 변경하거나 연결 해제하거나 제거(rmdir(2))할 수 있다.
+다른 mount namespace에서 마운트 포인트의 파일, 디렉토리를 삭제, rename, unlink를 시도하게 되면 <strong>EBUSY</strong> 에러가 나타납니다. 이런 결과는 특권이 많은 사용자로부터 DoS 공격을 막기 위한 방안입니다.</p>
+<h2 id="interaction-of-user-namespaces-and-other-types-of-namespaces">Interaction of user namespaces and other types of namespaces</h2>
+<p>User 네임스페이스는 다른 네임스페이스들과 연관관계를 맺고있습니다.</p>
+<p>리눅스 커널 3.8부터 권한이 없는(unprivileged) 프로세스들도 User 네임스페이스를 생성할 수 있습니다. 프로세스가 <strong>CAP_SYS_ADMIN Capability</strong> 를 가지고 있다면 Mount, PID, IPC, Network, UTS 네임스페이스도 생성할 수 있습니다.</p>
+<p>Non-user 네임스페이스(User 네임스페이스를 제외한 다른 네임스페이스)가 생성될 때 새로운 프로세스는 자신을 생성한 프로세스가 속한 User 네임스페이스에 속하게 됩니다. Non-user 네임스페이스은 User 네임스페이스의 기능이 필요합니다. 만약 ** clone(2) ** 또는 ** unshare(2) ** 호출 시 ** CLONE_NEWUSER ** 가 다른 ** CLONE_NEW* ** 플래그와 함께 명시된다면 User 네임페이스를 먼저 생성하게 됩니다. 그 이후 권한을 확인하여 나머지 네임스페이스의 생성을 하게 됩니다. 따라서 권한이 없는 호출 프로세스는 이와 같은 플래그의 조합으로 시스템 콜을 호출할 수 있습니다.</p>
+<p>새로운 IPC, mount, network, PID, UTS 네임스페이스가 ** clone(2) ** 또는 **unshare(2) ** 시스템 콜을 통해 생성되면 커널은 새로운 네임스페이스에 대해 생성되는 프로세스의 사용자 네임스페이스를 기록합니다. 새로운 네임스페이스의 프로세스가 네임스페이스 격리된 전역 리소스에서 동작하는 권한이 필요한 작업을 연속적으로 수행하면 커널이 새로운 네임스페이스와 연결된 User 네임스페이스의 새로운 프로세스 기능에 따라 권한을 검사하게 됩니다.</p>
+<p>User 네임스페이스는 다른 네임스페이스들과 연관관계를 맺고 있는 부분을 확인 할 수 있으며, 특권(Capability)와 권한(Privilege)에 대한 관계도 관련이 있음을 알 수 있습니다.</p>
+<h2 id="user-and-group-id-mapplings--uid-map-and-gid-map">User and Group ID mapplings : uid_map and gid_map</h2>
+<p>User 네임스페이스가 생성되면 상위 User 네임스페이스에 User, Group ID가 매핑되지 않고 시작합니다. ** /proc/[pid]/uid_map ** 과 ** /proc/[pid]/gid_map ** 파일은 해당 프로세스의 User 네임스페이스 내부의 사용자와 그룹 ID 매핑 정보를 보여줍니다. 이 정보는 Namespace(1) 글에서 자료구조 내부적으로 어떻게 관리하는지 본 적이 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+ <span style="color:#ae81ff">55</span> <span style="color:#66d9ef">struct</span> user_namespace {
+ <span style="color:#ae81ff">56</span>     <span style="color:#66d9ef">struct</span> uid_gid_map  uid_map;
+ <span style="color:#ae81ff">57</span>     <span style="color:#66d9ef">struct</span> uid_gid_map  gid_map;
+ <span style="color:#ae81ff">58</span>     <span style="color:#66d9ef">struct</span> uid_gid_map  projid_map;
+ <span style="color:#ae81ff">59</span>     atomic_t        count;
+ <span style="color:#ae81ff">60</span>     <span style="color:#66d9ef">struct</span> user_namespace   <span style="color:#f92672">*</span>parent;
+ <span style="color:#ae81ff">61</span>     <span style="color:#66d9ef">int</span>         level;
+ <span style="color:#ae81ff">62</span>     kuid_t          owner;
+ <span style="color:#ae81ff">63</span>     kgid_t          group;
+ <span style="color:#ae81ff">64</span>     <span style="color:#66d9ef">struct</span> ns_common    ns;
+ <span style="color:#ae81ff">65</span>     <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>       flags;
+ <span style="color:#ae81ff">66</span>
+ <span style="color:#ae81ff">67</span>     <span style="color:#75715e">/* Register of per-UID persistent keyrings for this namespace */</span>
+ <span style="color:#ae81ff">68</span> <span style="color:#960050;background-color:#1e0010">#</span>ifdef CONFIG_PERSISTENT_KEYRINGS
+ <span style="color:#ae81ff">69</span>     <span style="color:#66d9ef">struct</span> key      <span style="color:#f92672">*</span>persistent_keyring_register;
+ <span style="color:#ae81ff">70</span>     <span style="color:#66d9ef">struct</span> rw_semaphore persistent_keyring_register_sem;
+ <span style="color:#ae81ff">71</span> <span style="color:#960050;background-color:#1e0010">#</span>endif
+ <span style="color:#ae81ff">72</span>     <span style="color:#66d9ef">struct</span> work_struct  work;
+ <span style="color:#ae81ff">73</span> <span style="color:#960050;background-color:#1e0010">#</span>ifdef CONFIG_SYSCTL
+ <span style="color:#ae81ff">74</span>     <span style="color:#66d9ef">struct</span> ctl_table_set    set;
+ <span style="color:#ae81ff">75</span>     <span style="color:#66d9ef">struct</span> ctl_table_header <span style="color:#f92672">*</span>sysctls;
+ <span style="color:#ae81ff">76</span> <span style="color:#960050;background-color:#1e0010">#</span>endif
+ <span style="color:#ae81ff">77</span>     <span style="color:#66d9ef">struct</span> ucounts      <span style="color:#f92672">*</span>ucounts;
+ <span style="color:#ae81ff">78</span>     <span style="color:#66d9ef">int</span> ucount_max[UCOUNT_COUNTS];
+ <span style="color:#ae81ff">79</span> } __randomize_layout;
+
+</code></pre></div><p>위 구조체에서 uid_map, gid_map이 구조체의 멤버로 존재하며, user_namespace 구조체 내부에서 관리하고 있음을 알 수 있습니다.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/linux/container/namespace/2_pid_namespace/" title="2. PID Namespace"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/linux/container/namespace/4.qemu/" title="4. QEMU" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1577857997"></script>
+    <script src="/js/perfect-scrollbar.min.js?1577857997"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1577857997"></script>
+    <script src="/js/jquery.sticky.js?1577857997"></script>
+    <script src="/js/featherlight.min.js?1577857997"></script>
+    <script src="/js/highlight.pack.js?1577857997"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1577857997"></script>
+    <script src="/js/learn.js?1577857997"></script>
+    <script src="/js/hugo-learn.js?1577857997"></script>
+
+    <link href="/mermaid/mermaid.css?1577857997" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1577857997"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Developer&#39;s Delight</title>
-    <link>/</link>
-    <description>Recent content on Developer&#39;s Delight</description>
+    <title>Namespace on Developer&#39;s Delight</title>
+    <link>/linux/container/namespace/</link>
+    <description>Recent content in Namespace on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Dec 2019 23:06:22 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 23:19:05 +0900</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/linux/container/namespace/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -86,39 +86,6 @@ unshare 또는 clone 시스템 콜 호출 시에 CLONE_NEWUTS 플래그를 사�
       <description>cgroup namespace는 프로세스의 cgroups의 뷰를 가상화 합니다.
 각 cgroup 네임스페이스에는 고유한 cgroup 루트 디렉토리 세트가 있습니다. 그 루트 디렉토리는 /proc/[pid]/cgroup 파일의 해당 레코드에 표시되는 상대 위치의 베이스 위치입니다. clone(2) 또는 unshare(2) 시스템 콜에 CLONE_NEWCGROUP 플래그를 전달하여 새로운 cgroup namespace를 생성할 수 있습니다. 이렇게 생성된 namespace는 현재 cgroups 디렉토리가 새 namespace의 cgroup 루트 디렉토리가되는 새 cgroup namespace로 들어갑니다. 이 정책은 cgroup 버전 1,2 모두에 적용됩니다.
 /proc/[pid]/cgroup 을 확인하면 표시되는 각 레코드의 세 번째 필드에 표시된 경로 이름은 해당 cgroup 계층에 대한 읽기 프로세스의 루트 디렉토리에 상대적인 위치입니다.</description>
-    </item>
-    
-    <item>
-      <title>[gcc] Warning 옵션</title>
-      <link>/linux/compilelink/gcc_warning_option/</link>
-      <pubDate>Mon, 30 Dec 2019 23:24:46 +0900</pubDate>
-      
-      <guid>/linux/compilelink/gcc_warning_option/</guid>
-      <description>gcc 컴파일 옵션으로 많이 사용하는 -Wall , -Wextra 이외에 다양한 옵션들은 정리하고자 합니다.
-   옵션 설명 특이사항     -fstack-usage 컴파일러가 프로그램에 대한 스택 사용 정보를 함수 단위로 출력하도록 합니다. 함수의 이름, 바이트 수 등이 표기됩니다. x   -Wframe-larger-than={len} 함수 프레임의 크기가 len을 넘어가면 Warning이 출력합니다. x   -Wstrict-overflow=n -fstrict-overflow가 활성화 되어있는 경우에만 활성화됩니다. 컴파일러가 signed 오버플로우가 일어나지 않을거라 가정하고 최적화를 진행하는 경우에 Warning이 발생합니다.</description>
-    </item>
-    
-    <item>
-      <title>[gcc] 최적화 속성 사용하기</title>
-      <link>/linux/compilelink/gcc_specific_attribute/</link>
-      <pubDate>Mon, 30 Dec 2019 23:23:27 +0900</pubDate>
-      
-      <guid>/linux/compilelink/gcc_specific_attribute/</guid>
-      <description>gcc를 컴파일러로 사용할 시 -O2, -O3와 같은 최적화 옵션을 자주 사용하게 됩니다.
-특별한 경우에 특정 함수나 코드 구간에 대해서 특정 최적화 단계를 적용하고 싶다면 아래와 같이 진행합니다.
-함수에 최적화 적용하기 void __attribute__((optimize(&amp;#34;O0&amp;#34;))) func(void) { } 코드 범위에 최적화 적용하기 #pragma GCC push_options#pragma GCC optimize (&amp;#34;O0&amp;#34;) //Write your code  #pragma GCC pop_options감사합니다.</description>
-    </item>
-    
-    <item>
-      <title>정적 라이브러리 링크</title>
-      <link>/linux/compilelink/staticliblink/</link>
-      <pubDate>Mon, 30 Dec 2019 23:21:11 +0900</pubDate>
-      
-      <guid>/linux/compilelink/staticliblink/</guid>
-      <description>라이브러리 중 정적 라이브러리(static library)를 사용하는 경우가 종종 있다. 그리고 해당 라이브러리가 또 다른 (static library)를 Link 하는 경우가 있다. 이럴 때 문제가 발생하게 된다. 아래와 같이 어플리케이션이 필요로 하는 정적 라이브러리를 링크하게 되는데, 해당 라이브러리가 다른 정적 라이브러리를 링크하게 되는 경우이다.
-Application &amp;ndash;&amp;gt; Static library 1 &amp;ndash;&amp;gt; Static library 2
-Application은 Static library 1의 존재만 알 뿐 2의 존재는 알지도, 알 필요도 없다.
-pkg-config를 이용한 경우 pc 파일에 정의 아래 libpalosalodp 의 pc.</description>
     </item>
     
   </channel>

@@ -8,8 +8,46 @@
   </url>
   
   <url>
+    <loc>/linux/container/</loc>
+    <lastmod>2019-12-30T23:19:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/</loc>
+    <lastmod>2019-12-30T23:19:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/linux/</loc>
     <lastmod>2019-12-30T23:15:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/1.what_is_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/2_pid_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/3.user_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/4.qemu/</loc>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/5_mount_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/6.uts_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>/linux/container/namespace/7.cgroup_namespace/</loc>
   </url>
   
   <url>

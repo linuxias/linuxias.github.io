@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Developer&#39;s Delight</title>
+    <title>4. QEMU :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1577857997" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/linux/container/namespace/4.qemu/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -79,7 +79,7 @@
   
     
     <li data-nav-id="/linux/" title="Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -201,7 +201,7 @@
   
     
     <li data-nav-id="/linux/container/" title="Container" class="dd-item 
-        
+        parent
         
         
         ">
@@ -230,7 +230,7 @@
   
     
     <li data-nav-id="/linux/container/namespace/" title="Namespace" class="dd-item 
-        
+        parent
         
         
         ">
@@ -313,7 +313,7 @@
  
   
     
-      <li data-nav-id="/linux/container/namespace/4.qemu/" title="4. QEMU" class="dd-item ">
+      <li data-nav-id="/linux/container/namespace/4.qemu/" title="4. QEMU" class="dd-item active">
         <a href="/linux/container/namespace/4.qemu/">
         4. QEMU
         <i class="fas fa-check read-icon"></i>
@@ -483,7 +483,25 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > Tags
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>Linux</a> > <a href='/linux/container/'>Container</a> > <a href='/linux/container/namespace/'>Namespace</a> > 4. QEMU
+          
+         
+          
+         
+          
+         
           
          
           
@@ -494,7 +512,13 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#hypervisor">Hypervisor</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -510,7 +534,7 @@
           
             <h1>
               
-              Tags
+              4. QEMU
             </h1>
           
 
@@ -518,17 +542,27 @@
 
 
 
-
-
-
-<ul>
-	
-</ul>
+<h2 id="introduction">Introduction</h2>
+<p>QEMU는 고속의 동적 바이너리 변환 기법을 사용하는 프로세서 에뮬레이터이자 가상화 하이퍼바이저 입니다. 여기서 바이너리 변환이란 하나의 Instruction Set을 다른 Instruction Set으로 번환해주는 처리과정을 말하며, 정적 또는 동적인 방법이 존재합니다.</p>
+<p>QEMU에 대해 정리하기 앞서 QEMU와 KVM을 굉장히 많은 분들이 헷갈려 하시는데, 아래 블로그에 매우 자세하게 정리가 되어 있으니 참고하시면 좋을 것 같습니다.</p>
+<p>[Qemu와 KVM의 개념 - 에뮬레이션과 가상화][http://blog.naver.com/PostView.nhn?blogId=alice_k106&amp;logNo=221179347223&amp;parentCategoryNo=7&amp;categoryNo=&amp;viewDate=&amp;isShowPopularPosts=true&amp;from=search]</p>
+<p>이 글에서는 KVM이 아닌 QEMU에 관한 내용만 정리하려 합니다.</p>
+<p>처음 QEMU 개발 시에는 x86 기반이 아닌 아키텍처에서 x86 기반의 리눅스 응용 프로그램을 실행하는 목적으로 개발되었다고 합니다. 하지만 지금은 x86, ARM 등 다양한 아키텍처를 지원하고 있습니다.</p>
+<p>QEMU가 에뮬레이터로 사용될 때에는 특정 하드웨어 기반에서 실행 가능하도록 작성된 OS나 프로그램을 아키텍처의 변경없이 다른 하드웨어에서 실행되도록 하는 역할을 합니다.
+하이퍼바이저로 사용될 때에는 KQEMU를 통해 게스트 OS의 코드를 호스트 시스템의 CPU에서 직접 실행하기 때문에 높은 성능이 발휘됩니다.</p>
+<p>또한 QEMU는 Xen 또는 KVM 하이퍼바이너의 가상화 기능을 도와주는 역할을 수행하기도 하는데, 이 경우 하드웨어 디바이스들의 에뮬레이터 기능을 수행하기 위해 변형된 형태의 QEMU 버전이 사용됩니다.</p>
+<h2 id="architecture">Architecture</h2>
+<p>하이퍼바이저에는 두 가지 타입이 있습니다. 베어메탈 (TYPE1)과 호스티드 (TYPE2) 방식입니다.
+베어메탈 방식은 하드웨어 위에서 HOST OS없이 바로 실행되는 하이퍼바이저를 말하며, 호스티드 방식은 HOST OS 위에서 하이퍼바이저를 실행하여 GUEST OS를 실행하는 방식입니다. QEMU는 TYPE2 방식에 속합니다.
+QEMU는 두 가지 모드를 제공하고 있는데요, 전체 시스템 모드와 사용자 모드 에뮬레이션을 제공하고 있습니다. 전체 시스템 모드는 CPU 및 주변 장치들을 포함하는 전체 시스템을 에뮬레이션 합니다. 사용자 모드 에뮬레이션은 사용자가 특정 아키텍처에서 동작시키기 위해 크로스 컴파일 한 프로세스를 다른 아키텍처에서 실행할 수 있도록 해줍니다. 특정 프로그램만 빠르게 동작시켜보기 위해서는 사용자 모드를 사용하는게 편합니다.</p>
+<h2 id="hypervisor">Hypervisor</h2>
+<p>QEMU는 KVM과 밀접한 관계가 있습니다. KVM은 리눅스 커널에 포함된 모듈로서 하이퍼바이저입니다. kVM 하이퍼바이저에서의 QEMU는 KVM에 최적화되어 변형된 버전인 ** qemu-kvm ** 이 실행되어서 x86 아키텍처에 대한 에뮬레이션을 제공합니다. QEMU는 호스트와 동일한 아키텍처의 OS를 실행하고자 할 떄만 KVM 가속화 기능을 사용합니다.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -561,8 +595,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -579,84 +611,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -714,6 +670,58 @@
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -734,6 +742,42 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -796,8 +840,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/linux/container/namespace/3.user_namespace/" title="3. User Namespace"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/linux/" title="Linux" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/linux/container/namespace/5_mount_namespace/" title="5. Mount namespace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -827,3 +873,4 @@
 
   </body>
 </html>
+
