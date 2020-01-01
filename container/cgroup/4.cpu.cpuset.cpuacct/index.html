@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.62.0" />
+    <meta name="description" content="">
+<meta name="author" content="Seungha Son">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>4. cpu, cpuset, cpuaccet :: Developer&#39;s Delight</title>
+
+    
+    <link href="/css/nucleus.css?1577859357" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1577859357" rel="stylesheet">
+    <link href="/css/hybrid.css?1577859357" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1577859357" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1577859357" rel="stylesheet">
+    <link href="/css/auto-complete.css?1577859357" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1577859357" rel="stylesheet">
+    <link href="/css/theme.css?1577859357" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1577859357" rel="stylesheet">
+    
+      <link href="/css/theme-purple.css?1577859357" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1577859357"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/container/cgroup/4.cpu.cpuset.cpuacct/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+<font size="5" color="white">DEVELOPER'S DELIGHT</font>
+	<br>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1577859357"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1577859357"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1577859357"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/container/" title="2. Container" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/container/">
+          2. Container
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/container/cgroup/" title="Cgroup" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/container/cgroup/">
+          Cgroup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/cgroup/1.cgroup/" title="1. Cgroup" class="dd-item ">
+        <a href="/container/cgroup/1.cgroup/">
+        1. Cgroup
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/cgroup/2.cgroup_blkio/" title="2. blkio" class="dd-item ">
+        <a href="/container/cgroup/2.cgroup_blkio/">
+        2. blkio
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/cgroup/3.cgroup_memory/" title="3. memory" class="dd-item ">
+        <a href="/container/cgroup/3.cgroup_memory/">
+        3. memory
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/cgroup/4.cpu.cpuset.cpuacct/" title="4. cpu, cpuset, cpuaccet" class="dd-item active">
+        <a href="/container/cgroup/4.cpu.cpuset.cpuacct/">
+        4. cpu, cpuset, cpuaccet
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/container/namespace/" title="Namespace" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/container/namespace/">
+          Namespace
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/1.what_is_namespace/" title="1. Namespace" class="dd-item ">
+        <a href="/container/namespace/1.what_is_namespace/">
+        1. Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/2_pid_namespace/" title="2. PID Namespace" class="dd-item ">
+        <a href="/container/namespace/2_pid_namespace/">
+        2. PID Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/3.user_namespace/" title="3. User Namespace" class="dd-item ">
+        <a href="/container/namespace/3.user_namespace/">
+        3. User Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/4.qemu/" title="4. QEMU" class="dd-item ">
+        <a href="/container/namespace/4.qemu/">
+        4. QEMU
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/5_mount_namespace/" title="5. Mount namespace" class="dd-item ">
+        <a href="/container/namespace/5_mount_namespace/">
+        5. Mount namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/6.uts_namespace/" title="6. UTS namespace" class="dd-item ">
+        <a href="/container/namespace/6.uts_namespace/">
+        6. UTS namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/namespace/7.cgroup_namespace/" title="7. Cgroup Namespace" class="dd-item ">
+        <a href="/container/namespace/7.cgroup_namespace/">
+        7. Cgroup Namespace
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/" title="1. Linux" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/linux/">
+          1. Linux
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/linux/compilelink/">
+          Compile&amp;Link
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/gcc_warning_option/" title="[gcc] Warning 옵션" class="dd-item ">
+        <a href="/linux/compilelink/gcc_warning_option/">
+        [gcc] Warning 옵션
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/gcc_specific_attribute/" title="[gcc] 최적화 속성 사용하기" class="dd-item ">
+        <a href="/linux/compilelink/gcc_specific_attribute/">
+        [gcc] 최적화 속성 사용하기
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/compilelink/staticliblink/" title="정적 라이브러리 링크" class="dd-item ">
+        <a href="/linux/compilelink/staticliblink/">
+        정적 라이브러리 링크
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/linuxias"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.linkedin.com/in/seungha-son-a97a02b3/"><i class='fab fa-linkedin'></i> Linked In</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="mailto:linuxias@gmail.com"><i class='fas fa-envelope'></i> linuxias@gmail.com</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/cgroup/'>Cgroup</a> > 4. cpu, cpuset, cpuaccet
+          
+         
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#subsystem---cpu-cpuset">Subsystem - cpu, cpuset</a>
+      <ul>
+        <li><a href="#cpu-subsystem">cpu subsystem</a></li>
+        <li><a href="#cpuset-subsystem">cpuset subsystem</a></li>
+        <li><a href="#cpu-cpuset">cpu, cpuset</a></li>
+        <li><a href="#cpu--">CPU 예제 살펴보기</a></li>
+        <li><a href="#cpuset--">CPUSET 예제 살펴보기</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading">참고자료</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              4. cpu, cpuset, cpuaccet
+            </h1>
+          
+
+        
+
+
+
+<h2 id="subsystem---cpu-cpuset">Subsystem - cpu, cpuset</h2>
+<p>이번 글에서는 Cgroup의 서브시스템 중 cpu와 cpuset 에 대해 정리해보겠습니다.</p>
+<h3 id="cpu-subsystem">cpu subsystem</h3>
+<p>cpu 서브시스템은 cgroup 계층 및 해당 작업에 대한 CPU 시간을 스케쥴링 할 수 있습니다. 시스템이 busy 상태일 때 CPU 공유를 최소화 즉 사용량을 제한 할 수 있습니다. 이 서브시스템은 CPU에 cgroup 작업 액세스를 제공하기 위한 스케줄러(Documentation/scheduler/sched-design-CFS.txt)를 제공합니다.</p>
+<h3 id="cpuset-subsystem">cpuset subsystem</h3>
+<p>cpuset 서브시스템은 개별 CPU 및 메모리 노드를 cgroup에 바인딩 하기 위한 서브시스템입니다. 리눅스의 <strong>testset</strong> 명령과 유사하게 CPU 코어를 할당 할 수 있는 서브시스템 입니다.</p>
+<h3 id="cpu-cpuset">cpu, cpuset</h3>
+<p>이 두 서브시스템을 이용하면 CPU 사용량이 많은 어플리케이션에 대해 프로세서 코어들을 할당 및 제어할 수 있으므로 더욱 좋은 활용성을 가질 수 있습니다.</p>
+<p><img src="http://jake.dothome.co.kr/wp-content/uploads/2015/12/cgroup2.png" alt="CPU 할당">
+<strong>image 참고 : 문C블로그 (<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</strong></p>
+<p>CPU 코어 별로 원하는 Task 들을 할당할 수 있어 코어 간 스위칭 되는 로드를 감소할 수 있으며 입맛에 맞게 그룹을 조정할 수 있습니다. 즉 컨테이너 환경에서도 각 컨테이너 별로 다양한 인스터스를 생성할 수 있습니다.</p>
+<h3 id="cpu--">CPU 예제 살펴보기</h3>
+<p>몇몇의 프로세스에 대해 설정하는 방법에 대해 알아보겠습니다. 여기서는 cpu와 cpuacct 함께 설정합니다.</p>
+<ol>
+<li>cgroup 가상파일시스템을 마운트합니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir -p /cgroup/cpu
+$ sudo mount -t cgroup -o cpu,cpuacct cpu,cpuacct /cgroup/cpu
+</code></pre></div><ol start="2">
+<li>마운트 여부 확인하기.
+아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount | grep cgroup
+cpu,cpuacct on /cgroup/cpu type cgroup <span style="color:#f92672">(</span>rw,relatime,cpu,cpuacct<span style="color:#f92672">)</span>
+or
+$ cat /proc/mount | grep cgroup
+cpu,cpuacct /cgroup/cpu cgroup rw,relatime,cpu,cpuacct <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><ol start="3">
+<li>mount 상태 확인해보기.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -al
+total <span style="color:#ae81ff">4</span>
+dr-xr-xr-x <span style="color:#ae81ff">2</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 .
+drwxr-xr-x <span style="color:#ae81ff">6</span> root root <span style="color:#ae81ff">4096</span>  8월 <span style="color:#ae81ff">11</span> 20:21 ..
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.clone_children
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.procs
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.sane_behavior
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpu_exclusive
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpus
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_cpus
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_mems
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_exclusive
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_hardwall
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_migrate
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure_enabled
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_page
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_slab
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mems
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_load_balance
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_relax_domain_level
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 notify_on_release
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 release_agent
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 tasks
+</code></pre></div><p>마운트한 디렉토리에서 내부 리스트를 확인해보니 위와 같이 많은 파일들이 생성되었습니다. 그 중 우리가 write할 수 있는 파일은 몇 개 되지 않네요. 나머지는 모두 read만 할 수 있습니다. 그 말은 우리가 cgroup blkio 서브시스템을 사용하여 제어할 수 있는 요소들은 write 권한이 있는 파일들을 유심히 보면 될 것 같습니다.</p>
+<ol start="4">
+<li>특정 프로세스의 CPU 제한 설정하기.
+새로운 계층구조를 생성하고 60%를 할당합니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /cgroup/cpu/limit_60_percent
+$ sudo echo <span style="color:#ae81ff">600</span> &gt; /cgroup/cpu/limit_60_percent/cpu.shares
+</code></pre></div><ol start="5">
+<li>cgroup에 적용하기.
+test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/cpu/limit_60_percent/tasks
+</code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/cpu/limit_60_percent/tasks; <span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="cpuset--">CPUSET 예제 살펴보기</h3>
+<p>몇몇의 프로세스에 대해 설정하는 방법에 대해 알아보겠습니다.</p>
+<ol>
+<li>cgroup 가상파일시스템을 마운트합니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir -p /cgroup/cpuset
+$ sudo mount -t cgroup -o cpuset cpuset /cgroup/cpuset
+</code></pre></div><ol start="2">
+<li>마운트 여부 확인하기.
+아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount | grep cgroup
+cpuset on /cgroup/cpuset type cgroup <span style="color:#f92672">(</span>rw,relatime,cpuset<span style="color:#f92672">)</span>
+or
+$ cat /proc/mount | grep cgroup
+cpuset /cgroup/cpuset cgroup rw,relatime,cpuset <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><ol start="3">
+<li>mount 상태 확인해보기.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -al
+total <span style="color:#ae81ff">4</span>
+dr-xr-xr-x <span style="color:#ae81ff">2</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 .
+drwxr-xr-x <span style="color:#ae81ff">6</span> root root <span style="color:#ae81ff">4096</span>  8월 <span style="color:#ae81ff">11</span> 20:21 ..
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.clone_children
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.procs
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.sane_behavior
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpu_exclusive
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpus
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_cpus
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_mems
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_exclusive
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_hardwall
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_migrate
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure_enabled
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_page
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_slab
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mems
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_load_balance
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_relax_domain_level
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 notify_on_release
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 release_agent
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 tasks
+</code></pre></div><p>마운트한 디렉토리에서 내부 리스트를 확인해보니 위와 같이 많은 파일들이 생성되었습니다. 그 중 우리가 write할 수 있는 파일은 몇 개 되지 않네요. 나머지는 모두 read만 할 수 있습니다. 그 말은 우리가 cgroup blkio 서브시스템을 사용하여 제어할 수 있는 요소들은 write 권한이 있는 파일들을 유심히 보면 될 것 같습니다.</p>
+<ol start="4">
+<li>특정 프로세스의 cpucore 할당 설정하기.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /cgroup/cpuset/test
+$ sudo echo 0-1 &gt; /cgroup/cpuset/test/cpuset/cpus
+</code></pre></div><ol start="5">
+<li>cgroup에 적용하기.
+test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/cpuset/test/cpuset.cpus
+</code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/cpuset/test/cpuset.cpus; <span style="color:#66d9ef">done</span>
+</code></pre></div><h2 id="heading">참고자료</h2>
+<ul>
+<li>Containerization with LXC | Konstantin Ivanov</li>
+<li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
+<li>[Linux] cgroup - (task) control group (1)(<a href="http://studyfoss.egloos.com/5506102">http://studyfoss.egloos.com/5506102</a>)</li>
+<li>Docker(container)의 작동 원리: namespaces and cgroups(<a href="https://tech.ssut.me/what-even-is-a-container/">https://tech.ssut.me/what-even-is-a-container/</a>)</li>
+<li>Control Groups | 문C 블로그(<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</li>
+<li>CGROUPS(7) linux manual page</li>
+<li><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt">https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt</a></li>
+<li><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/cpuacct.txt">https://www.kernel.org/doc/Documentation/cgroup-v1/cpuacct.txt</a></li>
+</ul>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/container/cgroup/3.cgroup_memory/" title="3. memory"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/container/namespace/" title="Namespace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1577859357"></script>
+    <script src="/js/perfect-scrollbar.min.js?1577859357"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1577859357"></script>
+    <script src="/js/jquery.sticky.js?1577859357"></script>
+    <script src="/js/featherlight.min.js?1577859357"></script>
+    <script src="/js/highlight.pack.js?1577859357"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1577859357"></script>
+    <script src="/js/learn.js?1577859357"></script>
+    <script src="/js/hugo-learn.js?1577859357"></script>
+
+    <link href="/mermaid/mermaid.css?1577859357" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1577859357"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

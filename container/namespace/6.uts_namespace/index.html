@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: Developer&#39;s Delight</title>
+    <title>6. UTS namespace :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1577859357" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/container/namespace/6.uts_namespace/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -79,7 +79,7 @@
   
     
     <li data-nav-id="/container/" title="2. Container" class="dd-item 
-        
+        parent
         
         
         ">
@@ -220,7 +220,7 @@
   
     
     <li data-nav-id="/container/namespace/" title="Namespace" class="dd-item 
-        
+        parent
         
         
         ">
@@ -341,7 +341,7 @@
  
   
     
-      <li data-nav-id="/container/namespace/6.uts_namespace/" title="6. UTS namespace" class="dd-item ">
+      <li data-nav-id="/container/namespace/6.uts_namespace/" title="6. UTS namespace" class="dd-item active">
         <a href="/container/namespace/6.uts_namespace/">
         6. UTS namespace
         <i class="fas fa-check read-icon"></i>
@@ -593,7 +593,19 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/namespace/'>Namespace</a> > 6. UTS namespace
+          
+         
+          
+         
           
          
           
@@ -604,7 +616,12 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">실습</a></li>
+    <li><a href="#--">참고자료 및 문헌</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -620,7 +637,7 @@
           
             <h1>
               
-              Categories
+              6. UTS namespace
             </h1>
           
 
@@ -628,17 +645,42 @@
 
 
 
-
-
-
+<p>UTS(Unix TimeSharing) namespace는 리눅스 컨테이너가 ** hostname -f ** 명령어에 의해 반환된 결과 값인 자신의 식별자를 유지관리하기 위해 hostname과 domainname을 namespace 별로 격리해줍니다. 격리하는 대상은 구별을 위한 식별자가 됩니다. 단순하게 생각하면 hostname은 호스트 각각의 이름이고 domainname은 그룹의 이름입니다. 기본적으로 domainname을 설정하지 않았다면 none으로 표시됩니다.</p>
+<p>UTS namespace로 분리할 수 있는 식별자는 sethostname(2)과 setdomainname(2)을 사용하여 설정되며 unname(2), gethostname(2) 및 getdomainname(2)을 사용하여 검색할 수 있습니다.</p>
+<p><strong>unshare</strong> 또는 <strong>clone</strong> 시스템 콜 호출 시에 <strong>CLONE_NEWUTS</strong> 플래그를 사용하면 새로운 UTS namespace를 생성하고 해당 namespace를 가진 프로세스를 생성할 수 있습니다.</p>
+<h2 id="heading">실습</h2>
+<ol>
+<li>** unshare ** 를 이용하여 새로운 UTS namespace를 만들어서 bash 프로세스를 실행합니다. 그 후 namespace를 변경합니다.</li>
+<li></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:~$ hostname
+linuxias-VirtualBox
+linuxias@linuxias-VirtualBox:~$ sudo unshare -u /bin/bash
+<span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> linuxias: 
+root@linuxias-VirtualBox:~# hostname
+linuxias-VirtualBox
+root@linuxias-VirtualBox:~# hostname uts-namespace
+root@linuxias-VirtualBox:~# hostname
+uts-namespace
+root@linuxias-VirtualBox:~# cat /proc/sys/kernel/hostname
+uts-namespace
+root@linuxias-VirtualBox:~# 
+</code></pre></div><ol start="2">
+<li>새로운 터미널 세션을 생성하여 hostname을 확인해봅니다. hostname이 설정 전의 hostname임을 확인할 수 있습니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:~$ hostname
+linuxias-VirtualBox 
+</code></pre></div><h2 id="--">참고자료 및 문헌</h2>
 <ul>
-	
+<li>Konstantin Ivanov | Containerization with LXC</li>
+<li>linux manual page - namespace, hostname</li>
 </ul>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -671,8 +713,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -689,18 +729,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -709,9 +739,6 @@
                     
                     
 
-                    
-            
-        
                     
                         
             
@@ -761,22 +788,6 @@
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
             
             
@@ -793,10 +804,30 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -877,6 +908,26 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -986,8 +1037,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/container/namespace/5_mount_namespace/" title="5. Mount namespace"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/container/" title="2. Container" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/container/namespace/7.cgroup_namespace/" title="7. Cgroup Namespace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1017,3 +1070,4 @@
 
   </body>
 </html>
+

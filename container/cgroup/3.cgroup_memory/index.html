@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: Developer&#39;s Delight</title>
+    <title>3. memory :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1577859357" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/container/cgroup/3.cgroup_memory/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -79,7 +79,7 @@
   
     
     <li data-nav-id="/container/" title="2. Container" class="dd-item 
-        
+        parent
         
         
         ">
@@ -108,7 +108,7 @@
   
     
     <li data-nav-id="/container/cgroup/" title="Cgroup" class="dd-item 
-        
+        parent
         
         
         ">
@@ -172,7 +172,7 @@
  
   
     
-      <li data-nav-id="/container/cgroup/3.cgroup_memory/" title="3. memory" class="dd-item ">
+      <li data-nav-id="/container/cgroup/3.cgroup_memory/" title="3. memory" class="dd-item active">
         <a href="/container/cgroup/3.cgroup_memory/">
         3. memory
         <i class="fas fa-check read-icon"></i>
@@ -593,7 +593,19 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/cgroup/'>Cgroup</a> > 3. memory
+          
+         
+          
+         
           
          
           
@@ -604,7 +616,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#subsystem---memory">Subsystem - memory</a>
+      <ul>
+        <li><a href="#-">예제 살펴보기</a></li>
+        <li><a href="#memory--statistics-">memory 서브시스템 statistics 확인해보기.</a></li>
+        <li><a href="#heading">참고자료</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -620,7 +642,7 @@
           
             <h1>
               
-              Categories
+              3. memory
             </h1>
           
 
@@ -628,17 +650,235 @@
 
 
 
-
-
-
+<h2 id="subsystem---memory">Subsystem - memory</h2>
+<p>memory 서브시스템은 cgroup에서 사용하는 메모리 자원에 대해 프로세스가 사용하는 메모리 양과 사용 가능한 메모리 자원을 컨트롤 할 수 있습니다. 또한 사용되는 메모리 자원에 대한 레포트도 자동으로 생성해주는 서브시스템입니다.</p>
+<p>memory 서브시스템은 시스템으로부터 태스크의 그룹의 메모리 접근등의 동작을 격리화시킵니다. 이 서브시스템이 사용되는 경우는 다음과 같습니다.</p>
 <ul>
-	
+<li>메모리 소모가 많은 어플리케이션을 격리하고 더 작은 어플리케이션으로 제한할 수 있습니다.</li>
+<li>mem=XXXX 설정을 통해 부팅하는 경우의 좋은 대안이 될 수 있습니다.</li>
+<li>가상화 솔루션에서 원하는 메모리 양을 제어할 수 있습니다.
+위 내용 외에도 여러 요소가 있을 수 있습니다.</li>
+</ul>
+<h3 id="-">예제 살펴보기</h3>
+<ol>
+<li>cgroup 가상파일시스템을 마운트합니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir -p /cgroup/memory
+$ sudo mount -t cgroup -o memory memory /cgroup/memory
+</code></pre></div><ol start="2">
+<li>마운트 여부 확인하기.
+아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount | grep cgroup
+memory on /cgroup/memory type cgroup <span style="color:#f92672">(</span>rw,relatime,blkio<span style="color:#f92672">)</span>
+or
+$ cat /proc/mount | grep cgroup
+memory /cgroup/memory cgroup rw,relatime,blkio <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><ol start="3">
+<li>mount 상태 확인해보기.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:/cgroup/memory$ ls -al
+total <span style="color:#ae81ff">4</span>
+dr-xr-xr-x <span style="color:#ae81ff">2</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:35 .
+drwxr-xr-x <span style="color:#ae81ff">4</span> root root <span style="color:#ae81ff">4096</span>  8월 <span style="color:#ae81ff">11</span> 15:49 ..
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 cgroup.clone_children
+--w--w--w- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 cgroup.event_control
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:35 cgroup.procs
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 cgroup.sane_behavior
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.failcnt
+--w------- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.force_empty
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.failcnt
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.limit_in_bytes
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.max_usage_in_bytes
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.slabinfo
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.tcp.failcnt
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.tcp.limit_in_bytes
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.tcp.max_usage_in_bytes
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.tcp.usage_in_bytes
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.kmem.usage_in_bytes
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:35 memory.limit_in_bytes
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.max_usage_in_bytes
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.move_charge_at_immigrate
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.numa_stat
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.oom_control
+---------- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.pressure_level
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.soft_limit_in_bytes
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.stat
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.swappiness
+-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 memory.usage_in_bytes
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:35 memory.use_hierarchy
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 notify_on_release
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 release_agent
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 15:49 tasks
+</code></pre></div><p>마운트한 디렉토리에서 내부 리스트를 확인해보니 위와 같이 많은 파일들이 생성되었습니다. 그 중 우리가 write할 수 있는 파일은 몇 개 되지 않네요. 나머지는 모두 read만 할 수 있습니다. 그 말은 우리가 cgroup blkio 서브시스템을 사용하여 제어할 수 있는 요소들은 write 권한이 있는 파일들을 유심히 보면 될 것 같습니다.</p>
+<ol start="4">
+<li>특정 프로세스의 메모리 설정하기.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /cgroup/memory/test_process
+$ sudo echo 1G &gt; /cgroup/memory/test_process/memory.limit_in_bytes
+$ cat /cgroup/memory/test_process/memory.limit_in_bytes
+<span style="color:#ae81ff">1073741824</span>
+</code></pre></div><ol start="5">
+<li>cgroup에 적용하기.
+test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/memory/test_process/tasks
+</code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/memory/test_process/tasks; <span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="memory--statistics-">memory 서브시스템 statistics 확인해보기.</h3>
+<p>memory.stat 파일에는 다양한 통계 정보가 존재합니다. 아래와 같이 확인 하실 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat memory.stat 
+cache <span style="color:#ae81ff">912625664</span>
+rss <span style="color:#ae81ff">281018368</span>
+rss_huge <span style="color:#ae81ff">0</span>
+shmem <span style="color:#ae81ff">1433600</span>
+mapped_file <span style="color:#ae81ff">178327552</span>
+dirty <span style="color:#ae81ff">0</span>
+writeback <span style="color:#ae81ff">0</span>
+pgpgin <span style="color:#ae81ff">915786</span>
+pgpgout <span style="color:#ae81ff">624369</span>
+pgfault <span style="color:#ae81ff">1014204</span>
+pgmajfault <span style="color:#ae81ff">2469</span>
+inactive_anon <span style="color:#ae81ff">536576</span>
+active_anon <span style="color:#ae81ff">280662016</span>
+inactive_file <span style="color:#ae81ff">379850752</span>
+active_file <span style="color:#ae81ff">521773056</span>
+unevictable <span style="color:#ae81ff">10792960</span>
+hierarchical_memory_limit <span style="color:#ae81ff">9223372036854771712</span>
+total_cache <span style="color:#ae81ff">912625664</span>
+total_rss <span style="color:#ae81ff">281018368</span>
+total_rss_huge <span style="color:#ae81ff">0</span>
+total_shmem <span style="color:#ae81ff">1433600</span>
+total_mapped_file <span style="color:#ae81ff">178327552</span>
+total_dirty <span style="color:#ae81ff">0</span>
+total_writeback <span style="color:#ae81ff">0</span>
+total_pgpgin <span style="color:#ae81ff">915786</span>
+total_pgpgout <span style="color:#ae81ff">624369</span>
+total_pgfault <span style="color:#ae81ff">1014204</span>
+total_pgmajfault <span style="color:#ae81ff">2469</span>
+total_inactive_anon <span style="color:#ae81ff">536576</span>
+total_active_anon <span style="color:#ae81ff">280662016</span>
+total_inactive_file <span style="color:#ae81ff">379850752</span>
+total_active_file <span style="color:#ae81ff">521773056</span>
+total_unevictable <span style="color:#ae81ff">10792960</span>
+</code></pre></div><p>각 정보에 대한 설명은 Documentation file <strong>5.2 stat file</strong> 를 참고해주세요.</p>
+<h4 id="memory--">memory 파일 설명</h4>
+<p>아래 몇 가지 파일에 대한 내용을 표로 작성해두었습니다. 그 외 다른 파일에 대한 설명은 Documentation을 보시면 좋습니다.</p>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tasks</td>
+<td>태스크를 추가하고, 스레드의 리스트를 볼 수 있습니다.</td>
+</tr>
+<tr>
+<td>cgroup.procs</td>
+<td>프로세스들의 리스트를 볼 수 있습니다.</td>
+</tr>
+<tr>
+<td>cgroup.event_control</td>
+<td>event_fd() 를 위한 인터페이스 입니다.</td>
+</tr>
+<tr>
+<td>memory.usage_in_bytes</td>
+<td>현재 메모리 사용량을 표시합니다.</td>
+</tr>
+<tr>
+<td>memory.memsw.usage_in_bytes</td>
+<td>현재 memory+swap 사용량을 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.limit_in_bytes</td>
+<td>메모리 사용량의 제한을 설정 또는 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.memsw.limit_in_bytes</td>
+<td>memory + swap 메모리 사용량의 제한을 설정 또는 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.failcnt</td>
+<td>메모리 사용량 hits 제한을 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.memsw.failcnt</td>
+<td>memory + swap 메모리 사용량 hits 제한을 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.max_usage_in_bytes</td>
+<td>최대 메모리 사용량을 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.memsw.max_usage_in_bytes</td>
+<td>memory + swap 메모리의 최대 사용량을 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.soft_limit_in_bytes</td>
+<td>메모리 사용의 소프트 제한을 설정 또는 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.stat</td>
+<td>다양한 statistics를 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.use_hierarchy</td>
+<td>자식 프로세스의 메모리 여부를 설정 또는 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.force_empty</td>
+<td>0으로 설정하면 작업에서 사용하는 메모리를 해제합니다.</td>
+</tr>
+<tr>
+<td>memory.pressure_level</td>
+<td>메모리 입력 알람을 설정합니다.</td>
+</tr>
+<tr>
+<td>memory.oom_control</td>
+<td>oom 제어를 설정또는 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.numa_stat</td>
+<td>Numa 노드 당 메모리 사용의 수를 보여줍니다</td>
+</tr>
+<tr>
+<td>memory.kmem.limit_in_bytes</td>
+<td>커널 메모리에 대한 hard limit을 설정 또는 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.kmem.usage_in_bytes</td>
+<td>현재 커널 메모리 할당을 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.kmem.failcnt</td>
+<td>커널 메모리 사용 hits 제한의 수를 보여줍니다.</td>
+</tr>
+<tr>
+<td>memory.kmem.max_usage_in_bytes</td>
+<td>커널 메모리 사용의 max 값을 보여줍니다.</td>
+</tr>
+</tbody>
+</table>
+<p>이 외에도 매우 많은 파일들이 존재하는데요. 필요한 내용은 Documentation을 꼭 참고해주세요.</p>
+<h3 id="heading">참고자료</h3>
+<ul>
+<li>Containerization with LXC | Konstantin Ivanov</li>
+<li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
+<li>[Linux] cgroup - (task) control group (1)(<a href="http://studyfoss.egloos.com/5506102">http://studyfoss.egloos.com/5506102</a>)</li>
+<li>Docker(container)의 작동 원리: namespaces and cgroups(<a href="https://tech.ssut.me/what-even-is-a-container/">https://tech.ssut.me/what-even-is-a-container/</a>)</li>
+<li>Control Groups | 문C 블로그(<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</li>
+<li>CGROUPS(7) linux manual page</li>
+<li><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt">https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt</a></li>
 </ul>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -671,8 +911,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -689,6 +927,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -701,6 +940,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -734,6 +976,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -749,6 +992,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -986,8 +1232,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/container/cgroup/2.cgroup_blkio/" title="2. blkio"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/container/" title="2. Container" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/container/cgroup/4.cpu.cpuset.cpuacct/" title="4. cpu, cpuset, cpuaccet" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1017,3 +1265,4 @@
 
   </body>
 </html>
+

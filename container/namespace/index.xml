@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Developer&#39;s Delight</title>
-    <link>/</link>
-    <description>Recent content on Developer&#39;s Delight</description>
+    <title>Namespace on Developer&#39;s Delight</title>
+    <link>/container/namespace/</link>
+    <description>Recent content in Namespace on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Dec 2019 23:06:22 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 23:19:05 +0900</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/container/namespace/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>1. Cgroup</title>
-      <link>/container/cgroup/1.cgroup/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/container/cgroup/1.cgroup/</guid>
-      <description>cgroup은 단일 또는 태스크 단위의 프로세스 그룹에 대한 자원 할당을 제어하는 커널 모듈입니다. Cgroup은 Control group으로 처음 개발되었을 때는 group이 아니라 container란 용어를 사용했었습니다. 하지만 container란 용어는 너무 많은 의미를 내포하고 있다고 판단하여 지금의 group이만 이름으로 변경되었습니다.
-현재 cgroup은 v1와 v2 두가지 버전이 공존하고 있습니다. v1의 서비스시템 중 일부는 v2에 포함되어 있는 상태입니다. 언젠가 v2만 남겠죠..?
-cgroup 서브시스템 cgroup은 여러 개의 서브시스템으로 이루어져 있습니다. (아래 표에 모든 서브시스템을 작성한 것은 아니니, 유의해주세요.</description>
-    </item>
     
     <item>
       <title>1. Namespace</title>
@@ -34,17 +23,6 @@ namespace는 전역 시스템 리소스를 추상화하여 전역 리소스의 �
     </item>
     
     <item>
-      <title>2. blkio</title>
-      <link>/container/cgroup/2.cgroup_blkio/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/container/cgroup/2.cgroup_blkio/</guid>
-      <description>Subsystem - blkio blkio 서브시스템은 특정 block device에 대한 접근을 제한하거나 제어하기 위한 서브시스템 입니다. 자세한 내용은 ** Documentation/cgroup-v1/blkio-controller.txt ** 를 참고해주세요.
-예제 살펴보기 I/O 작업이 많은 몇몇의 어플리케이션이 하나의 서버에서 동작한다고 가정합니다. 각 어플리케이션에 대해 다른 우선순위와 I/O 대역폭을 설정해주는 예제를 살펴보겠습니다.
- cgroup 가상파일시스템을 마운트합니다.  $ sudo mkdir -p /cgroup/blkio $ sudo mount -t cgroup -o blkio blkio /cgroup/blkio 마운트 여부 확인하기. 아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</description>
-    </item>
-    
-    <item>
       <title>2. PID Namespace</title>
       <link>/container/namespace/2_pid_namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -55,17 +33,6 @@ PID namepsace의 특이한 점은 새로운 PID namespace의 PID는 1 부터 시
     </item>
     
     <item>
-      <title>3. memory</title>
-      <link>/container/cgroup/3.cgroup_memory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/container/cgroup/3.cgroup_memory/</guid>
-      <description>Subsystem - memory memory 서브시스템은 cgroup에서 사용하는 메모리 자원에 대해 프로세스가 사용하는 메모리 양과 사용 가능한 메모리 자원을 컨트롤 할 수 있습니다. 또한 사용되는 메모리 자원에 대한 레포트도 자동으로 생성해주는 서브시스템입니다.
-memory 서브시스템은 시스템으로부터 태스크의 그룹의 메모리 접근등의 동작을 격리화시킵니다. 이 서브시스템이 사용되는 경우는 다음과 같습니다.
- 메모리 소모가 많은 어플리케이션을 격리하고 더 작은 어플리케이션으로 제한할 수 있습니다. mem=XXXX 설정을 통해 부팅하는 경우의 좋은 대안이 될 수 있습니다. 가상화 솔루션에서 원하는 메모리 양을 제어할 수 있습니다.</description>
-    </item>
-    
-    <item>
       <title>3. User Namespace</title>
       <link>/container/namespace/3.user_namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -73,17 +40,6 @@ memory 서브시스템은 시스템으로부터 태스크의 그룹의 메모리
       <guid>/container/namespace/3.user_namespace/</guid>
       <description>먼저 이 글에서 사용한 코드는 linux kernel 4.16 임을 알려드립니다.
  User namespace는 시큐리티와 관련된 식별자 및 속성을 분리하며, 특히 User ID와 Group ID, 루트 디렉토리, Key, Capability를 분리합니다. 프로세스의 User, Group ID는 user namespace 내,외부적으로 다를수 있습니다. 특히 프로세스는 User namespace 외부에 권한이 없는 정상적인 User ID를 가질 수 있으며, 동시에 namepsace 내부에 User ID 0을 가질 수 있습니다. 즉, 프로세스에는 user namespace 내의 작업에 대한 전체 권한이 있지만 namespace 외부 작업에 대한 권한이 없습니다.</description>
-    </item>
-    
-    <item>
-      <title>4. cpu, cpuset, cpuaccet</title>
-      <link>/container/cgroup/4.cpu.cpuset.cpuacct/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/container/cgroup/4.cpu.cpuset.cpuacct/</guid>
-      <description>Subsystem - cpu, cpuset 이번 글에서는 Cgroup의 서브시스템 중 cpu와 cpuset 에 대해 정리해보겠습니다.
-cpu subsystem cpu 서브시스템은 cgroup 계층 및 해당 작업에 대한 CPU 시간을 스케쥴링 할 수 있습니다. 시스템이 busy 상태일 때 CPU 공유를 최소화 즉 사용량을 제한 할 수 있습니다. 이 서브시스템은 CPU에 cgroup 작업 액세스를 제공하기 위한 스케줄러(Documentation/scheduler/sched-design-CFS.txt)를 제공합니다.
-cpuset subsystem cpuset 서브시스템은 개별 CPU 및 메모리 노드를 cgroup에 바인딩 하기 위한 서브시스템입니다. 리눅스의 testset 명령과 유사하게 CPU 코어를 할당 할 수 있는 서브시스템 입니다.</description>
     </item>
     
     <item>
@@ -130,39 +86,6 @@ unshare 또는 clone 시스템 콜 호출 시에 CLONE_NEWUTS 플래그를 사�
       <description>cgroup namespace는 프로세스의 cgroups의 뷰를 가상화 합니다.
 각 cgroup 네임스페이스에는 고유한 cgroup 루트 디렉토리 세트가 있습니다. 그 루트 디렉토리는 /proc/[pid]/cgroup 파일의 해당 레코드에 표시되는 상대 위치의 베이스 위치입니다. clone(2) 또는 unshare(2) 시스템 콜에 CLONE_NEWCGROUP 플래그를 전달하여 새로운 cgroup namespace를 생성할 수 있습니다. 이렇게 생성된 namespace는 현재 cgroups 디렉토리가 새 namespace의 cgroup 루트 디렉토리가되는 새 cgroup namespace로 들어갑니다. 이 정책은 cgroup 버전 1,2 모두에 적용됩니다.
 /proc/[pid]/cgroup 을 확인하면 표시되는 각 레코드의 세 번째 필드에 표시된 경로 이름은 해당 cgroup 계층에 대한 읽기 프로세스의 루트 디렉토리에 상대적인 위치입니다.</description>
-    </item>
-    
-    <item>
-      <title>[gcc] Warning 옵션</title>
-      <link>/linux/compilelink/gcc_warning_option/</link>
-      <pubDate>Mon, 30 Dec 2019 23:24:46 +0900</pubDate>
-      
-      <guid>/linux/compilelink/gcc_warning_option/</guid>
-      <description>gcc 컴파일 옵션으로 많이 사용하는 -Wall , -Wextra 이외에 다양한 옵션들은 정리하고자 합니다.
-   옵션 설명 특이사항     -fstack-usage 컴파일러가 프로그램에 대한 스택 사용 정보를 함수 단위로 출력하도록 합니다. 함수의 이름, 바이트 수 등이 표기됩니다. x   -Wframe-larger-than={len} 함수 프레임의 크기가 len을 넘어가면 Warning이 출력합니다. x   -Wstrict-overflow=n -fstrict-overflow가 활성화 되어있는 경우에만 활성화됩니다. 컴파일러가 signed 오버플로우가 일어나지 않을거라 가정하고 최적화를 진행하는 경우에 Warning이 발생합니다.</description>
-    </item>
-    
-    <item>
-      <title>[gcc] 최적화 속성 사용하기</title>
-      <link>/linux/compilelink/gcc_specific_attribute/</link>
-      <pubDate>Mon, 30 Dec 2019 23:23:27 +0900</pubDate>
-      
-      <guid>/linux/compilelink/gcc_specific_attribute/</guid>
-      <description>gcc를 컴파일러로 사용할 시 -O2, -O3와 같은 최적화 옵션을 자주 사용하게 됩니다.
-특별한 경우에 특정 함수나 코드 구간에 대해서 특정 최적화 단계를 적용하고 싶다면 아래와 같이 진행합니다.
-함수에 최적화 적용하기 void __attribute__((optimize(&amp;#34;O0&amp;#34;))) func(void) { } 코드 범위에 최적화 적용하기 #pragma GCC push_options#pragma GCC optimize (&amp;#34;O0&amp;#34;) //Write your code  #pragma GCC pop_options감사합니다.</description>
-    </item>
-    
-    <item>
-      <title>정적 라이브러리 링크</title>
-      <link>/linux/compilelink/staticliblink/</link>
-      <pubDate>Mon, 30 Dec 2019 23:21:11 +0900</pubDate>
-      
-      <guid>/linux/compilelink/staticliblink/</guid>
-      <description>라이브러리 중 정적 라이브러리(static library)를 사용하는 경우가 종종 있다. 그리고 해당 라이브러리가 또 다른 (static library)를 Link 하는 경우가 있다. 이럴 때 문제가 발생하게 된다. 아래와 같이 어플리케이션이 필요로 하는 정적 라이브러리를 링크하게 되는데, 해당 라이브러리가 다른 정적 라이브러리를 링크하게 되는 경우이다.
-Application &amp;ndash;&amp;gt; Static library 1 &amp;ndash;&amp;gt; Static library 2
-Application은 Static library 1의 존재만 알 뿐 2의 존재는 알지도, 알 필요도 없다.
-pkg-config를 이용한 경우 pc 파일에 정의 아래 libpalosalodp 의 pc.</description>
     </item>
     
   </channel>

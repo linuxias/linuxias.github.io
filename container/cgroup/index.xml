@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cgroup on Developer&#39;s Delight</title>
+    <link>/container/cgroup/</link>
+    <description>Recent content in Cgroup on Developer&#39;s Delight</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 30 Dec 2019 23:19:05 +0900</lastBuildDate>
+    
+	<atom:link href="/container/cgroup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Cgroup</title>
+      <link>/container/cgroup/1.cgroup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/container/cgroup/1.cgroup/</guid>
+      <description>cgroup은 단일 또는 태스크 단위의 프로세스 그룹에 대한 자원 할당을 제어하는 커널 모듈입니다. Cgroup은 Control group으로 처음 개발되었을 때는 group이 아니라 container란 용어를 사용했었습니다. 하지만 container란 용어는 너무 많은 의미를 내포하고 있다고 판단하여 지금의 group이만 이름으로 변경되었습니다.
+현재 cgroup은 v1와 v2 두가지 버전이 공존하고 있습니다. v1의 서비스시템 중 일부는 v2에 포함되어 있는 상태입니다. 언젠가 v2만 남겠죠..?
+cgroup 서브시스템 cgroup은 여러 개의 서브시스템으로 이루어져 있습니다. (아래 표에 모든 서브시스템을 작성한 것은 아니니, 유의해주세요.</description>
+    </item>
+    
+    <item>
+      <title>2. blkio</title>
+      <link>/container/cgroup/2.cgroup_blkio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/container/cgroup/2.cgroup_blkio/</guid>
+      <description>Subsystem - blkio blkio 서브시스템은 특정 block device에 대한 접근을 제한하거나 제어하기 위한 서브시스템 입니다. 자세한 내용은 ** Documentation/cgroup-v1/blkio-controller.txt ** 를 참고해주세요.
+예제 살펴보기 I/O 작업이 많은 몇몇의 어플리케이션이 하나의 서버에서 동작한다고 가정합니다. 각 어플리케이션에 대해 다른 우선순위와 I/O 대역폭을 설정해주는 예제를 살펴보겠습니다.
+ cgroup 가상파일시스템을 마운트합니다.  $ sudo mkdir -p /cgroup/blkio $ sudo mount -t cgroup -o blkio blkio /cgroup/blkio 마운트 여부 확인하기. 아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</description>
+    </item>
+    
+    <item>
+      <title>3. memory</title>
+      <link>/container/cgroup/3.cgroup_memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/container/cgroup/3.cgroup_memory/</guid>
+      <description>Subsystem - memory memory 서브시스템은 cgroup에서 사용하는 메모리 자원에 대해 프로세스가 사용하는 메모리 양과 사용 가능한 메모리 자원을 컨트롤 할 수 있습니다. 또한 사용되는 메모리 자원에 대한 레포트도 자동으로 생성해주는 서브시스템입니다.
+memory 서브시스템은 시스템으로부터 태스크의 그룹의 메모리 접근등의 동작을 격리화시킵니다. 이 서브시스템이 사용되는 경우는 다음과 같습니다.
+ 메모리 소모가 많은 어플리케이션을 격리하고 더 작은 어플리케이션으로 제한할 수 있습니다. mem=XXXX 설정을 통해 부팅하는 경우의 좋은 대안이 될 수 있습니다. 가상화 솔루션에서 원하는 메모리 양을 제어할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>4. cpu, cpuset, cpuaccet</title>
+      <link>/container/cgroup/4.cpu.cpuset.cpuacct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/container/cgroup/4.cpu.cpuset.cpuacct/</guid>
+      <description>Subsystem - cpu, cpuset 이번 글에서는 Cgroup의 서브시스템 중 cpu와 cpuset 에 대해 정리해보겠습니다.
+cpu subsystem cpu 서브시스템은 cgroup 계층 및 해당 작업에 대한 CPU 시간을 스케쥴링 할 수 있습니다. 시스템이 busy 상태일 때 CPU 공유를 최소화 즉 사용량을 제한 할 수 있습니다. 이 서브시스템은 CPU에 cgroup 작업 액세스를 제공하기 위한 스케줄러(Documentation/scheduler/sched-design-CFS.txt)를 제공합니다.
+cpuset subsystem cpuset 서브시스템은 개별 CPU 및 메모리 노드를 cgroup에 바인딩 하기 위한 서브시스템입니다. 리눅스의 testset 명령과 유사하게 CPU 코어를 할당 할 수 있는 서브시스템 입니다.</description>
+    </item>
+    
+  </channel>
+</rss>
