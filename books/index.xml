@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Books on Developer&#39;s Delight</title>
+    <link>/books/</link>
+    <description>Recent content in Books on Developer&#39;s Delight</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 05 Jan 2020 03:41:36 +0900</lastBuildDate>
+    
+	<atom:link href="/books/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>프로그래밍 면접 이렇게 준비한다</title>
+      <link>/books/readyforprogramminginterview/</link>
+      <pubDate>Sun, 05 Jan 2020 03:43:45 +0900</pubDate>
+      
+      <guid>/books/readyforprogramminginterview/</guid>
+      <description>목차
+CHAPTER 1 구직을 시작하기 전에
+너 자신을 알라
+시장을 알라
+팔릴 만한 능력을 계발하라
+일 제대로 해내기
+온라인 프로파일을 정돈하라
+요약
+CHAPTER 2 입사 지원 절차
+회사 선택 및 접촉
+면접 절차
+리크루터의 역할
+근무 조건 협상
+요약
+CHAPTER 3 전화 예비 면접
+전화 예비 면접의 이해
+전화 예비 면접 방법
+전화 예비 면접 문제
+요약
+CHAPTER 4 프로그래밍 문제 접근법
+절차
+문제 해결
+풀이 분석
+요약
+CHAPTER 5 연결 리스트</description>
+    </item>
+    
+  </channel>
+</rss>

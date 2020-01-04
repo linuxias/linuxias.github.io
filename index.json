@@ -4,7 +4,7 @@
 	"title": "1. Linux",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "1. Linux The chapter that organizes information about Linux.\n"
 },
 {
 	"uri": "/container/",
@@ -12,6 +12,13 @@
 	"tags": [],
 	"description": "",
 	"content": "2. Container Namespace, Cgroup\n"
+},
+{
+	"uri": "/books/",
+	"title": "Books",
+	"tags": [],
+	"description": "",
+	"content": "Books This chapter is for reviewing books\n"
 },
 {
 	"uri": "/container/cgroup/",
@@ -110,6 +117,13 @@
 	"tags": [],
 	"description": "",
 	"content": "cgroup namespace는 프로세스의 cgroups의 뷰를 가상화 합니다.\n각 cgroup 네임스페이스에는 고유한 cgroup 루트 디렉토리 세트가 있습니다. 그 루트 디렉토리는 /proc/[pid]/cgroup 파일의 해당 레코드에 표시되는 상대 위치의 베이스 위치입니다. clone(2) 또는 unshare(2) 시스템 콜에 CLONE_NEWCGROUP 플래그를 전달하여 새로운 cgroup namespace를 생성할 수 있습니다. 이렇게 생성된 namespace는 현재 cgroups 디렉토리가 새 namespace의 cgroup 루트 디렉토리가되는 새 cgroup namespace로 들어갑니다. 이 정책은 cgroup 버전 1,2 모두에 적용됩니다.\n/proc/[pid]/cgroup 을 확인하면 표시되는 각 레코드의 세 번째 필드에 표시된 경로 이름은 해당 cgroup 계층에 대한 읽기 프로세스의 루트 디렉토리에 상대적인 위치입니다.\ncat /proc/$$/cgroup 12:pids:/user.slice/user-1000.slice/session-2.scope 11:memory:/ 10:cpuset:/ 9:hugetlb:/ 8:blkio:/ 7:freezer:/ 6:cpu,cpuacct:/ 5:devices:/user.slice 4:perf_event:/ 3:net_cls,net_prio:/ 2:rdma:/ 1:name=systemd:/user.slice/user-1000.slice/session-2.scope 0::/user.slice/user-1000.slice/session-2.scope 만약 해당 프로세스의 cgroup 디렉토리가 읽은 프로세스의 cgroup namespace의 외부에 위치한다면 경로는 ../ 와 같이 cgroup 구조에서 상위 레벨로 표시될 것 입니다.\n"
+},
+{
+	"uri": "/books/readyforprogramminginterview/",
+	"title": "프로그래밍 면접 이렇게 준비한다",
+	"tags": [],
+	"description": "",
+	"content": "목차\nCHAPTER 1 구직을 시작하기 전에\n너 자신을 알라\n시장을 알라\n팔릴 만한 능력을 계발하라\n일 제대로 해내기\n온라인 프로파일을 정돈하라\n요약\nCHAPTER 2 입사 지원 절차\n회사 선택 및 접촉\n면접 절차\n리크루터의 역할\n근무 조건 협상\n요약\nCHAPTER 3 전화 예비 면접\n전화 예비 면접의 이해\n전화 예비 면접 방법\n전화 예비 면접 문제\n요약\nCHAPTER 4 프로그래밍 문제 접근법\n절차\n문제 해결\n풀이 분석\n요약\nCHAPTER 5 연결 리스트\n왜 연결 리스트인가?\n연결 리스트의 종류\n기초적인 연결 리스트 연산\n연결 리스트 문제\n요약\nCHAPTER 6 트리와 그래프\n트리\n그래프\n트리 및 그래프 문제\n요약\nCHAPTER 7 배열과 문자열\n배열\n문자열\n배열과 문자열 문제\n요약\nCHAPTER 8 재귀 호출\n재귀 호출의 이해\n재귀 호출 문제\n요약\nCHAPTER 9 정렬\n정렬 알고리즘\n정렬 문제\n요약\nCHAPTER 10 동시성\n스레드 기본 개념\n동시성 문제\n철학자들의 저녁 식사\n요약\nCHAPTER 11 객체지향 프로그래밍\n기본 원리\n객체지향 프로그래밍 문제\n요약\nCHAPTER 12 디자인 패턴\n디자인 패턴이란 무엇인가?\n일반적인 디자인 패턴\n디자인 패턴 문제\n요약\nCHAPTER 13 데이터베이스\n데이터베이스의 기초\n데이터베이스 문제\n요약\nCHAPTER 14 그래픽스와 비트 조작\n그래픽스\n비트 조작\n그래픽스 문제\n비트 조작 문제\n요약\nCHAPTER 15 데이터 과학, 난수, 그리고 통계학\n확률과 통계\n인공지능과 기계학습\n난수 생성기\n데이터 과학, 난수, 통계 문제\n요약\nCHAPTER 16 카운팅, 측정 및 순서 관련 퍼즐\n퍼즐 공략법\n퍼즐 문제\n요약\nCHAPTER 17 그림 및 공간 퍼즐\n일단 그려보자\n그림 및 공간 퍼즐 문제\n요약\nCHAPTER 18 지식 기반 문제\n준비\n문제\n요약\nCHAPTER 19 기술과 무관한 질문\n왜 기술과 무관한 질문이 필요할까?\n질문\n요약\nAPPENDIX A 이력서\n기술 이력서\n이력서 예\n취업을 준비하는 대학생들 중 많은 학생분들이 어떻게 취업을 준비해야 하는지, 면접은 어떻게 진행이 되는지 모르는 경우가 많습니다. 특히 전공 지식을 요구하는 소프트웨어 지식 고나련 인터뷰는 어떻게 진행되는지, 어떤 질문이 나올지 막연하고, 두려움도 있습니다.\n특히 실무 경험이 없는 학생분들의 경우, 책과 학교 실습으로 배운 내용이 완전히 이해하지 못하는 경우도 많고 이해하고 있다고 한들 누군가가 질문을 했을 때 논리 정연하게 자신의 지식을 말하는 기술이 부족합니다. 위에 작성한 내용에 포함되지 않는 학생 분들도 분명 있겠지만, 소수일 거라 생각됩니다.\n학생 외에도 현업에 종사하는 개발자 분들과의 대화에서도 종종 느낍니다. 가끔 자신의 실력에 자신감있는 개발자분들을 뵐 때가 있습니다. 그때 이직에 대한 대화주제에서 누군가 면접 인터뷰 경험을 얘기하고 자신이 받은 질문을 공유하는 경우가 있습니다. 그 질문에 대해서 \u0026lsquo;쉽네요?\u0026rsquo; 라고 대답하시는 분들이 계십니다. 정말 그 분들은 쉬울수도 있지만 10명 중 9명 정도는 답변 부탁드린다고 했을 때 알고있는 지식을 논리 정연하게 설명하지는 못하는 경우가 많았습니다. 저는 자신이 아는 것과 누군가에게 설명하는 것은 명확하게 다르다고 생각합니다. 이 책을 보시려고 고민하는 분들이라면 취업 준비 중인 대학생 또는 이직을 준비하는 현업 개발자 분일거라 생각합니다. 만약 그렇다면 저자가 부탁하는 과정을 꼭 지키면 큰 도움이 될 것 같습니다.\n  문제를 읽은 다음 바로 책을 덮어놓고 직접 문제를 풀어본다.\n  문제를 풀다가 막히면 풀이를 읽어본다.\n  풀이를 읽다가 필요한 힌트가 나왔다 싶으면 다시 책을 덮고 문제를 풀어본다.\n  위 과정을 반복한다.\n  저는 위 저자의 부탁과 추가로 \u0026lsquo;생각을 정리하고, 직접 소리내어 답변해본다\u0026rsquo; 도 함께 해보셨으면 좋겠습니다. 저도 면접 경험이 4~5회 정도 있습니다. 준비를 하는 과정 중 가장 아쉬운 것이 왜 아는 걸 제대로 말하지 못하였나.. 라는 후회감이였습니다. 꼭 누군가에게 정확하게 설명할 수 있는 연습을 하셨으면 좋겠습니다.\n추가로 이 책은 가이드는 주나 여기 나오는 문제가 면접에 꼭 질문받을 거란 생각을 하시는 분은 없을거라 생각합니다. 특히 책에서는 다양한 분야를 다루기에 그 질문의 깊이가 깊지는 않습니다. 이 책은 분위기가 초급 난이도의 질문 방향, 요구하는 답변등을 정리하는 책으로는 좋습니다. 특히 취업 준비하는 대학생 분들은 꼭 읽으셨으면 좋겠습니다.\n이 책은 프로그래밍 면접에도 도움이 되지만 컴퓨터 공학 전공 기초에 대해서 한번 훑고 기억을 되살리는 목적으로도 좋습니다. 가벼운 마음으로 기본 소양을 되새긴다는 마음으로 읽으셔도 좋을 것 같습니다.\n오랜만에 도서 리뷰를 작성하니 주저리주저리 정리가 안되는 것 같네요. 읽어주셔서 감사합니다.\n"
 },
 {
 	"uri": "/linux/compilelink/gcc_warning_option/",

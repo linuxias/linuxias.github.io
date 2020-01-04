@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>/books/</loc>
+    <lastmod>2020-01-05T03:41:36+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/container/cgroup/</loc>
     <lastmod>2019-12-30T23:19:05+09:00</lastmod>
   </url>
@@ -69,6 +74,11 @@
   
   <url>
     <loc>/container/namespace/7.cgroup_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>/books/readyforprogramminginterview/</loc>
+    <lastmod>2020-01-05T03:43:45+09:00</lastmod>
   </url>
   
   <url>
