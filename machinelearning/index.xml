@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Developer&#39;s Delight</title>
+    <link>/machinelearning/</link>
+    <description>Recent content in Machine Learning on Developer&#39;s Delight</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 05 Jan 2020 23:34:14 +0900</lastBuildDate>
+    
+	<atom:link href="/machinelearning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
