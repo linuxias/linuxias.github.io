@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on Developer&#39;s Delight</title>
-    <link>/machinelearning/</link>
+    <link>https://linuxias.github.io/machinelearning/</link>
     <description>Recent content in Machine Learning on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 05 Jan 2020 23:34:14 +0900</lastBuildDate>
     
-	<atom:link href="/machinelearning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://linuxias.github.io/machinelearning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[Agent] BDI Architecture</title>
-      <link>/machinelearning/bdi_architect/</link>
+      <link>https://linuxias.github.io/machinelearning/bdi_architect/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/machinelearning/bdi_architect/</guid>
+      <guid>https://linuxias.github.io/machinelearning/bdi_architect/</guid>
       <description>Belief - Desire - Intention Architect BDI Architect는 Software Agent 분야에서 자주 사용되었던 구조입니다. 이 구조의 이름인 BDI 는 3가지 단어 입니다. Belief, Desire, Intention 이 3가지 단어의 앞자리를 따서 만들어졌습니다. 그럼 3가지 단어가 이 구조의 큰 요소일 텐데 구조를 정리해 가며 설명드리겠습니다.
 BDI Architect는 목표를 이루기 위해 순간, 순간 행해야할 행위를 결정하는 의사결정 프로세스입니다. BDI 구조는 reactive behavior와 goal-directed behavior가 조화를 이루는 구조로써 Agent는 그 목표를 달성하기 위해 최선을 다하면서도 그 목표가 여전히 유효한지, 달성할 수 있는지에 대해 계속해서 확인하는 과정을 거치게 됩니다.</description>
     </item>
     
     <item>
       <title>[Agent] Communication</title>
-      <link>/machinelearning/agent_communication/</link>
+      <link>https://linuxias.github.io/machinelearning/agent_communication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/machinelearning/agent_communication/</guid>
+      <guid>https://linuxias.github.io/machinelearning/agent_communication/</guid>
       <description>Communication between agents 에이전트들간의 커뮤니케이션을 알아보기 이전에 한 가지 용어를 정리하고자 합니다. &amp;lsquo;Speech Act&amp;rsquo; 란 용어입니다. Speech Act는 한국어로 언어행위론 이라고 정의할 수 있습니다. 언어행위론이란 언어를 통해 이루어지는 행위를 말합니다. 나는 너를 용서한다 라고는 말하면 말로써 행위가 표현되듯 언어가 어떤 영향을 주는지에 대해 초점이 맞춰져 있습니다. 명령, 요구 등으로 나뉠 수 있죠.
 그럼 이제 커뮤니케이션에 대해 정리해보겠습니다. 예를 들어서 살펴보죠. 개인비서 에이전트가 있다고 합니다. 이 에이전트에게 여러분은 김군과 저녁 약속을 잡아달라고 요청합니다.</description>
     </item>
     
     <item>
       <title>[Agent] MAS (Multi-agent System)</title>
-      <link>/machinelearning/agent_mas/</link>
+      <link>https://linuxias.github.io/machinelearning/agent_mas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/machinelearning/agent_mas/</guid>
+      <guid>https://linuxias.github.io/machinelearning/agent_mas/</guid>
       <description>MAS (Multi-agent System) 현재 세계의 시스템에선 하나의 agent로는 모든 처리를 할 수 없습니다. 그래서 각각의 기능을 담당하는 여러 agent를 생성하여 협업 또는 조율하게 만드는 방법을 사용하기도 합니다. 이번 글에서는 MAS, Multi-agent System에 대해 정리해보겠습니다.
 Multi-agent System (지금부턴 MAS라 칭하겠습니다.)은 시스템 내에 여러 agent를 가지고 있는 시스템입니다. 각 agent 간 커뮤니케이션을 통해 상호작용을 하게 되고, 서로 다른 작업을 하기에 &amp;ldquo;spheres of influence&amp;rdquo; 라고 불리는 자신만의 환경 영역을 가지고 있습니다. 즉 변화하는 환경에 대해 영향을 받거나 주는 환경이 다를 수 있습니다.</description>
     </item>
     
     <item>
       <title>[Agent] SW Agent Architecture</title>
-      <link>/machinelearning/agent_sw_agent_architecture/</link>
+      <link>https://linuxias.github.io/machinelearning/agent_sw_agent_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/machinelearning/agent_sw_agent_architecture/</guid>
+      <guid>https://linuxias.github.io/machinelearning/agent_sw_agent_architecture/</guid>
       <description>소프트웨어 에이전트 아키텍쳐에 대해 정리해보겠습니다.
 에이전트 구조는 3개로 크게 나뉠 수 있습니다.
   Deliberative : 의도적인, 신중한

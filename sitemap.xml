@@ -3,131 +3,131 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/linux/</loc>
+    <loc>https://linuxias.github.io/linux/</loc>
     <lastmod>2020-01-01T23:15:54+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/container/</loc>
+    <loc>https://linuxias.github.io/container/</loc>
     <lastmod>2019-01-01T11:19:05+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/machinelearning/</loc>
+    <loc>https://linuxias.github.io/machinelearning/</loc>
     <lastmod>2020-01-05T23:34:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/books/</loc>
+    <loc>https://linuxias.github.io/books/</loc>
     <lastmod>2020-01-05T03:41:36+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/container/cgroup/</loc>
+    <loc>https://linuxias.github.io/container/cgroup/</loc>
     <lastmod>2019-12-30T23:19:05+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/linux/compilelink/</loc>
+    <loc>https://linuxias.github.io/linux/compilelink/</loc>
     <lastmod>2019-12-30T23:19:05+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/container/namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/</loc>
     <lastmod>2019-12-30T23:19:05+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/container/cgroup/1.cgroup/</loc>
+    <loc>https://linuxias.github.io/container/cgroup/1.cgroup/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/1.what_is_namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/1.what_is_namespace/</loc>
   </url>
   
   <url>
-    <loc>/container/cgroup/2.cgroup_blkio/</loc>
+    <loc>https://linuxias.github.io/container/cgroup/2.cgroup_blkio/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/2_pid_namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/2_pid_namespace/</loc>
   </url>
   
   <url>
-    <loc>/container/cgroup/3.cgroup_memory/</loc>
+    <loc>https://linuxias.github.io/container/cgroup/3.cgroup_memory/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/3.user_namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/3.user_namespace/</loc>
   </url>
   
   <url>
-    <loc>/container/cgroup/4.cpu.cpuset.cpuacct/</loc>
+    <loc>https://linuxias.github.io/container/cgroup/4.cpu.cpuset.cpuacct/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/4.qemu/</loc>
+    <loc>https://linuxias.github.io/container/namespace/4.qemu/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/5_mount_namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/5_mount_namespace/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/6.uts_namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/6.uts_namespace/</loc>
   </url>
   
   <url>
-    <loc>/container/namespace/7.cgroup_namespace/</loc>
+    <loc>https://linuxias.github.io/container/namespace/7.cgroup_namespace/</loc>
   </url>
   
   <url>
-    <loc>/books/readyforprogramminginterview/</loc>
+    <loc>https://linuxias.github.io/books/readyforprogramminginterview/</loc>
     <lastmod>2020-01-05T03:43:45+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/linux/compilelink/gcc_warning_option/</loc>
+    <loc>https://linuxias.github.io/linux/compilelink/gcc_warning_option/</loc>
     <lastmod>2019-12-30T23:24:46+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/linux/compilelink/gcc_specific_attribute/</loc>
+    <loc>https://linuxias.github.io/linux/compilelink/gcc_specific_attribute/</loc>
     <lastmod>2019-12-30T23:23:27+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/linux/compilelink/staticliblink/</loc>
+    <loc>https://linuxias.github.io/linux/compilelink/staticliblink/</loc>
     <lastmod>2019-12-30T23:21:11+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://linuxias.github.io/</loc>
     <lastmod>2019-12-30T23:06:22+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/machinelearning/bdi_architect/</loc>
+    <loc>https://linuxias.github.io/machinelearning/bdi_architect/</loc>
   </url>
   
   <url>
-    <loc>/machinelearning/agent_communication/</loc>
+    <loc>https://linuxias.github.io/machinelearning/agent_communication/</loc>
   </url>
   
   <url>
-    <loc>/machinelearning/agent_mas/</loc>
+    <loc>https://linuxias.github.io/machinelearning/agent_mas/</loc>
   </url>
   
   <url>
-    <loc>/machinelearning/agent_sw_agent_architecture/</loc>
+    <loc>https://linuxias.github.io/machinelearning/agent_sw_agent_architecture/</loc>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://linuxias.github.io/categories/</loc>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://linuxias.github.io/tags/</loc>
   </url>
   
 </urlset>
