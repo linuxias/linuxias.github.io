@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>[gcc] Warning 옵션 :: Developer&#39;s Delight</title>
+    <title>[Agent] Communication :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1578320055" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/linux/compilelink/gcc_warning_option/">
+  <body class="" data-url="/machinelearning/agent_communication/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -88,7 +88,7 @@
   
     
     <li data-nav-id="/linux/" title="1. Linux" class="dd-item 
-        parent
+        
         
         
         ">
@@ -117,7 +117,7 @@
   
     
     <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
-        parent
+        
         
         
         ">
@@ -143,7 +143,7 @@
  
   
     
-      <li data-nav-id="/linux/compilelink/gcc_warning_option/" title="[gcc] Warning 옵션" class="dd-item active">
+      <li data-nav-id="/linux/compilelink/gcc_warning_option/" title="[gcc] Warning 옵션" class="dd-item ">
         <a href="/linux/compilelink/gcc_warning_option/">
         [gcc] Warning 옵션
         <i class="fas fa-check read-icon"></i>
@@ -534,7 +534,7 @@
   
     
     <li data-nav-id="/machinelearning/" title="Machine Learning" class="dd-item 
-        
+        parent
         
         
         ">
@@ -579,7 +579,7 @@
  
   
     
-      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item active">
         <a href="/machinelearning/agent_communication/">
         [Agent] Communication
         <i class="fas fa-check read-icon"></i>
@@ -769,13 +769,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/compilelink/'>Compile&Link</a> > [gcc] Warning 옵션
-          
-         
+            <a href='/'>Developer's Delight</a> > <a href='/machinelearning/'>Machine Learning</a> > [Agent] Communication
           
          
           
@@ -788,7 +782,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#communication-between-agents">Communication between agents</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -804,7 +806,7 @@
           
             <h1>
               
-              [gcc] Warning 옵션
+              [Agent] Communication
             </h1>
           
 
@@ -812,214 +814,93 @@
 
 
 
-<p>gcc 컴파일 옵션으로 많이 사용하는 -Wall , -Wextra 이외에 다양한 옵션들은 정리하고자 합니다.</p>
-<table>
-<thead>
-<tr>
-<th align="left">옵션</th>
-<th align="left">설명</th>
-<th align="center">특이사항</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">-fstack-usage</td>
-<td align="left">컴파일러가 프로그램에 대한 스택 사용 정보를 함수 단위로 출력하도록 합니다. 함수의 이름, 바이트 수 등이 표기됩니다.</td>
-<td align="center">x</td>
-</tr>
-<tr>
-<td align="left">-Wframe-larger-than={len}</td>
-<td align="left">함수 프레임의 크기가 len을 넘어가면 Warning이 출력합니다.</td>
-<td align="center">x</td>
-</tr>
-<tr>
-<td align="left">-Wstrict-overflow=n</td>
-<td align="left">-fstrict-overflow가 활성화 되어있는 경우에만 활성화됩니다. 컴파일러가 signed 오버플로우가 일어나지 않을거라 가정하고 최적화를 진행하는 경우에 Warning이 발생합니다.</td>
-<td align="center">Wall에 포함 (-Wstrict-overflow=1)</td>
-</tr>
-<tr>
-<td align="left">-Wlogical-op</td>
-<td align="left">표현식에서 논리연산자의 사용에 대해 문제가 발생할 수 있는 경우 Warning을 발생합니다.</td>
-<td align="center">x</td>
-</tr>
-<tr>
-<td align="left">-Wjump-misses-init</td>
-<td align="left">goto문을 통해 변수 초기화 이전으로 분기하거나, 변수가 초기화된 이후로 분기하는 것을 Warning이 발생합니다.</td>
-<td align="center">C, Objective-C only</td>
-</tr>
-<tr>
-<td align="left">-Wmissing-include-dirs</td>
-<td align="left">사용자 제공 include 디렉토리가 존재하지 않으면 Warning이 발생합니다.</td>
-<td align="center">C/C++, Obj C/C++ only</td>
-</tr>
-<tr>
-<td align="left">-Wunused</td>
-<td align="left">여러 unused 옵션(unused-but-set-parament, unused-but-set-variable, unused-function, unused-label, unused-local-typedefs, unused-parameter, -no-unused-result, unused-variable, unused-value)을 한 번에 포함하는 옵션입니다. 사용되지 않는 함수 매개 변수에 대한 경고를 얻으려면 -Wextra -Wunused (-Wall implies -Wunused)를 지정하거나 -Wunused-parameter를 별도로 지정해야합니다</td>
-<td align="center">Wall에 -Wunused-function -Wunused-label -Wunused-value -Wunused-variable 옵션이 포함되어 있습니다.</td>
-</tr>
-<tr>
-<td align="left">-Wpacked-bitfield-compat</td>
-<td align="left">4.1, 4.2 및 4.3 계열의 GCC는 &ldquo;char&quot;유형의 비트 필드에서 &ldquo;packed&quot;속성을 무시합니다. GCC 4.4에서 그러한 필드의 오프셋이 변경되면 GCC에서 알려줍니다.</td>
-<td align="center">Default enable</td>
-</tr>
-<tr>
-<td align="left">-Winvalid-pch</td>
-<td align="left">precompile된 헤더가 검색 경로에서 찾았으나 사용하지 못하는 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wstack-protector</td>
-<td align="left">Stack smashing으로부터 보호되지 않는 경우 Warning이 발생합니다. Stack smashing protector(SSP) 기능은 -fstack-protector 옵션을 사용해야 합니다. SSP 는 함수 진입 시 스택에 return address와 frame pointer 정보를 저장할 때 이 정보를 보호하기 위해 (canary라고 부르는) 특정한 값을 기록해두고 함수에서 반환할 때 기록된 값이 변경되지 않았는지 검사하여 정보의 일관성을 관리합니다. 만약 악의적인 사용자가 buffer overflow 등의 공격을 통해 스택 내의 정보를 덮어쓰려면 canary 값을 먼저 덮어써야 하기 때문에 canary 값 만 보면 공격이 일어났는지를 알 수 있습니다.</td>
-<td align="center">-fstack-proctector가 활성화 된 경우 활성화 됩니다.</td>
-</tr>
-<tr>
-<td align="left">-Wunused-variable</td>
-<td align="left">지역변수 또는 상수가아닌 정적변수가 사용되지 않을 때 Warning이 발생합니다.</td>
-<td align="center">-Wunused , -Wall에 포함</td>
-</tr>
-<tr>
-<td align="left">-Wunused-value</td>
-<td align="left">명시적으로 사용되지 않은 결과를 계산하는 경우 Warning이 발생합니다.</td>
-<td align="center">-Wunused , -Wall에 포함</td>
-</tr>
-<tr>
-<td align="left">-Wcast-qual</td>
-<td align="left">포인터를 형변환 할 때 기존 type qualifier가 사라지는 경우 경고해줍니다(const char_을 char_로 형변환)</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wconversion</td>
-<td align="left">묵시적으로 타입을 변환하는 상황에서 값이 바뀔 가능성이 있는 경우 경고해줍니다(int temp = 0.3 등)</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wsign-conversion</td>
-<td align="left">부호있는 정수 표현식을 부호없는 정수 변수에 할당하는 것과 같이 정수 값의 부호를 변경할 수있는 변환에 대해 Warning이 발생합니다.</td>
-<td align="center">-Wconversion 옵션에 의해 활성화됩니다.</td>
-</tr>
-<tr>
-<td align="left">-Wbad-function-cast</td>
-<td align="left">함수 콜이 매칭할 수 없는 타입에 캐스팅된 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wwrite-strings</td>
-<td align="left">constant 스트링을 non-const char* 포인터에 복사하는 경우 Warning이 발생합니다. 컴파일 타임에 const string을 변경하려는 문제를 찾을 수 있습니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wconversion-null</td>
-<td align="left">NULL 과 non-pointer 타입간의 변환에 대해 Warning이 발생합니다.</td>
-<td align="center">Default enable</td>
-</tr>
-<tr>
-<td align="left">-Wextra</td>
-<td align="left">-Wall에 의해 활성화되지 않는 추가적인 Warning flags(-Wclobbered -Wempty-body -Wignored-qualifiers -Wmissing-field-initializers -Wmissing-parameter-type (C only) -Wold-style-declaration (C only) -Woverride-init -Wsign-compare -Wtype-limits -Wuninitialized -Wunused-parameter (only with -Wunused or -Wall) -Wunused-but-set-parameter (only with -Wunused or -Wall))를 활성화합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wpacked</td>
-<td align="left">구조체에 <strong>packed</strong> 속성이 주어졌으나, 해당 레이아웃이나 크기에 영향이 없는 경우 Warning이 발생합니다. 이런 구조체는 아주 작은 이득을 위해 잘못 정렬될 수도 있습니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wredundant-decls</td>
-<td align="left">유효범위 내에 동일한 오브젝트(변수 등)이 여러 번 선언된 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Waggregate-return</td>
-<td align="left">구조체 또는 공용체를 반환하는 함수를 선언하거나 호출 시 Warning이 발생합니다.</td>
-<td align="center">거의 사용하지 않는 Warning.. ANSI C 표준에 맞추기 위해 사용하나.. 흠,</td>
-</tr>
-<tr>
-<td align="left">-Wpointer-arith</td>
-<td align="left">void의 크기나 함수의 크기를 갖고 연산(+/- 등)을 하는 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wswitch-default</td>
-<td align="left">switch 문에서 default case가 존재하지 않는 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wundef</td>
-<td align="left">정의되지 않는 식별자가 #if, #endif 구문에서 사용된 경우 Warning이 발생합니다</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wstrict-prototype</td>
-<td align="left">함수가 인자 형을 명시하지 않고 선언, 정의된 경우 Warning이 발생합니다. 즉, void test()와 같이 ()로 인자를 비워둔 경우 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wfloat-equal</td>
-<td align="left">부동소수점 값이 ==, != 등의 등호로 비교된 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wformat-y2k</td>
-<td align="left">2자리 연도를 출력하는 strftime()에 대해 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wshift-count-overflow</td>
-<td align="left">Shift 연산이 타입의 크기와 같거나 큰 경우 Warning이 발생합니다.</td>
-<td align="center">Default enable</td>
-</tr>
-<tr>
-<td align="left">-Wswitch-bool</td>
-<td align="left">switch문이 boolean 타입의 인덱스를 가지는 경우 Warning이 발생합니다.</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="left">-Wno-conversion-null</td>
-<td align="left">NULL과 non-pointer 타입 간의 변환에 대해 Warning이 발생하지 않도록 합니다.</td>
-<td align="center">-Wconversion-null이 Default입니다.</td>
-</tr>
-<tr>
-<td align="left">-Wnested-externs</td>
-<td align="left">extern 선언이 함수 안에 존재하는 경우 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wvarargs</td>
-<td align="left">va_start와 같은 가변인자를 처리하는데 사용된 매크로의 의심스러운 사용에 대해 Warning이 발생합니다.</td>
-<td align="center">Default enable</td>
-</tr>
-<tr>
-<td align="left">-Wunsuffixed-float-constants</td>
-<td align="left">접미사가 없는 부동상수에 대해 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wswitch-enum</td>
-<td align="left">switch문에서 index로 enum을 사용한 경우에 enum의 멤버와 case의 수가 맞지 않을 때 Warning이 발생합니다.</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">-Wshadow</td>
-<td align="left">지역변수가 다른 지역변수, 매개변수 등(shadow) 덮는 경우 Warning이 발생합니다.</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="left">-Wunreachable-code</td>
-<td align="left">어떠한 경우에도 실행할 수 없는 코드 라인이 존재하는 경우 Warning이 발생합니다.</td>
-<td align="center">gcc 4.4 이상에서 제거됨</td>
-</tr>
-<tr>
-<td align="left">-Winline</td>
-<td align="left">inline으로 선언된 함수가 inline이 불가능 경우 Warning이 발생합니다.</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="left">-funroll-loops</td>
-<td align="left">for()와 같은 루프문을 풀어서 최적화 해주는 옵션으로, 코드를 크게 만들어주며 수행속도가 빨라질수도 아닐수도 있습니다.</td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>감사합니다.</p>
+<h3 id="communication-between-agents">Communication between agents</h3>
+<p>에이전트들간의 커뮤니케이션을 알아보기 이전에 한 가지 용어를 정리하고자 합니다. &lsquo;Speech Act&rsquo; 란 용어입니다. Speech Act는 한국어로 언어행위론 이라고 정의할 수 있습니다. 언어행위론이란 언어를 통해 이루어지는 행위를 말합니다. 나는 너를 용서한다 라고는 말하면 말로써 행위가 표현되듯 언어가 어떤 영향을 주는지에 대해 초점이 맞춰져 있습니다. 명령, 요구 등으로 나뉠 수 있죠.</p>
+<p>그럼 이제 커뮤니케이션에 대해 정리해보겠습니다. 예를 들어서 살펴보죠. 개인비서 에이전트가 있다고 합니다. 이 에이전트에게 여러분은 김군과 저녁 약속을 잡아달라고 요청합니다. 그럼 이 에이전트를 어떠한 것들이 필요할까요? 간단히 생각해 보세요. 김군의 저녁 일정들이 필요할 것 같네요. 그리고 약속을 위한 약속장소의 정보도 필요할 것 같습니다. 약속을 잡기위한 목표를 이루기 위해 MAS가 필요할 것 같네요. 약속을 잡기 위한 전체 흐름을 살펴보죠.</p>
+<p><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=http%3A%2F%2Fcfile22.uf.tistory.com%2Fimage%2F990BCA445BD574BD0E1127" alt="image"></p>
+<p>먼저 DA에게 김군 일정을 관리하는 에이전트가 누군지 문의합니다. 김군의 에이전트를 모르니 정보를 알아야겠죠. DA는 모든 정보를 관리하는 중계 에이전트라고 생각하시면 됩니다. DA에서 전달받은 김군 에이전트의 정보를 이용해 약속 가능한 일정을 문의하고 답변받은 리스트 중 선택한 요일을 알려줘 약속을 최종적으로 잡게되는 흐름입니다. 생각보다 단순하죠? 위 그림에서 저렇게 에이전트간 커뮤니케이션를 어떻게 이루어지는지에 대해 살펴보게 될 것 입니다. 여기서 목표는 김군과 약속을 잡는 것으로 김군 캘린더에 나의 시간을 할당받는 것입니다. 목표를 이루기 위한 Intention으로 김군의 캘린더 에이전트를 찾는 것도 있을테구요. 그 Intention은 Speech act로 이루어 집니다. DA에게 누가 김군 캘린더를 관리하니? 란 Speech가 행위로 연결되죠.</p>
+<p>에이전트간 커뮤니케이션을 위한 언어가 정의되어 있습니다. Agent Communication Language입니다. ACL은 다른 위치와 행동을 하는 에이전트들 간의 커뮤니케이션을 할 수 있도록 해주고 각 에이전트가 가진 정보와 지식을 교환할 수 있도록 지원해주는 역할을 합니다. 사람의 언어와 똑같은거죠. 처음엔 커뮤니케이션을 Remote Procedure Calls나 Remote Method Invocation과 같은 방식을 사용했습니다. 하지만 사람과 유사한 방식을 만들고자 노력하였고 유연하면서도 요청이나 역할을 다룰수 있는 방식으로 진화하며 만들어졌습니다.</p>
+<p>MAS에서 커뮤니케이션은 가장 처음 설명한 Speech act 이론에서 영감을 받아 만들어졌습니다. 사람들이 매우매우 Goal과 Intention을 달성하기 위해 어떻게 언어를 사용하였는지 확인하였고 사람과 가장 유사한 방식이길 바랬습니다. 일반적으로 Speech Act는 2가지 요소로 나눠볼 수 있습니다. Performative verb(실행자)와 Propositional content(상태)입니다. 실행자는 Request, Inform 등을 행하게되고, Content는 그 정보가 되는 것이죠. 단순 예시를 들어보겠습니다.</p>
+<!-- raw HTML omitted -->
+<p>Speech Act에 따라 Performative는 문에 대한 요청이나 정보, 문의등이 되고 Content는 그에 따른 상태표현이 됩니다. 이렇게 Speech act는 물리적인 행위로서 간주될 수 있습니다. 행위는 선행조건(precondition) 또는 후행조건(postcondition)으로 특화될 수 있습니다. 만약 A가 B에서 t를 요청한 경우에 대해 선행 조건은 &lsquo;A는 B가 t를 할 수 있다고 믿는다.&rsquo; , &lsquo;A는 B가 t를 할 수 있다는걸 B가 믿는다는걸 믿는다&rsquo; , &lsquo;A는 A가 t를 원한다고 믿는다&rsquo; 는 조건이 될 수 있다. 후행조건은 &lsquo;A가 t를 원한다고 A가 믿는걸 B는 믿는다&rsquo; 라는 의미입니다. 음, 설명해 놓고나니 무슨 말인지 잘 모르겠네요. 다음에 좀 더 좋은 예시가 있다면 수정하겠습니다.</p>
+<p>Speech Act를 기반으로 제작된 ACL은 다른 에이전트들과 효율적으로 커뮤니케이션하거나 지식 정보를 교환할 수 있도록 해줍니다. ACL의 3가지 측면(Syntax, Semantics, Pragmatics)에서 바라보면 Syntax는 어떻게 커뮤니케이션의 실볼들이 구조화되는지하는 것이며, Semantic은 심볼이 나타내는 것이 무엇인지, Pragmatics는 심볼을 어떻게 이해하는지에 관한 관점입니다. </p>
+<p>ACL로서 대표적인 언어 중 하나로 KQML이 있습니다. KQML은 (Knowledge Query and Manipulation Language)의 약자인데요, 에이전트 간의 지식과 정보의 교환을 위해 설계된 통신 언어입니다. 일반적으로 질문, 선언, 신뢰, 요구, 획득, 묘사, 제공 등과 같은 정보에 대한 상태를 교환하는 데 사용되는 일종의 메시지 포멧이라고 보시면 됩니다. KQML의 카테고리는 아래와 같습니다.</p>
+<!-- raw HTML omitted -->
+<p>KQML에는 송신자, 수신자, 그들의 주소 등 통신과 관련된 요소들을 나열한 통신 계층과 수행어로써 메시지의 성질을 정의하는 메세지 계층, 실제적인 메시지가 들어 있는 내용 계층이 있습니다. 또한 커뮤니케이션 프로토콜을 만들기 위해 도와주는 Facilitator도 포함하고 있습니다. Facilitator는 유용한 커뮤니케이션 서비스를 제공하기 위핸 에이전트들의 특별한 그룹입니다. 여기서 말하는 유용한 커뮤니케이션 서비스란 서비스 네임등록을 유지하거나 메시지를 서비스들에게 전달하거나 Content 기반의 메시지들을 Routing 하는 기능, 찾고자하는 자와 정보를 가진 에이전트를 매칭시켜주거나 하는 역할을 말합니다. Facilitator의 예시를 한번 보겠습니다.</p>
+<p>A, B란 에이전트가 있고 F란 이름의 Facilitator가 있다고 가정합니다. </p>
+<ol>
+<li>A-B간 Point-to-Point Protocol</li>
+</ol>
+<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
+  A[A] --&gt; |ask X| B[B]
+  B --&gt; |tell X|A[A]
+</code></pre><p>Point-to-point protocol에선 A가 B에게 X에 대한 정보를 얻기 위해 ask(X)를 다이렉트로 하고 B또한 A에게 tell(X)로 받아들입니다.</p>
+<ol start="2">
+<li>Using the subscribe performative</li>
+</ol>
+<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
+  A[A] --&gt; |subscribe ask X| F[F]
+  B --&gt; |tell X|F
+  F --&gt; |tell X|A
+</code></pre><p>A -&gt; F : subscribe(ask(X)) 
+A가 F에게 ask(X)에 대한 구독을 요청합니다.
+B- &gt; F : tell(X)
+B가 F에게 X에 대한 정보를 알립니다.
+F -&gt; A : tell(X)
+F가 A에게 X의 정보를 알려줍니다.
+위 방식은 F를 통해 구독을 요청하고 정보를 F를 통해 받는 방식입니다. A, B간에는 어떠한 경우도 다이렉트로 커뮤니케이션 하는 일이 없습니다.</p>
+<ol start="3">
+<li>Using the broker Performative</li>
+</ol>
+<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
+  A[A] --&gt; |broker ask X| F[F]
+  B --&gt; |advertise ask X|F[F]
+  F --&gt; |tell X| A[A]
+  F --&gt; |ask X| B[B]
+</code></pre><p>A -&gt; F : broker(ask(X))
+A가 F에서 X를 해결해줄 에이전트를 찾음.
+B -&gt; F : advertise(ask(X))
+B는 F에게 X를 처리할 수 있다고 자신을 광고하고 알림
+F -&gt; A : tell(X) and F -&gt; B : ask(X)
+위 구조는 F가 브로커 역할을 하여 A와 B의 요청을 각각 처리해 줍니다.</p>
+<ol start="4">
+<li>Using the recruit performative</li>
+</ol>
+<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
+  A[A] --&gt; |recruit tell X| F[F]
+  B --&gt; |tell X| A[A]
+  B --&gt; |advertise ask X|F[F]
+  F --&gt; |ask X| B[B]
+</code></pre><p>A -&gt; F : recruit(tell(X))
+tell(X)를 처리해줄 수 있는 적절한 에이전트를 찾아달라고 요청합니다.
+B -&gt; F : advertise(ask(X))
+B는 F에게 ask(X)를 자신이 처리할 수 있는 에이전트라고 광고합니다.
+F -&gt; B : ask(X)
+A에게 요청한 ask(X)에 적절한 B 에이전트를 찾았고 B에게 ask(X)를 보낸다.
+B -&gt; A : tell(X)
+F를 거치지 않고 B가 A에게 다이렉트로 응답합니다.</p>
+<ol start="5">
+<li>Using the recommend performative</li>
+</ol>
+<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
+  A[A] --&gt; |recommend ask X| F[F]
+  B --&gt; |recommend advertise ask X|F[F]
+  F --&gt; |reply B| A[A]
+  A --&gt; |ask X| B[B]
+  B --&gt; |tell X| A[A]
+</code></pre><p>A -&gt; F : recommend(ask(X)) A가 F에게 ask(X)를 처리해줄 수 있는 에이전트를 추천해 달라고 요청한다.
+B -&gt; F : advertise(ask(X)) B는 F에게 ask(X)를 처리해 줄 수 있는 에이전트라고 광고한다.
+F -&gt; A : reply(B) F는 A에게 B가 알맞은 에이전트라고 알려준다.
+A -&gt; B : ask(X)
+B -&gt; A : tell(X)</p>
+<p>위와 같이 A,B란 에이전트와 F (Facilitator)의 관계에서의 예시를 살펴보았습니다. 조금 이해가 되시나요?</p>
+<p>그럼 KQML이 아닌 FIPA ACL에 대해 정리해보겠습니다. FIPA는 The Foundation for Intelligent Physical Agents의 약자입니다. FIPA의 목적은 에이전트 기반의 어플리케이션, 서비스들의 성공을 위해 만들어진 곳입니다. 공공의 이익을 위한 집단입니다. FIPA가 집단이면 FIPA ACL은 FIPA에서 만든 ACL이겠죠? FIPA ACL은 KQML과 매우 유사합니다. Performative도 존재하구도 Content도 존재하구요. 메시지 구조는 봉투 형태를 띄고 있습니다. 메시지 내용은 봉수 내에 들어있고 봉투에는 전송 정보만 작성되어 있는 형태입니다. </p>
+<p>FIPA ACL에서 기본적인 Performative는 Inform 과 Request입니다. Inform과 Request의 의미는 두 부분으로 정의할 수 있습니다. Precondition(사전조건, speech act가 성공하기 위해 진실이여야만 하는 것들) 과 Rational effect(합리적 영향, 그 메신지의 발신자가 가져오길 바라는 것)입니다. </p>
+<!-- raw HTML omitted -->
+<p>KQML과 FIPA ACL을 잠시 비료해 보죠.</p>
+<p>KQML과 FIPA ACL의 유사한 점은 Outer Language(Performative)와 Inner Language(Content)가 분리되어 있으며 어떤 content language도 허용한다는 점입니다. 차이점은 KQML은 Performative를 FIPA ACL은 communicative act를 좀 더 중점에 두고 있다는 것과 다른 프레임워크 사용으로 KQML과 FIPA Performative 간 정확한 매핑이나 전송이 불가능하며 KQML은 facilitator를 지원하지만 FIPA ACL는 그렇지 않다는 점이죠. KQML은 무조건 중계자가 있어야 함으로 중앙 집중식 구조가 되며, Facilitator에 로드가 크다는 단점이 있을 수 있습니다.</p>
+<p>에이전트 간 커뮤니케이션하기 위한 방법으로 Speech Act를 기반으로 만들어진 ACL과 ACL 중 가장 많이 사용되는 KQML, FIPA ACL에 대해 정리해보았습니다.</p>
+<p>긴 글 읽어주셔서 감사합니다. 수정되어야 할 부분이나 질문있으시면 댓글로 언제든지 부탁드립니다.</p>
 
 
 <footer class=" footline" >
@@ -1058,6 +939,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1074,7 +957,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1087,7 +969,6 @@
             
             
                 
-                    
                     
                 
                 
@@ -1104,9 +985,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1372,6 +1250,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1384,6 +1263,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1401,6 +1283,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1416,6 +1299,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1488,10 +1374,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/linux/compilelink/" title="Compile&amp;Link"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/linux/compilelink/gcc_specific_attribute/" title="[gcc] 최적화 속성 사용하기" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

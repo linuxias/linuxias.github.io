@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>6. UTS namespace :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -704,8 +790,8 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">실습</a></li>
-    <li><a href="#--">참고자료 및 문헌</a></li>
+    <li><a href="#실습">실습</a></li>
+    <li><a href="#참고자료-및-문헌">참고자료 및 문헌</a></li>
   </ul>
 </nav>
     </div>
@@ -734,7 +820,7 @@
 <p>UTS(Unix TimeSharing) namespace는 리눅스 컨테이너가 ** hostname -f ** 명령어에 의해 반환된 결과 값인 자신의 식별자를 유지관리하기 위해 hostname과 domainname을 namespace 별로 격리해줍니다. 격리하는 대상은 구별을 위한 식별자가 됩니다. 단순하게 생각하면 hostname은 호스트 각각의 이름이고 domainname은 그룹의 이름입니다. 기본적으로 domainname을 설정하지 않았다면 none으로 표시됩니다.</p>
 <p>UTS namespace로 분리할 수 있는 식별자는 sethostname(2)과 setdomainname(2)을 사용하여 설정되며 unname(2), gethostname(2) 및 getdomainname(2)을 사용하여 검색할 수 있습니다.</p>
 <p><strong>unshare</strong> 또는 <strong>clone</strong> 시스템 콜 호출 시에 <strong>CLONE_NEWUTS</strong> 플래그를 사용하면 새로운 UTS namespace를 생성하고 해당 namespace를 가진 프로세스를 생성할 수 있습니다.</p>
-<h2 id="heading">실습</h2>
+<h2 id="실습">실습</h2>
 <ol>
 <li>** unshare ** 를 이용하여 새로운 UTS namespace를 만들어서 bash 프로세스를 실행합니다. 그 후 namespace를 변경합니다.</li>
 <li></li>
@@ -756,7 +842,7 @@ root@linuxias-VirtualBox:~#
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:~$ hostname
 linuxias-VirtualBox 
-</code></pre></div><h2 id="--">참고자료 및 문헌</h2>
+</code></pre></div><h2 id="참고자료-및-문헌">참고자료 및 문헌</h2>
 <ul>
 <li>Konstantin Ivanov | Containerization with LXC</li>
 <li>linux manual page - namespace, hostname</li>
@@ -1130,6 +1216,70 @@ linuxias-VirtualBox
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1187,19 +1337,19 @@ linuxias-VirtualBox
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

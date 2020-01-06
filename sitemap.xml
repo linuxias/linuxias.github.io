@@ -107,6 +107,22 @@
   </url>
   
   <url>
+    <loc>/machinelearning/bdi_architect/</loc>
+  </url>
+  
+  <url>
+    <loc>/machinelearning/agent_communication/</loc>
+  </url>
+  
+  <url>
+    <loc>/machinelearning/agent_mas/</loc>
+  </url>
+  
+  <url>
+    <loc>/machinelearning/agent_sw_agent_architecture/</loc>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
   </url>
   

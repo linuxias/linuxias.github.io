@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>정적 라이브러리 링크 :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -704,8 +790,8 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#pkg-config---pc--">pkg-config를 이용한 경우 pc 파일에 정의</a></li>
-    <li><a href="#requires-">Requires 사용하기</a></li>
+    <li><a href="#pkg-config를-이용한-경우-pc-파일에-정의">pkg-config를 이용한 경우 pc 파일에 정의</a></li>
+    <li><a href="#requires-사용하기">Requires 사용하기</a></li>
   </ul>
 </nav>
     </div>
@@ -734,7 +820,7 @@
 <p>라이브러리 중 정적 라이브러리(static library)를 사용하는 경우가 종종 있다. 그리고 해당 라이브러리가 또 다른 (static library)를 Link 하는 경우가 있다. 이럴 때 문제가 발생하게 된다. 아래와 같이 어플리케이션이 필요로 하는 정적 라이브러리를 링크하게 되는데, 해당 라이브러리가 다른 정적 라이브러리를 링크하게 되는 경우이다.</p>
 <p><strong>Application &ndash;&gt; Static library 1 &ndash;&gt; Static library 2</strong></p>
 <p>Application은 Static library 1의 존재만 알 뿐 2의 존재는 알지도, 알 필요도 없다.</p>
-<h2 id="pkg-config---pc--">pkg-config를 이용한 경우 pc 파일에 정의</h2>
+<h2 id="pkg-config를-이용한-경우-pc-파일에-정의">pkg-config를 이용한 경우 pc 파일에 정의</h2>
 <p>아래 libpalosalodp 의 pc.in 파일이다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Package Information for pkg-config</span>
 prefix<span style="color:#f92672">=</span>@prefix@
@@ -750,7 +836,7 @@ Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6d
 </span><span style="color:#ae81ff"></span>        -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6db74">}</span>/Include
 </code></pre></div><p>Requires.private 에서 libodp_internal_${sdktype} 에 대한 필요 정보를 명시하고, 다른 Application의 Makefile에서 pkg-config &ndash;static 옵션을 붙여서 추가 시 해당 lib을 추가해준다.</p>
 <p>Requires.private 은 이 패키지에 필요한 패키지 목록을 나타내는 것으로 동적 링크된 실행 파일(static이 지정되지 않은 경우)에 대해 플래그 목록을 계산할 때 고려되지 않는다.</p>
-<h2 id="requires-">Requires 사용하기</h2>
+<h2 id="requires-사용하기">Requires 사용하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
 <span style="color:#75715e"># Package Information for pkg-config</span>
 prefix<span style="color:#f92672">=</span>@prefix@
@@ -1138,6 +1224,70 @@ Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6d
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1195,19 +1345,19 @@ Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6d
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>2. blkio :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -706,9 +792,9 @@
   <ul>
     <li><a href="#subsystem---blkio">Subsystem - blkio</a>
       <ul>
-        <li><a href="#-">예제 살펴보기</a></li>
-        <li><a href="#blkio--">blkio 파일 설명</a></li>
-        <li><a href="#heading">참고자료</a></li>
+        <li><a href="#예제-살펴보기">예제 살펴보기</a></li>
+        <li><a href="#blkio-파일-설명">blkio 파일 설명</a></li>
+        <li><a href="#참고자료">참고자료</a></li>
       </ul>
     </li>
   </ul>
@@ -738,7 +824,7 @@
 
 <h2 id="subsystem---blkio">Subsystem - blkio</h2>
 <p>blkio 서브시스템은 특정 block device에 대한 접근을 제한하거나 제어하기 위한 서브시스템 입니다. 자세한 내용은 ** Documentation/cgroup-v1/blkio-controller.txt ** 를 참고해주세요.</p>
-<h3 id="-">예제 살펴보기</h3>
+<h3 id="예제-살펴보기">예제 살펴보기</h3>
 <p>I/O 작업이 많은 몇몇의 어플리케이션이 하나의 서버에서 동작한다고 가정합니다. 각 어플리케이션에 대해 다른 우선순위와 I/O 대역폭을 설정해주는 예제를 살펴보겠습니다.</p>
 <ol>
 <li>cgroup 가상파일시스템을 마운트합니다.</li>
@@ -810,7 +896,7 @@ $ echo <span style="color:#ae81ff">10002</span> &gt;&gt; /cgroup/blkio/high_io/t
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">200</span> &gt; /cgroup/blkio/high_io/blkio.weight
 $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.weight
 </code></pre></div><p>2:1 비율로 가중치를 설정하였습니다.</p>
-<h3 id="blkio--">blkio 파일 설명</h3>
+<h3 id="blkio-파일-설명">blkio 파일 설명</h3>
 <p>아래 몇 가지 파일에 대한 내용을 표로 작성해두었습니다. 그 외 다른 파일에 대한 설명은 Documentation을 보시면 좋습니다.</p>
 <table>
 <thead>
@@ -855,7 +941,7 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
 </tbody>
 </table>
 <p>이 외에도 매우 많은 파일들이 존재하는데요. 필요한 내용은 Documentation을 꼭 참고해주세요.</p>
-<h3 id="heading">참고자료</h3>
+<h3 id="참고자료">참고자료</h3>
 <ul>
 <li>Containerization with LXC | Konstantin Ivanov</li>
 <li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
@@ -1231,6 +1317,70 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1288,19 +1438,19 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

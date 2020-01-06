@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>1. Namespace :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -706,15 +792,15 @@
   <ul>
     <li><a href="#namespace-api">namespace API</a>
       <ul>
-        <li><a href="#-">시스템 콜</a></li>
-        <li><a href="#procpidns-">/proc/[pid]/ns 디렉토리</a></li>
+        <li><a href="#시스템-콜">시스템 콜</a></li>
+        <li><a href="#procpidns-디렉토리">/proc/[pid]/ns 디렉토리</a></li>
       </ul>
     </li>
-    <li><a href="#namespace--">Namespace 간략 정리</a>
+    <li><a href="#namespace-간략-정리">Namespace 간략 정리</a>
       <ul>
-        <li><a href="#ipc-namespace-clone-newipc">IPC namespace (CLONE_NEWIPC)</a></li>
-        <li><a href="#network-namespace-clone-newnet">Network namespace (CLONE_NEWNET)</a></li>
-        <li><a href="#mount-namespaces-clone-newns">Mount namespaces (CLONE_NEWNS)</a></li>
+        <li><a href="#ipc-namespace-clone_newipc">IPC namespace (CLONE_NEWIPC)</a></li>
+        <li><a href="#network-namespace-clone_newnet">Network namespace (CLONE_NEWNET)</a></li>
+        <li><a href="#mount-namespaces-clone_newns">Mount namespaces (CLONE_NEWNS)</a></li>
         <li><a href="#pid-namespace">PID namespace</a></li>
         <li><a href="#user-namespace">User namespace</a></li>
         <li><a href="#uts-namespace">UTS namespace</a></li>
@@ -791,7 +877,7 @@
 <h2 id="namespace-api">namespace API</h2>
 <p>namespace API에는 아래의 시스템 콜과 함께 /proc 파일이 포함됩니다.
 먼저 system call에 대해 설명드립니다.</p>
-<h3 id="-">시스템 콜</h3>
+<h3 id="시스템-콜">시스템 콜</h3>
 <table>
 <thead>
 <tr>
@@ -815,7 +901,7 @@
 </tbody>
 </table>
 <p>여기서 유의할 점은 clone(2) 와 unshare(2) 시스템 콜을 사용하여 새로운 namespace들을 생성하기 위해선 <strong>CAP_SYS_ADMIN</strong> capability가 필요합니다. user namespace 생성은 예외적으로 privilege가 필요하지 않습니다.</p>
-<h3 id="procpidns-">/proc/[pid]/ns 디렉토리</h3>
+<h3 id="procpidns-디렉토리">/proc/[pid]/ns 디렉토리</h3>
 <p>그럼 /proc 파일시스템에서 namespace에 대해 간략히 정리하겠습니다. 모든 프로세스들은 /proc/[pid]/ns 디렉토리가 존재합니다. 아래 ns 디렉토리에 여러 namespace가 존재하는 것을 확인할 수 있습니다. 이 namespace는 setns(2) 시스템 콜을 이용해 namespace를 변경하고자 할 때 변경을 원하는 namespace의 fd로 사용됩니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls -l /proc/$$/ns
 total <span style="color:#ae81ff">0</span>
@@ -860,14 +946,14 @@ lrwxrwxrwx. <span style="color:#ae81ff">1</span> mtk mtk <span style="color:#ae8
 </tr>
 </tbody>
 </table>
-<h2 id="namespace--">Namespace 간략 정리</h2>
+<h2 id="namespace-간략-정리">Namespace 간략 정리</h2>
 <p>각 Namespace의 상세내용은 다른 글로 정리하고자 하며, 여기서는 간략하게 정리하고자 합니다.</p>
-<h3 id="ipc-namespace-clone-newipc">IPC namespace (CLONE_NEWIPC)</h3>
+<h3 id="ipc-namespace-clone_newipc">IPC namespace (CLONE_NEWIPC)</h3>
 <p>IPC namespace는 특정 IPC 자원들(System V IPC,와 POSIX message queue)을 격리시킵니다. 특정 IPC 자원들의 공통적인 특징은 IPC 객체가 파일시스템 경로명 외의 메커니즘으로 식별된다는 것입니다. System V IPC에는 메시지 큐, 세마포어, 공유메모리를 가리킵니다.</p>
-<h3 id="network-namespace-clone-newnet">Network namespace (CLONE_NEWNET)</h3>
+<h3 id="network-namespace-clone_newnet">Network namespace (CLONE_NEWNET)</h3>
 <p>Network namespace는 네트워크와 관련된 시스템 자원의 격리, 고립을 제공합니다. 해당되는 시스템 자원으로는 네트워크 디바이스들, IPv4, IPv6 프로토콜 스택, IP routing tables, 방화벽, /proc/net 디렉토리, /sys/class/net 디렉토리, 포트 번호 등등이 있습니다. 물리적 네트워크 장치는 정확히 하나의 네트워크 네임스페이스를 가질 수 있습니다. 가상 네트워크 장치는 네트워크 namespace 간에 터널을 생성하는데 사용할 수 있는 추상화된 파이프를 제공합니다.</p>
 <p>Network namespace가 해제되면, 물리 네트워크 장치는 초기 Network namespace로 변경됩니다. Network namespace를 사용하기 위해선 <strong>CONFIG_NET_NS</strong> 커널 옵션이 설정되어 있어야 합니다.</p>
-<h3 id="mount-namespaces-clone-newns">Mount namespaces (CLONE_NEWNS)</h3>
+<h3 id="mount-namespaces-clone_newns">Mount namespaces (CLONE_NEWNS)</h3>
 <p>Mount namespace는 파일시스템 마운트 지점의 집합을 고립, 격리합니다. 즉, 서로 다른 Mount namespace의 프로세스가 파일 시스템 구조에 대해 다른 뷰를 가질 수 있습니다. <strong>mount(2)</strong>, <strong>umount(2)</strong> 를 이용해 Mount namespace 내에 마운트 집합들을 수정할 수 있습니다.</p>
 <p>/proc/[pid]/mounts 파일은 현재 프로세스의 Mount namespace에 마운트된 모든 파일시스템을 나열합니다. 이 파일의 포맷은 **fstab(5)**를 참고해주세요.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">seunghason@linuxias$cat /proc/self/mounts
@@ -1267,6 +1353,70 @@ The fields in each line are:
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1324,19 +1474,19 @@ The fields in each line are:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

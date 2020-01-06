@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>1. Cgroup :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -704,9 +790,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#cgroup-">cgroup 서브시스템</a></li>
-    <li><a href="#cgroup--1">cgroup 사용방법</a></li>
-    <li><a href="#heading">참고자료</a></li>
+    <li><a href="#cgroup-서브시스템">cgroup 서브시스템</a></li>
+    <li><a href="#cgroup-사용방법">cgroup 사용방법</a></li>
+    <li><a href="#참고자료">참고자료</a></li>
   </ul>
 </nav>
     </div>
@@ -735,7 +821,7 @@
 <p>cgroup은 단일 또는 태스크 단위의 프로세스 그룹에 대한 자원 할당을 제어하는 커널 모듈입니다.
 Cgroup은 Control group으로 처음 개발되었을 때는 group이 아니라 container란 용어를 사용했었습니다. 하지만 container란 용어는 너무 많은 의미를 내포하고 있다고 판단하여 지금의 group이만 이름으로 변경되었습니다.</p>
 <p>현재 cgroup은 v1와 v2 두가지 버전이 공존하고 있습니다. v1의 서비스시템 중 일부는 v2에 포함되어 있는 상태입니다. 언젠가 v2만 남겠죠..?</p>
-<h2 id="cgroup-">cgroup 서브시스템</h2>
+<h2 id="cgroup-서브시스템">cgroup 서브시스템</h2>
 <p>cgroup은 여러 개의 서브시스템으로 이루어져 있습니다. (아래 표에 모든 서브시스템을 작성한 것은 아니니, 유의해주세요.)</p>
 <table>
 <thead>
@@ -792,14 +878,14 @@ Cgroup은 Control group으로 처음 개발되었을 때는 group이 아니라 c
 </tbody>
 </table>
 <p>cgroup은 가상 파일시스템의 디렉토리로 표시되는 계층 구조로 구성되어 집니다. 하지만 프로세스 계층구조와는 달리 다중 계층구조를 가집니다. 즉 하나의 계층 구조가 아닙니다.</p>
-<h2 id="cgroup--1">cgroup 사용방법</h2>
+<h2 id="cgroup-사용방법">cgroup 사용방법</h2>
 <p>cgroup은 두 가지 방법으로 사용할 수 있습니다.</p>
 <ol>
 <li>cgroup 가상파일시스템을 마운트하여 파일 및 디렉토리를 조작하는 방법</li>
 <li>사용자 도구 사용 (Debian, ubuntu는 cgroup-bin / RHEL, CentOS는 libcgroup)</li>
 </ol>
 <p>cgroup의 실체는 파일시스템입니다. cgroup은 오직 프로세스(태스크) 들을 그룹화 하는 역할만 하며 내부적으로 자원을 제한하거나 할당하는 역할은 서브시스템에서 수행됩니다.</p>
-<h2 id="heading">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 <ul>
 <li>Containerization with LXC | Konstantin Ivanov</li>
 <li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
@@ -1171,6 +1257,70 @@ Cgroup은 Control group으로 처음 개발되었을 때는 group이 아니라 c
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1228,19 +1378,19 @@ Cgroup은 Control group으로 처음 개발되었을 때는 group이 아니라 c
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

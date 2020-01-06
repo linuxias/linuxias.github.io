@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>4. cpu, cpuset, cpuaccet :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -709,11 +795,11 @@
         <li><a href="#cpu-subsystem">cpu subsystem</a></li>
         <li><a href="#cpuset-subsystem">cpuset subsystem</a></li>
         <li><a href="#cpu-cpuset">cpu, cpuset</a></li>
-        <li><a href="#cpu--">CPU 예제 살펴보기</a></li>
-        <li><a href="#cpuset--">CPUSET 예제 살펴보기</a></li>
+        <li><a href="#cpu-예제-살펴보기">CPU 예제 살펴보기</a></li>
+        <li><a href="#cpuset-예제-살펴보기">CPUSET 예제 살펴보기</a></li>
       </ul>
     </li>
-    <li><a href="#heading">참고자료</a></li>
+    <li><a href="#참고자료">참고자료</a></li>
   </ul>
 </nav>
     </div>
@@ -750,7 +836,7 @@
 <p><img src="http://jake.dothome.co.kr/wp-content/uploads/2015/12/cgroup2.png" alt="CPU 할당">
 <strong>image 참고 : 문C블로그 (<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</strong></p>
 <p>CPU 코어 별로 원하는 Task 들을 할당할 수 있어 코어 간 스위칭 되는 로드를 감소할 수 있으며 입맛에 맞게 그룹을 조정할 수 있습니다. 즉 컨테이너 환경에서도 각 컨테이너 별로 다양한 인스터스를 생성할 수 있습니다.</p>
-<h3 id="cpu--">CPU 예제 살펴보기</h3>
+<h3 id="cpu-예제-살펴보기">CPU 예제 살펴보기</h3>
 <p>몇몇의 프로세스에 대해 설정하는 방법에 대해 알아보겠습니다. 여기서는 cpu와 cpuacct 함께 설정합니다.</p>
 <ol>
 <li>cgroup 가상파일시스템을 마운트합니다.</li>
@@ -807,7 +893,7 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/cpu/limit_60_percent/tasks
 </code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/cpu/limit_60_percent/tasks; <span style="color:#66d9ef">done</span>
-</code></pre></div><h3 id="cpuset--">CPUSET 예제 살펴보기</h3>
+</code></pre></div><h3 id="cpuset-예제-살펴보기">CPUSET 예제 살펴보기</h3>
 <p>몇몇의 프로세스에 대해 설정하는 방법에 대해 알아보겠습니다.</p>
 <ol>
 <li>cgroup 가상파일시스템을 마운트합니다.</li>
@@ -863,7 +949,7 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/cpuset/test/cpuset.cpus
 </code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/cpuset/test/cpuset.cpus; <span style="color:#66d9ef">done</span>
-</code></pre></div><h2 id="heading">참고자료</h2>
+</code></pre></div><h2 id="참고자료">참고자료</h2>
 <ul>
 <li>Containerization with LXC | Konstantin Ivanov</li>
 <li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
@@ -1240,6 +1326,70 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1297,19 +1447,19 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>2. PID Namespace :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -708,7 +794,7 @@
       <ul>
         <li><a href="#the-namespace-init-process">The namespace init process</a></li>
         <li><a href="#nesting-pid-namespace">Nesting PID namespace</a></li>
-        <li><a href="#proc--pid-namespace">/proc 파일시스템과 PID namespace</a></li>
+        <li><a href="#proc-파일시스템과-pid-namespace">/proc 파일시스템과 PID namespace</a></li>
       </ul>
     </li>
   </ul>
@@ -751,7 +837,7 @@
 <p>PID Namespace는 중첩해서 사용이 가능합니다. 그 말은, 각 PID namespace는 상위(부모) namespace를 가지고 있습니다.(root PID namespace는 제외입니다 :D) PID namepsace의 부모 namespace는 <strong>clone(2)</strong> 또는 **unshare(2)**를 사용하여 namespace를 생성한 프로세스의 PID namepsace가 됩니다. 이러한 구조는 PID namespace가 트리 자료구조 형태로 이루어져 있습니다. 모든 namepsace는 자신의 상위 namespace들(root namespace 포함)을 언제든 찾을 수 있습니다.</p>
 <p>특정 Namespace에 속한 프로세스는 해당 namespace에 속한 프로세스들과, 상위 모든(root namespace로 가는 경로의) namespace 프로세스들에게 보여집니다. 보여진다는 의미는 해당 프로세스를 타겟으로 작업을 진행할 수 있다는 의미입니다. 하지만 반대로 자식 PID namespace에서는 부모나 제거된 상위 namespace의 프로세스들을 볼 수 없습니다. 정리하면, 프로세스는 오직 자신의 PID namsepace의 프로세스들이나 자식 namespace들의 프로세스들만 볼 수 있습니다.</p>
 <p>특정 PID namespace내의 프로세스들은 가끔 namespace 외부에 부모 프로세스를 가지는 경우가 있습니다. 첫 번째는 위에서 살펴보았듯이, Namespace가 생성된 후 첫 프로세스는 자신을 생성한 프로세스가 부모프로세스가 됩니다. 이 경우엔 부모와 자식 프로세스가 각각 다른 PID namespace에 존재하게 됩니다. 두 번째로 <strong>setns(2)</strong> 시스템콜을 이용하여 특정 PID namespace로 조인하게 되는 경우입니다. 조인할 수 있는 PID namespace는 자식 PID namespace으로만 가능합니다. 완전 다른 방향의 namespace로는 불가능합니다. 잘 생각하셔야 할게 지금 설명드리는 부분은 namespace간 부모, 자식 관계가 아닌 프로세스의 부모, 자식 관계입니다.</p>
-<h3 id="proc--pid-namespace">/proc 파일시스템과 PID namespace</h3>
+<h3 id="proc-파일시스템과-pid-namespace">/proc 파일시스템과 PID namespace</h3>
 <p>/proc 파일시스템은 /proc 파일시스템이 다른 Namespace에서 보여지더라도 마운트를 수행한 프로세스의 PID namespace에 보이는 프로세스만 보여줍니다. 새 PID namespace를 만든 후에는 ps (1)와 같은 툴이 정상적으로 작동하도록 /proc 파일시스템에 새로운 procfs 인스턴스를 마운트하고 루트 디렉토리를 변경하는 것이 좋습니다. clone (2) 또는 unshare(2)의 flags에 CLONE_NEWNS를 포함하여 새로운 마운트 네임 스페이스를 동시에 생성하면 루트 디렉토리를 변경할 필요가 없습니다. 새로운 procfs 인스턴스를 /proc에 직접 마운트 할 수 있습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mount -t proc proc /proc
 </code></pre></div><p>PID namespace는 container에서 유용하게 사용되는 기술 중 하나입니다. 추가적인 내용들은 정리되는대로 갱신하겠습니다. 글 읽어주셔서 감사합니다.</p>
@@ -1127,6 +1213,70 @@
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1184,19 +1334,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

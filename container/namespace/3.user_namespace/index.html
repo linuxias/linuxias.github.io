@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>3. User Namespace :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1578236880" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1578236880" rel="stylesheet">
-    <link href="/css/hybrid.css?1578236880" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1578236880" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1578236880" rel="stylesheet">
-    <link href="/css/auto-complete.css?1578236880" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1578236880" rel="stylesheet">
-    <link href="/css/theme.css?1578236880" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1578236880" rel="stylesheet">
+    <link href="/css/nucleus.css?1578320055" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1578320055" rel="stylesheet">
+    <link href="/css/hybrid.css?1578320055" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1578320055" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1578320055" rel="stylesheet">
+    <link href="/css/auto-complete.css?1578320055" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1578320055" rel="stylesheet">
+    <link href="/css/theme.css?1578320055" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1578320055" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1578236880" rel="stylesheet">
+      <link href="/css/theme-purple.css?1578320055" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1578236880"></script>
+    <script src="/js/jquery-3.3.1.min.js?1578320055"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1578236880"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1578236880"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1578320055"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1578320055"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1578236880"></script>
+<script type="text/javascript" src="/js/search.js?1578320055"></script>
 
     
   </div>
@@ -545,6 +545,92 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/bdi_architect/" title="[Agent] BDI Architecture" class="dd-item ">
+        <a href="/machinelearning/bdi_architect/">
+        [Agent] BDI Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_communication/" title="[Agent] Communication" class="dd-item ">
+        <a href="/machinelearning/agent_communication/">
+        [Agent] Communication
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+        <a href="/machinelearning/agent_mas/">
+        [Agent] MAS (Multi-agent System)
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/machinelearning/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" class="dd-item ">
+        <a href="/machinelearning/agent_sw_agent_architecture/">
+        [Agent] SW Agent Architecture
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -708,7 +794,7 @@
     <li><a href="#capability">Capability</a></li>
     <li><a href="#restrictions-on-mount-namespaces">Restrictions on mount namespaces</a></li>
     <li><a href="#interaction-of-user-namespaces-and-other-types-of-namespaces">Interaction of user namespaces and other types of namespaces</a></li>
-    <li><a href="#user-and-group-id-mapplings--uid-map-and-gid-map">User and Group ID mapplings : uid\_map and gid\_map</a></li>
+    <li><a href="#user-and-group-id-mapplings--uid_map-and-gid_map">User and Group ID mapplings : uid\_map and gid\_map</a></li>
   </ul>
 </nav>
     </div>
@@ -827,7 +913,7 @@
 <p>Non-user 네임스페이스(User 네임스페이스를 제외한 다른 네임스페이스)가 생성될 때 새로운 프로세스는 자신을 생성한 프로세스가 속한 User 네임스페이스에 속하게 됩니다. Non-user 네임스페이스은 User 네임스페이스의 기능이 필요합니다. 만약 ** clone(2) ** 또는 ** unshare(2) ** 호출 시 ** CLONE_NEWUSER ** 가 다른 ** CLONE_NEW* ** 플래그와 함께 명시된다면 User 네임페이스를 먼저 생성하게 됩니다. 그 이후 권한을 확인하여 나머지 네임스페이스의 생성을 하게 됩니다. 따라서 권한이 없는 호출 프로세스는 이와 같은 플래그의 조합으로 시스템 콜을 호출할 수 있습니다.</p>
 <p>새로운 IPC, mount, network, PID, UTS 네임스페이스가 ** clone(2) ** 또는 **unshare(2) ** 시스템 콜을 통해 생성되면 커널은 새로운 네임스페이스에 대해 생성되는 프로세스의 사용자 네임스페이스를 기록합니다. 새로운 네임스페이스의 프로세스가 네임스페이스 격리된 전역 리소스에서 동작하는 권한이 필요한 작업을 연속적으로 수행하면 커널이 새로운 네임스페이스와 연결된 User 네임스페이스의 새로운 프로세스 기능에 따라 권한을 검사하게 됩니다.</p>
 <p>User 네임스페이스는 다른 네임스페이스들과 연관관계를 맺고 있는 부분을 확인 할 수 있으며, 특권(Capability)와 권한(Privilege)에 대한 관계도 관련이 있음을 알 수 있습니다.</p>
-<h2 id="user-and-group-id-mapplings--uid-map-and-gid-map">User and Group ID mapplings : uid_map and gid_map</h2>
+<h2 id="user-and-group-id-mapplings--uid_map-and-gid_map">User and Group ID mapplings : uid_map and gid_map</h2>
 <p>User 네임스페이스가 생성되면 상위 User 네임스페이스에 User, Group ID가 매핑되지 않고 시작합니다. ** /proc/[pid]/uid_map ** 과 ** /proc/[pid]/gid_map ** 파일은 해당 프로세스의 User 네임스페이스 내부의 사용자와 그룹 ID 매핑 정보를 보여줍니다. 이 정보는 Namespace(1) 글에서 자료구조 내부적으로 어떻게 관리하는지 본 적이 있습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
  <span style="color:#ae81ff">55</span> <span style="color:#66d9ef">struct</span> user_namespace {
@@ -1226,6 +1312,70 @@
                     
 
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1283,19 +1433,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.min.js?1578236880"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1578236880"></script>
-    <script src="/js/jquery.sticky.js?1578236880"></script>
-    <script src="/js/featherlight.min.js?1578236880"></script>
-    <script src="/js/highlight.pack.js?1578236880"></script>
+    <script src="/js/clipboard.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.min.js?1578320055"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1578320055"></script>
+    <script src="/js/jquery.sticky.js?1578320055"></script>
+    <script src="/js/featherlight.min.js?1578320055"></script>
+    <script src="/js/highlight.pack.js?1578320055"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1578236880"></script>
-    <script src="/js/learn.js?1578236880"></script>
-    <script src="/js/hugo-learn.js?1578236880"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1578320055"></script>
+    <script src="/js/learn.js?1578320055"></script>
+    <script src="/js/hugo-learn.js?1578320055"></script>
 
-    <link href="/mermaid/mermaid.css?1578236880" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1578236880"></script>
+    <link href="/mermaid/mermaid.css?1578320055" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1578320055"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
