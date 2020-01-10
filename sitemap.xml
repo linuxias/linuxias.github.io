@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/sw_architecture/</loc>
+    <lastmod>2020-01-10T23:15:54+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/machinelearning/</loc>
     <lastmod>2020-01-05T23:34:14+09:00</lastmod>
   </url>
@@ -128,6 +133,10 @@
   
   <url>
     <loc>https://linuxias.github.io/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/sw_architecture/sw_design_corruption/</loc>
   </url>
   
 </urlset>
