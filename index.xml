@@ -244,6 +244,16 @@ Deliberative Agents Deliberative Agents는 명확하게 표현되어 질 수 있
     </item>
     
     <item>
+      <title>Data Flow Software Architecture</title>
+      <link>https://linuxias.github.io/sw_architecture/data_flow_sw_architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/sw_architecture/data_flow_sw_architecture/</guid>
+      <description>Data Flow Software Architecture에 대해 정리해보고, 해당 아키텍처에 속하는 이키텍처들을 정리해 보려합니다. 주제에서 알 수 있듯이 데이터의 흐름에 대한 소프트웨어 아키텍처입니다. Data Flow Software Architecture는 전체 소프트웨어 시스템을 연속적인 데이터 집합에 대한 일련의 변환으로 봅니다.
+소프트웨어 시스템은 데이터가 데이터 연산 처리 순서를 지시하고 제어하는 데이터 처리 요소로 분리 될 수 있습니다. 각 컴포넌트는 입력으로 데이터를 받고, 출력으로 연산된 데이터를 출력합니다. 이렇게 출력된 연산 데이터는 다음 컴포넌트의 입력이 됩니다. 이 부분이 Data Flow Software Architecture 들의 가장 큰 특징입니다.</description>
+    </item>
+    
+    <item>
       <title>소프트웨어 설계의 부패</title>
       <link>https://linuxias.github.io/sw_architecture/sw_design_corruption/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
