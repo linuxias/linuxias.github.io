@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Batch Sequential Architecture</title>
+      <link>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</guid>
+      <description>Batch Sequential Architecture에 대해 정리해보겠습니다.
+Batch Sequential Architecture는 이전 글에서 정리한 Data Flow Software Architecture 중 하나입니다. 참고가 필요하신 분은 해당 글을 확인해주세요.
+[S/W Architecture] Data Flow Software Architectures
+Batch Sequential Architecture는 1950~70년대에 많이 사용된 데이터 처리 모델입니다. 데이터는 하나의 서브시스템에서 다음 서브시스템으로 데이터로 전달됩니다. 각 데이터 전송 서브시스템 또는 모듈은 이전 서브시스템의 데이터 처리가 끝나기 전에는 스스로 시작할 수 없습니다. 정리하자만 A-B 로 연결된 Batch Sequential Architecture에서 B는 A가 모든 데이터 처리를 완료한 후 결과 데이터가 출력되기 전까지 스스로 독립적으로 시작할 수 없습니다.</description>
+    </item>
+    
+    <item>
       <title>Data Flow Software Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/data_flow_sw_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -19,6 +31,17 @@
       <guid>https://linuxias.github.io/sw_architecture/data_flow_sw_architecture/</guid>
       <description>Data Flow Software Architecture에 대해 정리해보고, 해당 아키텍처에 속하는 이키텍처들을 정리해 보려합니다. 주제에서 알 수 있듯이 데이터의 흐름에 대한 소프트웨어 아키텍처입니다. Data Flow Software Architecture는 전체 소프트웨어 시스템을 연속적인 데이터 집합에 대한 일련의 변환으로 봅니다.
 소프트웨어 시스템은 데이터가 데이터 연산 처리 순서를 지시하고 제어하는 데이터 처리 요소로 분리 될 수 있습니다. 각 컴포넌트는 입력으로 데이터를 받고, 출력으로 연산된 데이터를 출력합니다. 이렇게 출력된 연산 데이터는 다음 컴포넌트의 입력이 됩니다. 이 부분이 Data Flow Software Architecture 들의 가장 큰 특징입니다.</description>
+    </item>
+    
+    <item>
+      <title>Pipe and Filter Architecture</title>
+      <link>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</guid>
+      <description>Data flow Architecture에는 Batch Sequential, Pipe and Filter, Process Control Architecture 로 3가지로 분류할 수 있습니다. 그 중 Pipe and Filter Architecture에 대해 정리해보려 합니다.
+Pipe and Filter Architecture는 데이트 스트림을 처리하는 시스템을 위한 구조를 제공합니다. 데이터를 처리하는 각 프로세싱 단계는 Filter 컴포넌트 내부에 포함되어 있습니다. 데이터는 Filter 사이를 Pipe를 통해 전달되게 됩니다. 이러한 구조로 인해 Pipe and Filter Architecture는 Batch Sequential Architecture와 많이 비교됩니다.
+Pipe and Filter 구조의 구성요소는 크게 3가지 입니다.</description>
     </item>
     
     <item>

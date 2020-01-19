@@ -128,11 +128,19 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/categories/</loc>
   </url>
   
   <url>
     <loc>https://linuxias.github.io/sw_architecture/data_flow_sw_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</loc>
   </url>
   
   <url>
