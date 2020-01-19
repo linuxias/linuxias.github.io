@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/container/docker/1_docker_cmd_basic/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/container/</loc>
     <lastmod>2019-01-01T11:19:05+09:00</lastmod>
   </url>
@@ -84,6 +88,11 @@
   
   <url>
     <loc>https://linuxias.github.io/container/namespace/7.cgroup_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/container/docker/</loc>
+    <lastmod>2020-01-19T03:41:36+09:00</lastmod>
   </url>
   
   <url>

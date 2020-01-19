@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>6. UTS namespace :: Developer&#39;s Delight</title>
+    <title>Docker Basic :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1579442430" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/container/namespace/6.uts_namespace/">
+  <body class="" data-url="/container/docker/1_docker_cmd_basic/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -358,7 +358,7 @@
   
     
     <li data-nav-id="/container/namespace/" title="Namespace" class="dd-item 
-        parent
+        
         
         
         ">
@@ -479,7 +479,7 @@
  
   
     
-      <li data-nav-id="/container/namespace/6.uts_namespace/" title="6. UTS namespace" class="dd-item active">
+      <li data-nav-id="/container/namespace/6.uts_namespace/" title="6. UTS namespace" class="dd-item ">
         <a href="/container/namespace/6.uts_namespace/">
         6. UTS namespace
         <i class="fas fa-check read-icon"></i>
@@ -527,7 +527,7 @@
   
     
     <li data-nav-id="/container/docker/" title="Docker" class="dd-item 
-        
+        parent
         
         
         ">
@@ -553,7 +553,7 @@
  
   
     
-      <li data-nav-id="/container/docker/1_docker_cmd_basic/" title="Docker Basic" class="dd-item ">
+      <li data-nav-id="/container/docker/1_docker_cmd_basic/" title="Docker Basic" class="dd-item active">
         <a href="/container/docker/1_docker_cmd_basic/">
         Docker Basic
         <i class="fas fa-check read-icon"></i>
@@ -938,7 +938,7 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/namespace/'>Namespace</a> > 6. UTS namespace
+            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/docker/'>Docker</a> > Docker Basic
           
          
           
@@ -955,8 +955,16 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#실습">실습</a></li>
-    <li><a href="#참고자료-및-문헌">참고자료 및 문헌</a></li>
+    <li>
+      <ul>
+        <li><a href="#docker-hub에서-image-download">Docker Hub에서 Image Download</a></li>
+        <li><a href="#설치된-docker-image-확인하기">설치된 Docker Image 확인하기</a></li>
+        <li><a href="#docker-container-생성하기">Docker Container 생성하기</a></li>
+        <li><a href="#container-목록-및-정보-확인하기">Container 목록 및 정보 확인하기</a></li>
+        <li><a href="#container-삭제하기">Container 삭제하기</a></li>
+        <li><a href="#container-ip-확인하기">Container IP 확인하기</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -974,7 +982,7 @@
           
             <h1>
               
-              6. UTS namespace
+              Docker Basic
             </h1>
           
 
@@ -982,37 +990,90 @@
 
 
 
-<p>UTS(Unix TimeSharing) namespace는 리눅스 컨테이너가 ** hostname -f ** 명령어에 의해 반환된 결과 값인 자신의 식별자를 유지관리하기 위해 hostname과 domainname을 namespace 별로 격리해줍니다. 격리하는 대상은 구별을 위한 식별자가 됩니다. 단순하게 생각하면 hostname은 호스트 각각의 이름이고 domainname은 그룹의 이름입니다. 기본적으로 domainname을 설정하지 않았다면 none으로 표시됩니다.</p>
-<p>UTS namespace로 분리할 수 있는 식별자는 sethostname(2)과 setdomainname(2)을 사용하여 설정되며 unname(2), gethostname(2) 및 getdomainname(2)을 사용하여 검색할 수 있습니다.</p>
-<p><strong>unshare</strong> 또는 <strong>clone</strong> 시스템 콜 호출 시에 <strong>CLONE_NEWUTS</strong> 플래그를 사용하면 새로운 UTS namespace를 생성하고 해당 namespace를 가진 프로세스를 생성할 수 있습니다.</p>
-<h2 id="실습">실습</h2>
-<ol>
-<li>** unshare ** 를 이용하여 새로운 UTS namespace를 만들어서 bash 프로세스를 실행합니다. 그 후 namespace를 변경합니다.</li>
-<li></li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:~$ hostname
-linuxias-VirtualBox
-linuxias@linuxias-VirtualBox:~$ sudo unshare -u /bin/bash
-<span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> linuxias: 
-root@linuxias-VirtualBox:~# hostname
-linuxias-VirtualBox
-root@linuxias-VirtualBox:~# hostname uts-namespace
-root@linuxias-VirtualBox:~# hostname
-uts-namespace
-root@linuxias-VirtualBox:~# cat /proc/sys/kernel/hostname
-uts-namespace
-root@linuxias-VirtualBox:~# 
-</code></pre></div><ol start="2">
-<li>새로운 터미널 세션을 생성하여 hostname을 확인해봅니다. hostname이 설정 전의 hostname임을 확인할 수 있습니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:~$ hostname
-linuxias-VirtualBox 
-</code></pre></div><h2 id="참고자료-및-문헌">참고자료 및 문헌</h2>
-<ul>
-<li>Konstantin Ivanov | Containerization with LXC</li>
-<li>linux manual page - namespace, hostname</li>
-</ul>
+<h3 id="docker-hub에서-image-download">Docker Hub에서 Image Download</h3>
+<p>Docker pull command를 사용하여 DockerHub 에 등록된 이미지 다운로드 합니다. 다운로드할 이미지는 ubuntu 18.04 이미지입니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker pull ubuntu:18.04
+18.04: Pulling from library/ubuntu
+5c939e3a4d10:Pull complete
+c63719cdbe7a: Pull complete
+19a861ea6baf: Pull complete
+651c9d2d6c4f: Pull complete
+Digest: sha256:8d31dad0c58f552e890d68bbfb735588b6b820a46e459672d96e585871acc110
+</code></pre></div><h3 id="설치된-docker-image-확인하기">설치된 Docker Image 확인하기</h3>
+<p><strong>docker images</strong> 명령어를 이용하여 설치된 도커 이미지들의 리스트를 확인할 수 있습니다. 제 PC 설치된 이미지 리스트는 아래와 같습니다. 총 5가지 이미지가 설치되어 있네요.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              18.04               ccc6e87d482b        <span style="color:#ae81ff">3</span> days ago          64.2MB
+mysql               5.7                 b598110d0fff        <span style="color:#ae81ff">4</span> days ago          435MB
+wordpress           latest              1b1624b63467        <span style="color:#ae81ff">3</span> weeks ago         539MB
+node                6.11.5              852391892b9f        <span style="color:#ae81ff">2</span> years ago         662MB
+</code></pre></div><p>REPOSITORY와 TAG명 그리고 IMAGE ID가 보입니다. IMAGE ID는 16진수 해쉬값으로 구성되어 있습니다. 그리고 CREATE로 이미지가 생성된 일자, 이미지의 사이즈까지 확인할 수 있습니다.</p>
+<h3 id="docker-container-생성하기">Docker Container 생성하기</h3>
+<h5 id="1-docker-create">1. docker create</h5>
+<p><strong>docker create</strong> 명령어를 실행하여 컨테이너를 생성할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker create -i -t ubuntu:18.04
+9f1be16cd91b3673ac95d77eaf0906405c335f4aaed9e77520a245fa0b33299f
+</code></pre></div><p>이 명령어로 컨테이너를 생성할 시에 랜덤한 16진수 해쉬값이 생성되며, 이 해쉬값은 생성한 컨테이너의 ID가 됩니다.</p>
+<h5 id="2-docker-run">2. docker run</h5>
+<p><strong>docker run</strong> 명렁어를 사용하여 컨테이너를 생성하고 실행할 수 있습니다.
+&lsquo;-i -t&rsquo; 옵션은 각각 입출력과, tty 활성화를 요청하는 옵션입니다. 해당 옵션을 제외하고 실행 시 사용자와의 인터페이스가 실행되지 않고, 컨테이너가 실행된 직 후 바로 종료됩니다.</p>
+<p><strong>docker pull</strong> 로 다운받은 ubuntu 18.04 이미지를 실행하여 보겠습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker run -i -t ubuntu:18.04
+root@f54e84f31187:/# ps
+PID TTY          TIME CMD
+<span style="color:#ae81ff">1</span> pts/0    00:00:00 bash
+<span style="color:#ae81ff">10</span> pts/0    00:00:00 ps
+root@f54e84f31187:/# exit
+exit
+</code></pre></div><h5 id="3-docker-create-와-docker-run-의-차이점">3. docker create 와 docker run 의 차이점</h5>
+<p><strong>docker create</strong>와 <strong>docker run</strong>의 차이는 컨테이너를 생성하는 것 까지와 생성 후 실행까지 시키느냐에 따른 차이입니다. 아래  이미지에서 docker pull은 컨테이너로 실행할 이미지가 없는 경우 필요한 단계이며, <strong>docker create</strong>는 create 단계에서 멈추며, <strong>docker run</strong>은 start 이후 attach가 동작하게 됩니다.</p>
+<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
+ pull[docker pull] --&gt; create[docker create]
+ create --&gt; start[docker start]
+ start --&gt; attach[docker attach]
+</code></pre><h3 id="container-목록-및-정보-확인하기">Container 목록 및 정보 확인하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps           
+CONTAINER ID     IMAGE            COMMAND          CREATED          STATUS           PORTS            NAMES
+$sudo docker ps -a
+CONTAINER ID     IMAGE            COMMAND          CREATED          STATUS           PORTS            NAMES
+9f1be16cd91b     ubuntu:18.04     <span style="color:#e6db74">&#34;/bin/bash&#34;</span>      <span style="color:#ae81ff">12</span> minutes ago   Created                     vigorous_lumiere
+</code></pre></div><p><strong>docker ps</strong> 명령어는 컨테이너의 리스트를 보여줍니다. <strong>docker images</strong>와는 리스트를 보여주는 것은 같으나, 컨테이너 리스트인지 이미지 리스트인지의 차이입니다. <strong>-a</strong>옵션은 정지된 컨테이너까지 포함하여 출력하여 줍니다.</p>
+<p>특정 컨테이너의 상세한 정보를 보기 위해서 <strong>inspect</strong> 명령어를 사용할 수 있습니다. <strong>inspect</strong> 명령어는 container 내부 명령어인데요, container 외에도 image, volume 등에도 사용이 가능합니다. 사용 방법은 아래와 같습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+9f1be16cd91b        ubuntu:18.04        <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">16</span> minutes ago      Created                                 vigorous_lumiere
 
+// docker ps 명령어로 존재하는 컨테이너를 확인하고 inspect 명령어로 상세 정보를 확인하면 아래처럼 출력됩니다.
+
+$sudo docker container inspect vigorous_lumiere | more
+<span style="color:#f92672">[</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;9f1be16cd91b3673ac95d77eaf0906405c335f4aaed9e77520a245fa0b33299f&#34;</span>,
+        <span style="color:#e6db74">&#34;Created&#34;</span>: <span style="color:#e6db74">&#34;2020-01-19T13:33:00.518174743Z&#34;</span>,
+        <span style="color:#e6db74">&#34;Path&#34;</span>: <span style="color:#e6db74">&#34;/bin/bash&#34;</span>,
+        <span style="color:#e6db74">&#34;Args&#34;</span>: <span style="color:#f92672">[</span><span style="color:#f92672">]</span>,
+        <span style="color:#e6db74">&#34;State&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;Status&#34;</span>: <span style="color:#e6db74">&#34;created&#34;</span>,
+            <span style="color:#e6db74">&#34;Running&#34;</span>: false,
+            <span style="color:#e6db74">&#34;Paused&#34;</span>: false,
+...
+</code></pre></div><h3 id="container-삭제하기">Container 삭제하기</h3>
+<p><strong>docker rm</strong> 명령어와 <strong>docker container prune</strong> 명령어를 이용하여 컨테이너를 삭제할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps -a         
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+9f1be16cd91b        ubuntu:18.04        <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">20</span> minutes ago      Created                                 vigorous_lumiere
+$sudo docker rm vigorous_lumiere
+vigorous_lumiere
+$sudo docker ps -a 
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</code></pre></div><p>존재하던 컨테이너가 <strong>docker rm</strong> 명령어 이후 삭제되었음을 확인하였습니다. 다양한 컨테이너를 다루다 너무 많은 컨테이너가 생성되었을 경우에는 <strong>docker rm</strong> 명령어로 하나씩 삭제하기가 번거롭습니다. 그때 <strong>docker container prune</strong> 명령어로 모두 삭제가 가능합니다.</p>
+<h3 id="container-ip-확인하기">Container IP 확인하기</h3>
+<p>ubuntu:18.04 이미지를 다운받아 컨테이너로 생성하여 실행하게 되면 네트워크 정보들 간단히 IP 확인하기 위한 ifconfig 툴도 설치가 되어있지 않습니다. ifconfig를 이용하여 ip를 확인하는데, 만약 ifconfig가 설치되어 있지 않다면 net-tools를 설치해줍니다</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker run -i -t ubuntu:18.-4
+root@f54e8a13312:/# apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install net-tools
+...
+root@f54e8a13312:/# ifconfig
+</code></pre></div>
 
 <footer class=" footline" >
 	
@@ -1234,7 +1295,6 @@ linuxias-VirtualBox
             
                 
                     
-                    
                 
                 
 
@@ -1248,8 +1308,21 @@ linuxias-VirtualBox
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -1331,26 +1404,6 @@ linuxias-VirtualBox
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -1370,6 +1423,7 @@ linuxias-VirtualBox
             
                 
                     
+                    
                 
                 
 
@@ -1382,6 +1436,7 @@ linuxias-VirtualBox
             
             
                 
+                    
                     
                 
                 
@@ -1404,6 +1459,9 @@ linuxias-VirtualBox
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1601,10 +1659,10 @@ linuxias-VirtualBox
 	 
 	 
 		
-			<a class="nav nav-prev" href="/container/namespace/5_mount_namespace/" title="5. Mount namespace"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/container/docker/" title="Docker"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/container/namespace/7.cgroup_namespace/" title="7. Cgroup Namespace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/sw_architecture/" title="3. S/W Architecture" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
