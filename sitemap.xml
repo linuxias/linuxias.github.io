@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://linuxias.github.io/machinelearning/basic/</loc>
+    <lastmod>2020-01-05T23:34:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/machinelearning/agent/</loc>
+    <lastmod>2020-01-05T23:34:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/linux/</loc>
     <lastmod>2020-01-01T23:15:54+09:00</lastmod>
   </url>
@@ -121,19 +131,23 @@
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/machinelearning/bdi_architect/</loc>
+    <loc>https://linuxias.github.io/machinelearning/basic/model_representation_and_cost_function/</loc>
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/machinelearning/agent_communication/</loc>
+    <loc>https://linuxias.github.io/machinelearning/agent/bdi_architect/</loc>
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/machinelearning/agent_mas/</loc>
+    <loc>https://linuxias.github.io/machinelearning/agent/agent_communication/</loc>
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/machinelearning/agent_sw_agent_architecture/</loc>
+    <loc>https://linuxias.github.io/machinelearning/agent/agent_mas/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/machinelearning/agent/agent_sw_agent_architecture/</loc>
   </url>
   
   <url>

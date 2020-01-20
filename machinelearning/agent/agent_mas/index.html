@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>2. blkio :: Developer&#39;s Delight</title>
+    <title>[Agent] MAS (Multi-agent System) :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1579535280" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/container/cgroup/2.cgroup_blkio/">
+  <body class="" data-url="/machinelearning/agent/agent_mas/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -217,7 +217,7 @@
   
     
     <li data-nav-id="/container/" title="2. Container" class="dd-item 
-        parent
+        
         
         
         ">
@@ -246,7 +246,7 @@
   
     
     <li data-nav-id="/container/cgroup/" title="Cgroup" class="dd-item 
-        parent
+        
         
         
         ">
@@ -291,7 +291,7 @@
  
   
     
-      <li data-nav-id="/container/cgroup/2.cgroup_blkio/" title="2. blkio" class="dd-item active">
+      <li data-nav-id="/container/cgroup/2.cgroup_blkio/" title="2. blkio" class="dd-item ">
         <a href="/container/cgroup/2.cgroup_blkio/">
         2. blkio
         <i class="fas fa-check read-icon"></i>
@@ -699,7 +699,7 @@
   
     
     <li data-nav-id="/machinelearning/" title="4. Machine Learning" class="dd-item 
-        
+        parent
         
         
         ">
@@ -783,7 +783,7 @@
   
     
     <li data-nav-id="/machinelearning/agent/" title="Software Agent" class="dd-item 
-        
+        parent
         
         
         ">
@@ -847,7 +847,7 @@
  
   
     
-      <li data-nav-id="/machinelearning/agent/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
+      <li data-nav-id="/machinelearning/agent/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item active">
         <a href="/machinelearning/agent/agent_mas/">
         [Agent] MAS (Multi-agent System)
         <i class="fas fa-check read-icon"></i>
@@ -1031,7 +1031,7 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/cgroup/'>Cgroup</a> > 2. blkio
+            <a href='/'>Developer's Delight</a> > <a href='/machinelearning/'>4. Machine Learning</a> > <a href='/machinelearning/agent/'>Software Agent</a> > [Agent] MAS (Multi-agent System)
           
          
           
@@ -1048,11 +1048,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#subsystem---blkio">Subsystem - blkio</a>
+    <li>
       <ul>
-        <li><a href="#예제-살펴보기">예제 살펴보기</a></li>
-        <li><a href="#blkio-파일-설명">blkio 파일 설명</a></li>
-        <li><a href="#참고자료">참고자료</a></li>
+        <li><a href="#mas-multi-agent-system">MAS (Multi-agent System)</a></li>
       </ul>
     </li>
   </ul>
@@ -1072,7 +1070,7 @@
           
             <h1>
               
-              2. blkio
+              [Agent] MAS (Multi-agent System)
             </h1>
           
 
@@ -1080,135 +1078,104 @@
 
 
 
-<h2 id="subsystem---blkio">Subsystem - blkio</h2>
-<p>blkio 서브시스템은 특정 block device에 대한 접근을 제한하거나 제어하기 위한 서브시스템 입니다. 자세한 내용은 ** Documentation/cgroup-v1/blkio-controller.txt ** 를 참고해주세요.</p>
-<h3 id="예제-살펴보기">예제 살펴보기</h3>
-<p>I/O 작업이 많은 몇몇의 어플리케이션이 하나의 서버에서 동작한다고 가정합니다. 각 어플리케이션에 대해 다른 우선순위와 I/O 대역폭을 설정해주는 예제를 살펴보겠습니다.</p>
+<h3 id="mas-multi-agent-system">MAS (Multi-agent System)</h3>
+<p>현재 세계의 시스템에선 하나의 agent로는 모든 처리를 할 수 없습니다. 그래서 각각의 기능을 담당하는 여러 agent를 생성하여 협업 또는 조율하게 만드는 방법을 사용하기도 합니다. 이번 글에서는 MAS, Multi-agent System에 대해 정리해보겠습니다.</p>
+<p>Multi-agent System (지금부턴 MAS라 칭하겠습니다.)은 시스템 내에 여러 agent를 가지고 있는 시스템입니다. 각 agent 간 커뮤니케이션을 통해 상호작용을 하게 되고, 서로 다른 작업을 하기에 &ldquo;spheres of influence&rdquo; 라고 불리는 자신만의 환경 영역을 가지고 있습니다. 즉 변화하는 환경에 대해 영향을 받거나 주는 환경이 다를 수 있습니다. 분산 AI 측면에서 MAS를 살펴보면 하나의 Agent로는 해결하기 어려운 문제들을 여러 Agent가 서로 보유한 다른 정보들과 능력을 이용하여 해결하게 됩니다. 문제의 해를 찾기위해 함께 동작하게 되며 서로간은 루즈하게 결합되어 있습니다. 각각의 agent는 문제 해결을 위해 불완전한 기능들을 가지고 있습니다. 하나의 agent만으로는 문제 해결이 불가능하단 얘기이죠. 또한 MAS는 중계자, 전체 시스템을 컨트롤하는 녀석이 별도로 존재하지 않고 각 데이터도 agent들에게 분산되어 있기에 탈 중앙화 시스템입니다. 이러한 탈 중앙화로 보안성과 안정성이 확보되었습니다. 개별적으로 agent가 동작할 수 있기에 비동기적으로 동작되는 시스템입니다.</p>
+<p>MAS에서 agent가 모두 협렵하는 방식으로 구성되는 건 아닙니다. agent들이 서로 경쟁하도록 만들수도 있죠. 문제해결을 위한 방법 중 하나인데요. 하나의 문제를 협력하여 해결하는게 아니라 서로 경쟁시킴으로써 가장 좋은 해를 구할 수 있게 됩니다. 뭐가 더 좋은지는 상황에 따라 다르겠지요. 좀 더 자세히 Cooperative MAS와 Competitive of Self-interested MAS에 대해 정리해 보죠 </p>
+<h4 id="cooperative-mas">Cooperative MAS</h4>
 <ol>
-<li>cgroup 가상파일시스템을 마운트합니다.</li>
+<li>대표적인 MAS domain입니다.</li>
+<li>분산 문제 해결로 각 agent는 자율성이 낮습니다.</li>
+<li>협력과 팀웍을 위한 모델로써 각자 새우는 계획이 다릅니다. 다른 동작을 하기 때문이죠.</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir -p /cgroup/blkio
-$ sudo mount -t cgroup -o blkio blkio /cgroup/blkio
-</code></pre></div><ol start="2">
-<li>마운트 여부 확인하기.
-아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</li>
+<h4 id="competitie-of-self-interested-mas">Competitie of Self-interested MAS</h4>
+<ol>
+<li>분산된 합리성입니다. 투표나 경쟁하는 시스템입니다.</li>
+<li>협상 등에 자주 사용되는 모델입니다.</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount | grep cgroup
-blkio on /cgroup/blkio type cgroup <span style="color:#f92672">(</span>rw,relatime,blkio<span style="color:#f92672">)</span>
-or
-$ cat /proc/mount | grep cgroup
-blkio /cgroup/blkio cgroup rw,relatime,blkio <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
-</code></pre></div><ol start="3">
-<li>mount 상태 확인해보기.</li>
+<p>MAS의 전통적인 모델은 서버-클라이언트 모델이였습니다. 서버-클라이언트 간 커뮤니케이션 또한 매우 Low-level의 메시지들을 사용하였으며 동기적으로 동작하였습니다. 클라이언트가 요청하면 서버가 응답하는 구조였죠. 하지만 지금은 여러 Agents들이 Peer-to-Peer로 연결되어 있으며 서버라는 개념이 없습니다. 캡슐화된 메시징 기법으로 보안성도 강화화였으며 High-level의 메시지 프로토콜들을 사용하게 되었습니다. MAS를 연구하는 사람들은 Agent간 커뮤니케이션을 매우 중요하게 생각하였습니다. 그래서 멀티 시스템에 맞는 Communication Language, Interaction Protocol 들을 개발하게 되었지요. 개발에 영감을 준건 곤충의 군집생활입니다. 이런 MAS와 같은 시스템에 좋은 본보기가 될 수 있죠. 공통의 목적을 위해 어떻게 군집활동을 하고 어떻게 커뮤니케이션하며 어떠한 룰을 정하는가와 같은 점을 토대로 만들었습니다.</p>
+<p>그럼 유명한 MAS 몇개 모델만 간단히 정리해보겠습니다. </p>
+<h5 id="object-manager-group-omg">Object Manager Group (OMG)</h5>
+<p>일반적인 패턴들과 정책들을 사용하여 협업하는 에이전트들과 에이전시들로 구성되어 있습니다. 에이전트는 능력, 상호협력의 타입으로 특정지어지며 에이전스들은 에이전트들의 동시 실행, 보안 등을 지원하는 녀석입니다. </p>
+<h5 id="fipafoundation-for-intelligent-physical-agentss-model">FIPA(Foundation for Intelligent Physical Agents)&lsquo;s Model</h5>
+<p>Agents, Agent Platform, Directory Facilitator, Agent Management System, Agent Communication Channel, Agent Communication Language 로 구성되어 있는 모델입니다.</p>
+<h5 id="kaoss-model">KAoS'S Model</h5>
+<p>에이전트를 위한 개방형 분산 아키텍쳐입니다. 다양한 에이전트 구현들을 정의하고 있으며 에이전트 간 커뮤니케이션을 위해 대화 정책을 사용합니다.</p>
+<h5 id="oaa-model">OAA Model</h5>
+<p>User Interface, NL to ICL, Application, Meta에이전트들과 이 에이전트들이 커뮤니케이션을 하는 Facilitator 에이전트로 구성되어 있습니다. 어플리케이션은 API를 통해 Application Agent를 사용하게 되고 User Interface 에이전트는 사용자의 요청등을 처리하게 됩니다. 각 에이전트간의 커뮤니케이션은 모두 Facilitator 에이전트가 중재하게 되는 구조입니다.</p>
+<h5 id="general-magics-model">General Magic's Model</h5>
+<p>전자상거래를 위한 금융 에이전트로 시작되었습니다. </p>
+<h5 id="zeus-mas-development-toolkil">Zeus (MAS development toolkil)</h5>
+<p>MAS 개발을 위한 개발도구 입니다.</p>
+<p>MAS의 각 Agent들은 서로 조직을 이루기 위해 다른 기능을 가지고 있는데요, 그 기능들 사이의 종속성들을 관리하는 과정을 Coordination이라고 합니다. Coordination을 통해 순서나 병렬적 수행들을 관리할 수 있죠. 이런 Coordination은 Activity, Conversation, Implementation 3가지 측면에서 살펴보겠습니다. </p>
+<ol>
+<li>
+<p>Activity<br>
+실행해야 할 행위가 무엇인지 언제 실행되어야 하는지에 대한 것입니다. 분산 태스크에 대해 Statechart나 Flowchart, process algebra 등으로 표현할 수 있습니다.</p>
+</li>
+<li>
+<p>Conversation (State)<br>
+협력하는 개체들간의 대화 구조가 무엇인지에 대한 것입니다. FSM, Petri-Nets, State Transition Diagram 등이 있습니다.</p>
+</li>
+<li>
+<p>Implementation<br>
+어떻게 분산 시스템을 구현할지 협력하는 행위들의 요소들이 어디에 위치해야 할지에 대한 것입니다.</p>
+</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linuxias@linuxias-VirtualBox:/cgroup/blkio$ ls -al
-total <span style="color:#ae81ff">4</span>
-dr-xr-xr-x <span style="color:#ae81ff">2</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:35 .
-drwxr-xr-x <span style="color:#ae81ff">3</span> root root <span style="color:#ae81ff">4096</span>  8월  <span style="color:#ae81ff">6</span> 17:07 ..
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_merged
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_merged_recursive
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_queued
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_queued_recursive
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_service_bytes
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_service_bytes_recursive
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_serviced
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_serviced_recursive
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_service_time
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_service_time_recursive
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_wait_time
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.io_wait_time_recursive
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.leaf_weight
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.leaf_weight_device
---w------- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.reset_stats
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.sectors
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.sectors_recursive
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.throttle.io_service_bytes
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.throttle.io_serviced
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.throttle.read_bps_device
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.throttle.read_iops_device
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.throttle.write_bps_device
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.throttle.write_iops_device
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.time
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.time_recursive
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.weight
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 blkio.weight_device
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 cgroup.clone_children
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:35 cgroup.procs
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 cgroup.sane_behavior
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 notify_on_release
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 release_agent
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 13:55 tasks
-</code></pre></div><p>마운트한 디렉토리에서 내부 리스트를 확인해보니 위와 같이 많은 파일들이 생성되었습니다. 그 중 우리가 write할 수 있는 파일은 몇 개 되지 않네요. 나머지는 모두 read만 할 수 있습니다. 그 말은 우리가 cgroup blkio 서브시스템을 사용하여 제어할 수 있는 요소들은 write 권한이 있는 파일들을 유심히 보면 될 것 같습니다.</p>
-<ol start="4">
-<li>특정 프로세스들을 high_io와 low_io 그룹에 할당하기.
-특정 프로세스의 PID가 각각 10001, 10002 라고 해봅시다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/blkio/high_io/tasks
-$ echo <span style="color:#ae81ff">10002</span> &gt;&gt; /cgroup/blkio/high_io/tasks
-</code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/blkio/high_io/tasks; <span style="color:#66d9ef">done</span>
-</code></pre></div><p>으로도 설정할 수 있습니다.</p>
-<ol start="5">
-<li>high_io 와 low_io에 대해 가중치 비율 설정하기</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">200</span> &gt; /cgroup/blkio/high_io/blkio.weight
-$ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.weight
-</code></pre></div><p>2:1 비율로 가중치를 설정하였습니다.</p>
-<h3 id="blkio-파일-설명">blkio 파일 설명</h3>
-<p>아래 몇 가지 파일에 대한 내용을 표로 작성해두었습니다. 그 외 다른 파일에 대한 설명은 Documentation을 보시면 좋습니다.</p>
-<table>
-<thead>
-<tr>
-<th>파일</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>blkio.weight</td>
-<td>cgroup에 제공되는 장치에 대한 접근 가중치를 적용할 수 있습니다. 상대적인 비율로 100에서 1000까지 설정이 가능하며 설정하지 않을 시 기본 가중치입니다.</td>
-</tr>
-<tr>
-<td>blkio.weight_device</td>
-<td>blkio.weight와 동일하지만 가중치를 적용할 블록 장치를 지정합니다.</td>
-</tr>
-<tr>
-<td>blkio.time</td>
-<td>device 당 cgroup에 할당된 disk time으로 msec 단위입니다. 특정 장치로의 I/O access 시간을 설정할 수 있습니다. 설정을 위해선 디바이스의 major, minor 번호와 msec가 필요합니다.</td>
-</tr>
-<tr>
-<td>blkio.io_service_bytes</td>
-<td>cgroup에 의해 지정된 디바이스에서 송수신한 바이트 수 입니다.</td>
-</tr>
-<tr>
-<td>blkio.serviced</td>
-<td>cgroup에 의해 디바이스에 실행된 I/O 작업의 수 입니다.</td>
-</tr>
-<tr>
-<td>blkio.service_time</td>
-<td>cgroup에 의해 수행된 I/O 작업 요청의 시작부터 완료까지의 총 시간으로 nsec 단위입니다.</td>
-</tr>
-<tr>
-<td>blkio.io_wait_time</td>
-<td>I/O 작업이 지정된 장치에 대해 스케줄러 큐에서 대기한 전체 시간입니다.</td>
-</tr>
-<tr>
-<td>blkio.io_merged</td>
-<td>I/O 작업에 대한 요청으로 병합된 읽기, 쓰기, 동기화 또는 비동기의 수 입니다.</td>
-</tr>
-</tbody>
-</table>
-<p>이 외에도 매우 많은 파일들이 존재하는데요. 필요한 내용은 Documentation을 꼭 참고해주세요.</p>
-<h3 id="참고자료">참고자료</h3>
+<p>또한 MAS는 기본 협업 메커니즘(Coordination mechanism)에 기초한 지식을 교환하여 단일 목표에 도달하기 위해 에이전트 간 협업을 합니다. 대표적인 예시가 CNP(Contract Net protocol)입니다. CNP는 4개의 Phase로 구성되어 있습니다.</p>
 <ul>
-<li>Containerization with LXC | Konstantin Ivanov</li>
-<li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
-<li>[Linux] cgroup - (task) control group (1)(<a href="http://studyfoss.egloos.com/5506102">http://studyfoss.egloos.com/5506102</a>)</li>
-<li>Docker(container)의 작동 원리: namespaces and cgroups(<a href="https://tech.ssut.me/what-even-is-a-container/">https://tech.ssut.me/what-even-is-a-container/</a>)</li>
-<li>Control Groups | 문C 블로그(<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</li>
-<li>CGROUPS(7) linux manual page</li>
-<li>/Documentation/cgroup-v1/blkio-controller.txt</li>
+<li>
+<p>Phase 1 - Task Announcement<br>
+계약 에이전트가 태스크를 수행할 능력이 있는 에이전트들이 나타나도록 브로드캐스팅합니다. 그 태스크를 수행하기 위한 잠재적 후보자들을 평가하기 위함입니다.</p>
+</li>
+<li>
+<p>Phase 2 - Submission of Bids / Proposal<br>
+요구를 만족하고 태스크를 수행할 능력이 있는 에이전트들은 계약 에이전트에게 입찰을 하게 됩니다. 본인이 해당 태스크를 처리할 수 있도록 말이죠.</p>
+</li>
+<li>
+<p>Phase 3 - Selection<br>
+계약 에이전트는 받은 입찰들을 기반으로 최종 후보자를 선택하는 과정을 진행합니다.</p>
+</li>
+<li>
+<p>Phase 4 - Contract awarding<br>
+계약 에이전트, 최종 선택된 에이전트간 계약이 성립되고 상호 커뮤니케이션을 위한 채널이 생성됩니다.</p>
+</li>
 </ul>
+<p>위와 같은 단계를 거쳐 Collaboration이 일어나게 됩니다. 일반 사회에서 일어나는 경매 시스템과 비슷한 것을 느끼시나요? 그에 맞춰서 이해하셔도 좋을 것 같습니다.</p>
+<p>이 글의 앞부분에서 MAS는 Cooperative와 Competitive 모델이 있다고 했습니다. Competitive보단 Cooperative가 많이 사용되는데 Competitive 모델을 디자인하는데 몇 가지 이슈를 확인해보겠습니다. </p>
+<p>첫 번째 이슈는 Distributed Rationality입니다. Distributed Rationality는 Self-interested Agent 들이 샌드 박스에서 공정하게 경쟁하도록 유도하거나 강제하는 기술입니다. 모든 에이전트들의 의견을 취합하는 투표방식이나 모든 에이전트들이 얼마나 공정하게 기회를 부여받을지에 대한 경쟁등이 있습니다. 공정성, 안정성, 거짓말, 전역적으로 사용성을 높이기 위한 방안 등에 대한 이슈입니다. </p>
+<p>두 번째 이슈는 Pareto optimality(파레토 효율성)입니다. Pareto Optimality는 [1]어떤 경제주체가 새로운 거래를 통해 예전보다 유리해지기 위해서는 반드시 다른 경제주체가 예전보다 불리해져야만 하는 자원배분상태를 의미합니다. 최적화를 위해서 단편적으로 보아서는 안되며 여러 측면에서 고려가 필요한 문제입니다. </p>
+<p>마지막으로 Stability(안정성)입니다. 만약 어느 에이전트가 특정 전략을 가지고 다른 에이전트들의 행동과 관련없이 사용성을 항상 최대화 할 수 있다면 어떻까요? 다른 에이전트의 전략을 고려할 때 각 에이전트의 전략이 지역 최적인 경우 에이전트 전략 집합은 [2]내쉬 균형(<a href="https://terms.naver.com/entry.nhn?docId=778576&amp;ref=y">게임이론</a>의 개념으로서 각 참여자(Player)가 상대방의 전략을 주어진 것으로 보고 자신에게 최적인 전략을 선택할 때 그 결과가 균형을 이루는 최적 전략의 집합을 말한다)에 있습니다. 그렇게 되면 전략을 변경하려는 에이전트도 없을 것입니다. </p>
+<p>MAS를 어떤 플로우로 개발하는지 살펴보겠습니다.</p>
+<ol>
+<li>
+<p>특정 문제를 해결하기 위한 MAS 구성을 정의한다.</p>
+</li>
+<li>
+<p>Coordination mechanism을 결정한다.</p>
+</li>
+<li>
+<p>MAS를 구현하기 위한 프레임워크(Zeus 같은)를 선택한다.</p>
+</li>
+<li>
+<p>MAS를 지원할 Collaborative mechanism을 구현한다.</p>
+</li>
+<li>
+<p>Shared ontology를 구현한다.</p>
+</li>
+<li>
+<p>각 태스크 에이전트를 구현한다.</p>
+</li>
+<li>
+<p>중간자 에이전트를 커스터마이징 한다. (Facilitators, Mediators, Brokers, &hellip;)</p>
+</li>
+</ol>
+<p>큰 그림부터 필요한 요소들을 하나하나 선택, 결정하고 구현하는 단계를 거칩니다.</p>
+<p>이러한 MAS는 다양한 곳에서 사용됩니다. 인터넷에서 정보검색을 하거나 보안 강화나 전자상거래의 쇼핑 에이전트들, 분산 신호처리 시스템 등에서 다양하게 사용됩니다.</p>
+<p>뭔가 주절주절 나열한 것 같습니다. 이해가 안되시는 부분이나 잘못된 부분은 언제든지 댓글로 남겨주세요. </p>
+<p>감사합니다.</p>
+<p>[1] https://terms.naver.com/entry.nhn?docId=3437709&amp;cid=58393&amp;categoryId=58393</p>
+<p>[2] https://terms.naver.com/entry.nhn?docId=778808&amp;cid=42085&amp;categoryId=42085</p>
 
 
 <footer class=" footline" >
@@ -1332,7 +1299,6 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
                 
                     
-                    
                 
                 
 
@@ -1348,7 +1314,6 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
                 
                     
-                    
                 
                 
 
@@ -1361,9 +1326,6 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1381,7 +1343,6 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
                 
                     
-                    
                 
                 
 
@@ -1397,9 +1358,6 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1679,6 +1637,7 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
                 
                     
+                    
                 
                 
 
@@ -1694,37 +1653,8 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1750,10 +1680,30 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1786,6 +1736,26 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1845,10 +1815,10 @@ $ echo <span style="color:#ae81ff">100</span> &gt; /cgroup/blkio/low_io/blkio.we
 	 
 	 
 		
-			<a class="nav nav-prev" href="/container/cgroup/1.cgroup/" title="1. Cgroup"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/machinelearning/agent/agent_communication/" title="[Agent] Communication"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/container/cgroup/3.cgroup_memory/" title="3. memory" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/machinelearning/agent/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
