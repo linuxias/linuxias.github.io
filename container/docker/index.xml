@@ -22,5 +22,15 @@ $sudo docker pull ubuntu:18.04 18.04: Pulling from library/ubuntu 5c939e3a4d10:P
 $sudo docker images REPOSITORY TAG IMAGE ID CREATED SIZE ubuntu 18.</description>
     </item>
     
+    <item>
+      <title>Storage</title>
+      <link>https://linuxias.github.io/container/docker/2_docker_storage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/container/docker/2_docker_storage/</guid>
+      <description>컨테이너를 사용하여 다양한 작업을 할 수 있습니다. 여러 작업 중 컨테이너 내부에서 생성한 정보, 파일들이 컨테이너가 종료되고 난 이후에 손실되어 찾을 수 없습니다. 기본적으로 컨테이너 내부에 생성되는 모든 파일들은 쓰기가능한 컨테이너 레이에어 저장되어 집니다. 이렇게 저장된다는 것은 아래와 같은 의미를 포함합니다.
+ 컨테이너가 종료된 후에는 데이터가 지속 가능하지 않습니다. 다른 프로세스가 컨테이너 내부의 데이터를 참조하기 어렵습니다. 컨테이너의 쓰기가능한 레이어는 컨테이너가 동작 중인 상태에서 호스트와 매우 타이트하게 연결되어 있습니다. 이 말은, 여러분이 데이터를 다른 곳으로 옮기는게 쉽지 않음을 의미합니다.</description>
+    </item>
+    
   </channel>
 </rss>
