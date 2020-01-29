@@ -155,6 +155,10 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/container/docker/container_logging/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</loc>
   </url>
   
@@ -167,7 +171,15 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/sw_architecture/process_control_architecture/</loc>
   </url>
   
   <url>

@@ -34,6 +34,16 @@ Batch Sequential Architecture는 1950~70년대에 많이 사용된 데이터 처
     </item>
     
     <item>
+      <title>Hierarchical Software Architecture</title>
+      <link>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</guid>
+      <description>Hierarchical Software Architecture, 한국어로 계층적 소프트웨어 아키텍처라 불리는 아키텍처에 대해 정리하겠습니다.
+Hierarchical Architecture는 전체 시스템을 계층 구조적으로 나뉘어져 있으며 계층적으로 서로 다른 레벨의 서브시스템으로 구성되어 있습니다. Hierarchical Architecture는 매우 다양한 곳에서 사용되고 있습니다. 운영체제, 네트워크 프로토콜 계층들, 인터프리터, 그 외 다양한 곳에서 사용되고 있는데요, 이 아키텍처의 가장 대표적인 구조로서 여러분들이 가장 많이 접해본 아키텍처의 한 예가 안드로이드 일 것 같습니다. 위 안드로이드 아키텍처를 보시면 Applications, Application Framework, Libraries, Linux Kernel 까지 여러 개의 서브시스템이 계층적으로 구성되어 하나의 시스템을 이루고 있습니다.</description>
+    </item>
+    
+    <item>
       <title>Pipe and Filter Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -42,6 +52,20 @@ Batch Sequential Architecture는 1950~70년대에 많이 사용된 데이터 처
       <description>Data flow Architecture에는 Batch Sequential, Pipe and Filter, Process Control Architecture 로 3가지로 분류할 수 있습니다. 그 중 Pipe and Filter Architecture에 대해 정리해보려 합니다.
 Pipe and Filter Architecture는 데이트 스트림을 처리하는 시스템을 위한 구조를 제공합니다. 데이터를 처리하는 각 프로세싱 단계는 Filter 컴포넌트 내부에 포함되어 있습니다. 데이터는 Filter 사이를 Pipe를 통해 전달되게 됩니다. 이러한 구조로 인해 Pipe and Filter Architecture는 Batch Sequential Architecture와 많이 비교됩니다.
 Pipe and Filter 구조의 구성요소는 크게 3가지 입니다.</description>
+    </item>
+    
+    <item>
+      <title>Process Control Architecture</title>
+      <link>https://linuxias.github.io/sw_architecture/process_control_architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/sw_architecture/process_control_architecture/</guid>
+      <description>Process Control Architecture는 Data Flow Architecture 분류에 속하는 아키텍처입니다. 해당 분류에 속하는 아키텍처는 이전에 다뤘던 Batch Sequential, Pipe and Filter Architecture가 있습니다. 자세한 내용은 아래 링크 참고 부탁드립니다.
+  Data Flow Software Architectures
+  Batch Sequential Architecture
+  Pipe and Filter Architecture
+  Process Control Architecture에 대해 간략히 정리해보겠습니다.
+Process Control의 가장 큰 특징은 데이터의 흐름이 프로세스의 실행을 제어하는 변수 집합이라는 것입니다. 한 번에 이해하기 어려운 말인 것 같습니다.</description>
     </item>
     
     <item>
