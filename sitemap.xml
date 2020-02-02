@@ -171,6 +171,10 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/container/docker/dockerfile/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</loc>
   </url>
   
@@ -180,6 +184,10 @@
   
   <url>
     <loc>https://linuxias.github.io/sw_architecture/process_control_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/container/docker/container_resource/</loc>
   </url>
   
   <url>

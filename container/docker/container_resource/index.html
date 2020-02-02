@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Docker Basic :: Developer&#39;s Delight</title>
+    <title>Resource Limitation :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1580641236" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/container/docker/1_docker_cmd_basic/">
+  <body class="" data-url="/container/docker/container_resource/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -553,7 +553,7 @@
  
   
     
-      <li data-nav-id="/container/docker/1_docker_cmd_basic/" title="Docker Basic" class="dd-item active">
+      <li data-nav-id="/container/docker/1_docker_cmd_basic/" title="Docker Basic" class="dd-item ">
         <a href="/container/docker/1_docker_cmd_basic/">
         Docker Basic
         <i class="fas fa-check read-icon"></i>
@@ -629,7 +629,7 @@
  
   
     
-      <li data-nav-id="/container/docker/container_resource/" title="Resource Limitation" class="dd-item ">
+      <li data-nav-id="/container/docker/container_resource/" title="Resource Limitation" class="dd-item active">
         <a href="/container/docker/container_resource/">
         Resource Limitation
         <i class="fas fa-check read-icon"></i>
@@ -1145,7 +1145,7 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/docker/'>Docker</a> > Docker Basic
+            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/docker/'>Docker</a> > Resource Limitation
           
          
           
@@ -1164,12 +1164,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#docker-hub에서-image-download">Docker Hub에서 Image Download</a></li>
-        <li><a href="#설치된-docker-image-확인하기">설치된 Docker Image 확인하기</a></li>
-        <li><a href="#docker-container-생성하기">Docker Container 생성하기</a></li>
-        <li><a href="#container-목록-및-정보-확인하기">Container 목록 및 정보 확인하기</a></li>
-        <li><a href="#container-삭제하기">Container 삭제하기</a></li>
-        <li><a href="#container-ip-확인하기">Container IP 확인하기</a></li>
+        <li><a href="#memory">Memory</a></li>
+        <li><a href="#cpu">CPU</a></li>
       </ul>
     </li>
   </ul>
@@ -1189,7 +1185,7 @@
           
             <h1>
               
-              Docker Basic
+              Resource Limitation
             </h1>
           
 
@@ -1197,89 +1193,172 @@
 
 
 
-<h3 id="docker-hub에서-image-download">Docker Hub에서 Image Download</h3>
-<p>Docker pull command를 사용하여 DockerHub 에 등록된 이미지 다운로드 합니다. 다운로드할 이미지는 ubuntu 18.04 이미지입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker pull ubuntu:18.04
-18.04: Pulling from library/ubuntu
-5c939e3a4d10:Pull complete
-c63719cdbe7a: Pull complete
-19a861ea6baf: Pull complete
-651c9d2d6c4f: Pull complete
-Digest: sha256:8d31dad0c58f552e890d68bbfb735588b6b820a46e459672d96e585871acc110
-</code></pre></div><h3 id="설치된-docker-image-확인하기">설치된 Docker Image 확인하기</h3>
-<p><strong>docker images</strong> 명령어를 이용하여 설치된 도커 이미지들의 리스트를 확인할 수 있습니다. 제 PC 설치된 이미지 리스트는 아래와 같습니다. 총 5가지 이미지가 설치되어 있네요.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-ubuntu              18.04               ccc6e87d482b        <span style="color:#ae81ff">3</span> days ago          64.2MB
-mysql               5.7                 b598110d0fff        <span style="color:#ae81ff">4</span> days ago          435MB
-wordpress           latest              1b1624b63467        <span style="color:#ae81ff">3</span> weeks ago         539MB
-node                6.11.5              852391892b9f        <span style="color:#ae81ff">2</span> years ago         662MB
-</code></pre></div><p>REPOSITORY와 TAG명 그리고 IMAGE ID가 보입니다. IMAGE ID는 16진수 해쉬값으로 구성되어 있습니다. 그리고 CREATE로 이미지가 생성된 일자, 이미지의 사이즈까지 확인할 수 있습니다.</p>
-<h3 id="docker-container-생성하기">Docker Container 생성하기</h3>
-<h5 id="1-docker-create">1. docker create</h5>
-<p><strong>docker create</strong> 명령어를 실행하여 컨테이너를 생성할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker create -i -t ubuntu:18.04
-9f1be16cd91b3673ac95d77eaf0906405c335f4aaed9e77520a245fa0b33299f
-</code></pre></div><p>이 명령어로 컨테이너를 생성할 시에 랜덤한 16진수 해쉬값이 생성되며, 이 해쉬값은 생성한 컨테이너의 ID가 됩니다.</p>
-<h5 id="2-docker-run">2. docker run</h5>
-<p><strong>docker run</strong> 명렁어를 사용하여 컨테이너를 생성하고 실행할 수 있습니다.
-&lsquo;-i -t&rsquo; 옵션은 각각 입출력과, tty 활성화를 요청하는 옵션입니다. 해당 옵션을 제외하고 실행 시 사용자와의 인터페이스가 실행되지 않고, 컨테이너가 실행된 직 후 바로 종료됩니다.</p>
-<p><strong>docker pull</strong> 로 다운받은 ubuntu 18.04 이미지를 실행하여 보겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker run -i -t ubuntu:18.04
-root@f54e84f31187:/# ps
-PID TTY          TIME CMD
-<span style="color:#ae81ff">1</span> pts/0    00:00:00 bash
-<span style="color:#ae81ff">10</span> pts/0    00:00:00 ps
-root@f54e84f31187:/# exit
-exit
-</code></pre></div><h5 id="3-docker-create-와-docker-run-의-차이점">3. docker create 와 docker run 의 차이점</h5>
-<p><strong>docker create</strong>와 <strong>docker run</strong>의 차이는 컨테이너를 생성하는 것 까지와 생성 후 실행까지 시키느냐에 따른 차이입니다. 아래  이미지에서 docker pull은 컨테이너로 실행할 이미지가 없는 경우 필요한 단계이며, <strong>docker create</strong>는 create 단계에서 멈추며, <strong>docker run</strong>은 start 이후 attach가 동작하게 됩니다.</p>
-<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
- pull[docker pull] --&gt; create[docker create]
- create --&gt; start[docker start]
- start --&gt; attach[docker attach]
-</code></pre><h3 id="container-목록-및-정보-확인하기">Container 목록 및 정보 확인하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps           
-CONTAINER ID     IMAGE            COMMAND          CREATED          STATUS           PORTS            NAMES
-$sudo docker ps -a
-CONTAINER ID     IMAGE            COMMAND          CREATED          STATUS           PORTS            NAMES
-9f1be16cd91b     ubuntu:18.04     <span style="color:#e6db74">&#34;/bin/bash&#34;</span>      <span style="color:#ae81ff">12</span> minutes ago   Created                     vigorous_lumiere
-</code></pre></div><p><strong>docker ps</strong> 명령어는 컨테이너의 리스트를 보여줍니다. <strong>docker images</strong>와는 리스트를 보여주는 것은 같으나, 컨테이너 리스트인지 이미지 리스트인지의 차이입니다. <strong>-a</strong>옵션은 정지된 컨테이너까지 포함하여 출력하여 줍니다.</p>
-<p>특정 컨테이너의 상세한 정보를 보기 위해서 <strong>inspect</strong> 명령어를 사용할 수 있습니다. <strong>inspect</strong> 명령어는 container 내부 명령어인데요, container 외에도 image, volume 등에도 사용이 가능합니다. 사용 방법은 아래와 같습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps -a
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-9f1be16cd91b        ubuntu:18.04        <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">16</span> minutes ago      Created                                 vigorous_lumiere
+<p>컨테이너는 기본적으로 리소스 제한이 없으며 호스트의 커널 스케쥴러에 의해 허용되는 주어진 리소스를 사용할 수 있습니다. 가끔 각 컨테이너 별로 리소스(CPU, Memory 등)를 제한할 필요가 생길 수 있습니다. 이런 경우를 위해 도커에서는 컨테이너 별로 어느 정도의 CPU, Memory 자원을 사용할 지에 대해 제한할 수 있는 방법을 제공하고 있습니다.</p>
+<p>이 기능들이 지원되기 위해서는 커널이 필요로 합니다. 커널에서 지원하는 여부는 <code>docker run</code> 명령어를 사용하여 확인할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo docker info
+<span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> linuxias: 
+Client:
+Debug Mode: false
 
-// docker ps 명령어로 존재하는 컨테이너를 확인하고 inspect 명령어로 상세 정보를 확인하면 아래처럼 출력됩니다.
+Server:
+Containers: <span style="color:#ae81ff">1</span>
+Running: <span style="color:#ae81ff">1</span>
+Paused: <span style="color:#ae81ff">0</span>
+Stopped: <span style="color:#ae81ff">0</span>
+Images: <span style="color:#ae81ff">5</span>
+Server Version: 19.03.5
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: b34a5c8af56e510852c35414db4c1f4fa6172339
+runc version: 3e425f80a8c931f88e6d94a8c831b9d5aa481657
+init version: fec3683
+Security Options:
+apparmor
+seccomp
+Profile: default
+Kernel Version: 4.15.0-76-generic
+Operating System: Ubuntu 16.04.6 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: <span style="color:#ae81ff">8</span>
+Total Memory: 31.36GiB
+Name: desktop
+ID: EKUS:7MJY:7SHK:ORWK:BHEB:3LDT:DLYP:BC66:T6B5:Z7PN:H22E:LNBL
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
 
-$sudo docker container inspect vigorous_lumiere | more
-<span style="color:#f92672">[</span>
-    <span style="color:#f92672">{</span>
-        <span style="color:#e6db74">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;9f1be16cd91b3673ac95d77eaf0906405c335f4aaed9e77520a245fa0b33299f&#34;</span>,
-        <span style="color:#e6db74">&#34;Created&#34;</span>: <span style="color:#e6db74">&#34;2020-01-19T13:33:00.518174743Z&#34;</span>,
-        <span style="color:#e6db74">&#34;Path&#34;</span>: <span style="color:#e6db74">&#34;/bin/bash&#34;</span>,
-        <span style="color:#e6db74">&#34;Args&#34;</span>: <span style="color:#f92672">[</span><span style="color:#f92672">]</span>,
-        <span style="color:#e6db74">&#34;State&#34;</span>: <span style="color:#f92672">{</span>
-            <span style="color:#e6db74">&#34;Status&#34;</span>: <span style="color:#e6db74">&#34;created&#34;</span>,
-            <span style="color:#e6db74">&#34;Running&#34;</span>: false,
-            <span style="color:#e6db74">&#34;Paused&#34;</span>: false,
-...
-</code></pre></div><h3 id="container-삭제하기">Container 삭제하기</h3>
-<p><strong>docker rm</strong> 명령어와 <strong>docker container prune</strong> 명령어를 이용하여 컨테이너를 삭제할 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps -a         
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-9f1be16cd91b        ubuntu:18.04        <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">20</span> minutes ago      Created                                 vigorous_lumiere
-$sudo docker rm vigorous_lumiere
-vigorous_lumiere
-$sudo docker ps -a 
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-</code></pre></div><p>존재하던 컨테이너가 <strong>docker rm</strong> 명령어 이후 삭제되었음을 확인하였습니다. 다양한 컨테이너를 다루다 너무 많은 컨테이너가 생성되었을 경우에는 <strong>docker rm</strong> 명령어로 하나씩 삭제하기가 번거롭습니다. 그때 <strong>docker container prune</strong> 명령어로 모두 삭제가 가능합니다.</p>
-<h3 id="container-ip-확인하기">Container IP 확인하기</h3>
-<p>ubuntu:18.04 이미지를 다운받아 컨테이너로 생성하여 실행하게 되면 네트워크 정보들 간단히 IP 확인하기 위한 ifconfig 툴도 설치가 되어있지 않습니다. ifconfig를 이용하여 ip를 확인하는데, 만약 ifconfig가 설치되어 있지 않다면 net-tools를 설치해줍니다</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker run -i -t ubuntu:18.-4
-root@f54e8a13312:/# apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install net-tools
-...
-root@f54e8a13312:/# ifconfig
+WARNING: No swap limit support
+
+</code></pre></div><p><code>docker run</code> 명령어로 확인 시 가장 아래 <strong>WARNING: No swap limit support</strong> 라는 경고가 발생한다면 아래와 같이 조치하시면 됩니다. 아래 내용은 Docker docs에서 참조한 내용입니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">WARNING</span>: <span style="color:#a6e22e">Your</span> <span style="color:#a6e22e">kernel</span> <span style="color:#a6e22e">does</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">support</span> <span style="color:#a6e22e">swap</span> <span style="color:#a6e22e">limit</span> <span style="color:#a6e22e">capabilities</span>. <span style="color:#a6e22e">Limitation</span> <span style="color:#a6e22e">discarded</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">This</span> <span style="color:#a6e22e">warning</span> <span style="color:#a6e22e">does</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">occur</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">RPM</span>-<span style="color:#a6e22e">based</span> <span style="color:#a6e22e">systems</span>, <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">capabilities</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">default</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">If</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">don</span>’<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">need</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">capabilities</span>, <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">can</span> <span style="color:#a6e22e">ignore</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">warning</span>. <span style="color:#a6e22e">You</span> <span style="color:#a6e22e">can</span> <span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">capabilities</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">Ubuntu</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">Debian</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">following</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">instructions</span>. <span style="color:#a6e22e">Memory</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">swap</span> <span style="color:#a6e22e">accounting</span> <span style="color:#a6e22e">incur</span> <span style="color:#a6e22e">an</span> <span style="color:#a6e22e">overhead</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">about</span> <span style="color:#ae81ff">1</span>% <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">total</span> <span style="color:#a6e22e">available</span> <span style="color:#a6e22e">memory</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">a</span> <span style="color:#ae81ff">10</span>% <span style="color:#a6e22e">overall</span> <span style="color:#a6e22e">performance</span> <span style="color:#a6e22e">degradation</span>, <span style="color:#a6e22e">even</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">running</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Log</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Ubuntu</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">Debian</span> <span style="color:#a6e22e">host</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">privileges</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Edit</span> <span style="color:#a6e22e">the</span> <span style="color:#e6db74">/etc/</span><span style="color:#a6e22e">default</span>/<span style="color:#a6e22e">grub</span> <span style="color:#a6e22e">file</span>. <span style="color:#a6e22e">Add</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">GRUB_CMDLINE_LINUX</span> <span style="color:#a6e22e">line</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">add</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">following</span> <span style="color:#a6e22e">two</span> <span style="color:#a6e22e">key</span>-<span style="color:#a6e22e">value</span> <span style="color:#a6e22e">pairs</span>:<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">GRUB_CMDLINE_LINUX</span>=<span style="color:#e6db74">&#34;cgroup_enable=memory swapaccount=1&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Save</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">close</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">file</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Update</span> <span style="color:#a6e22e">GRUB</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>$ <span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">update</span>-<span style="color:#a6e22e">grub</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">If</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">GRUB</span> <span style="color:#a6e22e">configuration</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">has</span> <span style="color:#a6e22e">incorrect</span> <span style="color:#a6e22e">syntax</span>, <span style="color:#a6e22e">an</span> <span style="color:#a6e22e">error</span> <span style="color:#a6e22e">occurs</span>. <span style="color:#a6e22e">In</span> <span style="color:#a6e22e">this</span> <span style="color:#a6e22e">case</span>, <span style="color:#a6e22e">repeat</span> <span style="color:#a6e22e">steps</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">and</span> <span style="color:#ae81ff">3</span>.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">The</span> <span style="color:#a6e22e">changes</span> <span style="color:#a6e22e">take</span> <span style="color:#a6e22e">effect</span> <span style="color:#a6e22e">when</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">system</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">rebooted</span>.<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="memory">Memory</h3>
+<h4 id="memory-부족의-위험성">Memory 부족의 위험성..?</h4>
+<p>실행 중인 컨테이너가 호스트 시스템의 메모리를 과다하게 사용하는 것은 매우 위험합니다. 컨테이너를 동작 시에 호스트 시스템의 메모리를 너무 많이 사용하지 않도록 주의해 주세요. 리눅스 호스트에서 커널이 시스템을 원활하게 동작시키기 위한 과정 중에 메모리가 부족하다는 것을 감지하면 OOME 또는 OOM 이 발생하고 프로세스를 강제 종료하게 됩니다. 즉 도커 컨테이너를 위함 여러 중요 프로세스들이 종료될 수 있습니다. 원치 않는 종료는 시스템에 큰 영향을 주고 시스템이 종료될 수 도 있으니 주의해주세요!</p>
+<p>과다한 메모리 사용으로 인해 도커 데몬이 커널에 의해 종료되는 위험을 최소화 하기 위한 방안이 있습니다. OOM 우선순위를 변경하여 커널에 의해 종료되는 여러 프로세스 들 중 우선순위를 낮추는 것 입니다. 위 방법은 cgroup memory 자원에 대한 제어 방법에서도 말씀 드린 적이 있습니다. cgroup으로 memory 자원 추상화된 프로세스에 대해 OOM을 disable 함으로서 종료됨을 막고 메모리가 필요하다면 사용할 수 있는 메모리가 생길 때 까지 대기하고 있는 것입니다. 도커 데몬도 위와 같은 방법을 제한합니다. 도커 데몬이 아닌 컨테이너는 OOM 우선 순위가 조정되지 않습니다. 따라서 Docker 데몬이나 다른 시스템 프로세스가 종료되는 것보다 개별 컨테이너가 종료 될 가능성이 높아집니다. 데몬이나 컨테이너에서 수동으로 <code>--oom-score-adj</code>를 최소값으로 설정하거나 컨테이너에서 <code>--oom-kill-disable</code>을 설정하여 이러한 안전 장치를 피하려고 시도해서는 안됩니다. 이 점 꼭 유의해주세요.</p>
+<p>nginx 이미지를 이용하여 메모리가 1GB로 제한되어 있는 컨테이너를 생성해봅시다. 제한된 메모리 설정은 <code>docker inspect</code> 명령어를 사용하여 확인하였습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$sudo docker run -d --memory<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1g&#34;</span> nginx
+WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+5019001493a593b4c7082362a1af05ee754d7c142705ecbb9a5e1306b82abb2d
+
+$sudo docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+5019001493a5        nginx               <span style="color:#e6db74">&#34;nginx -g &#39;daemon of…&#34;</span>   <span style="color:#ae81ff">23</span> seconds ago      Up <span style="color:#ae81ff">22</span> seconds       80/tcp              beautiful_chandrasekhar
+
+
+$sudo docker inspect beautiful_chandrasekhar | grep Memory
+<span style="color:#e6db74">&#34;Memory&#34;</span>: 1073741824,
+<span style="color:#e6db74">&#34;KernelMemory&#34;</span>: 0,
+<span style="color:#e6db74">&#34;KernelMemoryTCP&#34;</span>: 0,
+<span style="color:#e6db74">&#34;MemoryReservation&#34;</span>: 0,
+<span style="color:#e6db74">&#34;MemorySwap&#34;</span>: -1,
+<span style="color:#e6db74">&#34;MemorySwappiness&#34;</span>: null,
+</code></pre></div><p>만약 nginx 컨테이너 내부에서 할당된 1GB의 메모리 이상의 메모리를 사용하게 되면 컨테이너는 자동으로 종료됩니다. 그렇기에 각 컨테이너에 메모리를 할당할 시 적절량을 잘 생각하셔서 할당해 주셔야 합니다. <code>--memory</code> 옵션 외의 메모리와 관련된 옵션을 정리하면 아래와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--memory-swap</code></td>
+<td>디스크로 swap 할 수 있는 메모리 설정</td>
+</tr>
+<tr>
+<td><code>--memory-swappiness</code></td>
+<td>기본적으로 호스트 커널은 컨테이너가 사용하는 익명 페이지의 비율을 바꿀 수 있습니다. &ndash;memory-swappiness를 0에서 100 사이의 값으로 설정하여이 백분율을 조정할 수 있습니다.</td>
+</tr>
+<tr>
+<td><code>--memory-reservation</code></td>
+<td>호스트 시스템에서 경합 또는 메모리 부족을 감지하면 활성화되는 &ndash;memory보다 작은 소프트 제한을 지정할 수 있습니다. &ndash;memory-reservation을 사용하는 경우 우선 순위를 지정하려면 &ndash;memory보다 낮게 설정해야합니다. 소프트 한계이므로 컨테이너가 한계를 초과하지는 않습니다.</td>
+</tr>
+<tr>
+<td><code>--kernel-memory</code></td>
+<td>컨테이너가 사용할 수 있는 커널 메모리의 최대 값입니다. 허용되는 최소값은 4m입니다. 커널 메모리는 스왑아웃 할 수 없기 때문에 커널 메모리가 부족한 컨테이너는 호스트 시스템 리소스를 차단될 수 있으며 이로 인해 호스트 시스템과 다른 컨테이너에 부작용이 발생할 수 있습니다.</td>
+</tr>
+<tr>
+<td>&ndash;oom-kill-disable</td>
+<td>기본적으로 메모리 부족 (OOM) 오류가 발생하면 커널은 컨테이너의 프로세스를 종료합니다. 이 동작을 변경하려면 &ndash;oom-kill-disable 옵션을 사용하십시오. -m /-memory 옵션도 설정 한 컨테이너에서는 OOM 킬러 만 비활성화하십시오. -m 플래그를 설정하지 않으면 호스트에 메모리가 부족할 수 있으며 커널은 메모리를 비우기 위해 호스트 시스템의 프로세스를 종료해야합니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cpu">CPU</h3>
+<p>기본적으로 호스트 시스템에서 동작하는 컨테이너들은 시스템의 CPU 사용량에 제한이 없습니다. 하지만 CPU 사용량을 제한할 수 있는 방법이 있습니다. 대부분 사용자들은 CFS 스케쥴러를 기본으로 사용하고 있지만, Docker 1.13 버전 이상에서는 real-time 스케쥴러로 변경이 가능합니다. 먼저 CFS 스케쥴러에 대한 설정부터 정리해보겠습니다.</p>
+<h4 id="cpu---cfs-스케쥴러">CPU - CFS 스케쥴러</h4>
+<p>CFS 스케쥴러는 리눅스 커널 CPU 스케쥴러입니다. 스케쥴러에 대한 자세한 설명은 생략하겠습니다.</p>
+<h4 id="1---cpus">1. &ndash;cpus</h4>
+<p>컨테이너가 사용할 수 있는 CPU 리소스 양을 지정합니다. 만약 cpu가 8개 있는 호스트 시스템에서 <code>--cpus=0.5</code>로 지정하면 컨테이너는 최대 4개의 CPU 사용을 보장 받을 수 있습니다.</p>
+<h4 id="2---cpu-shares">2. &ndash;cpu-shares</h4>
+<p><code>cpu-shares</code> 옵션은 컨테이너에 가중치를 설정해 해당 컨테이너가 CPU를 상대적으로 얼마나 사용할 수 있는지를 설정할 수 있습니다. 기본적으로 1024가 기본 값으로 설정되어 있습니다. 컨테이너 간 사용하는 상대 비율로써 하나의 컨테이너가 1024, 다른 하나가 2048로 설정되어 있다면, 1:2 의 비율로 CPU 자원을 공유하게 됩니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo docker run -it --cpu-shares <span style="color:#ae81ff">1024</span> ubuntu:18.04
+</code></pre></div><h4 id="3---cpuset-cpu">3. &ndash;cpuset-cpu</h4>
+<p>여러 CPU를 자유롭게 컨테이너들이 사용할 수 있도록 할수도 있지만, 특정 CPU만 사용할 수도 있게 할 수 있습니다. 아래 이미지는 문영일님의 블로그인 문c블로그에서 참조하였습니다. 이미지를 보시면 쉽게 이해가 되실 겁니다.
+<img src="http://jake.dothome.co.kr/wp-content/uploads/2015/12/cgroup2.png" alt="문 c 블로그 cgroup 설명"></p>
+<p>위 방식의 이점은 명확합니다. 코어 스위칭 비용을 없앰으로서 cache miss로 인한 성능저하 등의 문제를 최소화 할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo docker run -it --cpuset-cpus<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --name cpu_test ubuntu:18.04
+root@452468a96c63:/# apt update <span style="color:#f92672">&amp;&amp;</span> apt install stress
+root@452468a96c63:/# stress --cpu <span style="color:#ae81ff">1</span>
+....
+
+다음 호스트 시스템에서 <span style="color:#e6db74">`</span>htop<span style="color:#e6db74">`</span>을 이용하여 확인해봅시다.
+<span style="color:#e6db74">`</span><span style="color:#e6db74">`</span><span style="color:#e6db74">`</span>bash
+$htop
+<span style="color:#ae81ff">1</span>  <span style="color:#f92672">[</span>|                                                                                     0.7%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">5</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
+<span style="color:#ae81ff">2</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">6</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
+<span style="color:#ae81ff">3</span>  <span style="color:#f92672">[</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span>100.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">7</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
+<span style="color:#ae81ff">4</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">8</span>  <span style="color:#f92672">[</span><span style="color:#f92672">||</span>                                                                                    1.3%<span style="color:#f92672">]</span>
+Mem<span style="color:#f92672">[</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span>                                                     4.33G/31.4G<span style="color:#f92672">]</span>   Tasks: 182, <span style="color:#ae81ff">656</span> thr; <span style="color:#ae81ff">2</span> running
+Swp<span style="color:#f92672">[</span>|                                                                              2.00M/31.9G<span style="color:#f92672">]</span>   Load average: 1.04 0.88 0.47 
+Uptime: <span style="color:#ae81ff">1</span> day, 19:25:52
+</code></pre></div><p>CPU 3번(1번부터 0입니다.) 이 100%로 표기되어 있습니다. &ndash;cpuset-cpus=2 옵션으로 인해 ubuntu:18.04 이미지로 생성한 컨테이너에서 stress 테스트 진행하였으니, 3번이 100%임을 확인할 수 있습니다.</p>
+<h4 id="4---cpu-period---cpu-quota">4. &ndash;cpu-period, &ndash;cpu-quota</h4>
+<p>컨테이너의 CFS 주기는 기본적으로 100ms로 설정되어 있습니다. 위 명령어를 사용하여 변경이 가능합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$sudo docker run -it --cpu-period<span style="color:#f92672">=</span><span style="color:#ae81ff">100000</span> --cpu-quota<span style="color:#f92672">=</span><span style="color:#ae81ff">25000</span> --name cpu_test ubuntu:18.04
+<span style="color:#75715e">#apt update &amp;&amp; apt install stress</span>
+<span style="color:#75715e">#stress --cpu 1</span>
+</code></pre></div><p>위와 같이 컨테이너를 생성하고 stress를 설치하여 실행해 봅시다.
+&ndash;cpu-period 100000은 100ms를 의미합니다. &ndash;cpu-quota는 &ndash;cpu-period로 설정된 시간 중 CPU 스케쥴링에 얼마나 할당할 지 설정해 줍니다. 컨테이너가 스로틀링되기 전에 제한되는 마이크로 초 수입니다. 이 기능은 효과적인 한도 역할을합니다. Docker 1.13 이상을 사용하는 경우 앞서 설명한 &ndash;cpus를 대신 사용하는 것을 추천드립니다.</p>
+<p>Docker docs에는 아래와 같이 추천하고 있습니다.</p>
+<h5 id="docker-113-and-higher">Docker 1.13 and higher:</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it --cpus<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.5&#34;</span> ubuntu /bin/bash
+</code></pre></div><h5 id="docker-112-and-lower">Docker 1.12 and lower:</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run -it --cpu-period<span style="color:#f92672">=</span><span style="color:#ae81ff">100000</span> --cpu-quota<span style="color:#f92672">=</span><span style="color:#ae81ff">50000</span> ubuntu /bin/bash
 </code></pre></div>
 
 <footer class=" footline" >
@@ -1644,23 +1723,6 @@ root@f54e8a13312:/# ifconfig
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1723,6 +1785,23 @@ root@f54e8a13312:/# ifconfig
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1733,6 +1812,9 @@ root@f54e8a13312:/# ifconfig
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -2012,10 +2094,10 @@ root@f54e8a13312:/# ifconfig
 	 
 	 
 		
-			<a class="nav nav-prev" href="/container/docker/" title="Docker"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/container/docker/dockerfile/" title="Dockerfile"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/container/docker/2_docker_storage/" title="Storage" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/sw_architecture/" title="3. S/W Architecture" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -309,6 +309,16 @@ Batch Sequential Architecture는 1950~70년대에 많이 사용된 데이터 처
     </item>
     
     <item>
+      <title>Dockerfile</title>
+      <link>https://linuxias.github.io/container/docker/dockerfile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/container/docker/dockerfile/</guid>
+      <description>Docker는 Dockerfile에 정의된 인스트럭션을 이용하여 자동적으로 이미지를 빌드 할 수 있습니다. Dockerfile은 일반적은 텍스트 파일로서 사용자가 이미지를 생성할 때 필요로 하는 모든 명령어들을 포함시킬 수 있습니다. docker build 명령어를 이용하여 사용자는 도커 이미지를 생성할 수 있습니다.
+ubuntu나 centOS 이미지를 DockerHub로 부터 다운받아서 본인의 어플리케이션을 동작시키려 한다면 생각은 쉽지만 쉽게 되지 않습니다. 어플리케이션이 동작하기 위한 여러 환경이 설정되어 있지 않기 때문입니다. 동일한 어플리케이션을 여러 컨테이너에서 동작 시키고자 한다면 각 컨테이너마다 새로운 환경을 구축해 줘야 할 것입니다.</description>
+    </item>
+    
+    <item>
       <title>Hierarchical Software Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -341,6 +351,17 @@ Pipe and Filter 구조의 구성요소는 크게 3가지 입니다.</description
   Pipe and Filter Architecture
   Process Control Architecture에 대해 간략히 정리해보겠습니다.
 Process Control의 가장 큰 특징은 데이터의 흐름이 프로세스의 실행을 제어하는 변수 집합이라는 것입니다. 한 번에 이해하기 어려운 말인 것 같습니다.</description>
+    </item>
+    
+    <item>
+      <title>Resource Limitation</title>
+      <link>https://linuxias.github.io/container/docker/container_resource/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/container/docker/container_resource/</guid>
+      <description>컨테이너는 기본적으로 리소스 제한이 없으며 호스트의 커널 스케쥴러에 의해 허용되는 주어진 리소스를 사용할 수 있습니다. 가끔 각 컨테이너 별로 리소스(CPU, Memory 등)를 제한할 필요가 생길 수 있습니다. 이런 경우를 위해 도커에서는 컨테이너 별로 어느 정도의 CPU, Memory 자원을 사용할 지에 대해 제한할 수 있는 방법을 제공하고 있습니다.
+이 기능들이 지원되기 위해서는 커널이 필요로 합니다. 커널에서 지원하는 여부는 docker run 명령어를 사용하여 확인할 수 있습니다.
+sudo docker info [sudo] password for linuxias: Client: Debug Mode: false Server: Containers: 1 Running: 1 Paused: 0 Stopped: 0 Images: 5 Server Version: 19.</description>
     </item>
     
     <item>
