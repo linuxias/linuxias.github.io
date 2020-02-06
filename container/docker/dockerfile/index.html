@@ -21,20 +21,20 @@
     <title>Dockerfile :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1580908266" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1580908266" rel="stylesheet">
-    <link href="/css/hybrid.css?1580908266" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1580908266" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1580908266" rel="stylesheet">
-    <link href="/css/auto-complete.css?1580908266" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1580908266" rel="stylesheet">
-    <link href="/css/theme.css?1580908266" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1580908266" rel="stylesheet">
+    <link href="/css/nucleus.css?1580993754" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1580993754" rel="stylesheet">
+    <link href="/css/hybrid.css?1580993754" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1580993754" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1580993754" rel="stylesheet">
+    <link href="/css/auto-complete.css?1580993754" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1580993754" rel="stylesheet">
+    <link href="/css/theme.css?1580993754" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1580993754" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1580908266" rel="stylesheet">
+      <link href="/css/theme-purple.css?1580993754" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1580908266"></script>
+    <script src="/js/jquery-3.3.1.min.js?1580993754"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1580908266"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1580908266"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1580993754"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1580993754"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1580908266"></script>
+<script type="text/javascript" src="/js/search.js?1580993754"></script>
 
     
   </div>
@@ -1224,6 +1224,13 @@ net-tools              0.0                 4081bd419bb1        <span style="colo
 <p>파일을 이미지에 추가할 때 사용합니다. Dockerfile이 위치한 경로에 파일을 포함합니다. 아래 예제는 Dockerfile이 존재하는 경로의 test.txt 파일을 생성하는 이미지의 /home/ 경로에 추가합니다. 두 번째 예제는 3개의 텍스트 파일을 /home/ 경로에 추가하는 내용입니다. 이 처럼 여러 파일을 한 번에 명시할 수도 있습니다.</p>
 <pre><code>ADD test.txt /home/
 ADD [test.txt test1.txt test2.txt /home/]
+</code></pre><p>ADD는 로컬에 있는 파일 뿐만아니라 URL을 명시하면 해당 URL의 파일을 복사해줍니다. 또한 tar 파일도 지원합니다. tar도 일반적인 파일인데, 뭐가 다를까라고 생각하실 수 있지만, ADD로 tar 파일을 추가 시 tar 파일의 압축을 풀어 내부 파일들을 해당 경로에 복사해줍니다. tar 파일 그 자체를 복사하는 것이 아니죠.</p>
+<pre><code>ADD https://this/is/test/url.html /home/
+ADD test_comp.tar /home/
+</code></pre><h5 id="copy">COPY</h5>
+<p>ADD와 유사하게 파일을 이미지에 복사해 줍니다. COPY는 로컬에 존재하는 파일만 복사를 해주는 것이 ADD와 유사합니다. 하지만 COPY는 ADD에서 지원하는 URL, tar 파일에 대한 것은 지원하지 않습니다.</p>
+<pre><code>COPY test.txt /home/
+COPY [test.txt test1.txt test2.txt /home/]
 </code></pre><h5 id="workdir">WORKDIR</h5>
 <p><code>cd</code> 명령어와 같습니다. 생성한 이미지의 /tmp 디렉터리로 이동하는 예시 입니다.</p>
 <pre><code>WORKDIR /tmp
@@ -1248,7 +1255,10 @@ CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/bin/ba
 <h5 id="arg">ARG</h5>
 <p><code>docker build</code> 명령어 실행 시 추가로 입력을 받아 Dockefile 내부에서 사용될 변수의 값을 설정할 수 있습니다.</p>
 <h5 id="user">USER</h5>
-<p>기본적으로 컨테이너 실행 시 <code>root</code> 권한으로 실행 됩니다. 만약 다른 사용자 계정으로 실행하고자 할 때 <code>USER</code>를 사용합니다.</p>
+<p>기본적으로 컨테이너 실행 시 <code>root</code> 권한으로 실행 됩니다. 만약 다른 사용자 계정으로 실행하고자 할 때 <code>USER</code>를 사용합니다. root 가 아닌 <code>linuxias</code> 란 계정으로 시작하길 원하신다면 아래와 같이 작성해 줍니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">USER linuxias
+</code></pre></div><h5 id="entrypoint">ENTRYPOINT</h5>
+<p>매우 매우 중요한 !!! 내용!. 앞서 컨테이너가 시작할 때 실행할 명령어를 설정해주는 방법으로 <code>CMD</code>를 설명하였습니다. <code>CMD</code> 와 유사한 기능을 하는 것이 ENTRYPOINT 입니다.</p>
 <h3 id="참고자료">참고자료</h3>
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></li>
@@ -2002,19 +2012,19 @@ CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/bin/ba
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1580908266"></script>
-    <script src="/js/perfect-scrollbar.min.js?1580908266"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1580908266"></script>
-    <script src="/js/jquery.sticky.js?1580908266"></script>
-    <script src="/js/featherlight.min.js?1580908266"></script>
-    <script src="/js/highlight.pack.js?1580908266"></script>
+    <script src="/js/clipboard.min.js?1580993754"></script>
+    <script src="/js/perfect-scrollbar.min.js?1580993754"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1580993754"></script>
+    <script src="/js/jquery.sticky.js?1580993754"></script>
+    <script src="/js/featherlight.min.js?1580993754"></script>
+    <script src="/js/highlight.pack.js?1580993754"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1580908266"></script>
-    <script src="/js/learn.js?1580908266"></script>
-    <script src="/js/hugo-learn.js?1580908266"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1580993754"></script>
+    <script src="/js/learn.js?1580993754"></script>
+    <script src="/js/hugo-learn.js?1580993754"></script>
 
-    <link href="/mermaid/mermaid.css?1580908266" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1580908266"></script>
+    <link href="/mermaid/mermaid.css?1580993754" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1580993754"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
