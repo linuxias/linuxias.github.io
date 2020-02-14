@@ -308,6 +308,13 @@
 	"content": ""
 },
 {
+	"uri": "https://linuxias.github.io/linux/tips/",
+	"title": "Tips",
+	"tags": [],
+	"description": "",
+	"content": "시스템에서 kernel config 확인하기 본인의 리눅스 시스템 마다 3개 중 하나를 사용할 수 있습니다.\ncat /proc/config.gz cat /boot/config cat /boot/config-$(uname -r) "
+},
+{
 	"uri": "https://linuxias.github.io/sw_architecture/sw_design_corruption/",
 	"title": "소프트웨어 설계의 부패",
 	"tags": [],
