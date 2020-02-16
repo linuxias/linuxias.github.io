@@ -21,20 +21,20 @@
     <title>Dockerfile :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1581685176" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1581685176" rel="stylesheet">
-    <link href="/css/hybrid.css?1581685176" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1581685176" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1581685176" rel="stylesheet">
-    <link href="/css/auto-complete.css?1581685176" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1581685176" rel="stylesheet">
-    <link href="/css/theme.css?1581685176" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1581685176" rel="stylesheet">
+    <link href="/css/nucleus.css?1581863589" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1581863589" rel="stylesheet">
+    <link href="/css/hybrid.css?1581863589" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1581863589" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1581863589" rel="stylesheet">
+    <link href="/css/auto-complete.css?1581863589" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1581863589" rel="stylesheet">
+    <link href="/css/theme.css?1581863589" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1581863589" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1581685176" rel="stylesheet">
+      <link href="/css/theme-purple.css?1581863589" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1581685176"></script>
+    <script src="/js/jquery-3.3.1.min.js?1581863589"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1581685176"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1581685176"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1581863589"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1581863589"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1581685176"></script>
+<script type="text/javascript" src="/js/search.js?1581863589"></script>
 
     
   </div>
@@ -1276,7 +1276,8 @@ CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/bin/ba
 <h5 id="user">USER</h5>
 <p>기본적으로 컨테이너 실행 시 <code>root</code> 권한으로 실행 됩니다. 만약 다른 사용자 계정으로 실행하고자 할 때 <code>USER</code>를 사용합니다. root 가 아닌 <code>linuxias</code> 란 계정으로 시작하길 원하신다면 아래와 같이 작성해 줍니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">USER linuxias
-</code></pre></div><h5 id="entrypoint">ENTRYPOINT</h5>
+</code></pre></div><p>이때 유의할 점은현재 존재하는 사용자여야 합니다. <code>adduser</code> 명령어를 이용하여 미리 사용자를 만들어놓던지, <code>volume</code>을 이용하여 /etc/passwd 파일을 사용하도록 하고 호스트머신에 존재하는 사용자를 <code>USER</code>명령어로 사용합니다.</p>
+<h5 id="entrypoint">ENTRYPOINT</h5>
 <p>매우 매우 중요한 !!! 내용!. 앞서 컨테이너가 시작할 때 실행할 명령어를 설정해주는 방법으로 <code>CMD</code>를 설명하였습니다. <code>CMD</code> 와 유사한 기능을 하는 것이 ENTRYPOINT 입니다.</p>
 <h3 id="참고자료">참고자료</h3>
 <ul>
@@ -2047,19 +2048,19 @@ CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/bin/ba
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1581685176"></script>
-    <script src="/js/perfect-scrollbar.min.js?1581685176"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1581685176"></script>
-    <script src="/js/jquery.sticky.js?1581685176"></script>
-    <script src="/js/featherlight.min.js?1581685176"></script>
-    <script src="/js/highlight.pack.js?1581685176"></script>
+    <script src="/js/clipboard.min.js?1581863589"></script>
+    <script src="/js/perfect-scrollbar.min.js?1581863589"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1581863589"></script>
+    <script src="/js/jquery.sticky.js?1581863589"></script>
+    <script src="/js/featherlight.min.js?1581863589"></script>
+    <script src="/js/highlight.pack.js?1581863589"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1581685176"></script>
-    <script src="/js/learn.js?1581685176"></script>
-    <script src="/js/hugo-learn.js?1581685176"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1581863589"></script>
+    <script src="/js/learn.js?1581863589"></script>
+    <script src="/js/hugo-learn.js?1581863589"></script>
 
-    <link href="/mermaid/mermaid.css?1581685176" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1581685176"></script>
+    <link href="/mermaid/mermaid.css?1581863589" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1581863589"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
