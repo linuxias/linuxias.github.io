@@ -287,17 +287,6 @@ Deliberative Agents Deliberative Agents는 명확하게 표현되어 질 수 있
     </item>
     
     <item>
-      <title>[TOOL] LTTng</title>
-      <link>https://linuxias.github.io/linux/profile/lttng/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://linuxias.github.io/linux/profile/lttng/</guid>
-      <description>LTTng는 리눅스 프로파일링을 위한 오픈소스 트레이싱 프레임워크입니다. LTTng는 Linux Trace Toolkit: next generation 의 약자로 리눅스 커널, 사용자 어플리케이션(C/C++, java, python), 라이브러리를 트레이싱할 수 있습니다.
-LTTng 구성 LTTng 는 크게 3가지 모듈로 구성되어 있습니다.
- lttng-ust : 사용자 어플리케이션을 추적하기 위한 라이브러리 lttng-tools : tracing session을 관리, 제어하기 위한 라이브러리들과 명령어 인터페이스 lttng-modules : 커널 추적을 위한 리눅스 커널 모듈  각 모듈에 대한 설명과 설치 방법 등은 아래 URL을 참조하면 됩니다.</description>
-    </item>
-    
-    <item>
       <title>Batch Sequential Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -307,6 +296,16 @@ LTTng 구성 LTTng 는 크게 3가지 모듈로 구성되어 있습니다.
 Batch Sequential Architecture는 이전 글에서 정리한 Data Flow Software Architecture 중 하나입니다. 참고가 필요하신 분은 해당 글을 확인해주세요.
 [S/W Architecture] Data Flow Software Architectures
 Batch Sequential Architecture는 1950~70년대에 많이 사용된 데이터 처리 모델입니다. 데이터는 하나의 서브시스템에서 다음 서브시스템으로 데이터로 전달됩니다. 각 데이터 전송 서브시스템 또는 모듈은 이전 서브시스템의 데이터 처리가 끝나기 전에는 스스로 시작할 수 없습니다. 정리하자만 A-B 로 연결된 Batch Sequential Architecture에서 B는 A가 모든 데이터 처리를 완료한 후 결과 데이터가 출력되기 전까지 스스로 독립적으로 시작할 수 없습니다.</description>
+    </item>
+    
+    <item>
+      <title>CPU Profiling</title>
+      <link>https://linuxias.github.io/linux/profile/cpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/profile/cpu/</guid>
+      <description>CPU Analysis uptime 시스템 부하 평균을 표시한다. load average의 값은 앞에서부터 1분, 5분, 15분 동안의 평균 부하이다.
+uptime 08:41:55 up 1 day, 17:41, 4 users, load average: 0.28, 0.24, 0.27 부하평균은 CPU 자원에 대한 요구사항으로써, ** 실행 중인 스레드 개수 + 대기열의 스레드 개수 **이다. 만약 부하 평균이 호스트 머신의 CPU 개수보다 크면 스레드를 처리하기에 CPU가 부족한 상황이며, 대기열에 여러 스레드가 CPU를 할당받기 위해 대기하고 있는 상태라고 파악할 수 있다.</description>
     </item>
     
     <item>
@@ -337,6 +336,17 @@ ubuntu나 centOS 이미지를 DockerHub로 부터 다운받아서 본인의 어�
       <guid>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</guid>
       <description>Hierarchical Software Architecture, 한국어로 계층적 소프트웨어 아키텍처라 불리는 아키텍처에 대해 정리하겠습니다.
 Hierarchical Architecture는 전체 시스템을 계층 구조적으로 나뉘어져 있으며 계층적으로 서로 다른 레벨의 서브시스템으로 구성되어 있습니다. Hierarchical Architecture는 매우 다양한 곳에서 사용되고 있습니다. 운영체제, 네트워크 프로토콜 계층들, 인터프리터, 그 외 다양한 곳에서 사용되고 있는데요, 이 아키텍처의 가장 대표적인 구조로서 여러분들이 가장 많이 접해본 아키텍처의 한 예가 안드로이드 일 것 같습니다. 위 안드로이드 아키텍처를 보시면 Applications, Application Framework, Libraries, Linux Kernel 까지 여러 개의 서브시스템이 계층적으로 구성되어 하나의 시스템을 이루고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>LTTng</title>
+      <link>https://linuxias.github.io/linux/profile/lttng/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/profile/lttng/</guid>
+      <description>LTTng는 리눅스 프로파일링을 위한 오픈소스 트레이싱 프레임워크입니다. LTTng는 Linux Trace Toolkit: next generation 의 약자로 리눅스 커널, 사용자 어플리케이션(C/C++, java, python), 라이브러리를 트레이싱할 수 있습니다.
+LTTng 구성 LTTng 는 크게 3가지 모듈로 구성되어 있습니다.
+ lttng-ust : 사용자 어플리케이션을 추적하기 위한 라이브러리 lttng-tools : tracing session을 관리, 제어하기 위한 라이브러리들과 명령어 인터페이스 lttng-modules : 커널 추적을 위한 리눅스 커널 모듈  각 모듈에 대한 설명과 설치 방법 등은 아래 URL을 참조하면 됩니다.</description>
     </item>
     
     <item>

@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>[Agent] MAS (Multi-agent System) :: Developer&#39;s Delight</title>
+    <title>CPU Profiling :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1581942749" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/machinelearning/agent/agent_mas/">
+  <body class="" data-url="/linux/profile/cpu/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -88,7 +88,7 @@
   
     
     <li data-nav-id="/linux/" title="1. Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -117,7 +117,7 @@
   
     
     <li data-nav-id="/linux/profile/" title="Profile" class="dd-item 
-        
+        parent
         
         
         ">
@@ -143,7 +143,7 @@
  
   
     
-      <li data-nav-id="/linux/profile/cpu/" title="CPU Profiling" class="dd-item ">
+      <li data-nav-id="/linux/profile/cpu/" title="CPU Profiling" class="dd-item active">
         <a href="/linux/profile/cpu/">
         CPU Profiling
         <i class="fas fa-check read-icon"></i>
@@ -906,7 +906,7 @@
   
     
     <li data-nav-id="/machinelearning/" title="4. Machine Learning" class="dd-item 
-        parent
+        
         
         
         ">
@@ -990,7 +990,7 @@
   
     
     <li data-nav-id="/machinelearning/agent/" title="Software Agent" class="dd-item 
-        parent
+        
         
         
         ">
@@ -1054,7 +1054,7 @@
  
   
     
-      <li data-nav-id="/machinelearning/agent/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item active">
+      <li data-nav-id="/machinelearning/agent/agent_mas/" title="[Agent] MAS (Multi-agent System)" class="dd-item ">
         <a href="/machinelearning/agent/agent_mas/">
         [Agent] MAS (Multi-agent System)
         <i class="fas fa-check read-icon"></i>
@@ -1238,7 +1238,7 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/machinelearning/'>4. Machine Learning</a> > <a href='/machinelearning/agent/'>Software Agent</a> > [Agent] MAS (Multi-agent System)
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/profile/'>Profile</a> > CPU Profiling
           
          
           
@@ -1257,7 +1257,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#mas-multi-agent-system">MAS (Multi-agent System)</a></li>
+        <li><a href="#uptime">uptime</a></li>
+        <li><a href="#vmstat">vmstat</a></li>
+        <li><a href="#mpstat-multiprocessor-statistics-tool">mpstat (multiprocessor statistics tool)</a></li>
+        <li><a href="#sar-system-activity-reporter">sar (system activity reporter)</a></li>
       </ul>
     </li>
   </ul>
@@ -1277,7 +1280,7 @@
           
             <h1>
               
-              [Agent] MAS (Multi-agent System)
+              CPU Profiling
             </h1>
           
 
@@ -1285,105 +1288,72 @@
 
 
 
-<h3 id="mas-multi-agent-system">MAS (Multi-agent System)</h3>
-<p>현재 세계의 시스템에선 하나의 agent로는 모든 처리를 할 수 없습니다. 그래서 각각의 기능을 담당하는 여러 agent를 생성하여 협업 또는 조율하게 만드는 방법을 사용하기도 합니다. 이번 글에서는 MAS, Multi-agent System에 대해 정리해보겠습니다.</p>
-<p>Multi-agent System (지금부턴 MAS라 칭하겠습니다.)은 시스템 내에 여러 agent를 가지고 있는 시스템입니다. 각 agent 간 커뮤니케이션을 통해 상호작용을 하게 되고, 서로 다른 작업을 하기에 &ldquo;spheres of influence&rdquo; 라고 불리는 자신만의 환경 영역을 가지고 있습니다. 즉 변화하는 환경에 대해 영향을 받거나 주는 환경이 다를 수 있습니다. 분산 AI 측면에서 MAS를 살펴보면 하나의 Agent로는 해결하기 어려운 문제들을 여러 Agent가 서로 보유한 다른 정보들과 능력을 이용하여 해결하게 됩니다. 문제의 해를 찾기위해 함께 동작하게 되며 서로간은 루즈하게 결합되어 있습니다. 각각의 agent는 문제 해결을 위해 불완전한 기능들을 가지고 있습니다. 하나의 agent만으로는 문제 해결이 불가능하단 얘기이죠. 또한 MAS는 중계자, 전체 시스템을 컨트롤하는 녀석이 별도로 존재하지 않고 각 데이터도 agent들에게 분산되어 있기에 탈 중앙화 시스템입니다. 이러한 탈 중앙화로 보안성과 안정성이 확보되었습니다. 개별적으로 agent가 동작할 수 있기에 비동기적으로 동작되는 시스템입니다.</p>
-<p>MAS에서 agent가 모두 협렵하는 방식으로 구성되는 건 아닙니다. agent들이 서로 경쟁하도록 만들수도 있죠. 문제해결을 위한 방법 중 하나인데요. 하나의 문제를 협력하여 해결하는게 아니라 서로 경쟁시킴으로써 가장 좋은 해를 구할 수 있게 됩니다. 뭐가 더 좋은지는 상황에 따라 다르겠지요. 좀 더 자세히 Cooperative MAS와 Competitive of Self-interested MAS에 대해 정리해 보죠 </p>
-<h4 id="cooperative-mas">Cooperative MAS</h4>
-<ol>
-<li>대표적인 MAS domain입니다.</li>
-<li>분산 문제 해결로 각 agent는 자율성이 낮습니다.</li>
-<li>협력과 팀웍을 위한 모델로써 각자 새우는 계획이 다릅니다. 다른 동작을 하기 때문이죠.</li>
-</ol>
-<h4 id="competitie-of-self-interested-mas">Competitie of Self-interested MAS</h4>
-<ol>
-<li>분산된 합리성입니다. 투표나 경쟁하는 시스템입니다.</li>
-<li>협상 등에 자주 사용되는 모델입니다.</li>
-</ol>
-<p>MAS의 전통적인 모델은 서버-클라이언트 모델이였습니다. 서버-클라이언트 간 커뮤니케이션 또한 매우 Low-level의 메시지들을 사용하였으며 동기적으로 동작하였습니다. 클라이언트가 요청하면 서버가 응답하는 구조였죠. 하지만 지금은 여러 Agents들이 Peer-to-Peer로 연결되어 있으며 서버라는 개념이 없습니다. 캡슐화된 메시징 기법으로 보안성도 강화화였으며 High-level의 메시지 프로토콜들을 사용하게 되었습니다. MAS를 연구하는 사람들은 Agent간 커뮤니케이션을 매우 중요하게 생각하였습니다. 그래서 멀티 시스템에 맞는 Communication Language, Interaction Protocol 들을 개발하게 되었지요. 개발에 영감을 준건 곤충의 군집생활입니다. 이런 MAS와 같은 시스템에 좋은 본보기가 될 수 있죠. 공통의 목적을 위해 어떻게 군집활동을 하고 어떻게 커뮤니케이션하며 어떠한 룰을 정하는가와 같은 점을 토대로 만들었습니다.</p>
-<p>그럼 유명한 MAS 몇개 모델만 간단히 정리해보겠습니다. </p>
-<h5 id="object-manager-group-omg">Object Manager Group (OMG)</h5>
-<p>일반적인 패턴들과 정책들을 사용하여 협업하는 에이전트들과 에이전시들로 구성되어 있습니다. 에이전트는 능력, 상호협력의 타입으로 특정지어지며 에이전스들은 에이전트들의 동시 실행, 보안 등을 지원하는 녀석입니다. </p>
-<h5 id="fipafoundation-for-intelligent-physical-agentss-model">FIPA(Foundation for Intelligent Physical Agents)&lsquo;s Model</h5>
-<p>Agents, Agent Platform, Directory Facilitator, Agent Management System, Agent Communication Channel, Agent Communication Language 로 구성되어 있는 모델입니다.</p>
-<h5 id="kaoss-model">KAoS&rsquo;S Model</h5>
-<p>에이전트를 위한 개방형 분산 아키텍쳐입니다. 다양한 에이전트 구현들을 정의하고 있으며 에이전트 간 커뮤니케이션을 위해 대화 정책을 사용합니다.</p>
-<h5 id="oaa-model">OAA Model</h5>
-<p>User Interface, NL to ICL, Application, Meta에이전트들과 이 에이전트들이 커뮤니케이션을 하는 Facilitator 에이전트로 구성되어 있습니다. 어플리케이션은 API를 통해 Application Agent를 사용하게 되고 User Interface 에이전트는 사용자의 요청등을 처리하게 됩니다. 각 에이전트간의 커뮤니케이션은 모두 Facilitator 에이전트가 중재하게 되는 구조입니다.</p>
-<h5 id="general-magics-model">General Magic&rsquo;s Model</h5>
-<p>전자상거래를 위한 금융 에이전트로 시작되었습니다. </p>
-<h5 id="zeus-mas-development-toolkil">Zeus (MAS development toolkil)</h5>
-<p>MAS 개발을 위한 개발도구 입니다.</p>
-<p>MAS의 각 Agent들은 서로 조직을 이루기 위해 다른 기능을 가지고 있는데요, 그 기능들 사이의 종속성들을 관리하는 과정을 Coordination이라고 합니다. Coordination을 통해 순서나 병렬적 수행들을 관리할 수 있죠. 이런 Coordination은 Activity, Conversation, Implementation 3가지 측면에서 살펴보겠습니다. </p>
-<ol>
-<li>
-<p>Activity<br>
-실행해야 할 행위가 무엇인지 언제 실행되어야 하는지에 대한 것입니다. 분산 태스크에 대해 Statechart나 Flowchart, process algebra 등으로 표현할 수 있습니다.</p>
-</li>
-<li>
-<p>Conversation (State)<br>
-협력하는 개체들간의 대화 구조가 무엇인지에 대한 것입니다. FSM, Petri-Nets, State Transition Diagram 등이 있습니다.</p>
-</li>
-<li>
-<p>Implementation<br>
-어떻게 분산 시스템을 구현할지 협력하는 행위들의 요소들이 어디에 위치해야 할지에 대한 것입니다.</p>
-</li>
-</ol>
-<p>또한 MAS는 기본 협업 메커니즘(Coordination mechanism)에 기초한 지식을 교환하여 단일 목표에 도달하기 위해 에이전트 간 협업을 합니다. 대표적인 예시가 CNP(Contract Net protocol)입니다. CNP는 4개의 Phase로 구성되어 있습니다.</p>
+<h1 id="cpu-analysis">CPU Analysis</h1>
+<h3 id="uptime">uptime</h3>
+<p>시스템 부하 평균을 표시한다. load average의 값은 앞에서부터 1분, 5분, 15분 동안의 평균 부하이다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uptime
+ 08:41:55 up <span style="color:#ae81ff">1</span> day, 17:41,  <span style="color:#ae81ff">4</span> users,  load average: 0.28, 0.24, 0.27
+</code></pre></div><p>부하평균은 CPU 자원에 대한 요구사항으로써, ** 실행 중인 스레드 개수 + 대기열의 스레드 개수 **이다. 만약 부하 평균이 호스트 머신의 CPU 개수보다 크면 스레드를 처리하기에 CPU가 부족한 상황이며, 대기열에 여러 스레드가 CPU를 할당받기 위해 대기하고 있는 상태라고 파악할 수 있다.</p>
+<h3 id="vmstat">vmstat</h3>
+<p>vmstat은 가상 메모리 통계 정보를 제공한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free     buff    cache    si   so    bi    bo   in   cs us sy id wa st
+ <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1024</span> <span style="color:#ae81ff">12837676</span> <span style="color:#ae81ff">7238384</span> <span style="color:#ae81ff">10378596</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">14</span>    <span style="color:#ae81ff">39</span>   <span style="color:#ae81ff">24</span>   <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">97</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</code></pre></div><p>위 컬럼에서 아래 정보에서 각 컬럼에 대한 내용은 아래와 같다.</p>
 <ul>
-<li>
-<p>Phase 1 - Task Announcement<br>
-계약 에이전트가 태스크를 수행할 능력이 있는 에이전트들이 나타나도록 브로드캐스팅합니다. 그 태스크를 수행하기 위한 잠재적 후보자들을 평가하기 위함입니다.</p>
-</li>
-<li>
-<p>Phase 2 - Submission of Bids / Proposal<br>
-요구를 만족하고 태스크를 수행할 능력이 있는 에이전트들은 계약 에이전트에게 입찰을 하게 됩니다. 본인이 해당 태스크를 처리할 수 있도록 말이죠.</p>
-</li>
-<li>
-<p>Phase 3 - Selection<br>
-계약 에이전트는 받은 입찰들을 기반으로 최종 후보자를 선택하는 과정을 진행합니다.</p>
-</li>
-<li>
-<p>Phase 4 - Contract awarding<br>
-계약 에이전트, 최종 선택된 에이전트간 계약이 성립되고 상호 커뮤니케이션을 위한 채널이 생성됩니다.</p>
-</li>
+<li>r : 실행 중이거나 실행을 위해 기다리는 프로세스 개수</li>
+<li>us : 사용자 시간</li>
+<li>sy : 시스템 시간</li>
+<li>id : 유휴</li>
+<li>wa : I/O 대기. 스레드가 디스크 I/O를 기다리느라 블록된 것을 표시</li>
 </ul>
-<p>위와 같은 단계를 거쳐 Collaboration이 일어나게 됩니다. 일반 사회에서 일어나는 경매 시스템과 비슷한 것을 느끼시나요? 그에 맞춰서 이해하셔도 좋을 것 같습니다.</p>
-<p>이 글의 앞부분에서 MAS는 Cooperative와 Competitive 모델이 있다고 했습니다. Competitive보단 Cooperative가 많이 사용되는데 Competitive 모델을 디자인하는데 몇 가지 이슈를 확인해보겠습니다. </p>
-<p>첫 번째 이슈는 Distributed Rationality입니다. Distributed Rationality는 Self-interested Agent 들이 샌드 박스에서 공정하게 경쟁하도록 유도하거나 강제하는 기술입니다. 모든 에이전트들의 의견을 취합하는 투표방식이나 모든 에이전트들이 얼마나 공정하게 기회를 부여받을지에 대한 경쟁등이 있습니다. 공정성, 안정성, 거짓말, 전역적으로 사용성을 높이기 위한 방안 등에 대한 이슈입니다. </p>
-<p>두 번째 이슈는 Pareto optimality(파레토 효율성)입니다. Pareto Optimality는 [1]어떤 경제주체가 새로운 거래를 통해 예전보다 유리해지기 위해서는 반드시 다른 경제주체가 예전보다 불리해져야만 하는 자원배분상태를 의미합니다. 최적화를 위해서 단편적으로 보아서는 안되며 여러 측면에서 고려가 필요한 문제입니다. </p>
-<p>마지막으로 Stability(안정성)입니다. 만약 어느 에이전트가 특정 전략을 가지고 다른 에이전트들의 행동과 관련없이 사용성을 항상 최대화 할 수 있다면 어떻까요? 다른 에이전트의 전략을 고려할 때 각 에이전트의 전략이 지역 최적인 경우 에이전트 전략 집합은 [2]내쉬 균형(<a href="https://terms.naver.com/entry.nhn?docId=778576&amp;ref=y">게임이론</a>의 개념으로서 각 참여자(Player)가 상대방의 전략을 주어진 것으로 보고 자신에게 최적인 전략을 선택할 때 그 결과가 균형을 이루는 최적 전략의 집합을 말한다)에 있습니다. 그렇게 되면 전략을 변경하려는 에이전트도 없을 것입니다. </p>
-<p>MAS를 어떤 플로우로 개발하는지 살펴보겠습니다.</p>
-<ol>
-<li>
-<p>특정 문제를 해결하기 위한 MAS 구성을 정의한다.</p>
-</li>
-<li>
-<p>Coordination mechanism을 결정한다.</p>
-</li>
-<li>
-<p>MAS를 구현하기 위한 프레임워크(Zeus 같은)를 선택한다.</p>
-</li>
-<li>
-<p>MAS를 지원할 Collaborative mechanism을 구현한다.</p>
-</li>
-<li>
-<p>Shared ontology를 구현한다.</p>
-</li>
-<li>
-<p>각 태스크 에이전트를 구현한다.</p>
-</li>
-<li>
-<p>중간자 에이전트를 커스터마이징 한다. (Facilitators, Mediators, Brokers, &hellip;)</p>
-</li>
-</ol>
-<p>큰 그림부터 필요한 요소들을 하나하나 선택, 결정하고 구현하는 단계를 거칩니다.</p>
-<p>이러한 MAS는 다양한 곳에서 사용됩니다. 인터넷에서 정보검색을 하거나 보안 강화나 전자상거래의 쇼핑 에이전트들, 분산 신호처리 시스템 등에서 다양하게 사용됩니다.</p>
-<p>뭔가 주절주절 나열한 것 같습니다. 이해가 안되시는 부분이나 잘못된 부분은 언제든지 댓글로 남겨주세요. </p>
-<p>감사합니다.</p>
-<p>[1] https://terms.naver.com/entry.nhn?docId=3437709&amp;cid=58393&amp;categoryId=58393</p>
-<p>[2] https://terms.naver.com/entry.nhn?docId=778808&amp;cid=42085&amp;categoryId=42085</p>
+<h3 id="mpstat-multiprocessor-statistics-tool">mpstat (multiprocessor statistics tool)</h3>
+<p>CPU 별 통계 확인 가능</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mpstat -P ALL <span style="color:#ae81ff">1</span>
+Linux 4.15.0-76-generic <span style="color:#f92672">(</span>linuxias<span style="color:#f92672">)</span> 	2020년 02월 17일 	_x86_64_	<span style="color:#f92672">(</span><span style="color:#ae81ff">8</span> CPU<span style="color:#f92672">)</span>
 
+       CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+       all    5.02    0.00    7.78    0.00    0.00    0.00    0.00    0.00    0.00   87.20
+         <span style="color:#ae81ff">0</span>    0.99    0.00    1.98    0.00    0.00    0.00    0.00    0.00    0.00   97.03
+         <span style="color:#ae81ff">1</span>    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+         <span style="color:#ae81ff">2</span>    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+         <span style="color:#ae81ff">3</span>    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+         <span style="color:#ae81ff">4</span>   37.62    0.00   59.41    0.00    0.00    0.00    0.00    0.00    0.00    2.97
+         <span style="color:#ae81ff">5</span>    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+         <span style="color:#ae81ff">6</span>    0.00    0.00    1.01    0.00    0.00    0.00    0.00    0.00    0.00   98.99
+         <span style="color:#ae81ff">7</span>    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+
+</code></pre></div><p>mpstat을 실행한 호스트머신에는 8개의 CPU가 있으며 각 통계정보는 위와 같다. 각 정보가 표시하는 내역은 다음과 같다.</p>
+<ul>
+<li>CPU : 논리적 CPU ID</li>
+<li>%usr : 사용자 시간</li>
+<li>%nice : nice가 지정된 프로세스의 사용자 시간</li>
+<li>%sys : 시스템 시간</li>
+<li>%iowatit : I/O 대기</li>
+<li>%irq : 하드웨어 인터럽트 CPU 사용률</li>
+<li>%soft : 소프트웨어 인터럽트 CPU 사용률</li>
+<li>%guest : 게스트 가상 머신을 실행하는데 사용한 시간</li>
+<li>%idle : 유휴 시간</li>
+</ul>
+<p>위 정보를 기반으로 현재 호스트머신의 대부분의 CPU는 idle 상태이며, 4번 CPU에서 특정한 작업이 이뤄지고 있고 있음을 알 수 있다. usr / sys / idle 항목을 잘 확인하면 CPU 별 CPU 사용률과 사용자, 커널 사용 시간에 대한 비율을 확인할 수 있다. 사용자 어플리케이션이 코드를 실행하는 데 소모한 CPU 시간이 <code>usr</code> 이며, 커널 영역 코드 실행하는데 걸린 시간이 <code>sys</code>이다. 커널 시간에는 시스템 콜 처리 시간, 커널 스레드가 보낸 시간, 인터럽트 처리 시간 등이 포함된다.</p>
+<h3 id="sar-system-activity-reporter">sar (system activity reporter)</h3>
+<p><code>sar</code> 는 <code>mpstat</code>와 유사하게 사용되며 현재 시스템 상태를 관찰하고, 과거 통계 정보를 저장하도록 할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sar -P ALL <span style="color:#ae81ff">1</span>
+Linux 4.15.0-76-generic <span style="color:#f92672">(</span>linuxias<span style="color:#f92672">)</span> 	2020년 02월 17일 	_x86_64_	<span style="color:#f92672">(</span><span style="color:#ae81ff">8</span> CPU<span style="color:#f92672">)</span>
+
+                CPU     %user     %nice   %system   %iowait    %steal     %idle
+                all      5.75      0.00      8.12      0.00      0.00     86.12
+                  <span style="color:#ae81ff">0</span>      3.00      0.00      5.00      0.00      0.00     92.00
+                  <span style="color:#ae81ff">1</span>      0.99      0.00      0.99      0.00      0.00     98.02
+                  <span style="color:#ae81ff">2</span>      7.92      0.00      7.92      0.00      0.00     84.16
+                  <span style="color:#ae81ff">3</span>      1.00      0.00      0.00      0.00      0.00     99.00
+                  <span style="color:#ae81ff">4</span>      1.98      0.00      2.97      0.99      0.00     94.06
+                  <span style="color:#ae81ff">5</span>      0.00      0.00      2.02      0.00      0.00     97.98
+                  <span style="color:#ae81ff">6</span>     30.69      0.00     44.55      0.00      0.00     24.75
+                  <span style="color:#ae81ff">7</span>      0.99      0.00      1.98      0.00      0.00     97.03
+
+</code></pre></div>
 
 <footer class=" footline" >
 	
@@ -1421,8 +1391,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -1439,6 +1407,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1451,6 +1420,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1468,183 +1438,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1720,6 +1515,56 @@
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
                         
             
@@ -1881,6 +1726,293 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -1952,177 +2084,6 @@
             
             
                 
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -2182,10 +2143,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/machinelearning/agent/agent_communication/" title="[Agent] Communication"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/linux/profile/" title="Profile"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/machinelearning/agent/agent_sw_agent_architecture/" title="[Agent] SW Agent Architecture" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/linux/profile/lttng/" title="LTTng" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

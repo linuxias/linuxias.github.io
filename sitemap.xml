@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/linux/profile/</loc>
+    <lastmod>2020-01-01T23:15:54+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/container/docker/1_docker_cmd_basic/</loc>
   </url>
   
@@ -159,15 +164,15 @@
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/linux/profile/lttng/</loc>
-  </url>
-  
-  <url>
     <loc>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</loc>
   </url>
   
   <url>
     <loc>https://linuxias.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/linux/profile/cpu/</loc>
   </url>
   
   <url>
@@ -180,6 +185,10 @@
   
   <url>
     <loc>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/linux/profile/lttng/</loc>
   </url>
   
   <url>
