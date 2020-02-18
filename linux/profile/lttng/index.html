@@ -21,20 +21,20 @@
     <title>LTTng :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1581942749" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1581942749" rel="stylesheet">
-    <link href="/css/hybrid.css?1581942749" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1581942749" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1581942749" rel="stylesheet">
-    <link href="/css/auto-complete.css?1581942749" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1581942749" rel="stylesheet">
-    <link href="/css/theme.css?1581942749" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1581942749" rel="stylesheet">
+    <link href="/css/nucleus.css?1582024264" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1582024264" rel="stylesheet">
+    <link href="/css/hybrid.css?1582024264" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1582024264" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1582024264" rel="stylesheet">
+    <link href="/css/auto-complete.css?1582024264" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1582024264" rel="stylesheet">
+    <link href="/css/theme.css?1582024264" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1582024264" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1581942749" rel="stylesheet">
+      <link href="/css/theme-purple.css?1582024264" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1581942749"></script>
+    <script src="/js/jquery-3.3.1.min.js?1582024264"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1581942749"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1581942749"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1582024264"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1582024264"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1581942749"></script>
+<script type="text/javascript" src="/js/search.js?1582024264"></script>
 
     
   </div>
@@ -1259,7 +1259,9 @@
       <ul>
         <li><a href="#lttng-구성">LTTng 구성</a></li>
         <li><a href="#사용자-어플리케이션-트레이싱하기">사용자 어플리케이션 트레이싱하기</a></li>
+        <li><a href="#userspace-친구들">Userspace 친구들</a></li>
         <li><a href="#추적-결과-확인하기">추적 결과 확인하기</a></li>
+        <li><a href="#개인적인-의견">개인적인 의견</a></li>
       </ul>
     </li>
   </ul>
@@ -1432,7 +1434,7 @@ OBJS<span style="color:#f92672">+=</span>main.o
 </code></pre></div><h4 id="결과-확인하기">결과 확인하기.</h4>
 <p>트레이스 이벤트가 등록되었는지 확인합니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$lttng-sessiond --daemonize
-$ ./lttng_ust_test
+$./lttng_ust_test
 </code></pre></div><p>실행하면 정지해 있습니다. 다른 창에서 확인해 보면.. 아래와 같이 이벤트가 등록되어 있음을 확인할 수 있습니다. 만약 프로세스가 종료되면 이벤트들은 모두 사라지면 확인할 수 없습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lttng list --userspace
 UST events:
@@ -1469,17 +1471,54 @@ PID: <span style="color:#ae81ff">17109</span> - Name: ./lttng_ust_test
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$lttng create
 Session auto-20200215-175158 created.
 Traces will be output to /home/linuxias/lttng-traces/auto-20200215-175158
+
 $lttng enable-event --userspace linuxias_hello_world:my_first_tracepoint
 UST event linuxias_hello_world:my_first_tracepoint created in channel channel0
+
 $lttng start
 Tracing started <span style="color:#66d9ef">for</span> session auto-20200215-175158
 // 예제 프로세스를 종료합니다.
+
 $lttng destroy
 Waiting <span style="color:#66d9ef">for</span> destruction of session <span style="color:#e6db74">&#34;auto-20200215-175158&#34;</span>...
 Session <span style="color:#e6db74">&#34;auto-20200215-175158&#34;</span> destroyed
+
 $babeltrace ~/lttng-traces
 <span style="color:#f92672">[</span>17:52:13.462294498<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+412.893280571<span style="color:#f92672">)</span> desktop linuxias_hello_world:my_first_tracepoint: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> my_string_field <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./lttng_ust_test&#34;</span>, my_integer_field <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="추적-결과-확인하기">추적 결과 확인하기</h3>
+</code></pre></div><p><code>babeltrace</code>를 이용하면 문자열 기반의 로그 형태로 확인을 할 수 있습니다.</p>
+<h3 id="userspace-친구들">Userspace 친구들</h3>
+<p>LTTng는 사용자 영역 트레이싱을 위해 추가적인 라이브러리들을 지원합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>liblttng-ust-libc-warrper.so</code></td>
+<td>C 표준 라이브러리 추적 도구</td>
+</tr>
+<tr>
+<td><code>liblttng-ust-pthread-wrapper.so</code></td>
+<td>POSIX pthread 함수 추적 도구</td>
+</tr>
+<tr>
+<td><code>liblttng-ust-cyg-profile.so</code></td>
+<td>함수의 진입과 종료에 대한 추적 도구. 주의할 점은 이 라이브러리를 사용하기 위해서 어플리케이션이 <code>-finstrument-function</code> 컴파일 플래그가 적용되어 컴파일 되어야 한다.</td>
+</tr>
+<tr>
+<td><code>liblttng-ust-dl.so</code></td>
+<td><code>dlopen(3)</code>, <code>dlclose(3)</code> 함수 호출 추적 도구</td>
+</tr>
+</tbody>
+</table>
+<p>위 라이브러리들은 어플리케이션 빌드 시 링크될 필요가 없이 <code>LD_PRELOAD</code>를 이용하여 어플리케이션에 적용할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-dl.so my-app
+$ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-cyg-profile.so:liblttng-ust-libc-warrper.so my-app
+</code></pre></div><p>위 처럼 어플리케이션 실행 시 각 라이브러리의 이벤트가 등록되고 <code>lttng list --userspace</code> 명령어를 통해 확인할 수 있다.</p>
+<h3 id="추적-결과-확인하기">추적 결과 확인하기</h3>
 <p>결과를 확인하는 방법은 여러 가지가 있습니다. LTTng docs에서 제시하는 방법은 3가지 입니다.</p>
 <ul>
 <li>babeltrace</li>
@@ -1487,12 +1526,12 @@ $babeltrace ~/lttng-traces
 <li>lttng-analyses</li>
 </ul>
 <p>이 중 tracecompass를 사용하려 합니다. tracecompass는 eclipse 기반의 분석 툴로서 lttng-analyses를 External analyses로 플러그인 처럼 추가하여 사용할 수 있습니다. lttng-analyses는 babeltrace를 필요로 하기에 3가지 툴 모두 설치를 하여야 합니다.</p>
+<h3 id="개인적인-의견">개인적인 의견</h3>
 
 
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
-
 
         
         </div> 
@@ -2293,19 +2332,19 @@ $babeltrace ~/lttng-traces
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1581942749"></script>
-    <script src="/js/perfect-scrollbar.min.js?1581942749"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1581942749"></script>
-    <script src="/js/jquery.sticky.js?1581942749"></script>
-    <script src="/js/featherlight.min.js?1581942749"></script>
-    <script src="/js/highlight.pack.js?1581942749"></script>
+    <script src="/js/clipboard.min.js?1582024264"></script>
+    <script src="/js/perfect-scrollbar.min.js?1582024264"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1582024264"></script>
+    <script src="/js/jquery.sticky.js?1582024264"></script>
+    <script src="/js/featherlight.min.js?1582024264"></script>
+    <script src="/js/highlight.pack.js?1582024264"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1581942749"></script>
-    <script src="/js/learn.js?1581942749"></script>
-    <script src="/js/hugo-learn.js?1581942749"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1582024264"></script>
+    <script src="/js/learn.js?1582024264"></script>
+    <script src="/js/hugo-learn.js?1582024264"></script>
 
-    <link href="/mermaid/mermaid.css?1581942749" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1581942749"></script>
+    <link href="/mermaid/mermaid.css?1582024264" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1582024264"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
