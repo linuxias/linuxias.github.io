@@ -18,23 +18,23 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>LTTng :: Developer&#39;s Delight</title>
+    <title>LTTng:userspace :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1582024264" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1582024264" rel="stylesheet">
-    <link href="/css/hybrid.css?1582024264" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1582024264" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1582024264" rel="stylesheet">
-    <link href="/css/auto-complete.css?1582024264" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1582024264" rel="stylesheet">
-    <link href="/css/theme.css?1582024264" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1582024264" rel="stylesheet">
+    <link href="/css/nucleus.css?1582030294" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1582030294" rel="stylesheet">
+    <link href="/css/hybrid.css?1582030294" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1582030294" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1582030294" rel="stylesheet">
+    <link href="/css/auto-complete.css?1582030294" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1582030294" rel="stylesheet">
+    <link href="/css/theme.css?1582030294" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1582030294" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1582024264" rel="stylesheet">
+      <link href="/css/theme-purple.css?1582030294" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1582024264"></script>
+    <script src="/js/jquery-3.3.1.min.js?1582030294"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1582024264"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1582024264"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1582030294"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1582030294"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1582024264"></script>
+<script type="text/javascript" src="/js/search.js?1582030294"></script>
 
     
   </div>
@@ -162,9 +162,9 @@
  
   
     
-      <li data-nav-id="/linux/profile/lttng/" title="LTTng" class="dd-item active">
+      <li data-nav-id="/linux/profile/lttng/" title="LTTng:userspace" class="dd-item active">
         <a href="/linux/profile/lttng/">
-        LTTng
+        LTTng:userspace
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -1238,7 +1238,7 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/profile/'>Profile</a> > LTTng
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/profile/'>Profile</a> > LTTng:userspace
           
          
           
@@ -1261,7 +1261,6 @@
         <li><a href="#사용자-어플리케이션-트레이싱하기">사용자 어플리케이션 트레이싱하기</a></li>
         <li><a href="#userspace-친구들">Userspace 친구들</a></li>
         <li><a href="#추적-결과-확인하기">추적 결과 확인하기</a></li>
-        <li><a href="#개인적인-의견">개인적인 의견</a></li>
       </ul>
     </li>
   </ul>
@@ -1281,7 +1280,7 @@
           
             <h1>
               
-              LTTng
+              LTTng:userspace
             </h1>
           
 
@@ -1517,8 +1516,30 @@ $babeltrace ~/lttng-traces
 <p>위 라이브러리들은 어플리케이션 빌드 시 링크될 필요가 없이 <code>LD_PRELOAD</code>를 이용하여 어플리케이션에 적용할 수 있다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-dl.so my-app
 $ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-cyg-profile.so:liblttng-ust-libc-warrper.so my-app
-</code></pre></div><p>위 처럼 어플리케이션 실행 시 각 라이브러리의 이벤트가 등록되고 <code>lttng list --userspace</code> 명령어를 통해 확인할 수 있다.</p>
-<h3 id="추적-결과-확인하기">추적 결과 확인하기</h3>
+</code></pre></div><p>위 처럼 어플리케이션 실행 시 각 라이브러리의 이벤트가 등록되고 <code>lttng list --userspace</code> 명령어를 통해 확인할 수 있다.
+아래는 <a href="https://github.com/linuxias/Example/tree/master/blog/LTTng/lttng-ust-example/lttng-ust-helper%5D">LTTng userspace helper test</a>를 빌드하여 순차적으로 적용한 결과 중 일부분을 가져온 내용이다. 예제 코드 내에 재귀함수가 있기에 <code>func_entry</code> 이벤트가 순차적으로 발생한 후 <code>func_exit</code> 이벤트가 발생하는 것을 확인할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$babeltrace ~/lttng-traces/auto-20200218-204301
+...
+<span style="color:#f92672">[</span>20:38:11.907388453<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+3.229928201<span style="color:#f92672">)</span> desktop lttng_ust_libc:malloc: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> size <span style="color:#f92672">=</span> 4, ptr <span style="color:#f92672">=</span> 0x151BD40 <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907391355<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000002902<span style="color:#f92672">)</span> desktop lttng_ust_libc:free: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> ptr <span style="color:#f92672">=</span> 0x151BD40 <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907395975<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000004620<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x40076D <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907396463<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000488<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907396778<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000315<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907397090<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000312<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907397410<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000320<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907397722<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000312<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907398032<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000310<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_entry: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+...
+<span style="color:#f92672">[</span>20:38:11.907402689<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000283<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907402972<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000283<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907403263<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000291<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907403543<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000280<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907403818<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000275<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907404092<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000274<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x4006ED <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907404378<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000286<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x4006B6, call_site <span style="color:#f92672">=</span> 0x40076D <span style="color:#f92672">}</span>
+<span style="color:#f92672">[</span>20:38:11.907404684<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>+0.000000306<span style="color:#f92672">)</span> desktop lttng_ust_cyg_profile:func_exit: <span style="color:#f92672">{</span> cpu_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>, <span style="color:#f92672">{</span> addr <span style="color:#f92672">=</span> 0x40070D, call_site <span style="color:#f92672">=</span> 0x7FD716ED8830 <span style="color:#f92672">}</span>
+...
+</code></pre></div><h3 id="추적-결과-확인하기">추적 결과 확인하기</h3>
 <p>결과를 확인하는 방법은 여러 가지가 있습니다. LTTng docs에서 제시하는 방법은 3가지 입니다.</p>
 <ul>
 <li>babeltrace</li>
@@ -1526,7 +1547,10 @@ $ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-cyg-profile.so:libl
 <li>lttng-analyses</li>
 </ul>
 <p>이 중 tracecompass를 사용하려 합니다. tracecompass는 eclipse 기반의 분석 툴로서 lttng-analyses를 External analyses로 플러그인 처럼 추가하여 사용할 수 있습니다. lttng-analyses는 babeltrace를 필요로 하기에 3가지 툴 모두 설치를 하여야 합니다.</p>
-<h3 id="개인적인-의견">개인적인 의견</h3>
+<p>tracecompass를 이용하여 lttng-traces 결과를 import 하게되면 아래와 같이 표시됩니다. tracecomposs는 <code>userspace</code>보다는 <code>kernel</code> 트레이싱 시에 더 큰 효율을 발휘 합니다.</p>
+<p><img src="https://drive.google.com/uc?id=12g6ANZiTl59J3RkiuYoORTZNV1b_n6Db" alt="tracecompass"></p>
+<p>사용자 영역에 대해서는 로그 수준의 화면만 확인할 수 있습니다.</p>
+<p>감사합니다.</p>
 
 
 <footer class="footline">
@@ -2332,19 +2356,19 @@ $ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-cyg-profile.so:libl
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1582024264"></script>
-    <script src="/js/perfect-scrollbar.min.js?1582024264"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1582024264"></script>
-    <script src="/js/jquery.sticky.js?1582024264"></script>
-    <script src="/js/featherlight.min.js?1582024264"></script>
-    <script src="/js/highlight.pack.js?1582024264"></script>
+    <script src="/js/clipboard.min.js?1582030294"></script>
+    <script src="/js/perfect-scrollbar.min.js?1582030294"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1582030294"></script>
+    <script src="/js/jquery.sticky.js?1582030294"></script>
+    <script src="/js/featherlight.min.js?1582030294"></script>
+    <script src="/js/highlight.pack.js?1582030294"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1582024264"></script>
-    <script src="/js/learn.js?1582024264"></script>
-    <script src="/js/hugo-learn.js?1582024264"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1582030294"></script>
+    <script src="/js/learn.js?1582030294"></script>
+    <script src="/js/hugo-learn.js?1582030294"></script>
 
-    <link href="/mermaid/mermaid.css?1582024264" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1582024264"></script>
+    <link href="/mermaid/mermaid.css?1582030294" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1582030294"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
