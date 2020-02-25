@@ -29,7 +29,7 @@
       <guid>https://linuxias.github.io/linux/compilelink/gcc_specific_attribute/</guid>
       <description>gcc를 컴파일러로 사용할 시 -O2, -O3와 같은 최적화 옵션을 자주 사용하게 됩니다.
 특별한 경우에 특정 함수나 코드 구간에 대해서 특정 최적화 단계를 적용하고 싶다면 아래와 같이 진행합니다.
-함수에 최적화 적용하기 void __attribute__((optimize(&amp;#34;O0&amp;#34;))) func(void) { } 코드 범위에 최적화 적용하기 #pragma GCC push_options#pragma GCC optimize (&amp;#34;O0&amp;#34;) //Write your code  #pragma GCC pop_options감사합니다.</description>
+함수에 최적화 적용하기 void __attribute__((optimize(&amp;#34;O0&amp;#34;))) func(void) { } 코드 범위에 최적화 적용하기 #pragma GCC push_options #pragma GCC optimize (&amp;#34;O0&amp;#34;)  //Write your code  #pragma GCC pop_options 감사합니다.</description>
     </item>
     
     <item>

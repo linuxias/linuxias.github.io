@@ -204,7 +204,7 @@ CHAPTER 5 연결 리스트</description>
       <guid>https://linuxias.github.io/linux/compilelink/gcc_specific_attribute/</guid>
       <description>gcc를 컴파일러로 사용할 시 -O2, -O3와 같은 최적화 옵션을 자주 사용하게 됩니다.
 특별한 경우에 특정 함수나 코드 구간에 대해서 특정 최적화 단계를 적용하고 싶다면 아래와 같이 진행합니다.
-함수에 최적화 적용하기 void __attribute__((optimize(&amp;#34;O0&amp;#34;))) func(void) { } 코드 범위에 최적화 적용하기 #pragma GCC push_options#pragma GCC optimize (&amp;#34;O0&amp;#34;) //Write your code  #pragma GCC pop_options감사합니다.</description>
+함수에 최적화 적용하기 void __attribute__((optimize(&amp;#34;O0&amp;#34;))) func(void) { } 코드 범위에 최적화 적용하기 #pragma GCC push_options #pragma GCC optimize (&amp;#34;O0&amp;#34;)  //Write your code  #pragma GCC pop_options 감사합니다.</description>
     </item>
     
     <item>
@@ -358,6 +358,16 @@ LTTng 구성 LTTng 는 크게 3가지 모듈로 구성되어 있습니다.
       <description>Data flow Architecture에는 Batch Sequential, Pipe and Filter, Process Control Architecture 로 3가지로 분류할 수 있습니다. 그 중 Pipe and Filter Architecture에 대해 정리해보려 합니다.
 Pipe and Filter Architecture는 데이트 스트림을 처리하는 시스템을 위한 구조를 제공합니다. 데이터를 처리하는 각 프로세싱 단계는 Filter 컴포넌트 내부에 포함되어 있습니다. 데이터는 Filter 사이를 Pipe를 통해 전달되게 됩니다. 이러한 구조로 인해 Pipe and Filter Architecture는 Batch Sequential Architecture와 많이 비교됩니다.
 Pipe and Filter 구조의 구성요소는 크게 3가지 입니다.</description>
+    </item>
+    
+    <item>
+      <title>Proc Filesystem</title>
+      <link>https://linuxias.github.io/linux/debugging/proc_filesystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/debugging/proc_filesystem/</guid>
+      <description>The /Proc Filesystem for Debugging proc - process infomation pseudo-filesystem (Process infomation)
+리눅스가 인기 있는 이유 중 하나는 UNIX 시스템의 좋은 feature들을 결합시킨 점입니다. Proc 파일시스템은 그 좋은 feature들 중 한가지 인데요, 대다수의 Linux 배포판에 포함되어 있습니다. proc 파일시스템은 /proc에 마운트되어 있으며 kernel data 구조에 대해 인터페이스를 제공하고 있습니다. proc 파일시스템의 파일들은 READ-ONLY 이지만, 몇몇의 파일들은 커널 변수를 변경하여 적용할 수 있도록 WRITE가 가능합니다. proc 파일시스템의 구성요소를 하나하나 살펴보도록 하시죠.</description>
     </item>
     
     <item>

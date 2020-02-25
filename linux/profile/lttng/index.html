@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.65.3" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>LTTng:userspace :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1582199365" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1582199365" rel="stylesheet">
-    <link href="/css/hybrid.css?1582199365" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1582199365" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1582199365" rel="stylesheet">
-    <link href="/css/auto-complete.css?1582199365" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1582199365" rel="stylesheet">
-    <link href="/css/theme.css?1582199365" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1582199365" rel="stylesheet">
+    <link href="/css/nucleus.css?1582634626" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1582634626" rel="stylesheet">
+    <link href="/css/hybrid.css?1582634626" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1582634626" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1582634626" rel="stylesheet">
+    <link href="/css/auto-complete.css?1582634626" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1582634626" rel="stylesheet">
+    <link href="/css/theme.css?1582634626" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1582634626" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1582199365" rel="stylesheet">
+      <link href="/css/theme-purple.css?1582634626" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1582199365"></script>
+    <script src="/js/jquery-3.3.1.min.js?1582634626"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1582199365"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1582199365"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1582634626"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1582634626"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1582199365"></script>
+<script type="text/javascript" src="/js/search.js?1582634626"></script>
 
     
   </div>
@@ -108,6 +108,61 @@
           
           
         
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/debugging/" title="Debugging" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/linux/debugging/">
+          Debugging
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/debugging/proc_filesystem/" title="Proc Filesystem" class="dd-item ">
+        <a href="/linux/debugging/proc_filesystem/">
+        Proc Filesystem
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
           
             
             
@@ -1318,25 +1373,25 @@
 <p><img src="https://lttng.org/docs/v2.11/images/ust-app.png" alt="User application linked with liblttng-ust"></p>
 <p>이 기능을 사용하기 위한 <code>tracepoint provider package</code>는 object 파일이나 shared library 형태입니다. 하나 이상의 <code>tracepoin provider header (.h)</code>와 <code>tracepoint provider pacage source (.c)</code>를 포함하고 있습니다.</p>
 <h5 id="header-파일-템플릿-생성하기">Header 파일 템플릿 생성하기.</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">undef TRACEPOINT_PROVIDER</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define TRACEPOINT_PROVIDER provider_name</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#undef TRACEPOINT_PROVIDER
+</span><span style="color:#75715e">#define TRACEPOINT_PROVIDER provider_name
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">undef TRACEPOINT_INCLUDE</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define TRACEPOINT_INCLUDE &#34;.</span><span style="color:#75715e">/</span><span style="color:#75715e">tp.h&#34;</span><span style="color:#75715e">
+<span style="color:#75715e">#undef TRACEPOINT_INCLUDE
+</span><span style="color:#75715e">#define TRACEPOINT_INCLUDE &#34;./tp.h&#34;
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">if !defined(_TP_H) || defined(TRACEPOINT_HEADER_MULTI_READ)</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define _TP_H</span><span style="color:#75715e">
+<span style="color:#75715e">#if !defined(_TP_H) || defined(TRACEPOINT_HEADER_MULTI_READ)
+</span><span style="color:#75715e">#define _TP_H
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;lttng/tracepoint.h&gt;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;lttng/tracepoint.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">/*
 </span><span style="color:#75715e"> * Use TRACEPOINT_EVENT(), TRACEPOINT_EVENT_CLASS(),
 </span><span style="color:#75715e"> * TRACEPOINT_EVENT_INSTANCE(), and TRACEPOINT_LOGLEVEL() here.
 </span><span style="color:#75715e"> */</span>
 
-<span style="color:#75715e">#</span><span style="color:#75715e">endif </span><span style="color:#75715e">/* _TP_H */</span><span style="color:#75715e">
+<span style="color:#75715e">#endif </span><span style="color:#75715e">/* _TP_H */</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;lttng/tracepoint-event.h&gt;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;lttng/tracepoint-event.h&gt;</span><span style="color:#75715e">
 </span></code></pre></div><p>위 템플릿에서 2번 째 라인의 provider_name은 자신의 <code>tracepoint provider</code> 이름으로 변경해주면 됩니다. 주의할 점은 <code>tracepoint provider</code> 이름은 항상 유니크해야 합니다. 만약 여러 사용자가 개발한 어플리케이션이 하나의 머신에서 동작하는 경우 각각의 네임이 충돌할 수 있으니 본인만을 위한 prefix를 넣어주는 것을 추천합니다. 그 다음 위 Header 파일의 이름을 <code>*tp.h</code> 로 변경해주세요.</p>
 <p>이제 주석으로 처리된 부분에 <code>TRACEPOINT</code>를 정의해 줍니다. <code>TRACEPOINT()</code> 매크로는 아래와 같이 구성됩니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TRACEPOINT_EVENT(
@@ -1363,16 +1418,16 @@
 <li>arguments : 입력 아큐먼트, 개수의 제한은 없습니다. 정의 방식은 타입, 네임이며 <code>,</code> 를 이용하여 구분합니다.</li>
 <li>fields : 출력 이벤트 필드 정의</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">undef TRACEPOINT_PROVIDER</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define TRACEPOINT_PROVIDER linuxias_hello_world</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#undef TRACEPOINT_PROVIDER
+</span><span style="color:#75715e">#define TRACEPOINT_PROVIDER linuxias_hello_world
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">undef TRACEPOINT_INCLUDE</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define TRACEPOINT_INCLUDE &#34;.</span><span style="color:#75715e">/</span><span style="color:#75715e">test_tp.h&#34;</span><span style="color:#75715e">
+<span style="color:#75715e">#undef TRACEPOINT_INCLUDE
+</span><span style="color:#75715e">#define TRACEPOINT_INCLUDE &#34;./test_tp.h&#34;
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">if !defined(_TEST_TP_H) || defined(TRACEPOINT_HEADER_MULTI_READ)</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define _TEST_TP_H</span><span style="color:#75715e">
+<span style="color:#75715e">#if !defined(_TEST_TP_H) || defined(TRACEPOINT_HEADER_MULTI_READ)
+</span><span style="color:#75715e">#define _TEST_TP_H
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;lttng/tracepoint.h&gt;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;lttng/tracepoint.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 TRACEPOINT_EVENT (
 	linuxias_hello_world,
@@ -1387,24 +1442,24 @@ TRACEPOINT_EVENT (
 	)
 )
 
-<span style="color:#75715e">#</span><span style="color:#75715e">endif </span><span style="color:#75715e">/* _TEST_TP_H */</span><span style="color:#75715e">
+<span style="color:#75715e">#endif </span><span style="color:#75715e">/* _TEST_TP_H */</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;lttng/tracepoint-event.h&gt;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;lttng/tracepoint-event.h&gt;</span><span style="color:#75715e">
 </span></code></pre></div><h5 id="source-파일-생성하기">Source 파일 생성하기.</h5>
 <p>Source 파일은 매우 단순합니다. 아래 내용 외에 추가할 부분은 없습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">define TRACEPOINT_CREATE_PROBES</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define TRACEPOINT_DEFINE</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;test_tp.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define TRACEPOINT_CREATE_PROBES
+</span><span style="color:#75715e">#define TRACEPOINT_DEFINE
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;test_tp.h&#34;</span><span style="color:#75715e">
 </span></code></pre></div><h4 id="2-어플리케이션-소스-코드에-tracepoint-추가하기">2. 어플리케이션 소스 코드에 tracepoint 추가하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;test_tp.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;test_tp.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
 {
-	puts(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Press Enter to continue</span><span style="color:#e6db74">&#34;</span>);
+	puts(<span style="color:#e6db74">&#34;Press Enter to continue&#34;</span>);
 	getchar();
 	tracepoint(linuxias_hello_world, my_first_tracepoint, argc, argv[<span style="color:#ae81ff">0</span>]);
-	puts(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">The end</span><span style="color:#e6db74">&#34;</span>);
+	puts(<span style="color:#e6db74">&#34;The end&#34;</span>);
 	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><h4 id="3-tracepointer-provider-패키지와-사용자-어플리케이션을-빌드-및-링크하기">3. tracepointer provider 패키지와 사용자 어플리케이션을 빌드 및 링크하기</h4>
@@ -1440,32 +1495,32 @@ UST events:
 -------------
 
 PID: <span style="color:#ae81ff">17109</span> - Name: ./lttng_ust_test
-      lttng_ust_tracelog:TRACE_DEBUG <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG <span style="color:#f92672">(</span>14<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_LINE <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_FUNCTION <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_FUNCTION <span style="color:#f92672">(</span>12<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_UNIT <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_UNIT <span style="color:#f92672">(</span>11<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_MODULE <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_MODULE <span style="color:#f92672">(</span>10<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_PROCESS <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_PROCESS <span style="color:#f92672">(</span>9<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_PROGRAM <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_PROGRAM <span style="color:#f92672">(</span>8<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_DEBUG_SYSTEM <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_SYSTEM <span style="color:#f92672">(</span>7<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_INFO <span style="color:#f92672">(</span>loglevel: TRACE_INFO <span style="color:#f92672">(</span>6<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_NOTICE <span style="color:#f92672">(</span>loglevel: TRACE_NOTICE <span style="color:#f92672">(</span>5<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_WARNING <span style="color:#f92672">(</span>loglevel: TRACE_WARNING <span style="color:#f92672">(</span>4<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_ERR <span style="color:#f92672">(</span>loglevel: TRACE_ERR <span style="color:#f92672">(</span>3<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_CRIT <span style="color:#f92672">(</span>loglevel: TRACE_CRIT <span style="color:#f92672">(</span>2<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_ALERT <span style="color:#f92672">(</span>loglevel: TRACE_ALERT <span style="color:#f92672">(</span>1<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracelog:TRACE_EMERG <span style="color:#f92672">(</span>loglevel: TRACE_EMERG <span style="color:#f92672">(</span>0<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_tracef:event <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG <span style="color:#f92672">(</span>14<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_lib:unload <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_lib:debug_link <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_lib:build_id <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_lib:load <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_statedump:end <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_statedump:debug_link <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_statedump:build_id <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_statedump:bin_info <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      lttng_ust_statedump:start <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
-      linuxias_hello_world:my_first_tracepoint <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG <span style="color:#f92672">(</span>14<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_LINE <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_FUNCTION <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_FUNCTION <span style="color:#f92672">(</span>12<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_UNIT <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_UNIT <span style="color:#f92672">(</span>11<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_MODULE <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_MODULE <span style="color:#f92672">(</span>10<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_PROCESS <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_PROCESS <span style="color:#f92672">(</span>9<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_PROGRAM <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_PROGRAM <span style="color:#f92672">(</span>8<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_DEBUG_SYSTEM <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_SYSTEM <span style="color:#f92672">(</span>7<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_INFO <span style="color:#f92672">(</span>loglevel: TRACE_INFO <span style="color:#f92672">(</span>6<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_NOTICE <span style="color:#f92672">(</span>loglevel: TRACE_NOTICE <span style="color:#f92672">(</span>5<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_WARNING <span style="color:#f92672">(</span>loglevel: TRACE_WARNING <span style="color:#f92672">(</span>4<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_ERR <span style="color:#f92672">(</span>loglevel: TRACE_ERR <span style="color:#f92672">(</span>3<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_CRIT <span style="color:#f92672">(</span>loglevel: TRACE_CRIT <span style="color:#f92672">(</span>2<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_ALERT <span style="color:#f92672">(</span>loglevel: TRACE_ALERT <span style="color:#f92672">(</span>1<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracelog:TRACE_EMERG <span style="color:#f92672">(</span>loglevel: TRACE_EMERG <span style="color:#f92672">(</span>0<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_tracef:event <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG <span style="color:#f92672">(</span>14<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_lib:unload <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_lib:debug_link <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_lib:build_id <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_lib:load <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_statedump:end <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_statedump:debug_link <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_statedump:build_id <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_statedump:bin_info <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      lttng_ust_statedump:start <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
+      linuxias_hello_world:my_first_tracepoint <span style="color:#f92672">(</span>loglevel: TRACE_DEBUG_LINE <span style="color:#f92672">(</span>13<span style="color:#f92672">))</span> <span style="color:#f92672">(</span>type: tracepoint<span style="color:#f92672">)</span>
 </code></pre></div><p>위에 등록된 이벤트를 이용하여 babeltrace로 확인해 봅시다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$lttng create
 Session auto-20200215-175158 created.
@@ -1598,6 +1653,41 @@ $ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-cyg-profile.so:libl
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
                     
                         
             
@@ -2356,19 +2446,19 @@ $ LD_PRELOAD<span style="color:#f92672">=</span>liblttng-ust-cyg-profile.so:libl
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1582199365"></script>
-    <script src="/js/perfect-scrollbar.min.js?1582199365"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1582199365"></script>
-    <script src="/js/jquery.sticky.js?1582199365"></script>
-    <script src="/js/featherlight.min.js?1582199365"></script>
-    <script src="/js/highlight.pack.js?1582199365"></script>
+    <script src="/js/clipboard.min.js?1582634626"></script>
+    <script src="/js/perfect-scrollbar.min.js?1582634626"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1582634626"></script>
+    <script src="/js/jquery.sticky.js?1582634626"></script>
+    <script src="/js/featherlight.min.js?1582634626"></script>
+    <script src="/js/highlight.pack.js?1582634626"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1582199365"></script>
-    <script src="/js/learn.js?1582199365"></script>
-    <script src="/js/hugo-learn.js?1582199365"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1582634626"></script>
+    <script src="/js/learn.js?1582634626"></script>
+    <script src="/js/hugo-learn.js?1582634626"></script>
 
-    <link href="/mermaid/mermaid.css?1582199365" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1582199365"></script>
+    <link href="/mermaid/mermaid.css?1582634626" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1582634626"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

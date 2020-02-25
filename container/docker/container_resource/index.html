@@ -12,7 +12,7 @@
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.65.3" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -21,20 +21,20 @@
     <title>Resource Limitation :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1582199365" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1582199365" rel="stylesheet">
-    <link href="/css/hybrid.css?1582199365" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1582199365" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1582199365" rel="stylesheet">
-    <link href="/css/auto-complete.css?1582199365" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1582199365" rel="stylesheet">
-    <link href="/css/theme.css?1582199365" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1582199365" rel="stylesheet">
+    <link href="/css/nucleus.css?1582634626" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1582634626" rel="stylesheet">
+    <link href="/css/hybrid.css?1582634626" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1582634626" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1582634626" rel="stylesheet">
+    <link href="/css/auto-complete.css?1582634626" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1582634626" rel="stylesheet">
+    <link href="/css/theme.css?1582634626" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1582634626" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1582199365" rel="stylesheet">
+      <link href="/css/theme-purple.css?1582634626" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1582199365"></script>
+    <script src="/js/jquery-3.3.1.min.js?1582634626"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1582199365"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1582199365"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1582634626"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1582634626"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1582199365"></script>
+<script type="text/javascript" src="/js/search.js?1582634626"></script>
 
     
   </div>
@@ -108,6 +108,61 @@
           
           
         
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/linux/debugging/" title="Debugging" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/linux/debugging/">
+          Debugging
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/linux/debugging/proc_filesystem/" title="Proc Filesystem" class="dd-item ">
+        <a href="/linux/debugging/proc_filesystem/">
+        Proc Filesystem
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
           
             
             
@@ -1343,21 +1398,21 @@ WARNING: No swap limit support
 </code></pre></div><p><code>docker run</code> 명령어로 확인 시 가장 아래 <strong>WARNING: No swap limit support</strong> 라는 경고가 발생한다면 아래와 같이 조치하시면 됩니다. 아래 내용은 Docker docs에서 참조한 내용입니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">WARNING</span>: <span style="color:#a6e22e">Your</span> <span style="color:#a6e22e">kernel</span> <span style="color:#a6e22e">does</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">support</span> <span style="color:#a6e22e">swap</span> <span style="color:#a6e22e">limit</span> <span style="color:#a6e22e">capabilities</span>. <span style="color:#a6e22e">Limitation</span> <span style="color:#a6e22e">discarded</span>.<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">This</span> <span style="color:#a6e22e">warning</span> <span style="color:#a6e22e">does</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">occur</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">RPM</span>-<span style="color:#a6e22e">based</span> <span style="color:#a6e22e">systems</span>, <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">capabilities</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">default</span>.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">If</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">don</span>’<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">need</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">capabilities</span>, <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">can</span> <span style="color:#a6e22e">ignore</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">warning</span>. <span style="color:#a6e22e">You</span> <span style="color:#a6e22e">can</span> <span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">capabilities</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">Ubuntu</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">Debian</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">following</span> <span style="color:#a6e22e">these</span> <span style="color:#a6e22e">instructions</span>. <span style="color:#a6e22e">Memory</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">swap</span> <span style="color:#a6e22e">accounting</span> <span style="color:#a6e22e">incur</span> <span style="color:#a6e22e">an</span> <span style="color:#a6e22e">overhead</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">about</span> <span style="color:#ae81ff">1</span>% <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">total</span> <span style="color:#a6e22e">available</span> <span style="color:#a6e22e">memory</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">a</span> <span style="color:#ae81ff">10</span>% <span style="color:#a6e22e">overall</span> <span style="color:#a6e22e">performance</span> <span style="color:#a6e22e">degradation</span>, <span style="color:#a6e22e">even</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">running</span>.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Log</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Ubuntu</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">Debian</span> <span style="color:#a6e22e">host</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">privileges</span>.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Edit</span> <span style="color:#a6e22e">the</span> <span style="color:#e6db74">/etc/</span><span style="color:#a6e22e">default</span>/<span style="color:#a6e22e">grub</span> <span style="color:#a6e22e">file</span>. <span style="color:#a6e22e">Add</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">GRUB_CMDLINE_LINUX</span> <span style="color:#a6e22e">line</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">add</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">following</span> <span style="color:#a6e22e">two</span> <span style="color:#a6e22e">key</span>-<span style="color:#a6e22e">value</span> <span style="color:#a6e22e">pairs</span>:<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">GRUB_CMDLINE_LINUX</span>=<span style="color:#e6db74">&#34;cgroup_enable=memory swapaccount=1&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Save</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">close</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">file</span>.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Update</span> <span style="color:#a6e22e">GRUB</span>.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>$ <span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">update</span>-<span style="color:#a6e22e">grub</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">If</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">GRUB</span> <span style="color:#a6e22e">configuration</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">has</span> <span style="color:#a6e22e">incorrect</span> <span style="color:#a6e22e">syntax</span>, <span style="color:#a6e22e">an</span> <span style="color:#a6e22e">error</span> <span style="color:#a6e22e">occurs</span>. <span style="color:#a6e22e">In</span> <span style="color:#a6e22e">this</span> <span style="color:#a6e22e">case</span>, <span style="color:#a6e22e">repeat</span> <span style="color:#a6e22e">steps</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">and</span> <span style="color:#ae81ff">3</span>.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">The</span> <span style="color:#a6e22e">changes</span> <span style="color:#a6e22e">take</span> <span style="color:#a6e22e">effect</span> <span style="color:#a6e22e">when</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">system</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">rebooted</span>.<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="memory">Memory</h3>
 <h4 id="memory-부족의-위험성">Memory 부족의 위험성..?</h4>
@@ -1430,13 +1485,13 @@ root@452468a96c63:/# stress --cpu <span style="color:#ae81ff">1</span>
 ....
 
 다음 호스트 시스템에서 <span style="color:#e6db74">`</span>htop<span style="color:#e6db74">`</span>을 이용하여 확인해봅시다.
-<span style="color:#e6db74">`</span><span style="color:#e6db74">`</span><span style="color:#e6db74">`</span>bash
+<span style="color:#e6db74">```</span>bash
 $htop
 <span style="color:#ae81ff">1</span>  <span style="color:#f92672">[</span>|                                                                                     0.7%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">5</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
 <span style="color:#ae81ff">2</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">6</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
-<span style="color:#ae81ff">3</span>  <span style="color:#f92672">[</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span>100.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">7</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
-<span style="color:#ae81ff">4</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">8</span>  <span style="color:#f92672">[</span><span style="color:#f92672">||</span>                                                                                    1.3%<span style="color:#f92672">]</span>
-Mem<span style="color:#f92672">[</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span><span style="color:#f92672">||</span>                                                     4.33G/31.4G<span style="color:#f92672">]</span>   Tasks: 182, <span style="color:#ae81ff">656</span> thr; <span style="color:#ae81ff">2</span> running
+<span style="color:#ae81ff">3</span>  <span style="color:#f92672">[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>100.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">7</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>
+<span style="color:#ae81ff">4</span>  <span style="color:#f92672">[</span>                                                                                      0.0%<span style="color:#f92672">]</span>   <span style="color:#ae81ff">8</span>  <span style="color:#f92672">[||</span>                                                                                    1.3%<span style="color:#f92672">]</span>
+Mem<span style="color:#f92672">[||||||||||||||||||||||||||</span>                                                     4.33G/31.4G<span style="color:#f92672">]</span>   Tasks: 182, <span style="color:#ae81ff">656</span> thr; <span style="color:#ae81ff">2</span> running
 Swp<span style="color:#f92672">[</span>|                                                                              2.00M/31.9G<span style="color:#f92672">]</span>   Load average: 1.04 0.88 0.47 
 Uptime: <span style="color:#ae81ff">1</span> day, 19:25:52
 </code></pre></div><p>CPU 3번(1번부터 0입니다.) 이 100%로 표기되어 있습니다. &ndash;cpuset-cpus=2 옵션으로 인해 ubuntu:18.04 이미지로 생성한 컨테이너에서 stress 테스트 진행하였으니, 3번이 100%임을 확인할 수 있습니다.</p>
@@ -1501,6 +1556,38 @@ Uptime: <span style="color:#ae81ff">1</span> day, 19:25:52
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
                     
                         
             
@@ -2263,19 +2350,19 @@ Uptime: <span style="color:#ae81ff">1</span> day, 19:25:52
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1582199365"></script>
-    <script src="/js/perfect-scrollbar.min.js?1582199365"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1582199365"></script>
-    <script src="/js/jquery.sticky.js?1582199365"></script>
-    <script src="/js/featherlight.min.js?1582199365"></script>
-    <script src="/js/highlight.pack.js?1582199365"></script>
+    <script src="/js/clipboard.min.js?1582634626"></script>
+    <script src="/js/perfect-scrollbar.min.js?1582634626"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1582634626"></script>
+    <script src="/js/jquery.sticky.js?1582634626"></script>
+    <script src="/js/featherlight.min.js?1582634626"></script>
+    <script src="/js/highlight.pack.js?1582634626"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1582199365"></script>
-    <script src="/js/learn.js?1582199365"></script>
-    <script src="/js/hugo-learn.js?1582199365"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1582634626"></script>
+    <script src="/js/learn.js?1582634626"></script>
+    <script src="/js/hugo-learn.js?1582634626"></script>
 
-    <link href="/mermaid/mermaid.css?1582199365" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1582199365"></script>
+    <link href="/mermaid/mermaid.css?1582634626" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1582634626"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

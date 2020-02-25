@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/linux/debugging/</loc>
+    <lastmod>2020-01-01T23:15:54+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/linux/profile/</loc>
     <lastmod>2020-01-01T23:15:54+09:00</lastmod>
   </url>
@@ -193,6 +198,10 @@
   
   <url>
     <loc>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/linux/debugging/proc_filesystem/</loc>
   </url>
   
   <url>

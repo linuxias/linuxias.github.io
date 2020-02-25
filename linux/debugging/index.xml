@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debugging on Developer&#39;s Delight</title>
+    <link>https://linuxias.github.io/linux/debugging/</link>
+    <description>Recent content in Debugging on Developer&#39;s Delight</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 01 Jan 2020 23:15:54 +0900</lastBuildDate>
+    
+	<atom:link href="https://linuxias.github.io/linux/debugging/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Proc Filesystem</title>
+      <link>https://linuxias.github.io/linux/debugging/proc_filesystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/debugging/proc_filesystem/</guid>
+      <description>The /Proc Filesystem for Debugging proc - process infomation pseudo-filesystem (Process infomation)
+리눅스가 인기 있는 이유 중 하나는 UNIX 시스템의 좋은 feature들을 결합시킨 점입니다. Proc 파일시스템은 그 좋은 feature들 중 한가지 인데요, 대다수의 Linux 배포판에 포함되어 있습니다. proc 파일시스템은 /proc에 마운트되어 있으며 kernel data 구조에 대해 인터페이스를 제공하고 있습니다. proc 파일시스템의 파일들은 READ-ONLY 이지만, 몇몇의 파일들은 커널 변수를 변경하여 적용할 수 있도록 WRITE가 가능합니다. proc 파일시스템의 구성요소를 하나하나 살펴보도록 하시죠.</description>
+    </item>
+    
+  </channel>
+</rss>
