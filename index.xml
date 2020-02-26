@@ -350,6 +350,17 @@ LTTng 구성 LTTng 는 크게 3가지 모듈로 구성되어 있습니다.
     </item>
     
     <item>
+      <title>Memory profiling</title>
+      <link>https://linuxias.github.io/linux/profile/memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/profile/memory/</guid>
+      <description>메모리 분석에 사용할 수 있는 다양한 도구에 대해 정리한다.
+vmstat 가상 메모리 통계 정보를 제공한다. 현재 가용 메모리와 페이지 통계 등 메모리에 대한 다양한 정보를 제공한다. manual 페이지에는 아래와 같이 필드 설명이 되어 있다.
+Memory swpd: the amount of virtual memory used. free: the amount of idle memory. buff: the amount of memory used as buffers. cache: the amount of memory used as cache. inact: the amount of inactive memory. (-a option) active: the amount of active memory.</description>
+    </item>
+    
+    <item>
       <title>Pipe and Filter Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/pipe_and_filter_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

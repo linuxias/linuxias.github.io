@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Docker Basic :: Developer&#39;s Delight</title>
+    <title>Memory profiling :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1582720614" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/container/docker/1_docker_cmd_basic/">
+  <body class="" data-url="/linux/profile/memory/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -88,7 +88,7 @@
   
     
     <li data-nav-id="/linux/" title="1. Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -172,7 +172,7 @@
   
     
     <li data-nav-id="/linux/profile/" title="Profile" class="dd-item 
-        
+        parent
         
         
         ">
@@ -236,7 +236,7 @@
  
   
     
-      <li data-nav-id="/linux/profile/memory/" title="Memory profiling" class="dd-item ">
+      <li data-nav-id="/linux/profile/memory/" title="Memory profiling" class="dd-item active">
         <a href="/linux/profile/memory/">
         Memory profiling
         <i class="fas fa-check read-icon"></i>
@@ -384,7 +384,7 @@
   
     
     <li data-nav-id="/container/" title="2. Container" class="dd-item 
-        parent
+        
         
         
         ">
@@ -694,7 +694,7 @@
   
     
     <li data-nav-id="/container/docker/" title="Docker" class="dd-item 
-        parent
+        
         
         
         ">
@@ -720,7 +720,7 @@
  
   
     
-      <li data-nav-id="/container/docker/1_docker_cmd_basic/" title="Docker Basic" class="dd-item active">
+      <li data-nav-id="/container/docker/1_docker_cmd_basic/" title="Docker Basic" class="dd-item ">
         <a href="/container/docker/1_docker_cmd_basic/">
         Docker Basic
         <i class="fas fa-check read-icon"></i>
@@ -1312,7 +1312,7 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/docker/'>Docker</a> > Docker Basic
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/profile/'>Profile</a> > Memory profiling
           
          
           
@@ -1331,12 +1331,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#docker-hub에서-image-download">Docker Hub에서 Image Download</a></li>
-        <li><a href="#설치된-docker-image-확인하기">설치된 Docker Image 확인하기</a></li>
-        <li><a href="#docker-container-생성하기">Docker Container 생성하기</a></li>
-        <li><a href="#container-목록-및-정보-확인하기">Container 목록 및 정보 확인하기</a></li>
-        <li><a href="#container-삭제하기">Container 삭제하기</a></li>
-        <li><a href="#container-ip-확인하기">Container IP 확인하기</a></li>
+        <li><a href="#vmstat">vmstat</a></li>
       </ul>
     </li>
   </ul>
@@ -1356,7 +1351,7 @@
           
             <h1>
               
-              Docker Basic
+              Memory profiling
             </h1>
           
 
@@ -1364,90 +1359,34 @@
 
 
 
-<h3 id="docker-hub에서-image-download">Docker Hub에서 Image Download</h3>
-<p>Docker pull command를 사용하여 DockerHub 에 등록된 이미지 다운로드 합니다. 다운로드할 이미지는 ubuntu 18.04 이미지입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker pull ubuntu:18.04
-18.04: Pulling from library/ubuntu
-5c939e3a4d10:Pull complete
-c63719cdbe7a: Pull complete
-19a861ea6baf: Pull complete
-651c9d2d6c4f: Pull complete
-Digest: sha256:8d31dad0c58f552e890d68bbfb735588b6b820a46e459672d96e585871acc110
-</code></pre></div><h3 id="설치된-docker-image-확인하기">설치된 Docker Image 확인하기</h3>
-<p><strong>docker images</strong> 명령어를 이용하여 설치된 도커 이미지들의 리스트를 확인할 수 있습니다. 제 PC 설치된 이미지 리스트는 아래와 같습니다. 총 5가지 이미지가 설치되어 있네요.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-ubuntu              18.04               ccc6e87d482b        <span style="color:#ae81ff">3</span> days ago          64.2MB
-mysql               5.7                 b598110d0fff        <span style="color:#ae81ff">4</span> days ago          435MB
-wordpress           latest              1b1624b63467        <span style="color:#ae81ff">3</span> weeks ago         539MB
-node                6.11.5              852391892b9f        <span style="color:#ae81ff">2</span> years ago         662MB
-</code></pre></div><p>REPOSITORY와 TAG명 그리고 IMAGE ID가 보입니다. IMAGE ID는 16진수 해쉬값으로 구성되어 있습니다. 그리고 CREATE로 이미지가 생성된 일자, 이미지의 사이즈까지 확인할 수 있습니다.</p>
-<h3 id="docker-container-생성하기">Docker Container 생성하기</h3>
-<h5 id="1-docker-create">1. docker create</h5>
-<p><strong>docker create</strong> 명령어를 실행하여 컨테이너를 생성할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker create -i -t ubuntu:18.04
-9f1be16cd91b3673ac95d77eaf0906405c335f4aaed9e77520a245fa0b33299f
-</code></pre></div><p>이 명령어로 컨테이너를 생성할 시에 랜덤한 16진수 해쉬값이 생성되며, 이 해쉬값은 생성한 컨테이너의 ID가 됩니다.</p>
-<h5 id="2-docker-run">2. docker run</h5>
-<p><strong>docker run</strong> 명렁어를 사용하여 컨테이너를 생성하고 실행할 수 있습니다.
-&lsquo;-i -t&rsquo; 옵션은 각각 입출력과, tty 활성화를 요청하는 옵션입니다. 해당 옵션을 제외하고 실행 시 사용자와의 인터페이스가 실행되지 않고, 컨테이너가 실행된 직 후 바로 종료됩니다.</p>
-<p><strong>docker pull</strong> 로 다운받은 ubuntu 18.04 이미지를 실행하여 보겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker run -i -t ubuntu:18.04
-root@f54e84f31187:/# ps
-PID TTY          TIME CMD
-<span style="color:#ae81ff">1</span> pts/0    00:00:00 bash
-<span style="color:#ae81ff">10</span> pts/0    00:00:00 ps
-root@f54e84f31187:/# exit
-exit
-</code></pre></div><h5 id="3-docker-create-와-docker-run-의-차이점">3. docker create 와 docker run 의 차이점</h5>
-<p><strong>docker create</strong>와 <strong>docker run</strong>의 차이는 컨테이너를 생성하는 것 까지와 생성 후 실행까지 시키느냐에 따른 차이입니다. 아래  이미지에서 docker pull은 컨테이너로 실행할 이미지가 없는 경우 필요한 단계이며, <strong>docker create</strong>는 create 단계에서 멈추며, <strong>docker run</strong>은 start 이후 attach가 동작하게 됩니다.</p>
-<pre><code class="language-mermaid" data-lang="mermaid">graph LR;
- pull[docker pull] --&gt; create[docker create]
- create --&gt; start[docker start]
- start --&gt; attach[docker attach]
-</code></pre><h3 id="container-목록-및-정보-확인하기">Container 목록 및 정보 확인하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps           
-CONTAINER ID     IMAGE            COMMAND          CREATED          STATUS           PORTS            NAMES
-$sudo docker ps -a
-CONTAINER ID     IMAGE            COMMAND          CREATED          STATUS           PORTS            NAMES
-9f1be16cd91b     ubuntu:18.04     <span style="color:#e6db74">&#34;/bin/bash&#34;</span>      <span style="color:#ae81ff">12</span> minutes ago   Created                     vigorous_lumiere
-</code></pre></div><p><strong>docker ps</strong> 명령어는 컨테이너의 리스트를 보여줍니다. <strong>docker images</strong>와는 리스트를 보여주는 것은 같으나, 컨테이너 리스트인지 이미지 리스트인지의 차이입니다. <strong>-a</strong>옵션은 정지된 컨테이너까지 포함하여 출력하여 줍니다.</p>
-<p>특정 컨테이너의 상세한 정보를 보기 위해서 <strong>inspect</strong> 명령어를 사용할 수 있습니다. <strong>inspect</strong> 명령어는 container 내부 명령어인데요, container 외에도 image, volume 등에도 사용이 가능합니다. 사용 방법은 아래와 같습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps -a
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-9f1be16cd91b        ubuntu:18.04        <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">16</span> minutes ago      Created                                 vigorous_lumiere
+<p>메모리 분석에 사용할 수 있는 다양한 도구에 대해 정리한다.</p>
+<h3 id="vmstat">vmstat</h3>
+<p>가상 메모리 통계 정보를 제공한다. 현재 가용 메모리와 페이지 통계 등 메모리에 대한 다양한 정보를 제공한다. <code>manual</code> 페이지에는 아래와 같이 필드 설명이 되어 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   Memory
+       swpd: the amount of virtual memory used.
+       free: the amount of idle memory.
+       buff: the amount of memory used as buffers.
+       cache: the amount of memory used as cache.
+       inact: the amount of inactive memory.  <span style="color:#f92672">(</span>-a option<span style="color:#f92672">)</span>
+       active: the amount of active memory.  <span style="color:#f92672">(</span>-a option<span style="color:#f92672">)</span>
+</code></pre></div><p><code>vmstat</code>은 실행 시 특별한 권한을 필요로 하지 않는다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$vmstat <span style="color:#ae81ff">1</span> -Sm
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">908</span>  <span style="color:#ae81ff">21698</span>   <span style="color:#ae81ff">5833</span>   <span style="color:#ae81ff">4774</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">14</span>    <span style="color:#ae81ff">34</span>   <span style="color:#ae81ff">12</span>   <span style="color:#ae81ff">42</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+ <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">908</span>  <span style="color:#ae81ff">21698</span>   <span style="color:#ae81ff">5833</span>   <span style="color:#ae81ff">4774</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">69221</span> <span style="color:#ae81ff">138980</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">95</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+ <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">908</span>  <span style="color:#ae81ff">21698</span>   <span style="color:#ae81ff">5833</span>   <span style="color:#ae81ff">4774</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">60</span> <span style="color:#ae81ff">93788</span> <span style="color:#ae81ff">187899</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">95</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</code></pre></div><p>위 내용 중 메모리 분석 관점에서 바라볼 분류는 다음과 같다.</p>
+<ul>
+<li>swpd : 스왑 아웃된 메모리 양</li>
+<li>free : 가용 메모리 양</li>
+<li>buffer : 버퍼 캐시에 있는 메모리</li>
+<li>cache : 페이지 캐시에 있는 메모리</li>
+<li>si : 스왑 인된 메모리</li>
+<li>so : 스왑 아웃된 메모리</li>
+</ul>
+<p><code>si</code>, <code>so</code> 항목이 0이 아니라면 스왑 장치에 파일에 페이징을 하고 있는 것이므로 시스템에 메모리 부하가 있다고 짐작해 볼 수 있다.</p>
 
-// docker ps 명령어로 존재하는 컨테이너를 확인하고 inspect 명령어로 상세 정보를 확인하면 아래처럼 출력됩니다.
-
-$sudo docker container inspect vigorous_lumiere | more
-<span style="color:#f92672">[</span>
-    <span style="color:#f92672">{</span>
-        <span style="color:#e6db74">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;9f1be16cd91b3673ac95d77eaf0906405c335f4aaed9e77520a245fa0b33299f&#34;</span>,
-        <span style="color:#e6db74">&#34;Created&#34;</span>: <span style="color:#e6db74">&#34;2020-01-19T13:33:00.518174743Z&#34;</span>,
-        <span style="color:#e6db74">&#34;Path&#34;</span>: <span style="color:#e6db74">&#34;/bin/bash&#34;</span>,
-        <span style="color:#e6db74">&#34;Args&#34;</span>: <span style="color:#f92672">[]</span>,
-        <span style="color:#e6db74">&#34;State&#34;</span>: <span style="color:#f92672">{</span>
-            <span style="color:#e6db74">&#34;Status&#34;</span>: <span style="color:#e6db74">&#34;created&#34;</span>,
-            <span style="color:#e6db74">&#34;Running&#34;</span>: false,
-            <span style="color:#e6db74">&#34;Paused&#34;</span>: false,
-...
-</code></pre></div><h3 id="container-삭제하기">Container 삭제하기</h3>
-<p><strong>docker rm</strong> 명령어와 <strong>docker container prune</strong> 명령어를 이용하여 컨테이너를 삭제할 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker ps -a         
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-9f1be16cd91b        ubuntu:18.04        <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">20</span> minutes ago      Created                                 vigorous_lumiere
-$sudo docker rm vigorous_lumiere
-vigorous_lumiere
-$sudo docker ps -a 
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-</code></pre></div><p>존재하던 컨테이너가 <strong>docker rm</strong> 명령어 이후 삭제되었음을 확인하였습니다. 다양한 컨테이너를 다루다 너무 많은 컨테이너가 생성되었을 경우에는 <strong>docker rm</strong> 명령어로 하나씩 삭제하기가 번거롭습니다. 그때 <strong>docker container prune</strong> 명령어로 모두 삭제가 가능합니다.</p>
-<h3 id="container-ip-확인하기">Container IP 확인하기</h3>
-<p>ubuntu:18.04 이미지를 다운받아 컨테이너로 생성하여 실행하게 되면 네트워크 정보들 간단히 IP 확인하기 위한 ifconfig 툴도 설치가 되어있지 않습니다. ifconfig를 이용하여 ip를 확인하는데, 만약 ifconfig가 설치되어 있지 않다면 net-tools를 설치해줍니다</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$sudo docker run -i -t ubuntu:18.-4
-root@f54e8a13312:/# apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install net-tools
-...
-root@f54e8a13312:/# ifconfig
-</code></pre></div>
 
 <footer class="footline">
 	
@@ -1484,8 +1423,6 @@ root@f54e8a13312:/# ifconfig
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -1502,37 +1439,8 @@ root@f54e8a13312:/# ifconfig
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1558,19 +1466,6 @@ root@f54e8a13312:/# ifconfig
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
                     
@@ -1579,24 +1474,6 @@ root@f54e8a13312:/# ifconfig
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1610,6 +1487,9 @@ root@f54e8a13312:/# ifconfig
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1643,24 +1523,6 @@ root@f54e8a13312:/# ifconfig
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1675,22 +1537,6 @@ root@f54e8a13312:/# ifconfig
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -1756,6 +1602,104 @@ root@f54e8a13312:/# ifconfig
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1787,22 +1731,6 @@ root@f54e8a13312:/# ifconfig
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1900,28 +1828,10 @@ root@f54e8a13312:/# ifconfig
             
         
                     
-            
-        
-                    
                         
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -1934,13 +1844,42 @@ root@f54e8a13312:/# ifconfig
             
         
                     
+            
+        
+                    
                         
             
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
                         
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
+            
+            
+                
                     
                 
                 
@@ -2290,10 +2229,10 @@ root@f54e8a13312:/# ifconfig
 	 
 	 
 		
-			<a class="nav nav-prev" href="/container/docker/" title="Docker"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/linux/profile/lttng/" title="LTTng:userspace"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/container/docker/2_docker_storage/" title="Storage" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/linux/compilelink/" title="Compile&amp;Link" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
