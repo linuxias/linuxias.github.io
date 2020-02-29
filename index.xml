@@ -319,6 +319,15 @@ uptime 08:41:55 up 1 day, 17:41, 4 users, load average: 0.28, 0.24, 0.27 부하�
     </item>
     
     <item>
+      <title>Docker Compose</title>
+      <link>https://linuxias.github.io/container/docker/compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/container/docker/compose/</guid>
+      <description>Docker Compose Overview ** Docker Compose **는 멀티 컨테이너 도커 어플리케이션을 정의하거나 동작시키기 위한 툴이다. 이 툴로 인해 개발용이성이 매우 향상되었다. docker 명령어를 사용하나 단일 도커 이미지를 생성하거나 단일 컨테이너를 동작시켰다. 둘 이상의 상호 연관된 컨테이너가 필요한 경우 docker run 명령어를 여러번 실행하여 환경을 구성하였다. 한번 구성한 환경을 지속적으로 사용한다면 모르겠지만, 설정이 변경되거나 다른 호스트 머신에서 구축이 필요한 경우 또 다시 docker run 명령(docker network 등 포함)을 다시 실행해야 한다. 얼마나 불편한가?</description>
+    </item>
+    
+    <item>
       <title>Dockerfile</title>
       <link>https://linuxias.github.io/container/docker/dockerfile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
