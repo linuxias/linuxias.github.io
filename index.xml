@@ -278,15 +278,6 @@ Deliberative Agents Deliberative Agents는 명확하게 표현되어 질 수 있
     </item>
     
     <item>
-      <title>[Logging] Overview</title>
-      <link>https://linuxias.github.io/container/docker/container_logging/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://linuxias.github.io/container/docker/container_logging/</guid>
-      <description>docker logs 명령어는 이용하여 동작중인 컨테이너의 로그 정보를 볼 수 있습니다. docker logs 명령어는 터미널에서 대화식으로 명령을 실행했을 때와 같이 명령의 출력을 표시합니다. UNIX 및 Linux 명령은 일반적으로 STDIN, STDOUT 및 STDERR이라는 3 개의 I/O 스트림이 실행될 때 열립니다. STDIN은 명령의 입력 스트림으로 키보드 입력 또는 다른 명령 입력을 포함 할 수 있습니다. STDOUT은 일반적으로 명령의 일반 출력이며 STDERR은 일반적으로 오류 메시지를 출력하는 데 사용됩니다. 기본적으로 docker logs에는 명령의 STDOUT 및 STDERR이 표시됩니다.</description>
-    </item>
-    
-    <item>
       <title>Batch Sequential Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -324,7 +315,8 @@ uptime 08:41:55 up 1 day, 17:41, 4 users, load average: 0.28, 0.24, 0.27 부하�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://linuxias.github.io/container/docker/compose/</guid>
-      <description>Docker Compose Overview ** Docker Compose **는 멀티 컨테이너 도커 어플리케이션을 정의하거나 동작시키기 위한 툴이다. 이 툴로 인해 개발용이성이 매우 향상되었다. docker 명령어를 사용하나 단일 도커 이미지를 생성하거나 단일 컨테이너를 동작시켰다. 둘 이상의 상호 연관된 컨테이너가 필요한 경우 docker run 명령어를 여러번 실행하여 환경을 구성하였다. 한번 구성한 환경을 지속적으로 사용한다면 모르겠지만, 설정이 변경되거나 다른 호스트 머신에서 구축이 필요한 경우 또 다시 docker run 명령(docker network 등 포함)을 다시 실행해야 한다. 얼마나 불편한가?</description>
+      <description>Overview Docker Compose 는 멀티 컨테이너 도커 어플리케이션을 정의하거나 동작시키기 위한 툴이다. 이 툴로 인해 개발용이성이 매우 향상되었다. docker 명령어를 사용하나 단일 도커 이미지를 생성하거나 단일 컨테이너를 동작시켰다. 둘 이상의 상호 연관된 컨테이너가 필요한 경우 docker run 명령어를 여러번 실행하여 환경을 구성하였다. 한번 구성한 환경을 지속적으로 사용한다면 모르겠지만, 설정이 변경되거나 다른 호스트 머신에서 구축이 필요한 경우 또 다시 docker run 명령(docker network 등 포함)을 다시 실행해야 한다. 얼마나 불편한가?
+개발자는 게을러야 한다.</description>
     </item>
     
     <item>
@@ -345,6 +337,15 @@ ubuntu나 centOS 이미지를 DockerHub로 부터 다운받아서 본인의 어�
       <guid>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</guid>
       <description>Hierarchical Software Architecture, 한국어로 계층적 소프트웨어 아키텍처라 불리는 아키텍처에 대해 정리하겠습니다.
 Hierarchical Architecture는 전체 시스템을 계층 구조적으로 나뉘어져 있으며 계층적으로 서로 다른 레벨의 서브시스템으로 구성되어 있습니다. Hierarchical Architecture는 매우 다양한 곳에서 사용되고 있습니다. 운영체제, 네트워크 프로토콜 계층들, 인터프리터, 그 외 다양한 곳에서 사용되고 있는데요, 이 아키텍처의 가장 대표적인 구조로서 여러분들이 가장 많이 접해본 아키텍처의 한 예가 안드로이드 일 것 같습니다. 위 안드로이드 아키텍처를 보시면 Applications, Application Framework, Libraries, Linux Kernel 까지 여러 개의 서브시스템이 계층적으로 구성되어 하나의 시스템을 이루고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Logging</title>
+      <link>https://linuxias.github.io/container/docker/container_logging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/container/docker/container_logging/</guid>
+      <description>docker logs 명령어는 이용하여 동작중인 컨테이너의 로그 정보를 볼 수 있습니다. docker logs 명령어는 터미널에서 대화식으로 명령을 실행했을 때와 같이 명령의 출력을 표시합니다. UNIX 및 Linux 명령은 일반적으로 STDIN, STDOUT 및 STDERR이라는 3 개의 I/O 스트림이 실행될 때 열립니다. STDIN은 명령의 입력 스트림으로 키보드 입력 또는 다른 명령 입력을 포함 할 수 있습니다. STDOUT은 일반적으로 명령의 일반 출력이며 STDERR은 일반적으로 오류 메시지를 출력하는 데 사용됩니다. 기본적으로 docker logs에는 명령의 STDOUT 및 STDERR이 표시됩니다.</description>
     </item>
     
     <item>

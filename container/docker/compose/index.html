@@ -21,20 +21,20 @@
     <title>Docker Compose :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1582989559" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1582989559" rel="stylesheet">
-    <link href="/css/hybrid.css?1582989559" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1582989559" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1582989559" rel="stylesheet">
-    <link href="/css/auto-complete.css?1582989559" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1582989559" rel="stylesheet">
-    <link href="/css/theme.css?1582989559" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1582989559" rel="stylesheet">
+    <link href="/css/nucleus.css?1583027657" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583027657" rel="stylesheet">
+    <link href="/css/hybrid.css?1583027657" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583027657" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583027657" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583027657" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583027657" rel="stylesheet">
+    <link href="/css/theme.css?1583027657" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583027657" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1582989559" rel="stylesheet">
+      <link href="/css/theme-purple.css?1583027657" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1582989559"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583027657"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1582989559"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1582989559"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583027657"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583027657"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1582989559"></script>
+<script type="text/javascript" src="/js/search.js?1583027657"></script>
 
     
   </div>
@@ -758,25 +758,6 @@
  
   
     
-      <li data-nav-id="/container/docker/container_logging/" title="[Logging] Overview" class="dd-item ">
-        <a href="/container/docker/container_logging/">
-        [Logging] Overview
-        <i class="fas fa-check read-icon"></i>
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
       <li data-nav-id="/container/docker/compose/" title="Docker Compose" class="dd-item active">
         <a href="/container/docker/compose/">
         Docker Compose
@@ -799,6 +780,25 @@
       <li data-nav-id="/container/docker/dockerfile/" title="Dockerfile" class="dd-item ">
         <a href="/container/docker/dockerfile/">
         Dockerfile
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/container/docker/container_logging/" title="Logging" class="dd-item ">
+        <a href="/container/docker/container_logging/">
+        Logging
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -1389,9 +1389,8 @@
 
 
 
-<h1 id="docker-compose">Docker Compose</h1>
 <h2 id="overview">Overview</h2>
-<p>** Docker Compose **는 멀티 컨테이너 도커 어플리케이션을 정의하거나 동작시키기 위한 툴이다. 이 툴로 인해 개발용이성이 매우 향상되었다. <code>docker</code> 명령어를 사용하나 단일 도커 이미지를 생성하거나 단일 컨테이너를 동작시켰다. 둘 이상의 상호 연관된 컨테이너가 필요한 경우 <code>docker run</code> 명령어를 여러번 실행하여 환경을 구성하였다. 한번 구성한 환경을 지속적으로 사용한다면 모르겠지만, 설정이 변경되거나 다른 호스트 머신에서 구축이 필요한 경우 또 다시 <code>docker run</code> 명령(<code>docker network</code> 등 포함)을 다시 실행해야 한다. 얼마나 불편한가?</p>
+<p><strong>Docker Compose</strong> 는 멀티 컨테이너 도커 어플리케이션을 정의하거나 동작시키기 위한 툴이다. 이 툴로 인해 개발용이성이 매우 향상되었다. <code>docker</code> 명령어를 사용하나 단일 도커 이미지를 생성하거나 단일 컨테이너를 동작시켰다. 둘 이상의 상호 연관된 컨테이너가 필요한 경우 <code>docker run</code> 명령어를 여러번 실행하여 환경을 구성하였다. 한번 구성한 환경을 지속적으로 사용한다면 모르겠지만, 설정이 변경되거나 다른 호스트 머신에서 구축이 필요한 경우 또 다시 <code>docker run</code> 명령(<code>docker network</code> 등 포함)을 다시 실행해야 한다. 얼마나 불편한가?</p>
 <pre><code>개발자는 게을러야 한다.
 </code></pre><p>위 글귀는 갑작스럽겠지만, 위 문구가 <code>docker compose</code>와 잘 어울리는 글귀라고 생각해서 뜬금없지만 적어보았다. 개발자는 게을러야 하기에 반복 작업을 부지런히 수행하면 된다. 효율적으로 게을러 질 수 있다면 게을러져야 한다.</p>
 <h2 id="install">Install</h2>
@@ -1462,22 +1461,9 @@ redis
 </code></pre></div><p>두 개의 컨테이너를 생성한다. 각 컨테이너는 위에서 작성한 Dockerfile로 생성한 이미지와 redis:alpine 이미지를 기반으로 컨테이너를 실행한다.</p>
 <p>yml 파일의 내용을 간략히 설명하면 아래와 같다.</p>
 <ul>
-<li>version</li>
-</ul>
-<ul>
-<li>YAML 파일 포맷의 버전이다. 1, 2, 2.1, 3.0 등 다양한 버전이 있으며 여기서는 3.0 버전을 사용한다. 도커 컴포즈의 버전은 도커 엔진에 의존성이 존재하므로 본인이 사용하는 도커 엔진의 버전에 맞춰 알맞은 컴포즈 엔진을 사용하는 것을 추천한다.</li>
-</ul>
-<ul>
-<li>services</li>
-</ul>
-<ul>
-<li>생성될 컨테이너들의 묶음 단위이다. 위 파일에서는 web, redis 의 컨테이너가 하나의 묶음이다.</li>
-</ul>
-<ul>
-<li>web, redis</li>
-</ul>
-<ul>
-<li>생성될 서비스 이름이다. 각 서비스 아래 <code>docker run</code> 시 설정하던 각각의 옵션을 명시하여 사용한다.</li>
+<li>version : YAML 파일 포맷의 버전이다. 1, 2, 2.1, 3.0 등 다양한 버전이 있으며 여기서는 3.0 버전을 사용한다. 도커 컴포즈의 버전은 도커 엔진에 의존성이 존재하므로 본인이 사용하는 도커 엔진의 버전에 맞춰 알맞은 컴포즈 엔진을 사용하는 것을 추천한다.</li>
+<li>services : 생성될 컨테이너들의 묶음 단위이다. 위 파일에서는 web, redis 의 컨테이너가 하나의 묶음이다.</li>
+<li>web, redis : 생성될 서비스 이름이다. 각 서비스 아래 <code>docker run</code> 시 설정하던 각각의 옵션을 명시하여 사용한다.</li>
 </ul>
 <p>이 외에도 다양한 옵션들이 존재한다. 다양한 옵션은 나중에 설명한다.</p>
 <h3 id="4-compose-이용하여-도커-컨테이너-생성-및-동작시키기">4. Compose 이용하여 도커 컨테이너 생성 및 동작시키기</h3>
@@ -2022,22 +2008,6 @@ redis
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -2057,6 +2027,22 @@ redis
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -2374,7 +2360,7 @@ redis
 	 
 	 
 		
-			<a class="nav nav-prev" href="/container/docker/container_logging/" title="[Logging] Overview"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/container/docker/2_docker_storage/" title="Storage"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/container/docker/dockerfile/" title="Dockerfile" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -2387,19 +2373,19 @@ redis
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1582989559"></script>
-    <script src="/js/perfect-scrollbar.min.js?1582989559"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1582989559"></script>
-    <script src="/js/jquery.sticky.js?1582989559"></script>
-    <script src="/js/featherlight.min.js?1582989559"></script>
-    <script src="/js/highlight.pack.js?1582989559"></script>
+    <script src="/js/clipboard.min.js?1583027657"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583027657"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583027657"></script>
+    <script src="/js/jquery.sticky.js?1583027657"></script>
+    <script src="/js/featherlight.min.js?1583027657"></script>
+    <script src="/js/highlight.pack.js?1583027657"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1582989559"></script>
-    <script src="/js/learn.js?1582989559"></script>
-    <script src="/js/hugo-learn.js?1582989559"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583027657"></script>
+    <script src="/js/learn.js?1583027657"></script>
+    <script src="/js/hugo-learn.js?1583027657"></script>
 
-    <link href="/mermaid/mermaid.css?1582989559" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1582989559"></script>
+    <link href="/mermaid/mermaid.css?1583027657" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583027657"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
