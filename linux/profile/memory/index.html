@@ -21,20 +21,20 @@
     <title>Memory profiling :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1583027657" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1583027657" rel="stylesheet">
-    <link href="/css/hybrid.css?1583027657" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1583027657" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1583027657" rel="stylesheet">
-    <link href="/css/auto-complete.css?1583027657" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1583027657" rel="stylesheet">
-    <link href="/css/theme.css?1583027657" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1583027657" rel="stylesheet">
+    <link href="/css/nucleus.css?1583149610" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583149610" rel="stylesheet">
+    <link href="/css/hybrid.css?1583149610" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583149610" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583149610" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583149610" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583149610" rel="stylesheet">
+    <link href="/css/theme.css?1583149610" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583149610" rel="stylesheet">
     
-      <link href="/css/theme-purple.css?1583027657" rel="stylesheet">
+      <link href="/css/theme-purple.css?1583149610" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1583027657"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583149610"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1583027657"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1583027657"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583149610"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583149610"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1583027657"></script>
+<script type="text/javascript" src="/js/search.js?1583149610"></script>
 
     
   </div>
@@ -1351,6 +1351,8 @@
     <li>
       <ul>
         <li><a href="#vmstat">vmstat</a></li>
+        <li><a href="#slabtop">slabtop</a></li>
+        <li><a href="#pmap">pmap</a></li>
       </ul>
     </li>
   </ul>
@@ -1405,7 +1407,61 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 <li>so : 스왑 아웃된 메모리</li>
 </ul>
 <p><code>si</code>, <code>so</code> 항목이 0이 아니라면 스왑 장치에 파일에 페이징을 하고 있는 것이므로 시스템에 메모리 부하가 있다고 짐작해 볼 수 있다.</p>
+<h3 id="slabtop">slabtop</h3>
+<p><code>slabtop</code> 명령어는 실시간으로 커널의 슬랩 캐시 정보를 확인할 수 있다. <code>top</code> 명령어와 유사한 형태의 출력을 보인다. 이 명령어는 <code>/proc/slabinfo</code> 정보를 기반으로 데이터를 생성핸다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> Active / Total Objects <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>    : <span style="color:#ae81ff">5076057</span> / <span style="color:#ae81ff">5081816</span> <span style="color:#f92672">(</span>99.9%<span style="color:#f92672">)</span>
+ Active / Total Slabs <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>      : <span style="color:#ae81ff">165982</span> / <span style="color:#ae81ff">165982</span> <span style="color:#f92672">(</span>100.0%<span style="color:#f92672">)</span>
+ Active / Total Caches <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>     : <span style="color:#ae81ff">102</span> / <span style="color:#ae81ff">147</span> <span style="color:#f92672">(</span>69.4%<span style="color:#f92672">)</span>
+ Active / Total Size <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>       : 1964230.97K / 1965949.51K <span style="color:#f92672">(</span>99.9%<span style="color:#f92672">)</span>
+ Minimum / Average / Maximum Object : 0.01K / 0.39K / 16.81K
 
+  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME                   
+<span style="color:#ae81ff">1554579</span> <span style="color:#ae81ff">1554579</span> 100%    0.10K  <span style="color:#ae81ff">39861</span>       <span style="color:#ae81ff">39</span>    159444K buffer_head
+<span style="color:#ae81ff">1397319</span> <span style="color:#ae81ff">1397172</span>   0%    0.19K  <span style="color:#ae81ff">66539</span>       <span style="color:#ae81ff">21</span>    266156K dentry
+<span style="color:#ae81ff">1332690</span> <span style="color:#ae81ff">1332690</span> 100%    1.05K  <span style="color:#ae81ff">44423</span>       <span style="color:#ae81ff">30</span>   1421536K ext4_inode_cache
+<span style="color:#ae81ff">378420</span> <span style="color:#ae81ff">378420</span> 100%    0.04K   <span style="color:#ae81ff">3710</span>      <span style="color:#ae81ff">102</span>     14840K ext4_extent_status
+ <span style="color:#ae81ff">53872</span>  <span style="color:#ae81ff">53314</span>   0%    0.57K   <span style="color:#ae81ff">1924</span>       <span style="color:#ae81ff">28</span>     30784K radix_tree_node
+ <span style="color:#ae81ff">47970</span>  <span style="color:#ae81ff">47048</span>   0%    0.20K   <span style="color:#ae81ff">1230</span>       <span style="color:#ae81ff">39</span>      9840K vm_area_struct
+ <span style="color:#ae81ff">39750</span>  <span style="color:#ae81ff">39750</span> 100%    0.13K   <span style="color:#ae81ff">1325</span>       <span style="color:#ae81ff">30</span>      5300K kernfs_node_cache
+ <span style="color:#ae81ff">30592</span>  <span style="color:#ae81ff">30265</span>   0%    0.06K    <span style="color:#ae81ff">478</span>       <span style="color:#ae81ff">64</span>      1912K anon_vma_chain
+ <span style="color:#ae81ff">25472</span>  <span style="color:#ae81ff">24610</span>   0%    0.06K    <span style="color:#ae81ff">398</span>       <span style="color:#ae81ff">64</span>      1592K kmalloc-64
+ <span style="color:#ae81ff">21924</span>  <span style="color:#ae81ff">21924</span> 100%    0.58K    <span style="color:#ae81ff">812</span>       <span style="color:#ae81ff">27</span>     12992K inode_cache
+ <span style="color:#ae81ff">16813</span>  <span style="color:#ae81ff">16813</span> 100%    0.69K    <span style="color:#ae81ff">731</span>       <span style="color:#ae81ff">23</span>     11696K squashfs_inode_cache
+ ...
+</code></pre></div><p>각 컬럼은 다음과 같다.</p>
+<ul>
+<li>OBJS : 각 객체 개수</li>
+<li>ACTIVE : 활성화 횟수</li>
+<li>USE : 사용된 퍼센트 비율</li>
+<li>OBJ SIZE : 바이트 단위로 객체의 크기</li>
+<li>CACHE SIZE : 바이트 단위로 개시 전체 크디</li>
+</ul>
+<p>해당 정보는 <code>vmstat -m</code> 명령을 이용하여 동일하게 확인 가능하다.</p>
+<h3 id="pmap">pmap</h3>
+<p><code>pmap</code>은 프로세스의 메모리 맵을 확인할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pmap -x <span style="color:#ae81ff">4441</span>
+4441:   man pmap
+Address           Kbytes     RSS   Dirty Mode  Mapping
+000055d7beef4000     <span style="color:#ae81ff">100</span>     <span style="color:#ae81ff">100</span>       <span style="color:#ae81ff">0</span> r-x-- man
+000055d7beef4000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> r-x-- man
+000055d7bf10c000       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span> r---- man
+...
+00007f0e35828000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> ----- libseccomp.so.2.4.1
+00007f0e368a2000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> rw--- ld-2.27.so
+00007f0e368a3000       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span> rw---   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+00007f0e368a3000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> rw---   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+00007ffdee1bd000     <span style="color:#ae81ff">132</span>      <span style="color:#ae81ff">20</span>      <span style="color:#ae81ff">20</span> rw---   <span style="color:#f92672">[</span> stack <span style="color:#f92672">]</span>
+00007ffdee1bd000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> rw---   <span style="color:#f92672">[</span> stack <span style="color:#f92672">]</span>
+00007ffdee1e4000      <span style="color:#ae81ff">12</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> r----   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+00007ffdee1e4000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> r----   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+00007ffdee1e7000       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">0</span> r-x--   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+00007ffdee1e7000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> r-x--   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+ffffffffff600000       <span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> --x--   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+ffffffffff600000       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span> --x--   <span style="color:#f92672">[</span> anon <span style="color:#f92672">]</span>
+---------------- ------- ------- ------- 
+total kB           <span style="color:#ae81ff">29812</span>    <span style="color:#ae81ff">4224</span>    <span style="color:#ae81ff">1204</span>
+
+</code></pre></div>
 
 <footer class="footline">
 	
@@ -2277,19 +2333,19 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1583027657"></script>
-    <script src="/js/perfect-scrollbar.min.js?1583027657"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1583027657"></script>
-    <script src="/js/jquery.sticky.js?1583027657"></script>
-    <script src="/js/featherlight.min.js?1583027657"></script>
-    <script src="/js/highlight.pack.js?1583027657"></script>
+    <script src="/js/clipboard.min.js?1583149610"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583149610"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583149610"></script>
+    <script src="/js/jquery.sticky.js?1583149610"></script>
+    <script src="/js/featherlight.min.js?1583149610"></script>
+    <script src="/js/highlight.pack.js?1583149610"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1583027657"></script>
-    <script src="/js/learn.js?1583027657"></script>
-    <script src="/js/hugo-learn.js?1583027657"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583149610"></script>
+    <script src="/js/learn.js?1583149610"></script>
+    <script src="/js/hugo-learn.js?1583149610"></script>
 
-    <link href="/mermaid/mermaid.css?1583027657" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1583027657"></script>
+    <link href="/mermaid/mermaid.css?1583149610" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583149610"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
