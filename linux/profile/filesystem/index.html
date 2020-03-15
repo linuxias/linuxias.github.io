@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Compile&amp;Link :: Developer&#39;s Delight</title>
+    <title>FileSystem :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1584266376" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/linux/compilelink/">
+  <body class="" data-url="/linux/profile/filesystem/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -172,7 +172,7 @@
   
     
     <li data-nav-id="/linux/profile/" title="Profile" class="dd-item 
-        
+        parent
         
         
         ">
@@ -217,7 +217,7 @@
  
   
     
-      <li data-nav-id="/linux/profile/filesystem/" title="FileSystem" class="dd-item ">
+      <li data-nav-id="/linux/profile/filesystem/" title="FileSystem" class="dd-item active">
         <a href="/linux/profile/filesystem/">
         FileSystem
         <i class="fas fa-check read-icon"></i>
@@ -284,8 +284,8 @@
   
     
     <li data-nav-id="/linux/compilelink/" title="Compile&amp;Link" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/linux/compilelink/">
@@ -1330,6 +1330,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -1344,7 +1346,13 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > Compile&Link
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/profile/'>Profile</a> > FileSystem
+          
+         
           
          
           
@@ -1355,6 +1363,25 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#free1">free(1)</a></li>
+        <li><a href="#top1">top(1)</a></li>
+        <li><a href="#vmstat">vmstat</a></li>
+        <li><a href="#slabtop">slabtop</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -1362,28 +1389,73 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              FileSystem
+            </h1>
           
 
         
 
 
 
+<h3 id="free1">free(1)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$free -th
+              total        used        free      shared  buff/cache   available
+Mem:            31G        1.5G         28G         79M        1.1G         29G
+Swap:          2.0G          0B        2.0G
+Total:          33G        1.5G         30G
 
-	<h1 id="compile--link">Compile &amp; Link</h1>
+</code></pre></div><h3 id="top1">top(1)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">...
+
+KiB Mem : <span style="color:#ae81ff">32832784</span> total, <span style="color:#ae81ff">30064040</span> free,  <span style="color:#ae81ff">1579628</span> used,  <span style="color:#ae81ff">1189116</span> buff/cache
+KiB Swap:  <span style="color:#ae81ff">2097148</span> total,  <span style="color:#ae81ff">2097148</span> free,        <span style="color:#ae81ff">0</span> used. <span style="color:#ae81ff">30760488</span> avail Mem 
+
+...
+</code></pre></div><p><strong>1189116 buff/cache</strong></p>
+<h3 id="vmstat">vmstat</h3>
+<p>buff and cache column -&gt; buffer cache</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vmstat -w <span style="color:#ae81ff">1</span>      
+procs -----------------------memory---------------------- ---swap-- -----io---- -system-- --------cpu--------
+ r  b         swpd         free         buff        cache   si   so    bi    bo   in   cs  us  sy  id  wa  st
+ <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">30052984</span>       <span style="color:#ae81ff">119008</span>      <span style="color:#ae81ff">1078384</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">66</span>     <span style="color:#ae81ff">6</span>  <span style="color:#ae81ff">792</span> <span style="color:#ae81ff">1632</span>   <span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">98</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">0</span>
+ <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">30052724</span>       <span style="color:#ae81ff">119008</span>      <span style="color:#ae81ff">1078388</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">7244</span> <span style="color:#ae81ff">14004</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">99</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">0</span>
+ <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">30055024</span>       <span style="color:#ae81ff">119008</span>      <span style="color:#ae81ff">1076084</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10043</span> <span style="color:#ae81ff">19655</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">99</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">0</span>
+
+</code></pre></div><h3 id="slabtop">slabtop</h3>
+<p>slabtop  displays detailed kernel slab cache information in real time.<br>
+It displays a listing of the top caches sorted by one of the listed sort criteria.<br>
+It also displays a statistics header filled with slab layer information.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo slabtop -o
+ Active / Total Objects <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>    : <span style="color:#ae81ff">881272</span> / <span style="color:#ae81ff">898900</span> <span style="color:#f92672">(</span>98.0%<span style="color:#f92672">)</span>
+ Active / Total Slabs <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>      : <span style="color:#ae81ff">24976</span> / <span style="color:#ae81ff">24976</span> <span style="color:#f92672">(</span>100.0%<span style="color:#f92672">)</span>
+ Active / Total Caches <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>     : <span style="color:#ae81ff">102</span> / <span style="color:#ae81ff">151</span> <span style="color:#f92672">(</span>67.5%<span style="color:#f92672">)</span>
+ Active / Total Size <span style="color:#f92672">(</span>% used<span style="color:#f92672">)</span>       : 224446.49K / 230393.23K <span style="color:#f92672">(</span>97.4%<span style="color:#f92672">)</span>
+ Minimum / Average / Maximum Object : 0.01K / 0.26K / 16.81K
+
+  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME                   
+...    
+ <span style="color:#ae81ff">88620</span>  <span style="color:#ae81ff">82099</span>   0%    0.19K   <span style="color:#ae81ff">4220</span>       <span style="color:#ae81ff">21</span>     16880K dentry                    
+ <span style="color:#ae81ff">31185</span>  <span style="color:#ae81ff">30925</span>   0%    0.58K   <span style="color:#ae81ff">1155</span>       <span style="color:#ae81ff">27</span>     18480K inode_cache            
+ <span style="color:#ae81ff">21330</span>  <span style="color:#ae81ff">19517</span>   0%    1.05K    <span style="color:#ae81ff">711</span>       <span style="color:#ae81ff">30</span>     22752K ext4_inode_cache                  
+ <span style="color:#ae81ff">17184</span>  <span style="color:#ae81ff">16972</span>   0%    0.65K    <span style="color:#ae81ff">716</span>       <span style="color:#ae81ff">24</span>     11456K proc_inode_cache       
+...
+</code></pre></div><ul>
+<li>dentry : dentry cache</li>
+<li>inode_cache : inode cache</li>
+<li>ext4_inode_cache : inode cache(ext4)</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<p><a href="https://brunch.co.kr/@alden/25">리눅스의 페이지 캐시와 버퍼 캐시</a></p>
 
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -1466,6 +1538,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1478,6 +1551,45 @@
             
             
                 
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1506,19 +1618,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
                     
@@ -1535,33 +1634,10 @@
                     
 
                     
-            
-        
-                    
-            
-        
-                    
                         
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -2249,10 +2325,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/linux/profile/memory/" title="Memory profiling"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/linux/profile/cpu/" title="CPU Profiling"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/linux/compilelink/gcc_warning_option/" title="[gcc] Warning 옵션" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/linux/profile/lttng/" title="LTTng:userspace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2282,3 +2358,4 @@
 
   </body>
 </html>
+
