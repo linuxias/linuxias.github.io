@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>4. Machine Learning :: Developer&#39;s Delight</title>
+    <title>[multitail] 여러 로그 동시에 확인하기 :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1584455832" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/machinelearning/">
+  <body class="" data-url="/linux/tip/multitail/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -88,7 +88,7 @@
   
     
     <li data-nav-id="/linux/" title="1. Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -284,7 +284,7 @@
   
     
     <li data-nav-id="/linux/tip/" title="Tips" class="dd-item 
-        
+        parent
         
         
         ">
@@ -310,7 +310,7 @@
  
   
     
-      <li data-nav-id="/linux/tip/multitail/" title="[multitail] 여러 로그 동시에 확인하기" class="dd-item ">
+      <li data-nav-id="/linux/tip/multitail/" title="[multitail] 여러 로그 동시에 확인하기" class="dd-item active">
         <a href="/linux/tip/multitail/">
         [multitail] 여러 로그 동시에 확인하기
         <i class="fas fa-check read-icon"></i>
@@ -1073,8 +1073,8 @@
   
     
     <li data-nav-id="/machinelearning/" title="4. Machine Learning" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/machinelearning/">
@@ -1385,6 +1385,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -1395,7 +1397,19 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > 4. Machine Learning
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/tip/'>Tips</a> > [multitail] 여러 로그 동시에 확인하기
+          
+         
+          
+         
           
          
           
@@ -1404,6 +1418,13 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -1411,28 +1432,34 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              [multitail] 여러 로그 동시에 확인하기
+            </h1>
           
 
         
 
 
 
+<p>로그를 확인할 때 tail 명령어를 많이 사용합니다. tail 명령어를 이용 시 여러 개의 로그를 동시에 보고싶지만 하나의 터미널 창에서는 하나의 로그만 확인 가능합니다. 이러한 점을 보완한 툴이 multitail입니다.</p>
+<p>아래 명령어로 먼저 설치해 줍니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt install multitail
+</code></pre></div><p>사용방법은 간단합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ multitail <span style="color:#f92672">{</span>log file<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>log file<span style="color:#f92672">}</span>
+</code></pre></div><p>예를 들어,</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ multitail /var/log/apache2/access.log /var/log/apach2/error.log
+</code></pre></div><p>위 명령어를 수행 시 아래와 같은 결과를 얻을 수 있습니다.</p>
+<p><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F99D518375B5671481CF837" alt="multitail"></p>
+<p>감사합니다.</p>
 
-	<h1 id="machine-leanrning">Machine Leanrning</h1>
 
-
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -1464,8 +1491,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -1482,37 +1507,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1538,186 +1534,8 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -1804,6 +1622,59 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -1859,6 +1730,40 @@
                     
             
         
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
                         
             
@@ -2036,6 +1941,19 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -2054,22 +1972,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -2151,6 +2053,25 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
             
         
                     
@@ -2159,6 +2080,117 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -2174,9 +2206,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -2329,10 +2358,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/sw_architecture/sw_design_corruption/" title="소프트웨어 설계의 부패"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/linux/tip/" title="Tips"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/machinelearning/basic/" title="Basic Theory" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/linux/tip/kernel-config/" title="시스템에서 kernel config 확인하기" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2362,3 +2391,4 @@
 
   </body>
 </html>
+

@@ -35,6 +35,13 @@
 	"content": "Profile "
 },
 {
+	"uri": "https://linuxias.github.io/linux/tip/",
+	"title": "Tips",
+	"tags": [],
+	"description": "",
+	"content": "Tips "
+},
+{
 	"uri": "https://linuxias.github.io/container/docker/1_docker_cmd_basic/",
 	"title": "Docker Basic",
 	"tags": [],
@@ -214,7 +221,7 @@
 	"title": "Developer&#39;s Delight",
 	"tags": [],
 	"description": "",
-	"content": "Developer\u0026rsquo;s Delight Seungha Son  Expert knowledge and hands-on experience of system programming, application developing, debugging and profiling and optimization based linux. Programming skills in C (advanace level), and C++, Java, Python, Shell script (Intermediate level) Interested in open-source, system architecture  Career  2020.02 ~ Current, Software Engineer, Tizen Platform lab, Samsung Research, Samgsung Electronic.  System performance optimization and profiling   2018.03 ~ 2020.01, Software Engineer, Mac Platform, Network Business, Samgsung Electronic. 2016.03 ~ 2018.02, Software Engineer, Tizen Platform lab, Samsung Research, Samgsung Electronic. 2014.02 ~ 2016.02, Human Resource Management, Software Membership team, Samsung Research, Samgsung Electronic. 2012.07 ~ 2013.12, Member, Samsung Software Membership  Education  2017 ~ 2019, Yonsei Universiry master’s degree, Major : Computer Science 2007 ~ 2014, Korea Education \u0026amp; Technology University, Major : Mechatronics Engineering  "
+	"content": "Developer\u0026rsquo;s Delight Seungha Son  Expert knowledge and hands-on experience of system programming, application developing, debugging and profiling and optimization based linux. Programming skills in C (advanace level), and C++, Java, Python, Shell script (Intermediate level) Interested in open-source, system architecture  Career  2020.02 ~ Current, Software Engineer, Tizen Platform lab, Samsung Research, Samgsung Electronic.  System performance optimization and profiling   2018.03 ~ 2020.01, Software Engineer, Mac Platform, Network Business, Samgsung Electronic. 2016.03 ~ 2018.02, Software Engineer, Tizen Platform lab, Samsung Research, Samgsung Electronic. 2014.02 ~ 2016.02, Human Resource Management, Software Membership team, Samsung Research, Samgsung Electronic. 2012.07 ~ 2013.12, Member, Samsung Software Membership  Education  2017 ~ 2019, Yonsei University master’s degree, Major : Computer Science 2007 ~ 2014, Korea Education \u0026amp; Technology University, Major : Mechatronics Engineering  "
 },
 {
 	"uri": "https://linuxias.github.io/machinelearning/basic/model_representation_and_cost_function/",
@@ -250,6 +257,13 @@
 	"tags": [],
 	"description": "",
 	"content": "소프트웨어 에이전트 아키텍쳐에 대해 정리해보겠습니다.\n에이전트 구조는 3개로 크게 나뉠 수 있습니다.\n  Deliberative : 의도적인, 신중한\n  Reactive : 반응하는\n  Hybrid : Deliberative + Reactive\n  용어 의미만 보아서 파악할 수 있는건 Hybrid밖에 없는 것 같네요. 하나씩 정리해보도록 하겠습니다.\nDeliberative Agents Deliberative Agents는 명확하게 표현되어 질 수 있는 실세계의 상징적 모델이며 Symbolic reasoning을 통해 결정을 만들어 나가는 에이전트입니다. Sense-plan-act 를 통한 문제 해결방식으로 Deliberative 구조로 BDI, GRATE*, HOMER, Shoham 등이 유명합니다. Deliberative는 Deductive reasoning agents와 Practical reasoning agents로 나뉘어져 있습니다. Deductive reasoning은 연역적 추론을 기반으로 한 Agent이며 Practical reasoning은 실용적 추론을 기반으로 한 Agent 입니다.\nDeliberative Agent는 아래와 같은 플로우를 가집니다.\nInput -\u0026gt; [ Sensors -\u0026gt; World Model -\u0026gt; Planner -\u0026gt; Plan Executor -\u0026gt; Effector ] -\u0026gt; Output\n입력에 대해 Sensing하고 Model에 대해 목표 달성을 위한 Plan을 세우게 됩니다. 이 때 Plan은 하나일 수도 있고 여러개 일 수도 있습니다. 그 중 목표달성을 위한 적절한 Plan을 선택하여 실행하게 되는 순서입니다.\nDeliberative Agents의 문제는 Performance와 Representation 문제가 있습니다. Performance는 환경이 급속하게 변화된다면 상징적 표현을 필요한 모든 정보로 변환하는데 시간 소모가 많습니다. Representation은 어떻게 세계 모델이 상직적으로 표현될 수 있는가와 그리고 결과를 유용하게 사용할 수 있도록 제 시간에 정보를 근거로 에이전트를 추론하는 방법에 대한 문제가 있습니다. 이렇게 느린 결과는 쓸모가 없을 뿐더러 실제 세계 모델은 매우 복잡하기에 심볼로만 처리하기엔 어려움이 많습니다.\nDeliberative Agents에는 Deductive Reasoning과 Practical Reasoning이 있다고 말씀드렸는데요, 이 둘에 대해 자세히 정리해 보겠습니다. 먼저 Deliberative Agent입니다. 연역적 추론을 기반으로하는 에이전트 인데요, 연역적 추론이란 전제들이 참이면 결론은 항상 참이라는 것이 보장되는 추론입니다. 에이전트가 어떻게 정리 이론을 이용해서 무엇을 하는지 결정해야하는가? 에 대한 질문을 던질 수 있는데요, 기본적인 아이디어는 주어진 상황에서 수행가능한 최고의 액션을 서술하는 이론을 인코딩하는 사용하는 것입니다. 뭔가 어렵네요. Deductive Reasoning은 매우 단순하고 논리적인 의미를 담고있습니다. 하지만 어떻게 어떻게 실세계의 정보를 심볼정보로 변경할 지, 추론에 대한 시간 복잡도는 어떨지 고민해봐야 할 것 같습니다.\n다음 Practical Reasoning입니다. Practical Reasoning은 행동에 대한 Reasoning입니다. Practical reasoning은 두 개의 activity로 구성되어 있는데요, Deliberation과 Means-ends reasoning입니다.\n  Deliberation (숙고, 신중함) : 달성하고자 하는 일의 상태가 무엇인지 결정하는 것\n  Means-ends reasoning (방법 목적 추론) : 일의 상태들을 달성하기 위해 어떻게 해야하는지 결정하는 것\n  어렵네요. Deliberation은 달성하고자 하는 일 자체의 상태이고, Means-ends reasoning은 일의 상태를 달성하기 위해 어떠한 과정을 결정해야 하는 것인가(?) 로 생각해보면 좋을 것 같습니다. Deliberation의 출력이 곧 Intentions입니다. Intentions이란 용어는 에이전트가 선택하고 실행해야할 일의 상태를 말합니다. Practical reasoning에서 중요한 역할을 하는 녀석입니다. Intentions은 means-ends reasoning을 드라이브하고 지속됩니다. 미래의 Deliberation을 제한하기도 하며 미래에 대한 Belief들과 연관된 녀석입니다. 좀 어렵나요? 천천히 정리해보시기 바랍니다. 다음 Means-end reasoning은 에이전트에게 달성하기 위한 목표, 수행할 수 있는 액션들, 환경의 표현을 주기 위함입니다. 목표를 달성하기 위한 계획을 생성하는 것입니다.\nReactive Agents Reactive agent는 내부적으로 세계의 표현을 매우 단순화하였으며 Perception과 Action이 매우 강하게 결속되어 있는 에이전트입니다. 행위 기반 에이전트의 전형적인 예로서 에이전트 내부에서 각 상태에 따른 Agent가 나뉘어져 있습니다.\n[ State 1 -\u0026gt; Action 1 ]\n[ State 2 -\u0026gt; Action 2 ]\nSensors -\u0026gt;[ State 3 -\u0026gt; Action 3 ] -\u0026gt;Effectors\n [ State 4 -\u0026gt; Action 4 ]\n [ State 5 -\u0026gt; Action 5 ]\n위 처럼 Sensor에서 받아들인 입력을 각 State로 전달하고 액션을 결정하여 Effector로 전달합니다. 각 행위는 지각의 입력에서 출력이 연속적으로 매핑되어 있는 구조입니다. Reactive Agents는 매우 단순하고 경제적이며 구현하기 매우 쉽습니다. 시스템 문제에 대한 강건성 또한 이 에이전트의 이점입니다. 하지만 문제도 다양합니다. 환경 모델 없는 에이전트들은 지역적 환경으로부터 가능한 충분한 정보를 가져야 합니다. 만약 지역 환경을 기반으로한 결정들은 비지역 환경들에 대해선 어떻게 고려할 것이냐도 문제가 됩니다. 또한 Reactive agents는 학습시키 매우 어렵습니다. 마지막으로 상호작용하는 요소들과 환경에 따라 동작이 달라지기 때문에 특정 에이전트를 엔지니어링 하기 어렵습니다.\nHybrid Agents Hybrid Agent는 Deliberative와 Reactive 행위의 결합입니다. 계획을 세우거나 상징적 추론을 사용해 결정을 만드는 시스템과 복잡한 추론 없이 이벤트에 대해 빠르게 반응하는 시스템이 Hybrid Agent의 서브시스템으로 구성되어 있습니다. Sensor와 Effector 사이에 Deliberative 요소와 Reactive 요소가 함께 포함되어 있습니다. Deliberative와 Reactive를 자세히 알아보았으니 Hybrid는 두개의 결합이라고 이해하면 가장 좋을 것 같습니다 :D\n잘못된 내용이나 궁금한 내용은 댓글 부탁드립니다. 긴 글 읽어주셔서 감사드립니다.\n"
+},
+{
+	"uri": "https://linuxias.github.io/linux/tip/multitail/",
+	"title": "[multitail] 여러 로그 동시에 확인하기",
+	"tags": [],
+	"description": "",
+	"content": "로그를 확인할 때 tail 명령어를 많이 사용합니다. tail 명령어를 이용 시 여러 개의 로그를 동시에 보고싶지만 하나의 터미널 창에서는 하나의 로그만 확인 가능합니다. 이러한 점을 보완한 툴이 multitail입니다.\n아래 명령어로 먼저 설치해 줍니다.\n$ sudo apt install multitail 사용방법은 간단합니다.\n$ multitail {log file} {log file} 예를 들어,\n$ multitail /var/log/apache2/access.log /var/log/apach2/error.log 위 명령어를 수행 시 아래와 같은 결과를 얻을 수 있습니다.\n감사합니다.\n"
 },
 {
 	"uri": "https://linuxias.github.io/sw_architecture/batch_sequential_architecture/",
@@ -364,16 +378,16 @@
 	"content": ""
 },
 {
-	"uri": "https://linuxias.github.io/linux/tips/",
-	"title": "Tips",
-	"tags": [],
-	"description": "",
-	"content": "시스템에서 kernel config 확인하기 본인의 리눅스 시스템 마다 3개 중 하나를 사용할 수 있습니다.\ncat /proc/config.gz cat /boot/config cat /boot/config-$(uname -r) "
-},
-{
 	"uri": "https://linuxias.github.io/sw_architecture/sw_design_corruption/",
 	"title": "소프트웨어 설계의 부패",
 	"tags": [],
 	"description": "",
 	"content": "소프트웨어 설계는 무엇일까? 소스코드 작성하기 전 UML 다이어그램을 작성하는 것? 가끔 몇몇 개발자 분들과 이야기를 할 때 설계는 UML 다이어그램을 작성하는 것이라는 말을 듣는다. 그럼 설계는 UML 다이어그램과 동일 시 할 수 있는가에 대해서 고민해보면 그렇지 않다 라는 결론이 나올 수 있다. 다이어그램은 설계에서 부수적인 부분일 뿐 설계 그 자체가 될 수는 없다고 생각한다. 소프트웨어 설계는 매우 추상적인 것이라 생각한다. 사용자 요구사항부터 시나리오, 모듈, 클래스, 메소드와 더불어 어떠한 형태와 구조를 가질 것인지 프로그램 전체의 형태, 구조와도 관련이 있다고 생각한다. 과거에 프로젝트를 개발할 때 가끔 머리속으로 설계에 대한 그림이 그려질 때가 있었다. 내 머리속에 들어있는 설계의 청사진이 옳다고 생각하고 한 번에 첫 번째 릴리즈까지 가능한 적이 있었다. 그 순간은 매우 뿌듯하고 기분 좋았으나 점차 내 머리속의 설계는 잘못되었고 설계가 부패한 고기처럼 썩어있다는 걸 확인할 수 있다. 외형적으로 매우 신선해보였으나 내부를 살펴보니 곪고 또 곪아서 어떻게 할 수가 없는 상태가 된 적도 있다. 재설계를 하려해도, 시간적 소모와 지속적인 사용자의 요구사항으로 인해 새로운 설계안도 설계와 동시에 썩어들어가는 기분을 느꼈다. 그럼 언제 내 설계가 잘못되었는지 알 수 있는 방법이 없을까? 부패하고 있다는 느낌이 들때가 언제인지 고민을 하다 로버트 마틴의 \u0026lsquo;클린 소프트웨어\u0026rsquo; 란 도서에서 잘 정리해둔 것 같아 인용하여 정리해보려 한다.\n지금부터 아래와 같은 조짐이 보이면 그 설계는 부패하고 있다고 판단할 수 있다. 누구나 알고있으면서 쉽게 놓치고 있는 부분이라 생각한다.\n경직성 시스템의 변경이 어려운 상태이다. 변경을 하려보니 다른 여러 부분들까지 변경되어야 하는 구조이다. 단순한 방법으로 변경하려 해보지만 쉽게 변경이 어렵다. 즉 의존성으로 인해 하나의 변경이 의존된 다른 부분까지 모두 영향을 미치게 되는 형태이다. 이런 파급효과는 개발자를 지치게하고 이런 모듈의 변경사항이 많아질수록 설계는 유연성을 점점 잃어간다. 새로운 요구사항이 발생하였을 때 해당 요구사항에 대해 분석하고 추가, 수정의 범위 등 작업량을 산출해 내지만 실제 해당 작업을 하다보면 예상하지 못한 부분에서 변경이 필요한 부분이 있다는 것을 깨닫게 된다. 산출한 작업량보다 잘못하면 2, 3배 이상의 작업량 추정이 발생할 수 있다. 취약성\n특정 부분 설계 변경 시 전혀 상관관계가 없는 부분까지 영향을 미쳐 망가지게 된다. 위의 경직성과 다르게 의존성이 없는데도 그러한 경우가 있다. 변경사항의 영향이 전혀 관계없는 부분까지 망가뜨리게 된다면 개발자는 어떠한 생각이 들까? 문제가 문제를 만들어내는 최악의 경우가 될 것이다. 어떤 모듈의 취약성이 점점 심해질수록 전혀 관계없는 부분에서 계속 문제가 발생하게 되고 그럴 가능성은 점점 커진다. 이슈는 계속 생기게되고 개발자는 지쳐간다. 개발자 중 이슈가 발생했을 때 \u0026lsquo;이 부분은 내가 수정한 부분이 아니에요, 내 이슈가 아니에요\u0026rsquo; 라고 말하는 개발자들이 가끔 있다. 안타까운 일이다.\n부동성\n움직이지 않는 컴포넌트, 음 움직일 수 없는 컴포넌트가 더 어울리는 말인 것 같다. 설계한 시스템에서 다른 시스템에서 재사용할 수 있는 부분은 재사용하는게 가장 좋다. 하지만 가끔 설계한 소프트웨어에서 재사용가능한 부분을 전혀 찾지 못하는 경우가 있다. 다른 시스템에서도 충분히 유용하게 사용할 수 있지만 분리해낼 수 없는 부분들, 분리해내려하면 많은 시간적 소모와 분리 시 발생할 수 있는 위험으로 인해 쉽게 설계를 변경할 수 없는 경우를 말한다.\n점착성\n점착성이란 간단히 말하면 다른 물질에 끈끈히 달라붙는 성질을 말한다. 설계에서 점착성은 소프트웨어의 점착성과 환경의 점착성이라는 2가지 형태로 나뉠 수 있다. 변경사항이 발생했을 때 개발자들은 변경할 수 있는 여러가지 방법들을 찾게된다. 설계가 유지된 형태일 수도 아닐수도 있다. 설계를 유지한 상태에서 변경하는 방법이 설계를 변경하는 방법보다 어렵다면 그 설계는 점착성이 매우 높은 것이다. 서로 간 너무 끈끈히 붙어있어 수정이 매우 어려운 상황이다. 환경의 점착성은 개발환경에서 비롯된다. 주변 개발환경으로 인해 좀 더 빠른 개발을 위해 설계를 변경하고 싶을 때가 있다. 하지만 설계의 유지는 생각치 않고 잘못된 유혹에 빠져 설계가 변경된다면 옳은 동작을 하지 못할 수도 있다. 개발환경의 개선이 설계까지 영향을 미치는 잘못된 상황을 말이다.\n불필요한 복잡성\n설계를 하다보면 직접적으로 전혀 쓸모없는 구조가 설계에 포함되어 있을 수 있다. 설계하는 과정에선 전혀 발견하지 못하다가 리뷰를 하다보면 그러한 경우를 발견을 할 때도 있고 소스코드 작성 중에 발견할 수 도 있다. 나중에 필요하겠지 란 생각으로 일단 설계해놓고 전혀 불필요한 구조가 들어가 있는 것은 복잡성만 증가시키는 행위이다. 개발자 스스로 미래의 발생할 수 있는 요구사항에 대해 너무 고민한 나머지, 오버엔지니어링을 발생시킬 수 있다. 처음엔 뿌듯할 수 있다. 나중에 이런 요구사항이 왔을 때 내 설계는 유지된 상태에서 제공을 할 수 있다고, 분명 그 말도 맞는 말이다. 미래의 변경을 대비할 수 있다면 설계의 유연성과 추후 변경사항을 방지해줄 수 있다. 하지만 예상했던 효과와 다른 악영향을 미칠 수도 있음을 항상 고려해야 한다. 지금 전혀 사용하지 않는 구조로 인해 설계는 점점 복잡해져가고 미래의 원하는 성과도 얻지 못할 수 있다. 그런 경우를 더 많이 보았다. 불필요한 반복\n단일 추상 개념으로 통합할 수 있는 반복적인 구조가 설계에 포함되어 있다. 주변 개발자분들 중 가끔 필요한 내용을 Ctrl C + V를 이용해 붙여넣는 경우가 있다. 빠른 기능구현을 위해 \u0026lsquo;복붙'은 매우 유용하지만 사용할 때와 사용하지 말아야할 때를 인식해야 한다. 그렇게 붙여넣은 기능이 여러 곳일 때 문제 발생 시 모든 곳을 찾아다니며 수정하는 경우를 보았다. 리뷰 패치가 올라왔을 때 동일한 수정이 수 십 곳이 되는 경우도 있었다. 중복된 기능은 왜 계속 중복되는 꼭 복붙으로만 해결할 수 있는지에 대한 고민을 한번이라도 했으면 그런 구조는 나오지 않았을거란 아쉬움이 남는다. 적절한 추상화를 통해 반복되는 부분을 없애는 일은 최우선 순위는 아니지만 그 일을 행함으로서 매우 유지보수가 쉬운 소프트웨어 구조를 가질 수 있다. 불투명성\n전혀 이해하기 어려운 애매모호한 구조가 있다. 어떠한 의도인지 이해가 쉽지 않은 구조들은 명료하지 않기에 더욱 변경사항에 유연하게 대처하기 어려운 경향이 있다. 처음엔 명료한 구조였지만 추후 점차 불투명성이 커지는 구조가 될 수도 있다. 지속적으로 명료한 구조를 가지기 위해 노력해야 한다. 시간이 지남에 따라 불투명성으로 인해 구조가 점점 부패해지는 경우를 막아야 할 것이다.\n위와 같이 소프트웨어 설계가 썩어들어가는 여러 신호들이 있다. 이를 무시하지 말고 융통성있게 대처할 수 있어야 할 것 같다.\n참고 : 로버트 C 마틴 | 클린 소프트웨어\n"
+},
+{
+	"uri": "https://linuxias.github.io/linux/tip/kernel-config/",
+	"title": "시스템에서 kernel config 확인하기",
+	"tags": [],
+	"description": "",
+	"content": "본인의 리눅스 시스템 마다 3개 중 하나를 사용할 수 있습니다.\ncat /proc/config.gz cat /boot/config cat /boot/config-$(uname -r) "
 }]

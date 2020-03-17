@@ -18,7 +18,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>4. Machine Learning :: Developer&#39;s Delight</title>
+    <title>시스템에서 kernel config 확인하기 :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1584455832" rel="stylesheet">
@@ -44,7 +44,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/machinelearning/">
+  <body class="" data-url="/linux/tip/kernel-config/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -88,7 +88,7 @@
   
     
     <li data-nav-id="/linux/" title="1. Linux" class="dd-item 
-        
+        parent
         
         
         ">
@@ -284,7 +284,7 @@
   
     
     <li data-nav-id="/linux/tip/" title="Tips" class="dd-item 
-        
+        parent
         
         
         ">
@@ -329,7 +329,7 @@
  
   
     
-      <li data-nav-id="/linux/tip/kernel-config/" title="시스템에서 kernel config 확인하기" class="dd-item ">
+      <li data-nav-id="/linux/tip/kernel-config/" title="시스템에서 kernel config 확인하기" class="dd-item active">
         <a href="/linux/tip/kernel-config/">
         시스템에서 kernel config 확인하기
         <i class="fas fa-check read-icon"></i>
@@ -1073,8 +1073,8 @@
   
     
     <li data-nav-id="/machinelearning/" title="4. Machine Learning" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/machinelearning/">
@@ -1385,6 +1385,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -1395,7 +1397,19 @@
             
           
           
-            <a href='/'>Developer's Delight</a> > 4. Machine Learning
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Developer's Delight</a> > <a href='/linux/'>1. Linux</a> > <a href='/linux/tip/'>Tips</a> > 시스템에서 kernel config 확인하기
+          
+         
+          
+         
           
          
           
@@ -1404,6 +1418,13 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -1411,28 +1432,28 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              시스템에서 kernel config 확인하기
+            </h1>
           
 
         
 
 
 
+<p>본인의 리눅스 시스템 마다 3개 중 하나를 사용할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /proc/config.gz
+cat /boot/config
+cat /boot/config-<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span>
+</code></pre></div>
 
-	<h1 id="machine-leanrning">Machine Leanrning</h1>
-
-
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -1464,8 +1485,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -1482,37 +1501,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1538,186 +1528,8 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -1804,6 +1616,62 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -1859,6 +1727,40 @@
                     
             
         
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
                         
             
@@ -2036,6 +1938,19 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -2054,22 +1969,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -2151,6 +2050,25 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
             
         
                     
@@ -2159,6 +2077,117 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -2174,9 +2203,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -2329,10 +2355,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/sw_architecture/sw_design_corruption/" title="소프트웨어 설계의 부패"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/linux/tip/multitail/" title="[multitail] 여러 로그 동시에 확인하기"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/machinelearning/basic/" title="Basic Theory" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/linux/compilelink/" title="Compile&amp;Link" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2362,3 +2388,4 @@
 
   </body>
 </html>
+

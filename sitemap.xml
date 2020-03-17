@@ -28,6 +28,11 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/linux/tip/</loc>
+    <lastmod>2020-01-01T23:15:54+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/container/docker/1_docker_cmd_basic/</loc>
   </url>
   
@@ -165,6 +170,10 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/linux/tip/multitail/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</loc>
   </url>
   
@@ -229,11 +238,11 @@
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/linux/tips/</loc>
+    <loc>https://linuxias.github.io/sw_architecture/sw_design_corruption/</loc>
   </url>
   
   <url>
-    <loc>https://linuxias.github.io/sw_architecture/sw_design_corruption/</loc>
+    <loc>https://linuxias.github.io/linux/tip/kernel-config/</loc>
   </url>
   
 </urlset>
