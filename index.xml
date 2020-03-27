@@ -355,6 +355,15 @@ vmstat -w 1 procs -----------------------memory---------------------- ---swap-- 
     </item>
     
     <item>
+      <title>ftrace</title>
+      <link>https://linuxias.github.io/linux/debugging/ftrace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/debugging/ftrace/</guid>
+      <description>name information note     current_tracer 현재 설정된 tracer 값    available_tracers tracer 가능한 정보들, 커널 컴파일 시 설정될 수 있다. 활성화 위해선 current_tracer에 이벤트를 작성한다.    tracing_on ftrace ring buffer을 활성화할지 여부를 결정한다. 트레이서를 비활성화하려면 이 파일에 0을, 활성화하려면 1을 각각 설정하십시오. 참고, 이는 링 버퍼에 대한 쓰기를 비활성화할 뿐이며, 추적 오버헤드는 여전히 발생할 수 있다.    trace 사람 친화적인, 즉 텍스트 형태로 트레이스 결과가 출력된다.</description>
+    </item>
+    
+    <item>
       <title>Hierarchical Software Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -458,6 +467,17 @@ sudo docker info [sudo] password for linuxias: Client: Debug Mode: false Server:
       <guid>https://linuxias.github.io/linux/tip/kernel-config/</guid>
       <description>본인의 리눅스 시스템 마다 3개 중 하나를 사용할 수 있습니다.
 cat /proc/config.gz cat /boot/config cat /boot/config-$(uname -r) </description>
+    </item>
+    
+    <item>
+      <title>쿠버네티스를 활용한 클라우드 네이티브 데브옵스</title>
+      <link>https://linuxias.github.io/books/cloudnativedevopswithkubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/books/cloudnativedevopswithkubernetes/</guid>
+      <description>CHAPTER 1 소프트웨어 세상의 세 가지 혁명 __1.1 클라우드 혁명 __1.2 데브옵스 탄생 __1.3 컨테이너 등장 __1.4 컨테이너 오케스트레이션 __1.5 쿠버네티스 __1.6 클라우드 네이티브 __1.7 운영의 미래 __1.8 마치며
+CHAPTER 2 쿠버네티스 첫걸음 __2.1 첫 번째 컨테이너 실행하기 __2.2 데모 애플리케이션 __2.3 컨테이너 빌드하기 __2.4 컨테이너 레지스트리 __2.5 헬로, 쿠버네티스 __2.6 Minikube __2.7 마치며
+CHAPTER 3 쿠버네티스 구축하기 __3.1 클러스터 아키텍처 __3.2 자체 호스팅 쿠버네티스 비용 __3.3 관리형 쿠버네티스 서비스 __3.</description>
     </item>
     
   </channel>

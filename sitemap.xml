@@ -202,6 +202,10 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/linux/debugging/ftrace/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</loc>
   </url>
   
@@ -243,6 +247,10 @@
   
   <url>
     <loc>https://linuxias.github.io/linux/tip/kernel-config/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/books/cloudnativedevopswithkubernetes/</loc>
   </url>
   
 </urlset>

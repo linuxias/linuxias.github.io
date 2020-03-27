@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>ftrace</title>
+      <link>https://linuxias.github.io/linux/debugging/ftrace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/debugging/ftrace/</guid>
+      <description>name information note     current_tracer 현재 설정된 tracer 값    available_tracers tracer 가능한 정보들, 커널 컴파일 시 설정될 수 있다. 활성화 위해선 current_tracer에 이벤트를 작성한다.    tracing_on ftrace ring buffer을 활성화할지 여부를 결정한다. 트레이서를 비활성화하려면 이 파일에 0을, 활성화하려면 1을 각각 설정하십시오. 참고, 이는 링 버퍼에 대한 쓰기를 비활성화할 뿐이며, 추적 오버헤드는 여전히 발생할 수 있다.    trace 사람 친화적인, 즉 텍스트 형태로 트레이스 결과가 출력된다.</description>
+    </item>
+    
+    <item>
       <title>Proc Filesystem</title>
       <link>https://linuxias.github.io/linux/debugging/proc_filesystem/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -44,5 +44,16 @@ CHAPTER 4 프로그래밍 문제 접근법
 CHAPTER 5 연결 리스트</description>
     </item>
     
+    <item>
+      <title>쿠버네티스를 활용한 클라우드 네이티브 데브옵스</title>
+      <link>https://linuxias.github.io/books/cloudnativedevopswithkubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/books/cloudnativedevopswithkubernetes/</guid>
+      <description>CHAPTER 1 소프트웨어 세상의 세 가지 혁명 __1.1 클라우드 혁명 __1.2 데브옵스 탄생 __1.3 컨테이너 등장 __1.4 컨테이너 오케스트레이션 __1.5 쿠버네티스 __1.6 클라우드 네이티브 __1.7 운영의 미래 __1.8 마치며
+CHAPTER 2 쿠버네티스 첫걸음 __2.1 첫 번째 컨테이너 실행하기 __2.2 데모 애플리케이션 __2.3 컨테이너 빌드하기 __2.4 컨테이너 레지스트리 __2.5 헬로, 쿠버네티스 __2.6 Minikube __2.7 마치며
+CHAPTER 3 쿠버네티스 구축하기 __3.1 클러스터 아키텍처 __3.2 자체 호스팅 쿠버네티스 비용 __3.3 관리형 쿠버네티스 서비스 __3.</description>
+    </item>
+    
   </channel>
 </rss>
