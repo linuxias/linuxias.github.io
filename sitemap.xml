@@ -51,6 +51,11 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/cloud/</loc>
+    <lastmod>2019-01-01T11:19:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/machinelearning/</loc>
     <lastmod>2020-01-05T23:34:14+09:00</lastmod>
   </url>
@@ -207,6 +212,10 @@
   
   <url>
     <loc>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/cloud/kubernetes_install/</loc>
   </url>
   
   <url>
