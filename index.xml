@@ -364,6 +364,17 @@ vmstat -w 1 procs -----------------------memory---------------------- ---swap-- 
     </item>
     
     <item>
+      <title>Head First GO</title>
+      <link>https://linuxias.github.io/books/headfirst_go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/books/headfirst_go/</guid>
+      <description>올해 3월 Head First Go 가 출간되었다. Head First는 O&amp;rsquo;REILLY 사에서 출간한 컴퓨터 관련 시리즈 도서로 다양한 책들이 있으며 많은 소프트웨어 개발자들이 한번은 봤을법한 표지로도 유명하다.
+도서의 목차는 아래와 같다.
+목차 서문 1장. 시작해 봅시다: 문법 기초 2장. 다음엔 어떤 코드가 실행될까요?: 조건문과 반복문 3장. 호출해 주세요: 함수 4장. 코드 묶음: 패키지 5장. 목록에서: 배열 6장. 확장 문제: 슬라이스 7장. 데이터 라벨링: 맵 8장. 저장소 만들기: 구조체 9장. 나만의 타입: 사용자 정의 타입 10장.</description>
+    </item>
+    
+    <item>
       <title>Hierarchical Software Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -446,6 +457,16 @@ Pipe and Filter 구조의 구성요소는 크게 3가지 입니다.</description
       <guid>https://linuxias.github.io/linux/debugging/proc_filesystem/</guid>
       <description>The /Proc Filesystem for Debugging proc - process infomation pseudo-filesystem (Process infomation)
 리눅스가 인기 있는 이유 중 하나는 UNIX 시스템의 좋은 feature들을 결합시킨 점입니다. Proc 파일시스템은 그 좋은 feature들 중 한가지 인데요, 대다수의 Linux 배포판에 포함되어 있습니다. proc 파일시스템은 /proc에 마운트되어 있으며 kernel data 구조에 대해 인터페이스를 제공하고 있습니다. proc 파일시스템의 파일들은 READ-ONLY 이지만, 몇몇의 파일들은 커널 변수를 변경하여 적용할 수 있도록 WRITE가 가능합니다. proc 파일시스템의 구성요소를 하나하나 살펴보도록 하시죠.</description>
+    </item>
+    
+    <item>
+      <title>Process</title>
+      <link>https://linuxias.github.io/linux/profile/process/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/linux/profile/process/</guid>
+      <description>1. Perf + FlameGraph Process의 FlameGraph를 뽑아내는 과정을 설명한다. Perf의 --call-graph 기능을 이용한다.
+1) Kernel setting echo -1 &amp;gt; /proc/sys/kernel/perf_event_paranoid echo 0 &amp;gt; /proc/sys/kernel/kptr_restrict chmod a+r /proc/kallsyms echo 100 &amp;gt; /proc/sys/kernel/perf_cpu_time_max_percent echo performance &amp;gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2) Get perf data perf record -o perf.data --call-graph=dwarf -F 15000 -p {PID} perf script --max-stack 1024 --input=perf.data -f &amp;gt; out.perf 3) Create FlameGraph c++filt &amp;lt; out.perf &amp;gt; out.perf_filted stackcollapse-perf.pl --all out.perf_filted &amp;gt; out.perf_collapsed flamegraph.pl -color=java --hash out.</description>
     </item>
     
     <item>

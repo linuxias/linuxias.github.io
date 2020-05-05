@@ -45,6 +45,17 @@ CHAPTER 5 연결 리스트</description>
     </item>
     
     <item>
+      <title>Head First GO</title>
+      <link>https://linuxias.github.io/books/headfirst_go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/books/headfirst_go/</guid>
+      <description>올해 3월 Head First Go 가 출간되었다. Head First는 O&amp;rsquo;REILLY 사에서 출간한 컴퓨터 관련 시리즈 도서로 다양한 책들이 있으며 많은 소프트웨어 개발자들이 한번은 봤을법한 표지로도 유명하다.
+도서의 목차는 아래와 같다.
+목차 서문 1장. 시작해 봅시다: 문법 기초 2장. 다음엔 어떤 코드가 실행될까요?: 조건문과 반복문 3장. 호출해 주세요: 함수 4장. 코드 묶음: 패키지 5장. 목록에서: 배열 6장. 확장 문제: 슬라이스 7장. 데이터 라벨링: 맵 8장. 저장소 만들기: 구조체 9장. 나만의 타입: 사용자 정의 타입 10장.</description>
+    </item>
+    
+    <item>
       <title>쿠버네티스를 활용한 클라우드 네이티브 데브옵스</title>
       <link>https://linuxias.github.io/books/cloudnativedevopswithkubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

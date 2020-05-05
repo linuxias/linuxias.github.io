@@ -211,6 +211,10 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/books/headfirst_go/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/sw_architecture/hierarchical_software_architecture/</loc>
   </url>
   
@@ -240,6 +244,10 @@
   
   <url>
     <loc>https://linuxias.github.io/linux/debugging/proc_filesystem/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/linux/profile/process/</loc>
   </url>
   
   <url>
