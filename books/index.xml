@@ -45,6 +45,26 @@ CHAPTER 5 연결 리스트</description>
     </item>
     
     <item>
+      <title>BPF 리눅스 관측 가능성 향상하기</title>
+      <link>https://linuxias.github.io/books/bpf_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxias.github.io/books/bpf_linux/</guid>
+      <description>이 도서의 리뷰는 한빛미디어 출판사의 리뷰어 활동으로 진행하였습니다.
+목차
+제1장 소개
+제2장 생애 첫 BPF 프로그램
+제3장 BPF 맵
+제4장 BPF를 이용한 실행 추적
+제5장 BPF 유틸리티
+제6장 리눅스 네트워킹과 BPF
+제7장 XDP 프로그램
+제8장 리눅스 커널 보안, 능력, seccomp
+제9장 실제 응용 사례
+BPF 란 최초 Berkeley Packet filter 의 약자로 사용되었다. 리눅스 커널 네트워크 분석을 위해 사용되던 툴이 지금은 리눅스 커널과 어플리케이션 모두를 분석, 프로파일링 할 수 있는 유용한 툴로 발전하였습니다.</description>
+    </item>
+    
+    <item>
       <title>Head First GO</title>
       <link>https://linuxias.github.io/books/headfirst_go/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

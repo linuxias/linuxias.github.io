@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>4. cpu, cpuset, cpuaccet :: Developer&#39;s Delight</title>
+    <title>BPF 리눅스 관측 가능성 향상하기 :: Developer&#39;s Delight</title>
 
     
     <link href="/css/nucleus.css?1599055133" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/container/cgroup/4.cpu.cpuset.cpuacct/">
+  <body class="" data-url="/books/bpf_linux/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -581,7 +581,7 @@
   
     
     <li data-nav-id="/container/" title="2. Container" class="dd-item 
-        parent
+        
         
         
         ">
@@ -612,7 +612,7 @@
   
     
     <li data-nav-id="/container/cgroup/" title="Cgroup" class="dd-item 
-        parent
+        
         
         
         ">
@@ -703,7 +703,7 @@
  
   
     
-      <li data-nav-id="/container/cgroup/4.cpu.cpuset.cpuacct/" title="4. cpu, cpuset, cpuaccet" class="dd-item active">
+      <li data-nav-id="/container/cgroup/4.cpu.cpuset.cpuacct/" title="4. cpu, cpuset, cpuaccet" class="dd-item ">
         <a href="/container/cgroup/4.cpu.cpuset.cpuacct/">
         4. cpu, cpuset, cpuaccet
         <i class="fas fa-check read-icon"></i>
@@ -1528,7 +1528,7 @@
   
     
     <li data-nav-id="/books/" title="Books" class="dd-item 
-        
+        parent
         
         
         ">
@@ -1577,7 +1577,7 @@
  
   
     
-      <li data-nav-id="/books/bpf_linux/" title="BPF 리눅스 관측 가능성 향상하기" class="dd-item ">
+      <li data-nav-id="/books/bpf_linux/" title="BPF 리눅스 관측 가능성 향상하기" class="dd-item active">
         <a href="/books/bpf_linux/">
         BPF 리눅스 관측 가능성 향상하기
         <i class="fas fa-check read-icon"></i>
@@ -1697,7 +1697,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="linuxias.github.ioContainer/Cgroup/4.cpu.cpuset.cpuacct.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="linuxias.github.ioBooks/BPF_Linux.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -1728,13 +1728,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/'>Developer's Delight</a> > <a href='/container/'>2. Container</a> > <a href='/container/cgroup/'>Cgroup</a> > 4. cpu, cpuset, cpuaccet
-          
-        
+            <a href='/'>Developer's Delight</a> > <a href='/books/'>Books</a> > BPF 리눅스 관측 가능성 향상하기
           
         
           
@@ -1747,20 +1741,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#subsystem---cpu-cpuset">Subsystem - cpu, cpuset</a>
-      <ul>
-        <li><a href="#cpu-subsystem">cpu subsystem</a></li>
-        <li><a href="#cpuset-subsystem">cpuset subsystem</a></li>
-        <li><a href="#cpu-cpuset">cpu, cpuset</a></li>
-        <li><a href="#cpu-예제-살펴보기">CPU 예제 살펴보기</a></li>
-        <li><a href="#cpuset-예제-살펴보기">CPUSET 예제 살펴보기</a></li>
-      </ul>
-    </li>
-    <li><a href="#참고자료">참고자료</a></li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -1776,148 +1757,34 @@
           
             <h1>
               
-              4. cpu, cpuset, cpuaccet
+              BPF 리눅스 관측 가능성 향상하기
             </h1>
           
 
         
 
 
-<h2 id="subsystem---cpu-cpuset">Subsystem - cpu, cpuset</h2>
-<p>이번 글에서는 Cgroup의 서브시스템 중 cpu와 cpuset 에 대해 정리해보겠습니다.</p>
-<h3 id="cpu-subsystem">cpu subsystem</h3>
-<p>cpu 서브시스템은 cgroup 계층 및 해당 작업에 대한 CPU 시간을 스케쥴링 할 수 있습니다. 시스템이 busy 상태일 때 CPU 공유를 최소화 즉 사용량을 제한 할 수 있습니다. 이 서브시스템은 CPU에 cgroup 작업 액세스를 제공하기 위한 스케줄러(Documentation/scheduler/sched-design-CFS.txt)를 제공합니다.</p>
-<h3 id="cpuset-subsystem">cpuset subsystem</h3>
-<p>cpuset 서브시스템은 개별 CPU 및 메모리 노드를 cgroup에 바인딩 하기 위한 서브시스템입니다. 리눅스의 <strong>testset</strong> 명령과 유사하게 CPU 코어를 할당 할 수 있는 서브시스템 입니다.</p>
-<h3 id="cpu-cpuset">cpu, cpuset</h3>
-<p>이 두 서브시스템을 이용하면 CPU 사용량이 많은 어플리케이션에 대해 프로세서 코어들을 할당 및 제어할 수 있으므로 더욱 좋은 활용성을 가질 수 있습니다.</p>
-<p><img src="http://jake.dothome.co.kr/wp-content/uploads/2015/12/cgroup2.png" alt="CPU 할당">
-<strong>image 참고 : 문C블로그 (<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</strong></p>
-<p>CPU 코어 별로 원하는 Task 들을 할당할 수 있어 코어 간 스위칭 되는 로드를 감소할 수 있으며 입맛에 맞게 그룹을 조정할 수 있습니다. 즉 컨테이너 환경에서도 각 컨테이너 별로 다양한 인스터스를 생성할 수 있습니다.</p>
-<h3 id="cpu-예제-살펴보기">CPU 예제 살펴보기</h3>
-<p>몇몇의 프로세스에 대해 설정하는 방법에 대해 알아보겠습니다. 여기서는 cpu와 cpuacct 함께 설정합니다.</p>
-<ol>
-<li>cgroup 가상파일시스템을 마운트합니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir -p /cgroup/cpu
-$ sudo mount -t cgroup -o cpu,cpuacct cpu,cpuacct /cgroup/cpu
-</code></pre></div><ol start="2">
-<li>마운트 여부 확인하기.
-아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount | grep cgroup
-cpu,cpuacct on /cgroup/cpu type cgroup <span style="color:#f92672">(</span>rw,relatime,cpu,cpuacct<span style="color:#f92672">)</span>
-or
-$ cat /proc/mount | grep cgroup
-cpu,cpuacct /cgroup/cpu cgroup rw,relatime,cpu,cpuacct <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
-</code></pre></div><ol start="3">
-<li>mount 상태 확인해보기.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -al
-total <span style="color:#ae81ff">4</span>
-dr-xr-xr-x <span style="color:#ae81ff">2</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 .
-drwxr-xr-x <span style="color:#ae81ff">6</span> root root <span style="color:#ae81ff">4096</span>  8월 <span style="color:#ae81ff">11</span> 20:21 ..
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.clone_children
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.procs
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.sane_behavior
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpu_exclusive
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpus
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_cpus
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_mems
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_exclusive
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_hardwall
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_migrate
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure_enabled
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_page
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_slab
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mems
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_load_balance
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_relax_domain_level
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 notify_on_release
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 release_agent
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 tasks
-</code></pre></div><p>마운트한 디렉토리에서 내부 리스트를 확인해보니 위와 같이 많은 파일들이 생성되었습니다. 그 중 우리가 write할 수 있는 파일은 몇 개 되지 않네요. 나머지는 모두 read만 할 수 있습니다. 그 말은 우리가 cgroup blkio 서브시스템을 사용하여 제어할 수 있는 요소들은 write 권한이 있는 파일들을 유심히 보면 될 것 같습니다.</p>
-<ol start="4">
-<li>특정 프로세스의 CPU 제한 설정하기.
-새로운 계층구조를 생성하고 60%를 할당합니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /cgroup/cpu/limit_60_percent
-$ sudo echo <span style="color:#ae81ff">600</span> &gt; /cgroup/cpu/limit_60_percent/cpu.shares
-</code></pre></div><ol start="5">
-<li>cgroup에 적용하기.
-test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/cpu/limit_60_percent/tasks
-</code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/cpu/limit_60_percent/tasks; <span style="color:#66d9ef">done</span>
-</code></pre></div><h3 id="cpuset-예제-살펴보기">CPUSET 예제 살펴보기</h3>
-<p>몇몇의 프로세스에 대해 설정하는 방법에 대해 알아보겠습니다.</p>
-<ol>
-<li>cgroup 가상파일시스템을 마운트합니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir -p /cgroup/cpuset
-$ sudo mount -t cgroup -o cpuset cpuset /cgroup/cpuset
-</code></pre></div><ol start="2">
-<li>마운트 여부 확인하기.
-아래 명령어를 수행해서 결과가 표시된다면 정상적으로 마운트되었습니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount | grep cgroup
-cpuset on /cgroup/cpuset type cgroup <span style="color:#f92672">(</span>rw,relatime,cpuset<span style="color:#f92672">)</span>
-or
-$ cat /proc/mount | grep cgroup
-cpuset /cgroup/cpuset cgroup rw,relatime,cpuset <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
-</code></pre></div><ol start="3">
-<li>mount 상태 확인해보기.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -al
-total <span style="color:#ae81ff">4</span>
-dr-xr-xr-x <span style="color:#ae81ff">2</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 .
-drwxr-xr-x <span style="color:#ae81ff">6</span> root root <span style="color:#ae81ff">4096</span>  8월 <span style="color:#ae81ff">11</span> 20:21 ..
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.clone_children
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.procs
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cgroup.sane_behavior
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpu_exclusive
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.cpus
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_cpus
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.effective_mems
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_exclusive
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mem_hardwall
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_migrate
--r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_pressure_enabled
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_page
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.memory_spread_slab
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.mems
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_load_balance
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 cpuset.sched_relax_domain_level
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 notify_on_release
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 release_agent
--rw-r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span>  8월 <span style="color:#ae81ff">11</span> 20:22 tasks
-</code></pre></div><p>마운트한 디렉토리에서 내부 리스트를 확인해보니 위와 같이 많은 파일들이 생성되었습니다. 그 중 우리가 write할 수 있는 파일은 몇 개 되지 않네요. 나머지는 모두 read만 할 수 있습니다. 그 말은 우리가 cgroup blkio 서브시스템을 사용하여 제어할 수 있는 요소들은 write 권한이 있는 파일들을 유심히 보면 될 것 같습니다.</p>
-<ol start="4">
-<li>특정 프로세스의 cpucore 할당 설정하기.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /cgroup/cpuset/test
-$ sudo echo 0-1 &gt; /cgroup/cpuset/test/cpuset/cpus
-</code></pre></div><ol start="5">
-<li>cgroup에 적용하기.
-test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니다.</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#ae81ff">10001</span> &gt;&gt; /cgroup/cpuset/test/cpuset.cpus
-</code></pre></div><p>위와 같이 설정하거나 프로세스의 이름이 test 라고 할 때</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$pidof test | <span style="color:#66d9ef">while</span> read PID; <span style="color:#66d9ef">do</span> echo $PID &gt;&gt; /cgroup/cpuset/test/cpuset.cpus; <span style="color:#66d9ef">done</span>
-</code></pre></div><h2 id="참고자료">참고자료</h2>
-<ul>
-<li>Containerization with LXC | Konstantin Ivanov</li>
-<li>[Linux] cgroup - (task) control group (1) (<a href="http://egloos.zum.com/studyfoss/v/5505982">http://egloos.zum.com/studyfoss/v/5505982</a>)</li>
-<li>[Linux] cgroup - (task) control group (1)(<a href="http://studyfoss.egloos.com/5506102">http://studyfoss.egloos.com/5506102</a>)</li>
-<li>Docker(container)의 작동 원리: namespaces and cgroups(<a href="https://tech.ssut.me/what-even-is-a-container/">https://tech.ssut.me/what-even-is-a-container/</a>)</li>
-<li>Control Groups | 문C 블로그(<a href="http://jake.dothome.co.kr/control-groups/">http://jake.dothome.co.kr/control-groups/</a>)</li>
-<li>CGROUPS(7) linux manual page</li>
-<li><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt">https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt</a></li>
-<li><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/cpuacct.txt">https://www.kernel.org/doc/Documentation/cgroup-v1/cpuacct.txt</a></li>
-</ul>
+<p><strong>이 도서의 리뷰는 한빛미디어 출판사의 리뷰어 활동으로 진행하였습니다.</strong></p>
+<p><img src="https://www.hanbit.co.kr/data/books/B4068078736_l.jpg" alt="BPF_LINUX"></p>
+<p><strong>목차</strong></p>
+<p>제1장 소개</p>
+<p>제2장 생애 첫 BPF 프로그램</p>
+<p>제3장 BPF 맵</p>
+<p>제4장 BPF를 이용한 실행 추적</p>
+<p>제5장 BPF 유틸리티</p>
+<p>제6장 리눅스 네트워킹과 BPF</p>
+<p>제7장 XDP 프로그램</p>
+<p>제8장 리눅스 커널 보안, 능력, seccomp</p>
+<p>제9장 실제 응용 사례</p>
+<p><code>BPF</code> 란 최초 <code>Berkeley Packet filter</code> 의 약자로 사용되었다. 리눅스 커널 네트워크 분석을 위해 사용되던 툴이 지금은 리눅스 커널과 어플리케이션 모두를 분석, 프로파일링 할 수 있는 유용한 툴로 발전하였습니다.</p>
+<p><code>BPF</code>를 온라인으로 학습하고 사용하다 처음 접한 도서가 <code>Brendan Gregg</code>가 작성한 &lsquo;BPF Performance Tools&rsquo; 란 책이였다. 외서로써 약 950페이지..? 정도의 책이였다.
+스터디를 위해 공부하기 시작하였던 책이였는데, 이 책을 읽고 부족한 점을 느낀 분들은 해당 책을 읽어보는 것을 추천한다. 책은 매우 두껍고, 작가의 개인적인 내용도 있기에 필요한 부분만 찾아서 공부하는 것을 추천한다.</p>
+<p>이 책은 내가 읽은 BPF에 관련된 두 번째 책이다. 솔직하게 말하자면, 이 책을 본다고 모두가 리눅스 성능 분석을 할 수 있는 것은 아니다. 분석은 분석하려는 시스템에 대한 이해도가 깊어야한다.
+내가 분석하려는 시스템이 어떤 동작을 하는지, 적어도 분석하려는 특정 부분에 대해서는 이해하고, 트레이싱하려는 포인트 또한 알아야 한다.
+간단한 예시로 시스템에서 특정 동작 중 파일 I/O 가 매우 느리다고 하자. 이 때 어디를 분석하겠는가? 이 책만 보고는 절대 알 수 없는 부분이다. 아니, <code>Brendan Gregg</code>가 작성한 &lsquo;BPF Performance Tools&rsquo; 책을 봐도 마찬가지 일 것 이다.</p>
+<p>지금의 BPF 툴은 리눅스 프로파일링에서 점점 자리를 잡아가고 있으며 빠르게 다양한 기능이 확장되고 있습니다. 가장 좋은 건 제가 직접 코드를 작성하여 분석할 수 있다는 것입니다. 이 점은 dynamic tracing을 위한 다양한 기능과 더불어 매우 유용하게 사용될 수 있습니다.</p>
+<p>프로파일링 업무를 하시는 분들에겐 BPF를 깊게 공부하는 것이 아닌, BPF가 이렇게 확장되서 사용되고 있구나 정도는 알 수 있는 책입니다. 좀 더 깊게 학습이 필요한 분들 <code>Brendan Gregg</code> 의 블로그나 github BPF 코드를 보는 것을 추천드려요!</p>
+<p>감사합니다.</p>
 
 
 <footer class="footline">
@@ -2264,7 +2131,6 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
                 
                     
-                    
                 
                 
 
@@ -2280,7 +2146,6 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
                 
                     
-                    
                 
                 
 
@@ -2288,25 +2153,6 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -2345,6 +2191,21 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -2364,9 +2225,6 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -2885,6 +2743,7 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
                 
                     
+                    
                 
                 
 
@@ -2897,6 +2756,9 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -2914,6 +2776,7 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
                 
                     
+                    
                 
                 
 
@@ -2929,6 +2792,9 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -2969,10 +2835,10 @@ test process의 pid가 10001 이라고 할 때 아래와 같이 설정해 줍니
 	 
 	 
 		
-			<a class="nav nav-prev" href="/container/cgroup/3.cgroup_memory/" title="3. memory"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/books/readyforprogramminginterview/" title="프로그래밍 면접 이렇게 준비한다"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/container/namespace/" title="Namespace" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/books/headfirst_go/" title="Head First GO" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -175,11 +175,19 @@
   </url>
   
   <url>
+    <loc>https://linuxias.github.io/linux/theory/glibc_heap/</loc>
+  </url>
+  
+  <url>
     <loc>https://linuxias.github.io/linux/tip/multitail/</loc>
   </url>
   
   <url>
     <loc>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://linuxias.github.io/books/bpf_linux/</loc>
   </url>
   
   <url>
