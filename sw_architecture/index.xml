@@ -6,11 +6,7 @@
     <description>Recent content in 3. S/W Architecture on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 10 Jan 2020 23:15:54 +0900</lastBuildDate>
-    
-	<atom:link href="https://linuxias.github.io/sw_architecture/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 10 Jan 2020 23:15:54 +0900</lastBuildDate><atom:link href="https://linuxias.github.io/sw_architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Batch Sequential Architecture</title>
       <link>https://linuxias.github.io/sw_architecture/batch_sequential_architecture/</link>

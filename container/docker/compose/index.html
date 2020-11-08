@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.78.1" />
     <meta name="description" content="">
 <meta name="author" content="Seungha Son">
 
@@ -12,21 +12,21 @@
     <title>Docker Compose :: Developer&#39;s Delight</title>
 
     
-    <link href="/css/nucleus.css?1599055820" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1599055820" rel="stylesheet">
-    <link href="/css/hybrid.css?1599055820" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1599055820" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1599055820" rel="stylesheet">
-    <link href="/css/auto-complete.css?1599055820" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1599055820" rel="stylesheet">
-    <link href="/css/theme.css?1599055820" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1599055820" rel="stylesheet">
+    <link href="/css/nucleus.css?1604841359" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1604841359" rel="stylesheet">
+    <link href="/css/hybrid.css?1604841359" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1604841359" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1604841359" rel="stylesheet">
+    <link href="/css/auto-complete.css?1604841359" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1604841359" rel="stylesheet">
+    <link href="/css/theme.css?1604841359" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1604841359" rel="stylesheet">
     
-    <link href="/css/theme-purple.css?1599055820" rel="stylesheet">
+    <link href="/css/theme-purple.css?1604841359" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1599055820"></script>
+    <script src="/js/jquery-3.3.1.min.js?1604841359"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -71,14 +71,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1599055820"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1599055820"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1604841359"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1604841359"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/linuxias.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1599055820"></script>
+<script type="text/javascript" src="/js/search.js?1604841359"></script>
 
     
   </div>
@@ -1850,14 +1850,14 @@ redis
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;flask&#34;</span>, <span style="color:#e6db74">&#34;run&#34;</span>]<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="3-compose-파일-내에-이미지-정의하기">3. Compose 파일 내에 이미지 정의하기.</h3>
 <p>compose는 <code>yml</code> 파일을 읽어 도커 엔진에게 컨테이너 생성을 요청한다. 아래 <code>docker-compose.yml</code> 파일을 참조하자.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
-<span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">web</span>:
-    <span style="color:#66d9ef">build</span>: .
-    <span style="color:#66d9ef">ports</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">web</span>:
+    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+    <span style="color:#f92672">ports</span>:
       - <span style="color:#e6db74">&#34;5000:5000&#34;</span>
-  <span style="color:#66d9ef">redis</span>:
-    <span style="color:#66d9ef">image</span>: <span style="color:#e6db74">&#34;redis:alpine&#34;</span>
+  <span style="color:#f92672">redis</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#34;redis:alpine&#34;</span>
 </code></pre></div><p>두 개의 컨테이너를 생성한다. 각 컨테이너는 위에서 작성한 Dockerfile로 생성한 이미지와 redis:alpine 이미지를 기반으로 컨테이너를 실행한다.</p>
 <p>yml 파일의 내용을 간략히 설명하면 아래와 같다.</p>
 <ul>
@@ -1878,18 +1878,18 @@ redis
 </ul>
 <h3 id="5-docker-composeyml-을-수정하기">5. docker-compose.yml 을 수정하기.</h3>
 <p>volume을 추가하고, 환경변수를 추가하여 새로운 컨테이너를 생성한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
-<span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">web</span>:
-    <span style="color:#66d9ef">build</span>: .
-    <span style="color:#66d9ef">ports</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">web</span>:
+    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+    <span style="color:#f92672">ports</span>:
       - <span style="color:#e6db74">&#34;5000:5000&#34;</span>
-    <span style="color:#66d9ef">volumes</span>:
-      - .:/code
-    <span style="color:#66d9ef">environment</span>:
-      <span style="color:#66d9ef">FLASK_ENV</span>: development
-  <span style="color:#66d9ef">redis</span>:
-    <span style="color:#66d9ef">image</span>: <span style="color:#e6db74">&#34;redis:alpine&#34;</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">.:/code</span>
+    <span style="color:#f92672">environment</span>:
+      <span style="color:#f92672">FLASK_ENV</span>: <span style="color:#ae81ff">development</span>
+  <span style="color:#f92672">redis</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#34;redis:alpine&#34;</span>
 </code></pre></div><p>위 처럼 <code>docker-compose.yml</code> 파일을 수정하고 다시 아래 명령어로 생성한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$sudo docker-compose up
 </code></pre></div><p>5000번 포트로 재접속 하면 갱신된 화면을 볼 수 있다.</p>
@@ -2965,19 +2965,19 @@ redis
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1599055820"></script>
-    <script src="/js/perfect-scrollbar.min.js?1599055820"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1599055820"></script>
-    <script src="/js/jquery.sticky.js?1599055820"></script>
-    <script src="/js/featherlight.min.js?1599055820"></script>
-    <script src="/js/highlight.pack.js?1599055820"></script>
+    <script src="/js/clipboard.min.js?1604841359"></script>
+    <script src="/js/perfect-scrollbar.min.js?1604841359"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1604841359"></script>
+    <script src="/js/jquery.sticky.js?1604841359"></script>
+    <script src="/js/featherlight.min.js?1604841359"></script>
+    <script src="/js/highlight.pack.js?1604841359"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1599055820"></script>
-    <script src="/js/learn.js?1599055820"></script>
-    <script src="/js/hugo-learn.js?1599055820"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1604841359"></script>
+    <script src="/js/learn.js?1604841359"></script>
+    <script src="/js/hugo-learn.js?1604841359"></script>
 
-    <link href="/mermaid/mermaid.css?1599055820" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1599055820"></script>
+    <link href="/mermaid/mermaid.css?1604841359" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1604841359"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

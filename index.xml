@@ -6,11 +6,7 @@
     <description>Recent content on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Dec 2019 23:06:22 +0900</lastBuildDate>
-    
-	<atom:link href="https://linuxias.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 30 Dec 2019 23:06:22 +0900</lastBuildDate><atom:link href="https://linuxias.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker Basic</title>
       <link>https://linuxias.github.io/container/docker/1_docker_cmd_basic/</link>
@@ -340,7 +336,7 @@ BPF 란 최초 Berkeley Packet filter 의 약자로 사용되었다. 리눅스 �
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://linuxias.github.io/linux/profile/cpu/</guid>
-      <description>CPU Analysis uptime 시스템 부하 평균을 표시한다. load average의 값은 앞에서부터 1분, 5분, 15분 동안의 평균 부하이다.
+      <description>CPU Analysis 현재 CPU 정보 확인하기 CPU core 별 clock 확인하기 cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq uptime 시스템 부하 평균을 표시한다. load average의 값은 앞에서부터 1분, 5분, 15분 동안의 평균 부하이다.
 uptime 08:41:55 up 1 day, 17:41, 4 users, load average: 0.28, 0.24, 0.27 부하평균은 CPU 자원에 대한 요구사항으로써, ** 실행 중인 스레드 개수 + 대기열의 스레드 개수 **이다. 만약 부하 평균이 호스트 머신의 CPU 개수보다 크면 스레드를 처리하기에 CPU가 부족한 상황이며, 대기열에 여러 스레드가 CPU를 할당받기 위해 대기하고 있는 상태라고 파악할 수 있다.</description>
     </item>
     

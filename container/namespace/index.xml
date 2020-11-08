@@ -6,11 +6,7 @@
     <description>Recent content in Namespace on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Dec 2019 23:19:05 +0900</lastBuildDate>
-    
-	<atom:link href="https://linuxias.github.io/container/namespace/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 30 Dec 2019 23:19:05 +0900</lastBuildDate><atom:link href="https://linuxias.github.io/container/namespace/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Namespace</title>
       <link>https://linuxias.github.io/container/namespace/1.what_is_namespace/</link>

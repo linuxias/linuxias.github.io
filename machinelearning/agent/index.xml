@@ -6,11 +6,7 @@
     <description>Recent content in Software Agent on Developer&#39;s Delight</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 05 Jan 2020 23:34:14 +0900</lastBuildDate>
-    
-	<atom:link href="https://linuxias.github.io/machinelearning/agent/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 05 Jan 2020 23:34:14 +0900</lastBuildDate><atom:link href="https://linuxias.github.io/machinelearning/agent/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Agent] BDI Architecture</title>
       <link>https://linuxias.github.io/machinelearning/agent/bdi_architect/</link>
